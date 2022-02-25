@@ -106,6 +106,7 @@ public class Blood_Model {
     public void setA_num(String a_num) {
         this.a_num = a_num;
     }
+    
 
 
     public Blood_Model(){}
