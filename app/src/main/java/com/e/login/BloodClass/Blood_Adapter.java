@@ -72,7 +72,7 @@ public class Blood_Adapter extends RecyclerView.Adapter<Blood_Adapter.ViewHolder
     @Override
     public int getItemCount() {
 
-        return 4;
+        return bloodModelList.size();
 
     }
 
