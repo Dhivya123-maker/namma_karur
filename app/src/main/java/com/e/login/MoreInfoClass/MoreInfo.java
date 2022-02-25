@@ -59,11 +59,6 @@ public class MoreInfo extends Fragment {
         Api a = new Api();
         api = a.getBASE_URL();
 
-        Toast.makeText(getActivity(), data, Toast.LENGTH_SHORT).show();
-        Toast.makeText(getActivity(), data1, Toast.LENGTH_SHORT).show();
-
-
-
 
         info();
 

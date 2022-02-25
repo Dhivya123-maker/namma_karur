@@ -214,15 +214,6 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
                         verified = jsonObject.getString("verified");
 
 
-//                        Toast.makeText(ShopsScreenFragment.this, id, Toast.LENGTH_SHORT).show();
-//                        Log.i("1",id);
-//                        Toast.makeText(ShopsScreenFragment.this, logo, Toast.LENGTH_SHORT).show();
-                        Log.i("2",PreferenceUtils.getToken(ShopsScreenFragment.this));
-//                        Log.i("3",title);
-//                        Log.i("4",address);
-//                        Log.i("5",open_time);
-//                        Log.i("6",rating);
-//                        Log.i("j7",verified);
 
 
                         ShopScreenModel viewmodel = new ShopScreenModel();

@@ -436,7 +436,6 @@ public void shop(String url) {
             @Override
             public void onResponse(JSONObject response) {
 
-                Log.i("dfgdfg",response.toString());
 
                 try {
                     JSONArray res = response.getJSONArray("data");
