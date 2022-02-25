@@ -114,7 +114,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Patient name                            :"
+                    android:text="Patient name"
                     android:layout_weight="1"
                     android:textColor="#4c9a2a"
                     />
@@ -141,7 +141,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Blood Group                              :"
+                    android:text="Blood Group"
                     android:layout_weight="1"
                     android:textColor="#4c9a2a"
                     />
@@ -169,7 +169,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Problem                                     :"
+                    android:text="Problem"
                     android:layout_weight="1"
                     android:textColor="#4c9a2a"
                     />
@@ -198,7 +198,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Needed within                          :"
+                    android:text="Needed within"
                     android:layout_weight="1"
                     android:textColor="#4c9a2a"
                     />
@@ -225,7 +225,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No.of.Units                               :"
+                    android:text="No.of.Units"
                     android:layout_weight="1"
                     android:textColor="#4c9a2a"
                     />
@@ -252,7 +252,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hospital                                    :"
+                    android:text="Hospital"
                     android:layout_weight="1"
                     android:textColor="#4c9a2a"
                     />
@@ -281,7 +281,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Contact Number                     :"
+                    android:text="Contact Number"
                     android:layout_weight="1"
                     android:textColor="#4c9a2a"
                     />
@@ -308,7 +308,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Alternative Number                :"
+                    android:text="Alternative Number"
                     android:layout_weight="1"
                     android:textColor="#4c9a2a"
                     />
@@ -336,7 +336,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Address                                    :"
+                    android:text="Address"
                     android:layout_weight="1"
                     android:textColor="#4c9a2a"
                     />

@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -74,7 +76,7 @@ public class NGOActivity extends AppCompatActivity {
 
                         JSONObject jsonObject = res.getJSONObject(i);
 
-                        ;
+
 
                         id = jsonObject.getString("id");
                         image = jsonObject.getString("logo");
@@ -82,14 +84,14 @@ public class NGOActivity extends AppCompatActivity {
                         des = jsonObject.getString("address");
 
 
-//                        Toast.makeText(GovtActivity.this, image.toString(), Toast.LENGTH_SHORT).show();
-//                        Log.i("jbfhusduycfhb",image.toString());
+                        Toast.makeText(NGOActivity.this, image.toString(), Toast.LENGTH_SHORT).show();
+                        Log.i("jbfhusduycfhb",image.toString());
 
                         NGOModel viewmodel = new NGOModel();
 
 
                         viewmodel.setText(name);
-                        viewmodel.setImage(name);
+                        viewmodel.setImage(image);
                         viewmodel.setId(id);
 
                         viewmodel.setText_one(des);
