@@ -166,11 +166,17 @@
                         android:layout_height="match_parent">
 
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="140dp"
                         android:orientation="vertical">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
 
 
                         <LinearLayout
@@ -307,11 +313,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="10dp"
-                            android:layout_marginBottom="140dp"
+                            android:layout_marginBottom="75dp"
                             android:adjustViewBounds="true" />
+                        </LinearLayout>
 
-
-                    </LinearLayout>
+                    </RelativeLayout>
 
 
                     </ScrollView>

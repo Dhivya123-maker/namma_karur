@@ -6,9 +6,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -25,6 +27,7 @@ import com.e.login.HomeClass.CategoryAdapter;
 import com.e.login.HomeClass.CategoryModel;
 import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.NewsClass.NewsActivity;
+import com.e.login.NewsClass.View_Breaking;
 import com.e.login.R;
 import com.e.login.fragment_dialog.BottomSheetFragment_filter;
 import com.e.login.utils.PreferenceUtils;
@@ -46,6 +49,7 @@ public class OfferActivity extends AppCompatActivity {
     Offer_One_Adapter adapter1;
     List<Offer_two_model> offerTwoModelList;
     Offer_two_Adapter adapter2;
+    TextView top,close;
     public static final String TAG = "bottom_sheet";
 
     String api;
@@ -66,6 +70,28 @@ public class OfferActivity extends AppCompatActivity {
 
         Api a = new Api();
         api = a.getBASE_URL();
+
+        top = findViewById(R.id.top_view);
+        close = findViewById(R.id.close_view);
+
+
+        top.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(OfferActivity.this, View_All.class);
+                intent1.putExtra("cat1","top_offers");
+                startActivity(intent1);
+            }
+        });
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(OfferActivity.this,View_All.class);
+                intent1.putExtra("cat1","closing_offers");
+                startActivity(intent1);
+
+            }
+        });
 
 
         offerModelList = new ArrayList<>();
