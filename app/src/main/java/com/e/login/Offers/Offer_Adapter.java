@@ -72,10 +72,20 @@ public class Offer_Adapter extends RecyclerView.Adapter<Offer_Adapter.ViewHolder
             super(itemView);
             img = itemView.findViewById(R.id.offers_one);
 
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+
+                    int position = getAdapterPosition();
+                    String id = offerModelList.get(position).getId();
+                    String list = offerModelList.get(position).getCat();
+
+
                     Intent intent = new Intent(view.getContext(),Top_Offer_Activity.class);
+                    intent.putExtra("id",id);
+                    intent.putExtra("list",list);
                     view.getContext().startActivity(intent);
                 }
             });

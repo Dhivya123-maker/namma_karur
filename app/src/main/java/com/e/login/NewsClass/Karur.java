@@ -62,18 +62,11 @@ public class Karur extends Fragment {
             public void onResponse(JSONObject response) {
 
 
-//                Log.i("00000001111",response.toString());
-//                Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
-
                 try {
-
-
 
 
                     String Success = response.getString("success");
                     String msg = response.getString("message");
-
-
 
 
                     newsOneModelList = new ArrayList<>();
@@ -84,14 +77,9 @@ public class Karur extends Fragment {
 
 
                     if(Success.equals("true")){
-//                        Log.i("123",msg);
-//                        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
-//
 
 
-
-
-                        for (int i = 0; i < response.length(); i++) {
+                        for (int i = 0; i < res.length(); i++) {
                             JSONObject jsonObject = res.getJSONObject(i);
 
                             id = jsonObject.getString("id");
@@ -103,9 +91,6 @@ public class Karur extends Fragment {
 
                             NewsOneModel viewmodel = new NewsOneModel();
 
-
-
-                            //viewmodel.setImage(all);
 
                             viewmodel.setImage(image);
                             viewmodel.setText(title);

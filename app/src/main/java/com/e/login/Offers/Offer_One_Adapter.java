@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -78,8 +79,16 @@ public class Offer_One_Adapter extends RecyclerView.Adapter<Offer_One_Adapter.Vi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    int position = getAdapterPosition();
+                    String id = offerOneModelList.get(position).getId();
+                    String list = offerOneModelList.get(position).getCat();
+
                     Intent intent = new Intent(view.getContext(),Top_Offer_Activity.class);
+                    intent.putExtra("id",id);
+                    intent.putExtra("list",list);
                     view.getContext().startActivity(intent);
+
                 }
             });
 

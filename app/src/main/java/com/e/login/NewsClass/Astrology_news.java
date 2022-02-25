@@ -59,9 +59,6 @@ public class Astrology_news extends Fragment {
             public void onResponse(JSONObject response) {
 
 
-//                Log.i("00000001111",response.toString());
-//                Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
-
                 try {
 
 
@@ -81,11 +78,7 @@ public class Astrology_news extends Fragment {
 
                     if(Success.equals("true")){
 
-
-
-
-
-                        for (int i = 0; i < response.length(); i++) {
+                        for (int i = 0; i < res.length(); i++) {
 
                             JSONObject jsonObject = res.getJSONObject(i);
 

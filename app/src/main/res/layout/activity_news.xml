@@ -95,46 +95,6 @@
             android:layout_below="@+id/brandAndItsLocation">
 
 
-<!--            <com.google.android.material.appbar.AppBarLayout-->
-<!--                android:id="@+id/appbar"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="10dp"-->
-
-<!--                android:background="@drawable/fragment_layout"-->
-
-<!--                >-->
-
-<!--                <com.google.android.material.tabs.TabLayout-->
-<!--                    android:id="@+id/tab_layout_news"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:background="@color/white"-->
-<!--                    app:tabBackground="@color/white"-->
-<!--                    app:tabGravity="fill"-->
-<!--                    app:tabIndicatorColor="#4C9A2A"-->
-<!--                    android:layout_marginTop="3dp"-->
-<!--                    app:tabMode="scrollable"-->
-<!--                    app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"-->
-<!--                    app:tabTextColor="#4C9A2A" >-->
-
-
-<!--                </com.google.android.material.tabs.TabLayout>-->
-
-
-
-<!--            </com.google.android.material.appbar.AppBarLayout>-->
-
-
-<!--            <androidx.viewpager.widget.ViewPager-->
-<!--                android:id="@+id/viewpager_news"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent"-->
-<!--                app:layout_anchorGravity="center"-->
-<!--                app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
-
-
-
 
             <LinearLayout
                 android:id="@+id/relativeLayout2"
@@ -188,13 +148,13 @@
                             android:layout_height="950dp"
                             android:layout_below="@+id/app"
                             app:layout_anchorGravity="center"
+                            android:layout_above="@+id/bottomNavigationView_shops"
                             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                             <FrameLayout
                                 android:id="@+id/fragment_news"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-
                                 tools:ignore="MissingConstraints">
 
 
@@ -203,34 +163,19 @@
 
                         </androidx.viewpager.widget.ViewPager>
 
-<!--                        <com.smarteist.autoimageslider.SliderView-->
-<!--                            android:id="@+id/slider_toop"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="150dp"-->
-<!--                            android:layout_below="@+id/viewpager_news"-->
-<!--                            android:layout_marginStart="20dp"-->
-<!--                            android:layout_marginTop="20dp"-->
-<!--                            android:layout_marginEnd="20dp"-->
-<!--                            android:layout_marginBottom="10dp"-->
-<!--                            android:src="@drawable/silder"-->
-<!--                            app:sliderAnimationDuration="600"-->
-<!--                            app:sliderAutoCycleDirection="back_and_forth"-->
-<!--                            app:sliderIndicatorAnimationDuration="600"-->
-<!--                            app:sliderIndicatorEnabled="true"-->
-<!--                            app:sliderIndicatorGravity="center_horizontal|bottom"-->
-<!--                            app:sliderIndicatorMargin="15dp"-->
-<!--                            app:sliderIndicatorOrientation="horizontal"-->
-<!--                            app:sliderIndicatorPadding="3dp"-->
-<!--                            app:sliderIndicatorRadius="2dp"-->
-<!--                            app:sliderIndicatorSelectedColor="#5A5A5A"-->
-<!--                            app:sliderIndicatorUnselectedColor="@color/white"-->
-<!--                            app:sliderScrollTimeInSec="1" />-->
-
+                        <com.google.android.material.bottomnavigation.BottomNavigationView
+                            android:id="@+id/bottomNavigationView_shops"
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            android:layout_alignParentBottom="true"
+                            android:background="#4c9a2a"
+                            app:itemIconTint="@color/white"
+                            app:itemTextColor="@color/white"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="parent"
+                            app:menu="@menu/bottom_nav" />
 
                     </RelativeLayout>
-
-
-
 
 
                 </LinearLayout>
@@ -242,39 +187,12 @@
 
 
 
-
-
-
-
-
-
         </RelativeLayout>
     </RelativeLayout>
 
 
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/fragment_layout"
-        android:layout_above="@+id/bottomNavigationView_shops"
 
-        tools:ignore="MissingConstraints">
-
-    </FrameLayout>
-
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView_shops"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:background="#4c9a2a"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        app:menu="@menu/bottom_nav" />
 
 
 

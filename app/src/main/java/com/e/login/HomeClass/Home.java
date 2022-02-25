@@ -42,6 +42,7 @@ import com.e.login.Profile;
 import com.e.login.Helpline;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
+import com.e.login.utils.PreferenceUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -116,13 +117,15 @@ public class Home extends AppCompatActivity {
 
         DrawerLayout drawerLayout = findViewById(R.id.drawerr_layout);
         lnr= findViewById(R.id.touch_drawer);
-        editText = findViewById(R.id.edit_home);
-        editText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               btnNav.setVisibility(View.GONE);
-            }
-        });
+       // editText = findViewById(R.id.edit_home);
+
+//
+//        editText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//               btnNav.setVisibility(View.GONE);
+//            }
+//        });
 
 
 
@@ -130,6 +133,7 @@ public class Home extends AppCompatActivity {
         navigationView = findViewById(R.id.nav_view1);
 
         lnr.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 drawerLayout.openDrawer(GravityCompat.START);
@@ -179,10 +183,10 @@ public class Home extends AppCompatActivity {
                         break;
 
                     case R.id.nav_JoinwithUs:
-
-                        Intent join = new Intent(Home.this, JoinwithUs.class);
-                       join.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                        startActivity(join);
+//
+//                        Intent join = new Intent(Home.this, JoinwithUs.class);
+//                       join.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                        startActivity(join);
                         break;
 
 
@@ -218,71 +222,6 @@ public class Home extends AppCompatActivity {
             }
 
         });
-
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                Fragment temp = null;
-//
-//                switch (item.getItemId()) {
-//
-//                    case R.id.one:
-//                        temp = new Fragment_Home();
-//
-//                       Intent intent = new Intent(Home.this,Fragment_Home.class);
-//                        startActivity(intent);
-//
-//
-//                    case R.id.two:
-//                        temp = new InfoShops();
-//
-////
-////                        Intent intent1 = new Intent(Home.this,InfoShops.class);
-////                        startActivity(intent1);
-//
-//
-//                        break;
-//                    case R.id.three_center:
-//                        temp = new QrCodeFragment();
-//
-//
-//                        Intent intent2 = new Intent(Home.this,QrCodeFragment.class);
-//                        startActivity(intent2);
-//
-////
-//                        break;
-//                    case R.id.four:
-//                        temp = new ProfileFragment();
-//
-//
-//                        Intent intent3 = new Intent(Home.this,ProfileFragment.class);
-//                        startActivity(intent3);
-//
-//
-//
-//                        break;
-//
-//                    case R.id.five:
-//                        temp = new NotificationsFragment();
-//
-//
-//                        Intent intent4 = new Intent(Home.this,NotificationsFragment.class);
-//                        startActivity(intent4);
-//
-//
-//                        break;
-//                }
-//
-//
-//               getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, temp).commit();
-//                return true;
-//            }
-//        });
-////
-////
-//
-
-
 
 
 //        setting home fragments as main fragment as well as default fragments
@@ -465,7 +404,7 @@ public class Home extends AppCompatActivity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String, String>();
-                params.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZDZmNDhhMDIyMjkyODNkY2Q0NWE0MjRlMTMwMDgwYTg0YjYyYWRjZDU5MjI5NjhhYmRjNDE2Yjc1MzFkYTI5M2Q2ZWYyNDE4OWUzYjIwODkiLCJpYXQiOjE2NDQ0NzkyNzUuMTI1MDI0LCJuYmYiOjE2NDQ0NzkyNzUuMTI1MDI4LCJleHAiOjE2NzYwMTUyNzUuMTIxNTQyLCJzdWIiOiIxMCIsInNjb3BlcyI6W119.EygojI8oAEByynWnIqX0fjbodwImIf0s678wpP_jXSWYLyzNpYjc6a1moKVrcZ1n8BKOHTg6QwUzIJ2TaXGWin_3THObDREm5Az7RJQYwgWapy4CuNNx3RELGW2CT32EXkmNSTgmWHF_3Votle4Q3FCbt8yNySz0fgZ3UO_QdW188cT3ebI6Wg4sKmXus__QZp32uXAdza8vFsd6x6zT1XRKCL1GtKQYsUJeVp4sfusqPd_zeiE_x3vRzk6OyGWiR6hrxncf8NeCnqEtNq0qapWa9-AvuH7OrViAkNTiXRb85CQfCpXVRmmvg9faODnLWz6G2X_jRRHVx54E_ZNJ6jDF6_YZ2-7HQPw_Pzd3urrSz5O5F_6EdJ6Lw5hDeCqxlvGmLjP9gdC__HY-v7X5ri7mUxeF367-IGC76OkAaMrNal4CMLIwOv9KB0kPC9GTLFOQS5b0CIGbOTqSJb82fyTBDqDZpv3z5n31qg0yO_xzhSRinKysLb5yIFyAwFSbZ0ysdj02-GUcEvpWOmq1D-CYPOpPj2juxWl9xgqZ6tBwtFAazKtWE6-XwGwN3Tvq7r2fZr83ILBusk3mSyu9K6ii1TB1mRWzpj7d4N8F7KIove6Pavro8cnRlN31KTkSOnmOEo0sv6tXRBCBk28w7Rm4quBWW92TugotqnDKZt0");
+                params.put("Authorization","Bearer "+ PreferenceUtils.getToken(Home.this));
 
                 return params;
             }

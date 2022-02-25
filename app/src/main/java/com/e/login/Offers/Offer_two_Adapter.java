@@ -73,7 +73,13 @@ public class Offer_two_Adapter extends RecyclerView.Adapter<Offer_two_Adapter.Vi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    String id = offerTwoModelList.get(position).getId();
+                    String list = offerTwoModelList.get(position).getCat();
+
                     Intent intent = new Intent(view.getContext(),Top_Offer_Activity.class);
+                    intent.putExtra("id",id);
+                    intent.putExtra("list",list);
                     view.getContext().startActivity(intent);
                 }
             });

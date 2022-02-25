@@ -151,6 +151,8 @@ public class OfferActivity extends AppCompatActivity {
 
 
                         viewmodel.setImg(t_image);
+                        viewmodel.setId(t_id);
+
 
                         offerModelList.add(viewmodel);
 
@@ -176,6 +178,7 @@ public class OfferActivity extends AppCompatActivity {
                         viewmodel.setImg(c_image);
                         viewmodel.setTxt("00  :  00  :  00");
                         viewmodel.setTxt1(" Hrs     Min     sec");
+                        viewmodel.setId(c_id);
 
                         offerOneModelList.add(viewmodel);
 
@@ -202,6 +205,7 @@ public class OfferActivity extends AppCompatActivity {
                         viewmodel.setImg(o_image);
                         viewmodel.setTxt(o_name);
                         viewmodel.setTxt1(o_des);
+                        viewmodel.setId(o_id);
 
                         offerTwoModelList.add(viewmodel);
 
