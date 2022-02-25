@@ -14,11 +14,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.e.login.Home_Fragment_Class;
 import com.e.login.R;
 
 import java.util.List;
-
 public class ShopPostAdapter extends RecyclerView.Adapter<com.e.login.ShoppostClass.ShopPostAdapter.ViewHolder> {
 
 
@@ -51,10 +51,14 @@ public class ShopPostAdapter extends RecyclerView.Adapter<com.e.login.ShoppostCl
         holder.textView3.setText(shopPostModelList.get(position).getText_three());
         holder.img.setImageResource(R.drawable.ac);
         holder.img1.setImageResource(R.drawable.menuu);
-        holder.img2.setImageResource(R.drawable.sam);
+//        holder.img2.setImageResource(R.drawable.sam);
+        Glide.with(context)
+                .load(shopPostModelList.get(position).getImage2())
+                .into(holder.img2);
+
 
         holder.img3.setImageResource(R.drawable.heartt);
-       // holder.img4.setImageResource(R.drawable.comments);
+        // holder.img4.setImageResource(R.drawable.comments);
         holder.img4.setImageResource(R.drawable.sharee);
 
     }
@@ -65,7 +69,7 @@ public class ShopPostAdapter extends RecyclerView.Adapter<com.e.login.ShoppostCl
     @Override
     public int getItemCount() {
 
-        return 2;
+        return shopPostModelList.size();
 
     }
 
