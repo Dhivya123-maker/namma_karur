@@ -4,44 +4,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:Context = ".Home"
-    android:fitsSystemWindows="true"
-    android:id="@+id/ProfileParent"
+    android:orientation="vertical"
     android:background="@color/white">
 
 
-    <RelativeLayout
-        android:id="@+id/bg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bground"
-        android:backgroundTint="@color/white"
-
-        >
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
 
             <LinearLayout
                 android:id="@+id/ac_shop"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="2dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/border_one"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="10dp"
+              >
 
 
                 <LinearLayout
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:layout_marginStart="10dp"
                     android:background="@drawable/rounded_borders"
                     android:backgroundTint="#4c9a2a"
                     android:gravity="center"
@@ -49,8 +34,8 @@
 
 
                     <LinearLayout
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
+                        android:layout_width="65dp"
+                        android:layout_height="65dp"
                         android:layout_gravity="center"
                         android:background="@drawable/rounded_corners"
                         android:backgroundTint="#4682B4"
@@ -60,11 +45,10 @@
                             android:id="@+id/air_conditioner"
                             android:layout_width="25dp"
                             android:layout_height="25dp"
-                            android:src="@drawable/ac"
-                            android:layout_gravity="center">
+                            android:layout_gravity="center"
+                            android:src="@drawable/ac">
 
                         </ImageView>
-
 
 
                     </LinearLayout>
@@ -83,10 +67,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
                         android:textColor="@color/black"
-                        android:textSize="16dp"
-                      >
+                        android:textSize="16dp">
 
                     </TextView>
 
@@ -98,8 +80,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="5dp"
                         android:textColor="#808080"
-                        android:textSize="13dp"
-                      >
+                        android:textSize="13dp">
 
                     </TextView>
 
@@ -107,15 +88,14 @@
                         android:id="@+id/more_button"
                         android:layout_width="65dp"
                         android:layout_height="25dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginStart="20dp"
                         android:background="@drawable/bg"
                         android:backgroundTint="#4c9a2a"
                         android:text="more"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:textSize="12dp"
-                        android:layout_marginTop="10dp"/>
-
+                        android:textSize="12dp" />
 
 
                 </LinearLayout>
@@ -125,27 +105,5 @@
 
 
         </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-    </RelativeLayout>
-
-
-
-
-
-</LinearLayout>
-
-
-
-
-
 
 

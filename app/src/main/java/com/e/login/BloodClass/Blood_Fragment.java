@@ -76,7 +76,6 @@ public class Blood_Fragment extends AppCompatActivity {
     }
 
 
-    public void request(){
 
         String url = "http://nk.inevitabletech.email/public/api/get-blood-request-list";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -187,7 +186,5 @@ public class Blood_Fragment extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
 
 
-
-    }
 
 }
