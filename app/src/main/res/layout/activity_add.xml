@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:Context = ".Profile"
+    android:id="@+id/ProfileParent"
+    android:background="@color/white"
+    android:layout_alignParentBottom="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/brandAndItsLocation"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginEnd="0dp"
+
+            android:background="@drawable/profile_empty"
+            android:backgroundTint="#4C9A2A"
+
+
+            >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="160dp"
+                android:src="@drawable/nammakarurenquirylogo" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="10dp"
+                android:text="Jobs"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bground"
+            android:backgroundTint="#4C9A2A"
+            android:layout_below="@+id/brandAndItsLocation">
+
+
+
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="0dp"
+
+                android:background="@drawable/empty">
+
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <LinearLayout
+                        android:id="@+id/ProfileDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/relativeLayout2"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        tools:ignore="NotSibling">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="20dp"
+                            android:text="Add Job On Namma Karur"
+                            android:textColor="#4c9a2a"
+                            android:textSize="16dp"
+
+                            >
+
+                        </TextView>
+
+                        <EditText
+
+
+                            android:id="@+id/NameDetails"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/border_only"
+                            android:hint="Job Name"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:paddingStart="15dp"
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp" />
+
+                        <EditText
+
+                            android:id="@+id/NameDetails1"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/border_only"
+                            android:hint="Company Name"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:paddingStart="15dp"
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp" />
+
+
+                        <EditText
+
+                            android:id="@+id/NameDetails2"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/border_only"
+                            android:hint="Email"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:paddingStart="15dp"
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp" />
+
+
+                        <EditText
+
+                            android:id="@+id/NameDetails3"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/border_only"
+                            android:hint="Contact No"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:paddingStart="15dp"
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp" />
+
+                        <EditText
+
+                            android:id="@+id/NameDetails4"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/border_only"
+                            android:hint="Gender"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:paddingStart="15dp"
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp" />
+
+                        <EditText
+
+                            android:id="@+id/NameDetails5"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/border_only"
+                            android:hint="No.of.Vacancies"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:paddingStart="15dp"
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp" />
+
+                        <EditText
+
+                            android:id="@+id/NameDetails6"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/border_only"
+                            android:hint="Qualification"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:paddingStart="15dp"
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp" />
+
+                        <EditText
+
+                            android:id="@+id/NameDetails7"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/border_only"
+                            android:hint="Experience"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:paddingStart="15dp"
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp" />
+
+                        <EditText
+
+                            android:id="@+id/NameDetails8"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/border_only"
+                            android:hint="Age Limit"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:paddingStart="15dp"
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp" />
+
+                        <EditText
+
+                            android:id="@+id/NameDetails9"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/border_only"
+                            android:hint="Salary"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:paddingStart="15dp"
+                            android:paddingLeft="10dp"
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp" />
+
+                        <EditText
+
+                            android:id="@+id/NameDetails10"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/border_only"
+                            android:hint="Skills"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:paddingStart="15dp"
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                            android:orientation="horizontal">
+
+                            <EditText
+
+                                android:id="@+id/NameDetails11"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="15dp"
+
+                                android:background="@drawable/border_only"
+                                android:hint="Apply Start Date"
+                                android:inputType="text"
+                                android:padding="5dp"
+                                android:paddingStart="15dp"
+                                android:paddingEnd="37dp"
+                                android:textColorHint="@color/black"
+                                android:textSize="14dp" />
+
+                            <EditText
+
+                                android:id="@+id/NameDetails12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="50dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginTop="15dp"
+                                android:background="@drawable/border_only"
+                                android:hint="Apply End Date"
+                                android:inputType="text"
+                                android:padding="5dp"
+                                android:paddingStart="15dp"
+                                android:paddingEnd="37dp"
+                                android:textColorHint="@color/black"
+                                android:textSize="14dp" />
+
+
+                        </LinearLayout>
+
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_gravity="center"
+
+
+                            android:layout_marginStart="110dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginEnd="110dp"
+                            android:layout_marginBottom="100dp"
+                            android:background="@drawable/bg"
+                            android:backgroundTint="#4c9a2a"
+                            android:gravity="center"
+                            android:text="Submit"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white" />
+
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+            </RelativeLayout>
+
+
+
+
+
+            <!--    bottom-->
+
+
+
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_layout"
+
+        tools:ignore="MissingConstraints">
+
+    </FrameLayout>
+
+    <!--      >-->
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView_profile"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:itemIconTint="@color/white"
+        android:background="#4c9a2a"
+        app:layout_constraintStart_toEndOf="parent"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_nav" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+
+
+    <com.smarteist.autoimageslider.SliderView
+        android:id="@+id/slider_toop"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@id/grey_lnr"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/silder"
+        app:sliderAnimationDuration="600"
+        app:sliderAutoCycleDirection="back_and_forth"
+        app:sliderIndicatorAnimationDuration="600"
+        app:sliderIndicatorEnabled="true"
+        app:sliderIndicatorGravity="center_horizontal|bottom"
+        app:sliderIndicatorMargin="15dp"
+        app:sliderIndicatorOrientation="horizontal"
+        app:sliderIndicatorPadding="3dp"
+        app:sliderIndicatorRadius="2dp"
+        app:sliderIndicatorSelectedColor="#5A5A5A"
+        app:sliderIndicatorUnselectedColor="@color/white"
+        app:sliderScrollTimeInSec="1" />
+
+
+                <com.google.android.material.appbar.AppBarLayout
+                                android:id="@+id/appbar2"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+
+                                >
+
+                                <com.google.android.material.tabs.TabLayout
+                                    android:id="@+id/tab_layout_mall_food"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:tabBackground="@color/white"
+                                    app:tabGravity="fill"
+                                    app:tabIndicatorColor="#4C9A2A"
+                                    app:tabMaxWidth="0dp"
+                                    app:tabMode="fixed"
+                                    app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                                    app:tabTextColor="#4C9A2A" />
+
+                            </com.google.android.material.appbar.AppBarLayout>
+
+                            <androidx.viewpager.widget.ViewPager
+                                android:id="@+id/viewpager_mall_food"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:layout_anchorGravity="center"
+                                app:layout_behavior="@string/appbar_scrolling_view_behavior" >
+
+
+
+                            </androidx.viewpager.widget.ViewPager>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/food_recycle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/foods_recycle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:adjustViewBounds="true"
+                android:layout_marginBottom="140dp"
+                android:scaleType="centerCrop" />
+
+
+
+
+</LinearLayout>
+</ScrollView>
+
+<!-- <?xml version="1.0" encoding="utf-8"?>&ndash;&gt;-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content">-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+
+<!--        android:orientation="vertical">-->
+
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/ac_one"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:padding="5dp"-->
+<!--            android:background="@drawable/border_one"-->
+<!--            android:backgroundTint="#4c9a2a"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="90dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical">-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="70dp"-->
+<!--                    android:layout_height="70dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginStart="5dp"-->
+<!--                    android:background="@drawable/border"-->
+<!--                    android:backgroundTint="@color/white"-->
+<!--                    android:gravity="center">-->
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/images"-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="50dp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        >-->
+
+<!--                    </ImageView>-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:orientation="horizontal">-->
+
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/reviews_malll"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="4.6"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="12dp">-->
+
+
+<!--                    </TextView>-->
+<!--                    <ImageView-->
+<!--                        android:id="@+id/star_images"-->
+<!--                        android:layout_width="50dp"-->
+<!--                        android:layout_height="15dp"-->
+<!--                        android:layout_marginStart="5dp"-->
+<!--                        android:src="@drawable/five_starr"-->
+<!--                        android:layout_gravity="center"-->
+
+<!--                        />-->
+
+<!--                </LinearLayout>-->
+
+
+
+<!--            </LinearLayout>-->
+
+
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="10dp">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/malll_txt_one"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="5dp"-->
+<!--                    android:text=""-->
+
+<!--                    android:textColor="@color/white"-->
+<!--                    android:textSize="15dp">-->
+
+<!--                </TextView>-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/malll_txt_two"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="5dp"-->
+<!--                    android:layout_marginTop="2dp"-->
+<!--                    android:text=""-->
+<!--                    android:textColor="@color/white"-->
+
+<!--                    android:textSize="12dp">-->
+
+<!--                </TextView>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:orientation="horizontal">-->
+<!--                    <ImageView-->
+<!--                        android:id="@+id/clock_images"-->
+<!--                        android:layout_width="12dp"-->
+<!--                        android:layout_height="12dp"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:layout_marginStart="5dp"-->
+<!--                        android:src="@drawable/clock"/>-->
+<!--                    <TextView-->
+<!--                        android:id="@+id/time_malll"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="8.00 am - 10.00am"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:layout_marginStart="5dp"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="12dp"/>-->
+
+
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:orientation="horizontal">-->
+
+
+
+<!--                    <ImageView-->
+<!--                        android:id="@+id/verify_images"-->
+<!--                        android:layout_width="15dp"-->
+<!--                        android:layout_height="15dp"-->
+<!--                        android:layout_marginStart="5dp"-->
+<!--                        android:src="@drawable/verified"/>-->
+<!--                    <TextView-->
+<!--                        android:id="@+id/verified_txt_malll"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="Verified"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:layout_marginStart="5dp"-->
+<!--                        android:textColor="@color/white"-->
+<!--                        android:textSize="12dp"/>-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+
+
+
+
+
+<!--    </LinearLayout>-->
+
+
+<!--</LinearLayout>-->
+
+

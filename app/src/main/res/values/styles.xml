@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="SwitchButtonStyle">
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+
+
+        <item name="colorControlActivated">#4c9a2a</item>
+
+        <item name="colorSwitchThumbNormal">#ff0000</item>
+    </style>
+
+
+        <style name="foodRatingBar" parent="@android:style/Widget.RatingBar">
+            <item name="android:progressDrawable">@drawable/review_star</item>
+            <item name="android:minHeight">22dip</item>
+            <item name="android:maxHeight">22dip</item>
+        </style>
+
+</resources>

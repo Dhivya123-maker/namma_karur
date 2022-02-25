@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#76A220</color>
+    <color name="purple_500">#76A220</color>
+    <color name="purple_700">#4C9A2A</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="background">#FFFFFF </color>
+    <color name="dots">#808080 </color>
+    <color name="toggle_off">#B5D5A7</color>
+    <color name="green">#4c9a2a</color>
+    <color name="green1">#0F9D58</color>
+
+
+
+
+<!--    <attr name="textColor"> #FFFFFF</attr>-->
+<!--    <attr name="metaTextColor">#FFFFFF</attr>-->
+</resources>

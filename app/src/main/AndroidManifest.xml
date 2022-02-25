@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.e.login">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE " />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.login"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".NewsClass.All_news"
+            android:exported="true" />
+        <activity
+            android:name=".NewsClass.View_Breaking"
+            android:exported="true" />
+        <activity
+            android:name=".New"
+            android:exported="false" />
+        <activity
+            android:name=".Blog_Class.BlogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HospitalClass.HospitalFragment"
+            android:exported="false" />
+        <activity
+            android:name=".HospitalClass.Hospital_One_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".HospitalClass.Hospital_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Shopping_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TransportClass.TransportFragment"
+            android:exported="false" />
+        <activity
+            android:name=".TransportClass.Transport_One_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TransportClass.Transport_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".EducationClass.Education_Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".EducationClass.Education_One_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".EducationClass.EducationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Services_Class.Service_Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".Services_Class.Service_One_activity"
+            android:exported="false" />
+        <activity
+            android:name=".Services_Class.Services_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".MoreClass.MoreActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GovtClass.Government_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".chatClass.Chat_Inside"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan|adjustResize|stateVisible" />
+        <activity
+            android:name=".chatClass.Chat_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".GovtClass.NGOActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Non_govt_Class.NGO_two"
+            android:exported="false" />
+        <activity
+            android:name=".Non_govt_Class.Non_govt_activity"
+            android:exported="false" />
+        <activity
+            android:name=".Verification.Signup_google_verify"
+            android:exported="false" />
+        <activity
+            android:name=".Verification.Signup_google"
+            android:exported="false" />
+        <activity
+            android:name=".Verification.Email_OTP"
+            android:exported="false" />
+        <activity
+            android:name=".Verification.Email_Verification"
+            android:exported="false" />
+        <activity
+            android:name=".Mall.Mall_fragment_class"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".GalleryClass.GalleryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReviewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HotelClass.Hotel_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".BloodClass.Blood_One"
+            android:exported="false" />
+        <activity
+            android:name=".Offers.Top_Offer_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".Offers.OfferActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfile"
+            android:exported="false" />
+        <activity
+            android:name=".FoodClass.Readmore_Clas"
+            android:exported="false" />
+        <activity
+            android:name=".CarrierClass.Carrier_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".EventClass.Event_Home_Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".EventClass.Event_Hotel_Activity"
+            android:exported="false" />
+        <activity
+            android:name=".EventClass.EventActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Mall.Mall_Home_Fragment"
+            android:exported="false" />
+        <activity
+            android:name=".Mall.Malls_One"
+            android:exported="false" />
+        <activity
+            android:name=".Mall.MallClass"
+            android:exported="false" />
+        <activity
+            android:name=".Bank.Bank_Fragment_Class"
+            android:exported="false" />
+        <activity
+            android:name=".Bank.Bank_One"
+            android:exported="false" />
+        <activity
+            android:name=".Bank.BankActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChangePassword"
+            android:exported="false" />
+        <activity
+            android:name=".Verification.Mobile_verification"
+            android:exported="false" /> <!-- <service -->
+        <!-- android:name=".service" -->
+        <!-- android:exported="false" -->
+        <!-- android:process=":SyncAndTrade" -->
+        <!-- tools:ignore="MissingClass"> -->
+        <!-- </service> -->
+        <activity
+            android:name=".JoinwithUs"
+            android:exported="false" />
+        <activity
+            android:name=".FilterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MarketCatClass.Main_Category"
+            android:exported="false" />
+        <activity
+            android:name=".Chat_activity"
+            android:exported="false" />
+        <activity
+            android:name=".JobSearchClass.Job_search_two"
+            android:exported="false" />
+        <activity
+            android:name=".ContactusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SmallBusClass.SmallBusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BusTimeClass.Bus_TimeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FoodClass.FoodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".FunClass.Fun"
+            android:exported="false" />
+        <activity
+            android:name=".Articles"
+            android:exported="false" />
+        <activity
+            android:name=".JobSearchClass.JobSearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MarketListClass.MarketActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NewsClass.NewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AmbulanceClass.Ambulance"
+            android:exported="false" />
+        <activity
+            android:name=".Feedback"
+            android:exported="false" />
+        <activity
+            android:name=".Adwithus"
+            android:exported="false" />
+        <activity
+            android:name=".Listwithus"
+            android:exported="false" />
+        <activity
+            android:name=".NGOClass.NGOActivity"
+            android:exported="false"
+            tools:ignore="MissingClass" />
+        <activity
+            android:name=".GovtClass.GovtActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Add"
+            android:exported="false" />
+        <activity
+            android:name=".JobsClass.Jobs"
+            android:exported="false" />
+        <activity
+            android:name=".Search_screen_class"
+            android:exported="true" />
+        <activity
+            android:name=".BloodClass.Blood_Fragment"
+            android:exported="true" />
+        <activity
+            android:name=".Profile"
+            android:exported="true" />
+        <activity
+            android:name=".Moreinfo_Fragmentclass"
+            android:exported="true" />
+        <activity
+            android:name=".Home_Fragment_Class"
+            android:exported="true" />
+        <activity android:name=".ShopClass.ShopScreen_Class" />
+        <activity android:name=".ShopscreenClass.ShopsScreenFragment" />
+        <activity android:name=".Fragment_Shops" />
+        <activity android:name=".HomeClass.Home" />
+        <activity android:name=".Verification.VerifyActivity" />
+        <activity android:name=".Verification.PasswordActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Verification.VerificationActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="true" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".OnBoarding">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

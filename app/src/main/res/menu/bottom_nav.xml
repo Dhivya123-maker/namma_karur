@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/nav_home"
+        android:icon="@drawable/btmone"
+        android:title="Home"
+
+        />
+    <item android:id="@+id/nav_tree"
+        android:icon="@drawable/flash"
+        android:title="Flash"
+        />
+    <item android:id="@+id/nav_qr"
+        android:icon="@drawable/qrcode"
+
+        android:title="QR Code"/>
+    <item android:id="@+id/nav_profilee"
+        android:icon="@drawable/help"
+        android:title="Helpline"/>
+    <item android:id="@+id/nav_notifications"
+        android:icon="@drawable/enquiry_one"
+        android:title="Enquiry"/>
+
+</menu>

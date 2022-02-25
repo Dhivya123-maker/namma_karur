@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:Context = ".Profile"
+    android:id="@+id/ProfileParent"
+    android:background="@color/white"
+    android:layout_alignParentBottom="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/brandAndItsLocation"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginEnd="0dp"
+
+            android:background="@drawable/profile_empty"
+            android:backgroundTint="#4C9A2A"
+
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="10dp"
+                android:text="Edit Profile"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+        </RelativeLayout>
+        <!--        <ScrollView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent">-->
+
+
+        <RelativeLayout
+            android:id="@+id/bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bground"
+
+            android:layout_below="@+id/brandAndItsLocation">
+
+
+
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/empty">
+
+
+
+                <LinearLayout
+                    android:id="@+id/profileAndEditLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:weightSum="2"
+
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:id="@+id/profileLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:scaleType="centerCrop"
+                            android:layout_gravity="center"
+                            android:src="@drawable/profilee" />
+
+
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:text="PATRICK"
+                            android:textColor="#4c9a2a"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:text="Patrick@gmail.com"
+                            android:textColor="#4c9a2a"
+                            android:textSize="12dp"
+                            android:textStyle="normal" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--            profile pics and details-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="100dp"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/ProfileDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/profileAndEditLayout"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical">
+
+                    <EditText
+
+
+                        android:id="@+id/NameDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/border"
+
+
+                        android:hint="Name"
+
+
+                        android:inputType="text"
+                        android:padding="5dp"
+                        android:paddingStart="15dp"
+                        android:paddingLeft="10dp"
+                        android:textColorHint="#4c9a2a"
+                        android:textSize="14dp" />
+
+                    <EditText
+                        android:id="@+id/EmailDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/border"
+                        android:drawableBottom="#4c9a2a"
+                        android:hint="Email Address"
+                        android:inputType="textEmailAddress"
+                        android:padding="5dp"
+                        android:paddingStart="15dp"
+                        android:textColorHint="#4c9a2a"
+                        android:textSize="14dp" />
+
+                    <EditText
+                        android:id="@+id/DOBDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/border"
+                        android:drawableBottom="#4c9a2a"
+                        android:hint="Date Of Birth"
+                        android:inputType="date"
+                        android:padding="5dp"
+                        android:paddingStart="15dp"
+                        android:textColorHint="#4c9a2a"
+                        android:textSize="14dp" />
+
+                    <EditText
+                        android:id="@+id/EmailEnquiry"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/border"
+                        android:drawableBottom="#4c9a2a"
+                        android:hint="Contact Number"
+                        android:inputType="number"
+                        android:padding="5dp"
+                        android:paddingStart="15dp"
+                        android:textColorHint="#4c9a2a"
+                        android:textSize="14dp" />
+
+                    <EditText
+                        android:id="@+id/blood_group"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/border"
+                        android:drawableBottom="#4c9a2a"
+                        android:hint="Blood Group"
+                        android:inputType="number"
+                        android:padding="5dp"
+                        android:paddingStart="15dp"
+                        android:textColorHint="#4c9a2a"
+                        android:textSize="14dp" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:weightSum="2">
+
+                        <Button
+                            android:id="@+id/savee_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:layout_marginTop="30dp"
+
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/bg"
+                            android:backgroundTint="#4c9a2a"
+                            android:gravity="center"
+                            android:text="Save"
+                            android:layout_marginEnd="5dp"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white" />
+
+                        <Button
+                            android:id="@+id/cancell_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@drawable/bg"
+                            android:backgroundTint="#4c9a2a"
+                            android:gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:text="Cancel"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+
+            <!--        </ScrollView>-->
+
+
+
+            <!--    bottom-->
+
+
+
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_layout"
+
+        tools:ignore="MissingConstraints">
+
+    </FrameLayout>
+
+    <!--      >-->
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView_profile"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:itemIconTint="@color/white"
+        android:background="#4c9a2a"
+        app:layout_constraintStart_toEndOf="parent"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_nav" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

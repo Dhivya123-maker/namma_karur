@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1042334031942",
+    "project_id": "userdesign-d1139",
+    "storage_bucket": "userdesign-d1139.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1042334031942:android:d9f0eb7868911f6ffd6a47",
+        "android_client_info": {
+          "package_name": "com.e.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1042334031942-cprgh3ksn1i18rqcb9lmj657nhs6epfc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB99AktLb3Efrb7StQW2xglI443EYbnEEA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1042334031942-cprgh3ksn1i18rqcb9lmj657nhs6epfc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

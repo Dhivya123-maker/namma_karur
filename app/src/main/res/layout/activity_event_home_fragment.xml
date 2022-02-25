@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:Context = ".Home"
+
+    android:id="@+id/ProfileParent"
+    android:background="#4c9a2a">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/brandAndItsLocation"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginEnd="0dp"
+
+            android:background="@drawable/profile_empty"
+            android:backgroundTint="#4C9A2A">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="15dp"
+                android:text="Hotel Hemala"
+                android:textColor="@color/white"
+                android:textSize="18dp" />
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/bg"
+            android:layout_width="match_parent"
+            android:layout_height="615dp"
+            android:background="@drawable/calls"
+
+            android:layout_below="@+id/brandAndItsLocation">
+
+
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fragment_layout"
+
+                >
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/event_tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:tabMaxWidth="0dp"
+                    app:tabBackground="@color/white"
+                    app:tabGravity="fill"
+                    app:tabIndicatorColor="#4C9A2A"
+                    app:tabMode="fixed"
+                    app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                    app:tabTextColor="#4C9A2A" />
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager_events"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/appbar"
+                app:layout_anchorGravity="center"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+
+
+
+            <!--    bottom-->
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/fragment_layout_home"
+
+            tools:ignore="MissingConstraints">
+
+
+<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                android:id="@+id/chat_fab_events"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="bottom|end"-->
+<!--                android:layout_marginEnd="10dp"-->
+<!--                android:layout_marginBottom="90dp"-->
+<!--                android:backgroundTint="#4c9a2a"-->
+<!--                android:src="@drawable/chat_new" />-->
+
+            <!--                <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+            <!--                    android:id="@+id/chat_fab"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginTop="638dp"-->
+            <!--                    android:backgroundTint="#4c9a2a"-->
+            <!--                    android:elevation="20dp"-->
+            <!--                    android:layout_marginStart="290dp"-->
+            <!--                    android:src="@drawable/chat_new"-->
+            <!--                    app:backgroundTint="#4c9a2a"-->
+
+            <!--                  />-->
+
+
+
+
+
+        </FrameLayout>
+
+        <!--      >-->
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:itemIconTint="@color/white"
+            android:background="#4c9a2a"
+            android:layout_gravity="bottom"
+            app:itemHorizontalTranslationEnabled="false"
+            app:menu="@menu/bottom_nav"
+            app:layout_constraintStart_toEndOf="parent"
+            app:itemTextColor="@color/white"
+            >
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

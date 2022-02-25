@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+        <group android:checkableBehavior="single">
+
+            <item android:id="@+id/nav_profile"
+                android:icon="@drawable/icons8_user_secured"
+                android:title="Profile"/>
+
+<!--            <item android:id="@+id/nav_ListOfBusiness"-->
+<!--                android:icon="@drawable/icons8_business"-->
+<!--                android:title="List of Business"/>-->
+            <item android:id="@+id/nav_JoinwithUs"
+                android:icon="@drawable/icons8_business"
+                android:title="Join with Us"/>
+
+
+<!--            <item android:id="@+id/nav_AdWithUs"-->
+<!--                android:icon="@drawable/icons8_audio_description"-->
+<!--                android:title="Ad with Us"/>-->
+
+            <item android:id="@+id/nav_Contact"
+                android:icon="@drawable/icons8_contact"
+                android:title="Contact Us"/>
+            <item android:id="@+id/nav_Share_app"
+                android:icon="@drawable/icons8_share_document"
+                android:title="Share app"/>
+
+            <item android:id="@+id/nav_RateUs"
+                android:icon="@drawable/icons8_star"
+                android:title="Rate Us"/>
+
+            <item android:id="@+id/nav_Faq"
+                android:icon="@drawable/icons8_info"
+                android:title="FAQ"/>
+
+            <item android:id="@+id/nav_Feedback"
+                android:icon="@drawable/icons8_feedback"
+                android:title="Feedback"/>
+
+            <item android:id="@+id/nav_Guide"
+                android:icon="@drawable/icons8_tourist_guide"
+                android:title="Guide"/>
+
+            <item android:id="@+id/nav_About"
+                android:icon="@drawable/icons8_about"
+                android:title="About"/>
+
+        </group>
+
+    </menu>

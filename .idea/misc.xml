@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/activity_all_news.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/activity_offer.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/activity_shop_screen_class.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/category.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/fragment_news_.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/fragment_shop_screen__main.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/home.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/recyclee.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/recycler_row_six.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/recycler_thirty.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/recycler_thirty_eight.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/recycler_thirty_ninee.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/shops_screen_fragment.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable-v24/rounded_borders.xml" value="0.32407407407407407" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable-v24/rounded_corners.xml" value="0.26944444444444443" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/bend_corner.xml" value="0.33240740740740743" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/bg.xml" value="0.28425925925925927" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/bg_one.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/bggg.xml" value="0.28425925925925927" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/bground.xml" value="0.28425925925925927" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/border.xml" value="0.33240740740740743" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/border_light.xml" value="0.2935185185185185" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/border_one.xml" value="0.33240740740740743" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/border_only.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/border_only_bend.xml" value="0.2935185185185185" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/border_two.xml" value="0.33240740740740743" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/button_1.xml" value="0.33240740740740743" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/call_corners.xml" value="0.33240740740740743" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/calls.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/draw.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/empty.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/eye.xml" value="0.28425925925925927" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/fragment_layout.xml" value="0.2962962962962963" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/hexa.xml" value="0.34814814814814815" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/hexagon.xml" value="0.34814814814814815" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/ic_baseline_arrow_forward_24.xml" value="0.2962962962962963" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.2962962962962963" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/mpty.xml" value="0.33240740740740743" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/outline.xml" value="0.287962962962963" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/profile_empty.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/qr_code_corners.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/round.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/round_one.xml" value="0.3648148148148148" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/rounded_corners_black.xml" value="0.3648148148148148" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/sharp.xml" value="0.34814814814814815" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/silder.xml" value="0.28888888888888886" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/switch_off.xml" value="0.33055555555555555" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/switch_off_one.xml" value="0.30092592592592593" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/switch_on.xml" value="0.287962962962963" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/switch_on_one.xml" value="0.30092592592592593" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/switch_text.xml" value="0.287962962962963" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/switch_thumb_false.xml" value="0.32407407407407407" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/switch_thumb_true.xml" value="0.32407407407407407" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/thumb.xml" value="0.32592592592592595" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/drawable/track.xml" value="0.32592592592592595" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_add.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_adwithus.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_ambulance.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_articles.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_bank.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_bank_fragment_class.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_bank_one.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_blank_post.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_blog.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_blog_fragment.xml" value="0.3484375" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_blood_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_blood_one.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_bottom_sheet.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_bottom_sheet_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_bus_time.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_carrier.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_change_password.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_chat.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_chat2.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_chat_inside.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_contactus.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_edit_profile.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_education.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_education_fragment.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_education_one.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_email.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_email_otp.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_email_verification.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_event.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_event_home_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_event_hotel.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_feedback.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_filter.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_food.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_four.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_fun.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_gallery.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_government.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_govt.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_home_fragment_class.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_hospital.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_hospital_fragment.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_hospital_one.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_hotel.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_job_search.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_job_search_two.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_jobs.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_joinwith_us.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_listwithus.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_main_category.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_mall_class.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_mall_foodshops.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_mall_fragment_class.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_mall_home_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_malls_one.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_market.xml" value="0.21" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_mobile_verification.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_more.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_moreinfo_fragmentclass.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_new.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_news.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_ngo_two.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_ngoactivity.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_ngoactivity2.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_non_govt.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_offer.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_one.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_password.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_post_fragment_class.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_products_fragment_class.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_readmore_clas.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_reviews.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_service_fragment.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_service_one.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_services.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_shop_screen_class.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_shopping.xml" value="0.36041666666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_signup_google.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_signup_google_verify.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_slides_layout.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_small_bus.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_splash.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_top_offer.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_transport.xml" value="0.37447916666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_transport_fragment.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_transport_one.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_verify.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/activity_view.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/blood_recycle.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/bottom.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/button.xml" value="0.67" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/card_view_design.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/custom_layout.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment__education.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment__service.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment__transport.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_astrology_news.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_bank__home_.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_blank__home.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_blank__post.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_blog_.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_carrier_.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_education__services_.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_education_carrier.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_event___class.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_facility_.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_filter.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_food__fragments.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_gallery_.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_home.xml" value="0.18" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_hospital_.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_hospital_carrier.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_hospital_services_fragment.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_information.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_infos_h_o_p_s.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_inside_fragment.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_job_.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_karur.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_mall___class.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_mall__offers_fragment.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_more_info.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_news_.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_news_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_notifications.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_o_r_code.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_post.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_post_.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_products_.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_serach_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_serach_screen_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_service__carrier.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_services.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_shop_post.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_shop_screen__main.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_shops.xml" value="0.2015625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_today__news.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_transport__carrier.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_transport_carrier.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_transport_services_fragment.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/fragment_vaccine_info.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/header.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/home.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/info_recycle.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/layout.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/login_activity.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/onboarding_screen.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/profile.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recyclee.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_eighten.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fifty.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fifty_eight.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fifty_five.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fifty_four.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fifty_nine.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fifty_one.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fifty_seven.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fifty_six.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fifty_three.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fifty_two.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fourty.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fourty_eight.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fourty_five.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fourty_four.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fourty_nine.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fourty_one.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fourty_seven.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fourty_six.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fourty_three.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_fourty_two.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_nineteen.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_eight.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_eleven.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_fifteen.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_five.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_four.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_fourteen.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_one.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_seven.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_seventeen.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_seventy.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_seventy_two.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_six.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_sixteen.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_sixty_one.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_ten.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_thirteen.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_three.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_twelve.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_row_two.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_seventy_eight.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_seventy_five.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_seventy_four.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_seventy_one.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_seventy_seven.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_seventy_six.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_seventy_three.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_sixty.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_sixty_eight.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_sixty_five.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_sixty_four.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_sixty_nine.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_sixty_seven.xml" value="0.35104166666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_sixty_six.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_sixty_three.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_sixty_two.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_thirty.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_thirty_eight.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_thirty_first.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_thirty_five.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_thirty_four.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_thirty_nine.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_thirty_ninee.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_thirty_seven.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_thirty_six.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_thirty_three.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_thirty_two.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_twenty.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_twenty_eight.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_twenty_five.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_twenty_four.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_twenty_nine.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_twenty_one.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_twenty_seven.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_twenty_three.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recycler_twenty_two.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/recyclerview_row.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/reycler_row_nine.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/search_screen_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/search_two.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/shops_screen_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/signup_activity.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/simple_items.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/slider_item.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/switch_on.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/top.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/verification_activity.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/layout/visible.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/menu/bottom_nav.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/menu/main_menu.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/karur/login/app/src/main/res/xml/network_security_config.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable-v24/rounded_borders.xml" value="0.3055555555555556" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable-v24/rounded_corners.xml" value="0.3055555555555556" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/bend_corner.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/bg.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/bground.xml" value="0.2972222222222222" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/border.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/border_one.xml" value="0.2972222222222222" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/button_1.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/call_corners.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/calls.xml" value="0.2972222222222222" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/draw.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/empty.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/fragment_layout.xml" value="0.3" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/ic_baseline_call_24.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/ic_baseline_lightbulb_24.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/ic_baseline_visibility_off_24.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/mpty.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/person.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/profile_empty.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/qr_code_corners.xml" value="0.3" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/reverse_corner.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/round.xml" value="0.30277777777777776" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/thumb.xml" value="0.2916666666666667" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/drawable/track.xml" value="0.2916666666666667" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/activity_home_fragment.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/activity_home_fragment_class.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/activity_moreinfo_fragmentclass.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/activity_password.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/activity_post_fragment_class.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/activity_products_fragment_class.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/activity_shop_screen_class.xml" value="0.20260416666666667" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/activity_slides_layout.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/activity_verify.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/dup.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_blank__home.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_blank__post.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_fever_camp.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_information.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_infos_h_o_p_s.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_karur.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_more_info.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_notifications.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_o_r_code.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_post_.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_products_.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_shop_post.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_shop_screen__main.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_shops.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_shops_.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/fragment_vaccine_info.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/header.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/home.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/home_screen.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/login_activity.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/onboarding_screen.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/shops_main_activity.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/shops_screen_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/signup_activity.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/verification_activity.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/layout/visible.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/menu/bottom_nav.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/login/app/src/main/res/menu/main_menu.xml" value="0.3625" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/activity_all_news.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/activity_blood_fragment.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/activity_blood_one.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/activity_news.xml" value="0.3359375" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/activity_view_breaking.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/activity_view_latest.xml" value="0.3359375" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/blood_recycle.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/fragment_astrology_news.xml" value="0.3359375" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/fragment_karur.xml" value="0.3359375" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/fragment_news_.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/fragment_today__news.xml" value="0.3359375" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/recycler_row_fifteen.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/recycler_row_one.xml" value="0.3359375" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/recycler_row_six.xml" value="0.17864583333333334" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/recycler_row_sixteen.xml" value="0.3359375" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/recycler_row_two.xml" value="0.5" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/recycler_thirty_nine.xml" value="0.3359375" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/recycler_thirty_ninee.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/namma karur/app/src/main/res/layout/shops_screen_fragment.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

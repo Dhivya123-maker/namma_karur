@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:Context = ".Home"
+    android:orientation="vertical"
+    android:id="@+id/ProfileParent"
+   >
+
+
+        <LinearLayout
+            android:id="@+id/brandAndItsLocation"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:background="#4C9A2A">
+
+
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bground"
+            android:backgroundTint="#f5f5f5"
+            android:layout_below="@+id/brandAndItsLocation">
+
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/typing_space_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                   android:layout_marginBottom="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="5dp"
+                    android:layout_toLeftOf="@+id/send_btn_parent"
+                    android:background="@drawable/border"
+                    android:outlineProvider="none"
+                    app:cardCornerRadius="15dp">
+
+                    <EditText
+                        android:id="@+id/typing_space"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/border"
+                        android:hint="Type a message"
+                        android:maxHeight="100dp"
+                        android:paddingVertical="10dp"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:textColorHint="#4c9a2a"
+                        android:textSize="14dp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="315dp"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/attach" />
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/send_btn_parent"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="5dp"
+                    android:elevation="5dp"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="22dp">
+
+
+                    <ImageView
+                        android:id="@+id/send_msg_btn"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/send" />
+                </androidx.cardview.widget.CardView>
+
+
+
+
+        </RelativeLayout>
+
+
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+
+
+<!--        <FrameLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/fragment_layout_home"-->
+
+<!--            tools:ignore="MissingConstraints">-->
+
+
+
+
+<!--        </FrameLayout>-->
+
+
+<!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--            android:id="@+id/bottomNavigation"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="70dp"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:itemIconTint="@color/white"-->
+<!--            android:background="#4c9a2a"-->
+<!--            android:layout_gravity="bottom"-->
+<!--            app:itemHorizontalTranslationEnabled="false"-->
+<!--            app:menu="@menu/bottom_nav"-->
+<!--            app:layout_constraintStart_toEndOf="parent"-->
+<!--            app:itemTextColor="@color/white"-->
+<!--            >-->
+
+<!--        </com.google.android.material.bottomnavigation.BottomNavigationView>-->
+
+
+
+<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+
+
+
+
+
+
+</LinearLayout>

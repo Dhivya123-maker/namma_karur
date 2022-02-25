@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ProfileParent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    tools:Context=".Home">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/brandAndItsLocation"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginEnd="0dp"
+
+            android:background="@drawable/profile_empty"
+            android:backgroundTint="#4C9A2A"
+
+
+            >
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="45dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/shopp_post"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="Mahal"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/edit"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/bg"
+                            android:hint="Search"
+                            android:paddingStart="20dp"
+                            android:textSize="15dp">
+
+                        </EditText>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="11dp"
+                            android:layout_marginEnd="30dp"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_baseline_search_24">
+
+                            </ImageView>
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:layout_marginEnd="10dp"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/brandAndItsLocation"
+            android:background="@drawable/bground"
+            android:backgroundTint="@color/white">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/mpty"
+                android:orientation="vertical">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="140dp"
+                    android:orientation="vertical">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:weightSum="3"
+                android:orientation="horizontal">
+
+
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+<!--                    <Button-->
+<!--                        android:id="@+id/date_btn"-->
+<!--                        android:layout_width="200dp"-->
+<!--                        android:layout_height="45dp"-->
+<!--                        android:text="Date"-->
+<!--                        android:textColor="#4c9a2a"-->
+<!--                        android:textAllCaps="false"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:gravity="start|center"-->
+<!--                        android:paddingStart="15dp"-->
+<!--                        android:background="@drawable/rounded_borders"-->
+<!--                       >-->
+
+<!--                    </Button>-->
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:weightSum="2"
+
+                      >
+                        <Button
+                            android:id="@+id/fromdatepicker"
+                            android:layout_width="110dp"
+                            android:layout_height="45dp"
+                            android:text="From Date"
+                            android:textSize="14dp"
+                            android:paddingStart="10dp"
+                            android:padding="10dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="10dp"
+                            style="?android:spinnerStyle"
+                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                            android:background="@drawable/border"
+                            android:onClick="openDatePicker"/>
+
+                        <Button
+                            android:id="@+id/todatepicker"
+                            android:layout_width="110dp"
+                            android:layout_height="45dp"
+                            android:text="To Date"
+                            android:textSize="14dp"
+                            android:paddingStart="10dp"
+                            android:layout_weight="1"
+                            android:padding="10dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="20dp"
+                            style="?android:spinnerStyle"
+                            android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                            android:background="@drawable/border"
+                            android:onClick="openDatePicker"/>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/event_hotel_screen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:layout_marginTop="20dp"
+
+                    />
+
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:adjustViewBounds="true"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:layout_marginBottom="140dp"-->
+
+<!--                        />-->
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            </ScrollView>
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <FrameLayout
+        android:id="@+id/fragment_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        tools:ignore="MissingConstraints">
+
+    </FrameLayout>
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView_shops"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#4c9a2a"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:menu="@menu/bottom_nav" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+

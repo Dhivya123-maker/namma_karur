@@ -1,0 +1,129 @@
+<resources>
+    <string name="app_name">Namma Karur</string>
+    <string name="navigation_drawer_close" />
+    <string name="navigation_drawer_open" />
+
+
+    <!--    <string name="first_slide_title">Temples</string>-->
+    <!--    <string name="second_slide_title">Textiles</string>-->
+    <!--    <string name="third_slide_title">Foods</string>-->
+    <!--    <string name="fourth_slide_title"></string>-->
+
+    <!--    &lt;!&ndash;    descriptions&ndash;&gt;-->
+    <!--    <string name="first_slide_desc">Famous For old bulildings </string>-->
+    <!--    <string name="second_slide_desc">Karur is Famous for Textiles where we import and exports goods and products</string>-->
+    <!--    <string name="third_slide_desc"> we are Famous for street Foods You can get that snacks in every nook and corner</string>-->
+    <!--    <string name="fourth_slide_desc"></string>-->
+    <!--    &lt;!&ndash;    buttons&ndash;&gt;-->
+    <!--    <string name="skip_btn">Skip</string>-->
+    <!--    <string name="next_btn">Next</string>-->
+    <!--    <string name="lets_get_started">Lets Get Started</string>-->
+    <!--    &lt;!&ndash; TODO: Remove or change this placeholder text &ndash;&gt;-->
+    <!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
+
+
+    <style name="logo_name">Get A way</style>
+
+    <style name="slogan_name">Know Everything About Karur</style>
+
+
+    <!--    sstrings for onboarding scren-->
+
+    <string name="first_slide_title">Temples</string>
+    <string name="second_slide_title">Textiles</string>
+    <string name="third_slide_title">Foods</string>
+    <string name="fourth_slide_title"></string>
+
+    <!--    descriptions-->
+    <string name="first_slide_desc">Famous For old bulildings </string>
+    <string name="second_slide_desc">Karur is Famous for Textiles where we import and exports goods and products</string>
+    <string name="third_slide_desc"> we are Famous for street Foods You can get that snacks in every nook and corner</string>
+    <string name="fourth_slide_desc"></string>
+    <!--    buttons-->
+    <string name="skip_btn">Skip</string>
+    <string name="next_btn">Next</string>
+    <string name="lets_get_started">Lets Get Started</string>
+    <string name="API">http://nk.inevitabletech.email/public/api/</string>
+
+    <!--    shops name-->
+    <string name="shops_name1">Honda Service</string>
+    <string name="shops_name2">Sony Digital</string>
+    <!--   shops address-->
+    <string name="shop_address1">56,Grid Street,Karur</string>
+    <string name="shop_address2">58,Grid Street,Karur</string>
+
+    <!--    inside the shop items-->
+    <string name="shops_items1">Ac Shops</string>
+    <string name="shops_items2">Agriculture</string>
+    <string name="shops_items3">Bags</string>
+    <string name="shops_items4">Battery and Ups</string>
+
+    <!--    shop views-->
+    <string name="shop_views1">871 Views</string>
+    <string name="shop_views2">800 Views</string>
+    <string name="shop_views3">876 Views</string>
+    <string name="shop_views4">890 Views</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="tab_name1">Home</string>
+    <string name="tab_name2">Products</string>
+    <string name="tab_name3">Posts</string>
+    <string name="tab_name4">More Info</string>
+
+
+    <string-array name="Day">
+        <item>Days</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+    </string-array>
+
+    <string-array name="Month">
+        <item>Month</item>
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+
+    </string-array>
+
+
+</resources>

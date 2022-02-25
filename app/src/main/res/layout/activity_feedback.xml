@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    tools:Context = ".Profile"
+    android:id="@+id/ProfileParent"
+    android:background="@color/white"
+    android:layout_alignParentBottom="true">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/brandAndItsLocation"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginEnd="0dp"
+
+            android:background="@drawable/profile_empty"
+            android:backgroundTint="#4C9A2A"
+
+
+            >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="10dp"
+                android:text="Feedback"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bground"
+            android:backgroundTint="#4C9A2A"
+            android:layout_below="@+id/brandAndItsLocation">
+
+
+
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="0dp"
+
+                android:background="@drawable/empty">
+
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                    <LinearLayout
+                        android:id="@+id/ProfileDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/relativeLayout2"
+                        android:orientation="vertical"
+                        tools:ignore="NotSibling">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="15dp"
+                            android:src="@drawable/nk_onee">
+
+                        </ImageView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="25dp"
+                            android:text="How can we improve our product?"
+                            android:textColor="@color/black"
+                            android:textSize="15dp">
+
+                        </TextView>
+
+                        <EditText
+                            android:id="@+id/fback"
+                            android:layout_width="match_parent"
+                            android:layout_height="120dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/border_two"
+                            android:hint="Enter Your feedback"
+                            android:inputType="text"
+
+                            android:paddingStart="15dp"
+                            android:paddingBottom="90dp"
+                            android:textColorHint="#949494"
+                            android:textSize="14dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Rate us"
+                            android:textColor="@color/black"
+                            android:textSize="15dp" />
+
+                        <HorizontalScrollView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:scrollbars="none"
+                            android:layout_marginEnd="20dp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+
+                                <Button
+
+                                    android:layout_width="100dp"
+                                    android:layout_height="35dp"
+                                    android:background="@drawable/border_only"
+                                    android:gravity="center"
+                                    android:text="Awesome"
+                                    android:textAllCaps="false"
+                                    android:textColor="#949494"
+                                    android:textSize="15dp">
+
+                                </Button>
+
+                                <Button
+                                    android:layout_width="100dp"
+                                    android:layout_height="35dp"
+                                    android:layout_marginStart="10dp"
+                                    android:background="@drawable/border_only"
+                                    android:gravity="center"
+                                    android:text="Good"
+                                    android:textAllCaps="false"
+                                    android:textColor="#949494"
+                                    android:textSize="15dp">
+
+                                </Button>
+
+                                <Button
+                                    android:layout_width="100dp"
+                                    android:layout_height="35dp"
+                                    android:layout_marginStart="10dp"
+                                    android:background="@drawable/border_only"
+                                    android:gravity="center"
+                                    android:text="Average"
+                                    android:textAllCaps="false"
+                                    android:textColor="#949494"
+                                    android:textSize="15dp">
+
+                                </Button>
+
+                                <Button
+                                    android:layout_width="100dp"
+                                    android:layout_height="35dp"
+                                    android:layout_marginStart="10dp"
+                                    android:background="@drawable/border_only"
+                                    android:gravity="center"
+                                    android:text="Worst"
+                                    android:textAllCaps="false"
+                                    android:textColor="#949494"
+                                    android:textSize="15dp">
+
+                                </Button>
+
+
+                            </LinearLayout>
+
+
+                        </HorizontalScrollView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="25dp"
+                            android:text="Would you recommend our product to others?"
+                            android:textColor="@color/black"
+                            android:textSize="15dp">
+
+                        </TextView>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="20dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="100dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:background="@drawable/border_only"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#949494"
+                                    android:text="Yes"/>
+
+                               <ImageView
+                                   android:layout_width="15dp"
+                                   android:layout_height="15dp"
+                                   android:layout_marginStart="5dp"
+                                   android:src="@drawable/ic_baseline_thumb_up_grey">
+
+                               </ImageView>
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="100dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:layout_marginStart="10dp"
+                                android:background="@drawable/border_only"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="#949494"
+                                    android:text="No"/>
+
+                                <ImageView
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_marginStart="5dp"
+                                    android:src="@drawable/ic_baseline_thumb_downn">
+
+                                </ImageView>
+
+                            </LinearLayout>
+
+
+
+
+
+                        </LinearLayout>
+
+
+                                                <Button
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="45dp"
+                                                    android:layout_gravity="center"
+
+
+                                                    android:layout_marginStart="110dp"
+                                                    android:layout_marginTop="40dp"
+                                                    android:layout_marginEnd="110dp"
+                                                    android:layout_marginBottom="100dp"
+                                                    android:background="@drawable/bg"
+                                                    android:backgroundTint="#4c9a2a"
+                                                    android:gravity="center"
+                                                    android:text="Submit"
+                                                    android:textAllCaps="false"
+                                                    android:textColor="@color/white" />
+
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+            </RelativeLayout>
+
+
+
+
+
+            <!--    bottom-->
+
+
+
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_layout"
+
+        tools:ignore="MissingConstraints">
+
+    </FrameLayout>
+
+    <!--      >-->
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView_profile"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:itemIconTint="@color/white"
+        android:background="#4c9a2a"
+        app:layout_constraintStart_toEndOf="parent"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_nav" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

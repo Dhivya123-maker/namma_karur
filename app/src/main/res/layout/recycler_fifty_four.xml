@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:padding="5dp"
+        android:background="@drawable/border_one"
+        android:backgroundTint="#f5f5f5"
+        android:orientation="horizontal"
+        android:elevation="2dp"
+        >
+
+        <LinearLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg"
+            android:backgroundTint="#4c9a2a"
+            android:elevation="5dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/jobs_main1"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ambulance"
+                android:layout_gravity="center">
+
+            </ImageView>  </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/jobb_txt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Marketing Executice Wanted"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold">
+
+            </TextView>
+            <TextView
+                android:id="@+id/jobb_txt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Inevitabletech, Spk Systems"
+                android:textSize="12dp"
+
+                android:textColor="#808080"
+                >
+
+            </TextView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp">
+                <ImageView
+                    android:id="@+id/job_img1"
+                    android:layout_width="12dp"
+                    android:layout_height="13dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/loc"/>
+
+                <TextView
+                    android:id="@+id/job_txt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="Karur"
+                    android:textSize="12dp"
+                    android:textColor="#4c9a2a">
+
+                </TextView>
+                <ImageView
+                    android:id="@+id/job_img2"
+                    android:layout_width="6dp"
+                    android:layout_height="6dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="30dp"
+                    android:src="@drawable/job_six"/>
+
+                <TextView
+                    android:id="@+id/job_txt4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="30 Vacancy"
+                    android:layout_gravity="center"
+                    android:textSize="12dp"
+                    android:textColor="#4c9a2a">
+
+                </TextView>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/job_txt5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3 days left"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                android:textSize="12dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

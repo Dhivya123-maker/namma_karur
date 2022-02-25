@@ -1,0 +1,1308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:Context = ".Home"
+    android:fitsSystemWindows="true"
+    android:id="@+id/ProfileParent"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/brandAndItsLocation"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginEnd="0dp"
+
+            android:background="@drawable/profile_empty"
+            android:backgroundTint="#4C9A2A"
+
+
+            >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/shopp_post"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="45dp"
+                    android:text="Jobs"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/searching1"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="80dp"
+                            android:background="@drawable/bg"
+                            android:hint="Search"
+                            android:paddingStart="20dp"
+                            android:textSize="15dp">
+
+                        </EditText>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="90dp"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_baseline_search_24">
+
+                            </ImageView>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="20dp"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/filter_linear"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/bg_one"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/filter" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bground"
+            android:backgroundTint="#4C9A2A"
+            android:layout_below="@+id/brandAndItsLocation">
+
+
+            <LinearLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+
+                android:layout_marginTop="0dp"
+
+                android:background="@drawable/mpty">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+
+                        <com.smarteist.autoimageslider.SliderView
+                            android:id="@+id/slider_srr"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp"
+                            android:layout_below="@+id/grey_lnr"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="10dp"
+                            app:sliderAnimationDuration="600"
+                            app:sliderAutoCycleDirection="back_and_forth"
+                            app:sliderAutoCycleEnabled="true"
+                            app:sliderIndicatorAnimationDuration="600"
+                            app:sliderIndicatorGravity="center_horizontal|bottom"
+                            app:sliderIndicatorMargin="15dp"
+                            app:sliderIndicatorOrientation="horizontal"
+                            app:sliderIndicatorPadding="3dp"
+                            app:sliderIndicatorRadius="2dp"
+                            app:sliderIndicatorSelectedColor="#5A5A5A"
+                            app:sliderIndicatorUnselectedColor="#FFF"
+                            app:sliderScrollTimeInSec="2"
+                            app:sliderStartAutoCycle="true" />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Categories"
+                    android:textColor="#4c9a2a"
+                    android:textSize="16dp"
+                    android:textStyle="bold"/>
+
+
+
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/category_job_screen"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:scaleType="centerCrop"
+                            />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Closing Jobs"
+                                android:textColor="#4c9a2a"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="end">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="View All"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp"
+
+                                    />
+
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/category_job2_screen"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="All Jobs"
+                                android:textColor="#4c9a2a"
+                                android:textSize="16dp"
+                                android:textStyle="bold"
+                                />
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="end">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="View All"
+                                    android:textColor="@color/black"
+                                    android:textSize="14dp"
+
+                                    />
+
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/category_job1_screen"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+
+                            android:scaleType="centerCrop"
+                            />
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginTop="35dp"
+                            android:layout_marginBottom="140dp"
+                            android:weightSum="2">
+
+                            <Button
+                                android:id="@+id/resume_button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:background="@drawable/bg"
+                                android:backgroundTint="#4c9a2a"
+                                android:layout_weight="1"
+                                android:textColor="@color/white"
+                                android:layout_marginEnd="10dp"
+                                android:textAllCaps="false"
+                                android:letterSpacing="0.01"
+                                android:text="Make a resume"/>
+
+                            <Button
+                                android:id="@+id/add_btn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:background="@drawable/bg"
+                                android:backgroundTint="#4c9a2a"
+                                android:layout_weight="1"
+                                android:layout_marginStart="10dp"
+                                android:textColor="@color/white"
+                                android:textAllCaps="false"
+                                android:letterSpacing="0.01"
+                                android:text="Post a job"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+            <!--    bottom-->
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fragment_layout"
+
+        tools:ignore="MissingConstraints">
+
+    </FrameLayout>
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView_shops"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:itemIconTint="@color/white"
+        android:background="#4c9a2a"
+        app:layout_constraintStart_toEndOf="parent"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_nav" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
+
+
+
+
+
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    android:orientation="vertical"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    tools:Context = ".Home"-->
+
+<!--    android:id="@+id/ProfileParent"-->
+<!--    android:background="@color/white">-->
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:background="#f5f5f5">-->
+
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/brandAndItsLocation"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="130dp"-->
+<!--            android:background="@drawable/profile_empty"-->
+<!--            android:backgroundTint="#4C9A2A"-->
+<!--            android:orientation="horizontal"-->
+
+
+<!--            >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginTop="55dp"-->
+<!--                android:text="Jobs"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="18dp" />-->
+
+<!--       -->
+
+
+<!--        </LinearLayout>-->
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            tools:context=".Post_Fragment">-->
+
+
+<!--            <FrameLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--           >-->
+
+<!--                <ScrollView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent">-->
+
+
+
+
+
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="10dp"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:background="@drawable/border_one"-->
+<!--                        android:backgroundTint="#f5f5f5"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:elevation="2dp"-->
+<!--                        >-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="50dp"-->
+<!--                            android:layout_height="50dp"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_marginStart="10dp"-->
+<!--                            android:background="@drawable/border"-->
+<!--                            android:backgroundTint="@color/white"-->
+<!--                            android:elevation="5dp"-->
+<!--                            android:gravity="center">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="20dp"-->
+<!--                                android:layout_height="20dp"-->
+<!--                                android:src="@drawable/job_four"-->
+<!--                                android:layout_gravity="center">-->
+
+<!--                            </ImageView>  </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="10dp"-->
+<!--                            android:orientation="vertical">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Marketing Executice Wanted"-->
+<!--                                android:textColor="#4c9a2a"-->
+<!--                                android:textSize="12dp"-->
+<!--                                android:layout_marginTop="10dp"-->
+<!--                                android:textStyle="bold">-->
+
+<!--                            </TextView>-->
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Inevitabletech, Spk Systems"-->
+<!--                                android:textSize="12dp"-->
+<!--                                android:layout_marginTop="5dp"-->
+<!--                                android:textColor="#B5D5A7"-->
+<!--                             >-->
+
+<!--                            </TextView>-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="horizontal"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:layout_marginTop="8dp">-->
+<!--                              <ImageView-->
+<!--                                  android:layout_width="14dp"-->
+<!--                                  android:layout_height="14dp"-->
+<!--                                  android:src="@drawable/job_three"/>-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="5dp"-->
+<!--                                    android:text="Karur"-->
+<!--                                    android:textSize="12dp"-->
+<!--                                    android:textColor="#4c9a2a">-->
+
+<!--                                </TextView>-->
+<!--                                <ImageView-->
+<!--                                    android:layout_width="6dp"-->
+<!--                                    android:layout_height="6dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:layout_marginStart="30dp"-->
+<!--                                    android:src="@drawable/job_six"/>-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="4dp"-->
+<!--                                    android:text="30 Vacancy"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:textSize="12dp"-->
+<!--                                    android:textColor="#4c9a2a">-->
+
+<!--                                </TextView>-->
+
+
+<!--                            </LinearLayout>-->
+
+
+<!--                        </LinearLayout>-->
+
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:gravity="bottom"-->
+<!--                            android:layout_marginBottom="7dp"-->
+
+<!--                            >-->
+<!--                            <Button-->
+<!--                                android:id="@+id/market_btn"-->
+<!--                                android:layout_width="70dp"-->
+<!--                                android:layout_height="25dp"-->
+<!--                                android:text="View details"-->
+<!--                                android:layout_marginStart="5dp"-->
+<!--                                android:textColor="@color/white"-->
+<!--                                android:background="@drawable/bg_one"-->
+<!--                                android:textSize="10dp"-->
+<!--                                android:layout_gravity="end"-->
+<!--                                android:layout_marginEnd="10dp"-->
+<!--                                android:backgroundTint="#4c9a2a"-->
+<!--                                android:textAllCaps="false">-->
+
+<!--                            </Button>-->
+
+
+
+<!--                        </LinearLayout>-->
+
+
+
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="10dp"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:background="@drawable/border_one"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:backgroundTint="#f5f5f5"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:elevation="2dp"-->
+<!--                        >-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="50dp"-->
+<!--                            android:layout_height="50dp"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_marginStart="10dp"-->
+<!--                            android:background="@drawable/border"-->
+<!--                            android:backgroundTint="@color/white"-->
+<!--                            android:elevation="5dp"-->
+<!--                            android:gravity="center">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="20dp"-->
+<!--                                android:layout_height="20dp"-->
+<!--                                android:src="@drawable/job_two"-->
+<!--                                android:layout_gravity="center">-->
+
+<!--                            </ImageView>  </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="10dp"-->
+<!--                            android:orientation="vertical">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Graphic Designer Wanted"-->
+<!--                                android:textColor="#4c9a2a"-->
+<!--                                android:textSize="12dp"-->
+<!--                                android:layout_marginTop="10dp"-->
+<!--                                android:textStyle="bold">-->
+
+<!--                            </TextView>-->
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Inevitabletech, Spk Systems"-->
+<!--                                android:textSize="12dp"-->
+<!--                                android:layout_marginTop="5dp"-->
+<!--                                android:textColor="#B5D5A7"-->
+<!--                                >-->
+
+<!--                            </TextView>-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="horizontal"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:layout_marginTop="8dp">-->
+<!--                                <ImageView-->
+<!--                                    android:layout_width="14dp"-->
+<!--                                    android:layout_height="14dp"-->
+<!--                                    android:src="@drawable/job_three"/>-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="5dp"-->
+<!--                                    android:text="Karur"-->
+<!--                                    android:textSize="12dp"-->
+<!--                                    android:textColor="#4c9a2a">-->
+
+<!--                                </TextView>-->
+<!--                                <ImageView-->
+<!--                                    android:layout_width="6dp"-->
+<!--                                    android:layout_height="6dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:layout_marginStart="30dp"-->
+<!--                                    android:src="@drawable/job_six"/>-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="4dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:text="30 Vacancy"-->
+<!--                                    android:textSize="12dp"-->
+<!--                                    android:textColor="#4c9a2a">-->
+
+<!--                                </TextView>-->
+
+
+<!--                            </LinearLayout>-->
+
+
+<!--                        </LinearLayout>-->
+
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:gravity="bottom"-->
+<!--                            android:layout_marginBottom="7dp"-->
+
+<!--                            >-->
+<!--                            <Button-->
+<!--                                android:layout_width="70dp"-->
+<!--                                android:layout_height="25dp"-->
+<!--                                android:text="View details"-->
+<!--                                android:textColor="@color/white"-->
+<!--                                android:background="@drawable/bg_one"-->
+<!--                                android:textSize="10dp"-->
+<!--                                android:layout_marginStart="5dp"-->
+<!--                                android:layout_gravity="end"-->
+<!--                                android:layout_marginEnd="10dp"-->
+<!--                                android:backgroundTint="#4c9a2a"-->
+<!--                                android:textAllCaps="false">-->
+
+<!--                            </Button>-->
+
+
+
+<!--                        </LinearLayout>-->
+
+
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="10dp"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:background="@drawable/border_one"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:backgroundTint="#f5f5f5"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:elevation="2dp"-->
+<!--                        >-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="50dp"-->
+<!--                            android:layout_height="50dp"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_marginStart="10dp"-->
+<!--                            android:background="@drawable/border"-->
+<!--                            android:backgroundTint="@color/white"-->
+<!--                            android:elevation="5dp"-->
+<!--                            android:gravity="center">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="20dp"-->
+<!--                                android:layout_height="20dp"-->
+<!--                                android:src="@drawable/job_four"-->
+<!--                                android:layout_gravity="center">-->
+
+<!--                            </ImageView>  </LinearLayout>-->
+
+
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="10dp"-->
+<!--                            android:orientation="vertical">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Marketing Person Wanted"-->
+<!--                                android:textColor="#4c9a2a"-->
+<!--                                android:textSize="12dp"-->
+<!--                                android:layout_marginTop="10dp"-->
+<!--                                android:textStyle="bold">-->
+
+<!--                            </TextView>-->
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Inevitabletech, Spk Systems"-->
+<!--                                android:textSize="12dp"-->
+<!--                                android:layout_marginTop="5dp"-->
+<!--                                android:textColor="#B5D5A7"-->
+<!--                                >-->
+
+<!--                            </TextView>-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="horizontal"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:layout_marginTop="8dp">-->
+<!--                                <ImageView-->
+<!--                                    android:layout_width="14dp"-->
+<!--                                    android:layout_height="14dp"-->
+<!--                                    android:src="@drawable/job_three"/>-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="5dp"-->
+<!--                                    android:text="Karur"-->
+<!--                                    android:textSize="12dp"-->
+<!--                                    android:textColor="#4c9a2a">-->
+
+<!--                                </TextView>-->
+<!--                                <ImageView-->
+<!--                                    android:layout_width="6dp"-->
+<!--                                    android:layout_height="6dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:layout_marginStart="30dp"-->
+<!--                                    android:src="@drawable/job_six"/>-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="4dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:text="30 Vacancy"-->
+<!--                                    android:textSize="12dp"-->
+<!--                                    android:textColor="#4c9a2a">-->
+
+<!--                                </TextView>-->
+
+
+
+
+
+<!--                            </LinearLayout>-->
+
+
+
+<!--                        </LinearLayout>-->
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:gravity="bottom"-->
+<!--                            android:layout_marginBottom="7dp"-->
+
+<!--                            >-->
+<!--                            <Button-->
+<!--                                android:layout_width="70dp"-->
+<!--                                android:layout_height="25dp"-->
+<!--                                android:text="View details"-->
+<!--                                android:textColor="@color/white"-->
+<!--                                android:background="@drawable/bg_one"-->
+<!--                                android:textSize="10dp"-->
+<!--                                android:layout_marginStart="5dp"-->
+<!--                                android:layout_gravity="end"-->
+<!--                                android:layout_marginEnd="10dp"-->
+<!--                                android:backgroundTint="#4c9a2a"-->
+<!--                                android:textAllCaps="false">-->
+
+<!--                            </Button>-->
+
+
+
+<!--                        </LinearLayout>-->
+
+
+
+
+<!--                        &lt;!&ndash;                            <Button&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_width="70dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_height="25dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:text="View details"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:textColor="@color/white"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:background="@drawable/bg_one"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:textSize="10dp"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:layout_gravity="center"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:backgroundTint="#4c9a2a"&ndash;&gt;-->
+<!--&lt;!&ndash;                                android:textAllCaps="false">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                            </Button>&ndash;&gt;-->
+
+
+
+
+
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="10dp"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:background="@drawable/border_one"-->
+<!--                        android:backgroundTint="#f5f5f5"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:elevation="2dp"-->
+<!--                        >-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="50dp"-->
+<!--                            android:layout_height="50dp"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_marginStart="10dp"-->
+<!--                            android:background="@drawable/border"-->
+<!--                            android:backgroundTint="@color/white"-->
+<!--                            android:elevation="5dp"-->
+<!--                            android:gravity="center">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="20dp"-->
+<!--                                android:layout_height="20dp"-->
+<!--                                android:src="@drawable/job_seven"-->
+<!--                                android:layout_gravity="center">-->
+
+<!--                            </ImageView>  </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="10dp"-->
+<!--                            android:orientation="vertical">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Computer operator Wanted"-->
+<!--                                android:textColor="#4c9a2a"-->
+<!--                                android:textSize="12dp"-->
+<!--                                android:layout_marginTop="10dp"-->
+<!--                                android:textStyle="bold">-->
+
+<!--                            </TextView>-->
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Inevitabletech, Spk Systems"-->
+<!--                                android:textSize="12dp"-->
+<!--                                android:layout_marginTop="5dp"-->
+<!--                                android:textColor="#B5D5A7"-->
+<!--                                >-->
+
+<!--                            </TextView>-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="horizontal"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:layout_marginTop="8dp">-->
+<!--                                <ImageView-->
+<!--                                    android:layout_width="14dp"-->
+<!--                                    android:layout_height="14dp"-->
+<!--                                    android:src="@drawable/job_three"/>-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="5dp"-->
+<!--                                    android:text="Karur"-->
+<!--                                    android:textSize="12dp"-->
+<!--                                    android:textColor="#4c9a2a">-->
+
+<!--                                </TextView>-->
+<!--                                <ImageView-->
+<!--                                    android:layout_width="6dp"-->
+<!--                                    android:layout_height="6dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:layout_marginStart="30dp"-->
+<!--                                    android:src="@drawable/job_six"/>-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="4dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:text="30 Vacancy"-->
+<!--                                    android:textSize="12dp"-->
+<!--                                    android:textColor="#4c9a2a">-->
+
+<!--                                </TextView>-->
+
+
+<!--                            </LinearLayout>-->
+
+
+<!--                        </LinearLayout>-->
+
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:gravity="bottom"-->
+<!--                            android:layout_marginBottom="7dp"-->
+
+<!--                            >-->
+<!--                            <Button-->
+<!--                                android:layout_width="70dp"-->
+<!--                                android:layout_height="25dp"-->
+<!--                                android:text="View details"-->
+<!--                                android:textColor="@color/white"-->
+<!--                                android:background="@drawable/bg_one"-->
+<!--                                android:textSize="10dp"-->
+<!--                                android:layout_marginStart="5dp"-->
+<!--                                android:layout_gravity="end"-->
+<!--                                android:layout_marginEnd="10dp"-->
+<!--                                android:backgroundTint="#4c9a2a"-->
+<!--                                android:textAllCaps="false">-->
+
+<!--                            </Button>-->
+
+
+
+<!--                        </LinearLayout>-->
+
+
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="10dp"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:background="@drawable/border_one"-->
+<!--                        android:backgroundTint="#f5f5f5"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:elevation="2dp"-->
+<!--                        >-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="50dp"-->
+<!--                            android:layout_height="50dp"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_marginStart="10dp"-->
+<!--                            android:background="@drawable/border"-->
+<!--                            android:backgroundTint="@color/white"-->
+<!--                            android:elevation="5dp"-->
+<!--                            android:gravity="center">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="20dp"-->
+<!--                                android:layout_height="20dp"-->
+<!--                                android:src="@drawable/job_five"-->
+<!--                                android:layout_gravity="center">-->
+
+<!--                            </ImageView>  </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="10dp"-->
+<!--                            android:orientation="vertical">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Site Supervisor Wanted"-->
+<!--                                android:textColor="#4c9a2a"-->
+<!--                                android:textSize="12dp"-->
+<!--                                android:layout_marginTop="10dp"-->
+<!--                                android:textStyle="bold">-->
+
+<!--                            </TextView>-->
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Inevitabletech, Spk Systems"-->
+<!--                                android:textSize="12dp"-->
+<!--                                android:layout_marginTop="5dp"-->
+<!--                                android:textColor="#B5D5A7"-->
+<!--                                >-->
+
+<!--                            </TextView>-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="horizontal"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:layout_marginTop="8dp">-->
+<!--                                <ImageView-->
+<!--                                    android:layout_width="14dp"-->
+<!--                                    android:layout_height="14dp"-->
+<!--                                    android:src="@drawable/job_three"/>-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="5dp"-->
+<!--                                    android:text="Karur"-->
+<!--                                    android:textSize="12dp"-->
+<!--                                    android:textColor="#4c9a2a">-->
+
+<!--                                </TextView>-->
+<!--                                <ImageView-->
+<!--                                    android:layout_width="6dp"-->
+<!--                                    android:layout_height="6dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:layout_marginStart="30dp"-->
+<!--                                    android:src="@drawable/job_six"/>-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="4dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:text="30 Vacancy"-->
+<!--                                    android:textSize="12dp"-->
+<!--                                    android:textColor="#4c9a2a">-->
+
+<!--                                </TextView>-->
+
+
+<!--                            </LinearLayout>-->
+
+
+<!--                        </LinearLayout>-->
+
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:gravity="bottom"-->
+<!--                            android:layout_marginBottom="7dp"-->
+
+<!--                            >-->
+<!--                            <Button-->
+<!--                                android:layout_width="70dp"-->
+<!--                                android:layout_height="25dp"-->
+<!--                                android:text="View details"-->
+<!--                                android:textColor="@color/white"-->
+<!--                                android:background="@drawable/bg_one"-->
+<!--                                android:textSize="10dp"-->
+<!--                                android:layout_marginStart="5dp"-->
+<!--                                android:layout_gravity="end"-->
+<!--                                android:layout_marginEnd="10dp"-->
+<!--                                android:backgroundTint="#4c9a2a"-->
+<!--                                android:textAllCaps="false">-->
+
+<!--                            </Button>-->
+
+
+
+<!--                        </LinearLayout>-->
+
+
+<!--                    </LinearLayout>-->
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="10dp"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:background="@drawable/border_one"-->
+<!--                        android:backgroundTint="#f5f5f5"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:layout_marginBottom="200dp"-->
+<!--                        android:elevation="2dp"-->
+<!--                        >-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="50dp"-->
+<!--                            android:layout_height="50dp"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_marginStart="10dp"-->
+<!--                            android:background="@drawable/border"-->
+<!--                            android:backgroundTint="@color/white"-->
+<!--                            android:elevation="5dp"-->
+<!--                            android:gravity="center">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="20dp"-->
+<!--                                android:layout_height="20dp"-->
+<!--                                android:src="@drawable/job_one"-->
+<!--                                android:layout_gravity="center">-->
+
+<!--                            </ImageView>  </LinearLayout>-->
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="10dp"-->
+<!--                            android:orientation="vertical">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Full Stock Wanted"-->
+<!--                                android:textColor="#4c9a2a"-->
+<!--                                android:textSize="12dp"-->
+<!--                                android:layout_marginTop="10dp"-->
+<!--                                android:textStyle="bold">-->
+
+<!--                            </TextView>-->
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:text="Inevitabletech, Spk Systems"-->
+<!--                                android:textSize="12dp"-->
+<!--                                android:layout_marginTop="5dp"-->
+<!--                                android:textColor="#B5D5A7"-->
+<!--                                >-->
+
+<!--                            </TextView>-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:orientation="horizontal"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:layout_marginTop="8dp">-->
+<!--                                <ImageView-->
+<!--                                    android:layout_width="14dp"-->
+<!--                                    android:layout_height="14dp"-->
+<!--                                    android:src="@drawable/job_three"/>-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="5dp"-->
+<!--                                    android:text="Karur"-->
+<!--                                    android:textSize="12dp"-->
+<!--                                    android:textColor="#4c9a2a">-->
+
+<!--                                </TextView>-->
+<!--                                <ImageView-->
+<!--                                    android:layout_width="6dp"-->
+<!--                                    android:layout_height="6dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:layout_marginStart="30dp"-->
+<!--                                    android:src="@drawable/job_six"/>-->
+
+<!--                                <TextView-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginStart="4dp"-->
+<!--                                    android:layout_gravity="center"-->
+<!--                                    android:text="30 Vacancy"-->
+<!--                                    android:textSize="12dp"-->
+<!--                                    android:textColor="#4c9a2a">-->
+
+<!--                                </TextView>-->
+
+
+<!--                            </LinearLayout>-->
+
+
+<!--                        </LinearLayout>-->
+
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:orientation="vertical"-->
+<!--                            android:gravity="bottom"-->
+<!--                            android:layout_marginBottom="7dp"-->
+
+<!--                            >-->
+<!--                            <Button-->
+<!--                                android:layout_width="70dp"-->
+<!--                                android:layout_height="25dp"-->
+<!--                                android:text="View details"-->
+<!--                                android:textColor="@color/white"-->
+<!--                                android:background="@drawable/bg_one"-->
+<!--                                android:textSize="10dp"-->
+<!--                                android:layout_marginStart="5dp"-->
+<!--                                android:layout_gravity="end"-->
+<!--                                android:layout_marginEnd="10dp"-->
+<!--                                android:backgroundTint="#4c9a2a"-->
+<!--                                android:textAllCaps="false">-->
+
+<!--                            </Button>-->
+
+<!--                        </LinearLayout>-->
+
+
+
+<!--                    </LinearLayout>-->
+
+<!--                </LinearLayout>-->
+
+<!--                </ScrollView>-->
+
+
+<!--            </FrameLayout>-->
+
+<!--            <FrameLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/fragment_layout"-->
+
+<!--                tools:ignore="MissingConstraints">-->
+
+<!--            </FrameLayout>-->
+
+
+
+<!--            <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--                android:id="@+id/bottomNavigationView_shops"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="70dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:itemIconTint="@color/white"-->
+<!--                android:background="#4c9a2a"-->
+<!--                app:layout_constraintStart_toEndOf="parent"-->
+<!--                app:itemTextColor="@color/white"-->
+<!--                app:menu="@menu/bottom_nav" />-->
+
+
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+<!--    </RelativeLayout>-->
+
+
+
+
+
+
+<!--</LinearLayout>-->
+
+
+
+
+

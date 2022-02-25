@@ -1,0 +1,1254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/LayoutRow1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+
+        <LinearLayout
+            android:id="@+id/layoutShops1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/shopsIcons"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_borders"
+                android:backgroundTint="@color/white"
+                android:elevation="2dp"
+
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/shopsLogo"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/shops" />
+
+            </LinearLayout>
+
+            <!--                    TextView-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+
+
+                >
+
+                <TextView
+                    android:id="@+id/shop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Shop"
+                    android:textColor="#4C9A2A"
+                    android:textSize="13dp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <!--second one-->
+
+        <LinearLayout
+            android:id="@+id/LayoutShops2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/busLayout"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_borders"
+
+                android:backgroundTint="@color/white"
+
+                android:elevation="2dp"
+
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/serviceLogo"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/bus_time_home" />
+            </LinearLayout>
+
+            <!--                    textview-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/bus_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Bus Time"
+                    android:textColor="#4C9A2A"
+                    android:textSize="13dp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutShops3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/eductionLayout"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/rounded_borders"
+                android:backgroundTint="@color/white"
+                android:elevation="2dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/educationLogo"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+
+                    android:src="@drawable/edu" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+
+                >
+
+                <TextView
+                    android:id="@+id/edu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Education"
+                    android:textColor="#4C9A2A"
+                    android:textSize="13dp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutShops4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/TransportLayout"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+
+
+                android:background="@drawable/rounded_borders"
+                android:backgroundTint="@color/white"
+                android:elevation="2dp"
+
+
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/TransportLogo"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/transport" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/transport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"
+                    android:text="Transport"
+                    android:textColor="#4C9A2A"
+                    android:textSize="13dp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <!--                for second layout-->
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/LayoutRow2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/LayoutRow1"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:weightSum="4">-->
+
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/layoutShops5"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+<!--            &lt;!&ndash;                    TextView&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:id="@+id/GovtIcons"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:elevation="2dp"-->
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/HotelLogo"-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:src="@drawable/govt" />-->
+
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Hotel"-->
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+
+<!--        &lt;!&ndash;second one&ndash;&gt;-->
+
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/LayoutShops6"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/FunLayout"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+
+<!--                android:backgroundTint="@color/white"-->
+
+<!--                android:elevation="2dp"-->
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/RentalLogo"-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:src="@drawable/clappings" />-->
+<!--            </LinearLayout>-->
+
+<!--            &lt;!&ndash;                    textview&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:gravity="center"-->
+
+<!--                    android:text="Fun"-->
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/layoutShops7"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/AmbulanceLayout"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:elevation="2dp"-->
+
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/HospitalLogo"-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+
+<!--                    android:src="@drawable/hospital" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+
+
+<!--                >-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Ambulance"-->
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/layoutShops8"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/NewsLayout"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+
+
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+<!--                android:backgroundTint="@color/white"-->
+
+<!--                android:elevation="2dp"-->
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/NewsLogo"-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:src="@drawable/newss" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="News"-->
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+<!--    </LinearLayout>-->
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/LayoutRow3"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/LayoutRow2"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:weightSum="4"-->
+
+<!--        android:orientation="horizontal">-->
+
+
+
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/layoutShops9"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/ShoppingIcons"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:elevation="2dp"-->
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/ShoppingLogo"-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:src="@drawable/shopping" />-->
+
+<!--            </LinearLayout>-->
+
+<!--            &lt;!&ndash;                    TextView&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Shopping"-->
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+
+<!--        &lt;!&ndash;second one&ndash;&gt;-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/LayoutShops10"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/MarketLayout"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:elevation="2dp"-->
+
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/BookingLogo"-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:src="@drawable/market" />-->
+<!--            </LinearLayout>-->
+
+<!--            &lt;!&ndash;                    textview&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+
+
+<!--                >-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:gravity="center"-->
+
+<!--                    android:text="Market"-->
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/layoutShops11"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/BankingLayout"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+
+<!--                android:backgroundTint="@color/white"-->
+
+<!--                android:elevation="2dp"-->
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/BankingLogo"-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+
+<!--                    android:src="@drawable/bank" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+
+
+<!--                >-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+
+<!--                    android:gravity="center"-->
+<!--                    android:text="Banks"-->
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/layoutShops12"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/JobLayout"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+
+<!--                android:backgroundTint="@color/white"-->
+
+<!--                android:elevation="2dp"-->
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+
+<!--                    android:src="@drawable/job_search" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+
+
+<!--                >-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+
+<!--                    android:gravity="center"-->
+<!--                    android:text="Jobs"-->
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        &lt;!&ndash;                    <LinearLayout&ndash;&gt;-->
+<!--        &lt;!&ndash;                        android:id="@+id/more_layout"&ndash;&gt;-->
+<!--        &lt;!&ndash;                        android:layout_width="60dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                        android:layout_height="60dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                        android:layout_gravity="center"&ndash;&gt;-->
+<!--        &lt;!&ndash;                        android:layout_marginStart="25dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                        android:layout_marginLeft="15dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                        android:layout_marginTop="20dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                        android:orientation="vertical">&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                        <ImageView&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:id="@+id/arrow_down"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:layout_width="30dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:layout_height="30dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:layout_gravity="center"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:src="@drawable/ic_baseline_keyboard_arrow_down_24" />&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                        <TextView&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:id="@+id/see_more"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:layout_width="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:layout_gravity="center"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:text="See More"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:textColor="#4c9a2a"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:textSize="12dp">&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                        </TextView>&ndash;&gt;-->
+
+
+<!--        &lt;!&ndash;                        <LinearLayout&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:id="@+id/JobsLayout"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:layout_width="60dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:layout_height="60dp"&ndash;&gt;-->
+
+
+<!--        &lt;!&ndash;                            android:layout_marginTop="20dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:background="@drawable/rounded_borders"&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                            android:backgroundTint="@color/white"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:elevation="2dp"&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                            android:gravity="center">&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                            <ImageView&ndash;&gt;-->
+<!--        &lt;!&ndash;                                android:id="@+id/JobsLogo"&ndash;&gt;-->
+<!--        &lt;!&ndash;                                android:layout_width="20dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                                android:layout_height="20dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                                android:layout_gravity="center"&ndash;&gt;-->
+<!--        &lt;!&ndash;                                android:layout_margin="10dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                                android:src="@drawable/edu" />&ndash;&gt;-->
+<!--        &lt;!&ndash;                        </LinearLayout>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                        <LinearLayout&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:layout_width="match_parent"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:layout_height="wrap_content"&ndash;&gt;-->
+<!--        &lt;!&ndash;                            android:layout_gravity="center"&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                            >&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                            <TextView&ndash;&gt;-->
+<!--        &lt;!&ndash;                                android:layout_width="match_parent"&ndash;&gt;-->
+<!--        &lt;!&ndash;                                android:layout_height="wrap_content"&ndash;&gt;-->
+
+<!--        &lt;!&ndash;                                android:layout_marginTop="5dp"&ndash;&gt;-->
+<!--        &lt;!&ndash;                                android:gravity="center"&ndash;&gt;-->
+<!--        &lt;!&ndash;                                android:text="Jobs"&ndash;&gt;-->
+
+
+<!--        &lt;!&ndash;                                android:textColor="#4C9A2A"&ndash;&gt;-->
+<!--        &lt;!&ndash;                                android:textSize="13dp" />&ndash;&gt;-->
+
+
+<!--        &lt;!&ndash;                        </LinearLayout>&ndash;&gt;-->
+
+
+<!--        &lt;!&ndash;                    </LinearLayout>&ndash;&gt;-->
+<!--    </LinearLayout>-->
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/layoutRow4"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/LayoutRow3"-->
+<!--        android:weightSum="4"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal">-->
+
+
+
+
+
+<!--        <LinearLayout-->
+
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+<!--            &lt;!&ndash;                    TextView&ndash;&gt;-->
+<!--            <LinearLayout-->
+
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:elevation="2dp"-->
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:src="@drawable/eight_eight" />-->
+
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:gravity="center"-->
+
+<!--                    android:text="Rentals"-->
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+
+<!--        &lt;!&ndash;second one&ndash;&gt;-->
+
+
+<!--        <LinearLayout-->
+
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+
+<!--                android:backgroundTint="@color/white"-->
+
+<!--                android:elevation="2dp"-->
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:src="@drawable/six_six" />-->
+<!--            </LinearLayout>-->
+
+<!--            &lt;!&ndash;                    textview&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:gravity="center"-->
+
+<!--                    android:text="Hospital"-->
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/blood_lnr"-->
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:elevation="2dp"-->
+
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+
+<!--                    android:src="@drawable/sev_sev" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+
+
+<!--                >-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="blood"-->
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+
+
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+<!--                android:backgroundTint="@color/white"-->
+
+<!--                android:elevation="2dp"-->
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:src="@drawable/five_five" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+
+<!--                    android:layout_marginTop="5dp"-->
+
+<!--                    android:gravity="center"-->
+<!--                    android:text="Services"-->
+
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
+
+
+
+
+
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/layoutRow5"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/layoutRow4"-->
+<!--        android:weightSum="4"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal">-->
+
+
+
+
+
+<!--        <LinearLayout-->
+
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+<!--            &lt;!&ndash;                    TextView&ndash;&gt;-->
+<!--            <LinearLayout-->
+
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:elevation="2dp"-->
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:src="@drawable/one_one" />-->
+
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:gravity="center"-->
+
+<!--                    android:text="Govt"-->
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+
+<!--        &lt;!&ndash;second one&ndash;&gt;-->
+
+
+<!--        <LinearLayout-->
+
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:gravity="center"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+
+<!--                android:backgroundTint="@color/white"-->
+
+<!--                android:elevation="2dp"-->
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:src="@drawable/two_two" />-->
+<!--            </LinearLayout>-->
+
+<!--            &lt;!&ndash;                    textview&ndash;&gt;-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:gravity="center"-->
+
+<!--                    android:text="Mall"-->
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+
+<!--                android:backgroundTint="@color/white"-->
+<!--                android:elevation="2dp"-->
+
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+
+<!--                    android:src="@drawable/four_four" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+
+
+<!--                >-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="5dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="Events"-->
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:layout_weight="1"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <LinearLayout-->
+
+<!--                android:layout_width="60dp"-->
+<!--                android:layout_height="60dp"-->
+
+
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:background="@drawable/rounded_borders"-->
+<!--                android:backgroundTint="@color/white"-->
+
+<!--                android:elevation="2dp"-->
+
+<!--                android:gravity="center">-->
+
+<!--                <ImageView-->
+
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:src="@drawable/three_three" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center">-->
+
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+
+<!--                    android:layout_marginTop="5dp"-->
+
+<!--                    android:gravity="center"-->
+<!--                    android:text="Booking"-->
+
+<!--                    android:textColor="#4C9A2A"-->
+<!--                    android:textSize="13dp" />-->
+
+
+<!--            </LinearLayout>-->
+
+
+<!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
+
+
+</RelativeLayout>

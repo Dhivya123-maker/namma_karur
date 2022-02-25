@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:Context = ".Home"
+    android:fitsSystemWindows="true"
+    android:id="@+id/ProfileParent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:id="@+id/brandAndItsLocation"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginEnd="0dp"
+
+            android:background="@drawable/profile_empty"
+            android:backgroundTint="#4C9A2A"
+
+
+            >
+
+            <LinearLayout
+                android:id="@+id/img"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/menu">
+
+                </ImageView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/img"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/edit_home"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/bg"
+                        android:hint="Search"
+                        android:paddingStart="20dp"
+                        android:textSize="15dp">
+
+                    </EditText>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="42dp"
+                        android:layout_marginEnd="40dp"
+                        android:gravity="end"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_baseline_search_24">
+
+                        </ImageView>
+
+
+                    </LinearLayout>
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="65dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_marginEnd="20dp"-->
+<!--                        android:gravity="end"-->
+<!--                        android:orientation="horizontal">-->
+
+<!--                        <LinearLayout-->
+<!--                            android:id="@+id/filter_linear"-->
+<!--                            android:layout_width="45dp"-->
+<!--                            android:layout_height="45dp"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            android:background="@drawable/bg_one"-->
+<!--                            android:backgroundTint="@color/white"-->
+<!--                            android:gravity="center">-->
+
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="20dp"-->
+<!--                                android:layout_height="20dp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:src="@drawable/filter" />-->
+
+
+<!--                        </LinearLayout>-->
+
+<!--                    </LinearLayout>-->
+                </RelativeLayout>
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bground"
+            android:backgroundTint="#4C9A2A"
+            android:layout_below="@+id/brandAndItsLocation">
+
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+
+                android:background="@drawable/fragment_layout"
+
+                >
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    app:tabBackground="@color/white"
+                    app:tabGravity="fill"
+                    app:tabIndicatorColor="#4C9A2A"
+                    android:layout_marginTop="3dp"
+                    app:tabMode="scrollable"
+                    app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                    app:tabTextColor="#4C9A2A" >
+
+
+                </com.google.android.material.tabs.TabLayout>
+
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="50dp"-->
+<!--                    android:layout_height="50dp"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    >-->
+
+<!--                    <ImageView-->
+<!--                        android:layout_width="20dP"-->
+<!--                        android:layout_height="20dp"-->
+<!--                        android:src="@drawable/phones">-->
+
+<!--                    </ImageView>-->
+
+<!--                </LinearLayout>-->
+<!--          -->
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_anchorGravity="center"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+
+
+
+
+
+            <LinearLayout
+                android:id="@+id/relativeLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+
+                android:layout_marginTop="0dp"
+
+                android:background="@drawable/mpty">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        tools:Context = ".Post_Fragment">
+
+
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+<!--                            <ScrollView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent">-->
+
+
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical"
+                                    android:layout_marginTop="60dp">
+
+
+                                    <LinearLayout
+                                        android:id="@+id/ac_one"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="90dp"
+                                        android:layout_marginTop="20dp"
+                                        android:background="@drawable/border_one"
+                                        android:backgroundTint="#4c9a2a"
+                                        android:layout_marginStart="20dp"
+                                        android:alpha="0.7"
+                                        android:orientation="horizontal">
+
+                                        <LinearLayout
+                                            android:layout_width="60dp"
+                                            android:layout_height="60dp"
+                                            android:layout_gravity="center"
+                                            android:layout_marginStart="15dp"
+                                            android:background="@drawable/border"
+                                            android:backgroundTint="@color/white"
+                                            android:gravity="center">
+
+                                            <ImageView
+                                                android:layout_width="50dp"
+                                                android:layout_height="50dp"
+                                                android:src="@drawable/honda"
+                                                android:layout_gravity="center">
+
+                                            </ImageView>  </LinearLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:padding="10dp"
+                                            android:layout_gravity="center"
+                                            android:orientation="vertical">
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="5dp"
+                                                android:text="Honda Service"
+
+                                                android:textSize="15dp"
+                                                android:textColor="@color/white">
+
+                                            </TextView>
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginStart="5dp"
+                                                android:layout_marginTop="2dp"
+                                                android:textSize="12dp"
+                                                android:text="56, Grid Street, Karur"
+                                                android:textColor="@color/white">
+
+                                            </TextView>
+
+
+                                        </LinearLayout>
+
+
+
+
+
+                                    </LinearLayout>
+
+
+
+
+
+
+
+<!--                                    <LinearLayout-->
+<!--                                        android:id="@+id/ac_two"-->
+<!--                                        android:layout_width="match_parent"-->
+<!--                                        android:layout_height="90dp"-->
+<!--                                        android:layout_marginTop="10dp"-->
+<!--                                        android:background="@drawable/border_one"-->
+<!--                                        android:backgroundTint="#4c9a2a"-->
+<!--                                        android:layout_marginStart="20dp"-->
+<!--                                        android:orientation="horizontal">-->
+
+<!--                                        <LinearLayout-->
+<!--                                            android:layout_width="60dp"-->
+<!--                                            android:layout_height="60dp"-->
+<!--                                            android:layout_gravity="center"-->
+<!--                                            android:layout_marginStart="15dp"-->
+<!--                                            android:background="@drawable/border"-->
+<!--                                            android:backgroundTint="@color/white"-->
+<!--                                            android:gravity="center">-->
+
+<!--                                            <ImageView-->
+<!--                                                android:layout_width="50dp"-->
+<!--                                                android:layout_height="50dp"-->
+<!--                                                android:src="@drawable/sony"-->
+<!--                                                android:layout_gravity="center">-->
+
+<!--                                            </ImageView>  </LinearLayout>-->
+
+<!--                                        <LinearLayout-->
+<!--                                            android:layout_width="match_parent"-->
+<!--                                            android:layout_height="wrap_content"-->
+<!--                                            android:padding="10dp"-->
+<!--                                            android:layout_gravity="center"-->
+<!--                                            android:orientation="vertical">-->
+<!--                                            <TextView-->
+<!--                                                android:layout_width="wrap_content"-->
+<!--                                                android:layout_height="wrap_content"-->
+<!--                                                android:layout_marginStart="5dp"-->
+<!--                                                android:text="Sony Digital"-->
+
+<!--                                                android:textSize="15dp"-->
+<!--                                                android:textColor="@color/white">-->
+
+<!--                                            </TextView>-->
+<!--                                            <TextView-->
+<!--                                                android:layout_width="wrap_content"-->
+<!--                                                android:layout_height="wrap_content"-->
+<!--                                                android:layout_marginStart="5dp"-->
+<!--                                                android:layout_marginTop="2dp"-->
+<!--                                                android:textSize="12dp"-->
+<!--                                                android:text="56, Grid Street, Karur"-->
+<!--                                                android:textColor="@color/white">-->
+
+<!--                                            </TextView>-->
+
+
+<!--                                        </LinearLayout>-->
+
+
+
+
+
+<!--                                    </LinearLayout>-->
+
+
+
+
+
+
+
+
+
+
+                                </LinearLayout>
+
+<!--                            </ScrollView>-->
+
+                        </FrameLayout>
+
+
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/fragment_layout"
+
+                            tools:ignore="MissingConstraints">
+
+                        </FrameLayout>
+
+
+
+                        <com.google.android.material.bottomnavigation.BottomNavigationView
+                            android:id="@+id/bottomNavigationView_shops"
+                            android:layout_width="match_parent"
+                            android:layout_height="70dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:itemIconTint="@color/white"
+                            android:background="#4c9a2a"
+                            app:layout_constraintStart_toEndOf="parent"
+                            app:itemTextColor="@color/white"
+                            app:menu="@menu/bottom_nav" />
+
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+            <!--    bottom-->
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+<!--    <FrameLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/fragment_layout"-->
+
+<!--        tools:ignore="MissingConstraints">-->
+
+<!--    </FrameLayout>-->
+
+
+
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/bottomNavigationView_shops"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="70dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:itemIconTint="@color/white"-->
+<!--        android:background="#4c9a2a"-->
+<!--        app:layout_constraintStart_toEndOf="parent"-->
+<!--        app:itemTextColor="@color/white"-->
+<!--        app:menu="@menu/bottom_nav" />-->
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
