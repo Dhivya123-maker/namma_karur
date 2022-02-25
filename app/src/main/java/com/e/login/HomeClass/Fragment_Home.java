@@ -723,6 +723,9 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
             Intent intent = new Intent(getActivity(), NewsActivity.class);
             intent.putExtra("cat",cat_name);
             startActivity(intent);
+        }else if (cat_name.equals("BloodCatalog")){
+            Intent intent = new Intent(getActivity(), Blood_Fragment.class);
+            startActivity(intent);
         }else {
             Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
             intent.putExtra("cat", cat_name);

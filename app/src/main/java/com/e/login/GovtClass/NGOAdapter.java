@@ -54,7 +54,7 @@ public class NGOAdapter extends RecyclerView.Adapter<NGOAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
 
-        return 2;
+        return ngoModelList.size();
 
     }
 
