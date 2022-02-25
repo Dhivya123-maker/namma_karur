@@ -75,27 +75,13 @@ public class OfferActivity extends AppCompatActivity {
 
 
 
-
-
-
         offerOneModelList= new ArrayList<>();
 
         recyclerView1 =findViewById(R.id.close_offer_screen);
 
-
-
-
-
-
-
-
-
         offerTwoModelList= new ArrayList<>();
 
          recyclerView2 =findViewById(R.id.only_offer_screen);
-
-
-
 
 
         offers();
