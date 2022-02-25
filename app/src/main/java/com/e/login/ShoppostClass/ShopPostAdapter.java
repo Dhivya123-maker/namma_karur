@@ -50,7 +50,7 @@ public class ShopPostAdapter extends RecyclerView.Adapter<com.e.login.ShoppostCl
         holder.textView2.setText(shopPostModelList.get(position).getText_two());
         holder.textView3.setText(shopPostModelList.get(position).getText_three());
         holder.img.setImageResource(R.drawable.ac);
-        holder.img1.setImageResource(R.drawable.menuu);
+       // holder.img1.setImageResource(R.drawable.menuu);
 //        holder.img2.setImageResource(R.drawable.sam);
         Glide.with(context)
                 .load(shopPostModelList.get(position).getImage2())
@@ -84,7 +84,7 @@ public class ShopPostAdapter extends RecyclerView.Adapter<com.e.login.ShoppostCl
             super(itemView);
 
             img = itemView.findViewById(R.id.sam_imgg);
-            img1 = itemView.findViewById(R.id.sam_menuu);
+//            img1 = itemView.findViewById(R.id.sam_menuu);
             img2 = itemView.findViewById(R.id.sam_full_imgg);
             img3 = itemView.findViewById(R.id.likee);
             img4 = itemView.findViewById(R.id.samm_sharee);

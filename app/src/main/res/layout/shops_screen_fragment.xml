@@ -39,7 +39,7 @@
                     android:text=""
                     android:textColor="@color/white"
                     android:textSize="16dp"
-                    android:textStyle="bold" />
+                   />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -180,6 +180,52 @@
 <!--                            android:src="@drawable/banner">-->
 
 <!--                        </ImageView>-->
+
+                        <LinearLayout
+                            android:id="@+id/gone_lnr"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:layout_marginTop="10dp"
+                            android:weightSum="2"
+
+                            >
+                            <Button
+                                android:id="@+id/fromdatepicker"
+                                android:layout_width="110dp"
+                                android:layout_height="45dp"
+                                android:text="From Date"
+                                android:textSize="14dp"
+                                android:paddingStart="10dp"
+                                android:padding="10dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="20dp"
+                                android:layout_marginEnd="10dp"
+                                style="?android:spinnerStyle"
+                                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                                android:background="@drawable/border"
+                                android:onClick="openDatePicker"/>
+
+                            <Button
+                                android:id="@+id/todatepicker"
+                                android:layout_width="110dp"
+                                android:layout_height="45dp"
+                                android:text="To Date"
+                                android:textSize="14dp"
+                                android:paddingStart="10dp"
+                                android:layout_weight="1"
+                                android:padding="10dp"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginEnd="20dp"
+                                style="?android:spinnerStyle"
+                                android:drawableEnd="@drawable/ic_baseline_arrow_drop_down_24"
+                                android:background="@drawable/border"
+                                android:onClick="openDatePicker"/>
+
+
+                        </LinearLayout>
+
                         <com.smarteist.autoimageslider.SliderView
                             android:id="@+id/slider_slider"
                             android:layout_width="match_parent"

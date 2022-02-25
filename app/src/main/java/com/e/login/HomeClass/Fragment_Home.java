@@ -131,7 +131,7 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 //        Toast.makeText(getContext(), data1, Toast.LENGTH_SHORT).show();
 //
 //
-
+        category();
 
 
 
@@ -582,7 +582,7 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
         });
 
 
-        category();
+
 
         return  root;
     }

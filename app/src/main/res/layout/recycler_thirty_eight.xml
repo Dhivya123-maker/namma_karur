@@ -74,23 +74,23 @@
         >
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="30dp"
-        android:gravity="end">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginTop="120dp"-->
+<!--        android:layout_marginEnd="30dp"-->
+<!--        android:gravity="end">-->
 
-        <ImageView
-            android:id="@+id/pin_img"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/pin"
+<!--        <ImageView-->
+<!--            android:id="@+id/pin_img"-->
+<!--            android:layout_width="20dp"-->
+<!--            android:layout_height="20dp"-->
+<!--            android:src="@drawable/pin"-->
 
 
-            />
-    </LinearLayout>
+<!--            />-->
+<!--    </LinearLayout>-->
     </RelativeLayout>
 </RelativeLayout>
     </LinearLayout>

@@ -130,7 +130,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
         {
             String url = api+"get-event-category-list";
             shop(url);
-            shop_name.setText("Events");
+            shop_name.setText("Hall");
         }else if (data3.equals("AmbulanceCatalog")) {
             String url = api + "get-Ambulance-list";
             ambulance(url);

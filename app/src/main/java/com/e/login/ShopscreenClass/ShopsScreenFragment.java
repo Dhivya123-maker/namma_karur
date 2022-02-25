@@ -51,7 +51,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
     private ViewPagerAdapter viewPagerAdapter;
     List<ShopScreenModel> shop_screen_model;
     ShopScreenAdapter adapter;
-    LinearLayout filter,location;
+    LinearLayout filter,location,gone;
     SliderView sliderView;
     public static final String TAG = "bottom_sheet";
 
@@ -87,6 +87,8 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
 
 
+        gone = findViewById(R.id.gone_lnr);
+        sliderView = findViewById(R.id.slider_slider);
 
        recyclerView =findViewById(R.id.shop_screen_fragment);
 
@@ -111,46 +113,54 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
             String url = api + "get-shop-catalog-list?category_id="+data3;
             shop_screen(url);
             ac.setText(data);
+            gone.setVisibility(View.GONE);
         }else if(data2.equals("ServiceCatalog")) {
             String url = api + "get-service-catalog-list?service_category_id="+data3;
             shop_screen(url);
             ac.setText(data);
-
+            gone.setVisibility(View.GONE);
 
         }else if(data2.equals("MarketCatalog")){
             String url = api + "get-market-category-list"+data3;
             shop_screen(url);
             ac.setText(data);
+            gone.setVisibility(View.GONE);
 
         } else if(data2.equals("EducationCatalog")){
             String url = api + "get-education-catalog-list?education_category_id="+data3;
             shop_screen(url);
             ac.setText(data);
+            gone.setVisibility(View.GONE);
 
         }else if(data2.equals("TransportCatalog")){
             String url = api + "get-transport-catalog-list?category_id="+data3;
             shop_screen(url);
             ac.setText(data);
+            gone.setVisibility(View.GONE);
 
         }else if(data2.equals("HospitalCatalog")){
             String url = api + "get-hospital-catalog-list?hospital_category_id="+data3;
             shop_screen(url);
             ac.setText(data);
+            gone.setVisibility(View.GONE);
 
         }else if(data2.equals("EventCatalog")){
             String url = api + "get-event-catalog-list?event_category_id="+data3;
             shop_screen(url);
             ac.setText(data);
+            sliderView.setVisibility(View.GONE);
 
         }else if(data2.equals("HotelCatalog")){
             String url = api + "get-hotel-catalog-list?hotel_category_id="+data3;
             shop_screen(url);
             ac.setText(data);
+            gone.setVisibility(View.GONE);
 
         }else if(data2.equals("BankCatalog")){
             String url = api + "get-bank-catalog-list?bank_category_id="+data3;
             shop_screen(url);
             ac.setText(data);
+            gone.setVisibility(View.GONE);
 
         }
 
@@ -167,7 +177,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
         });
 
 
-        sliderView = findViewById(R.id.slider_slider);
+
         Slidershop_Top_Adapter sliderAdapter = new Slidershop_Top_Adapter(images);
 
         sliderView.setSliderAdapter(sliderAdapter);

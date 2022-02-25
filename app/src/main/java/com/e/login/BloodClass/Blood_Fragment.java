@@ -43,6 +43,7 @@ public class Blood_Fragment extends AppCompatActivity {
     Button blood;
     RecyclerView recyclerView;
     String data = null;
+    String name,mail,img;
     String id,p_name,problem,blood_grp,needed,units,hos,address,primary,secondary;
     TextView txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9;
     String data1,data2,data3,data4,data5,data6,data7,data8,data9;
@@ -113,14 +114,20 @@ public class Blood_Fragment extends AppCompatActivity {
                         primary = jsonObject.getString("primary_contact");
                         secondary = jsonObject.getString("secondary_contact");
 
+                        JSONObject  user = jsonObject.getJSONObject("user");
+                        name = user.getString("name");
+                        mail = user.getString("email");
+                        img = user.getString("image");
+
+
 
                         Blood_Model viewmodel = new Blood_Model();
 
 
 
-                        viewmodel.setImg("1");
-                        viewmodel.setName("Jenifer");
-                        viewmodel.setPosted("Posted on 30");
+                        viewmodel.setImg(img);
+                        viewmodel.setName(name);
+                        viewmodel.setPosted(mail);
                         viewmodel.setP_name(p_name);
                         viewmodel.setB_grp(blood_grp);
                         viewmodel.setProblem(problem);

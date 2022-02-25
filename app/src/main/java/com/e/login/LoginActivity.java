@@ -24,7 +24,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.HomeClass.Home;
+import com.e.login.Verification.Email_OTP;
 import com.e.login.Verification.VerificationActivity;
+import com.e.login.utils.PreferenceUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -169,10 +171,20 @@ public class LoginActivity extends AppCompatActivity {
 
                         if (Success.equals("true")) {
 
-                            Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, Home.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent);
+
+                            JSONObject res =  response.getJSONObject("data");
+
+                            String token = res.getString("token");
+                            JSONObject user = res.getJSONObject("user");
+
+                            String id = user.getString("id");
+
+                            PreferenceUtils.saveid(id, LoginActivity.this);
+                            PreferenceUtils.saveToken(token,LoginActivity.this);
 
 
                         } else {
