@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -78,19 +79,11 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
     LinearLayout hospital,shop,trans,edu,services,more,shops_icon,bus,jobs,govt,ambulance,news,market,bank,fun,see_more,see_less,extra,extra_one,blood,mall,events,offer,hotels,ngo,drawer,blog;
     ImageView bell,see_less_image,see_more_image,message;
 
-    List<String> home_model;
-    private long pressedTime;
-
     MyRecyclerViewAdapter adapter;
     List<Recycler_Model> recyclerModelList;
 
-    TextView textView,see_less_txt,see_more_txt;
-    SearchView searchView;
-    EditText editText;
     SliderView sliderView, sliderView1;
 
-    List<News_Model> newsModelList;
-    News_recycler_Adapter adapter5;
 
     List<Top_rating_model> topRatingModelList;
    Top_rating_Adapter adapter6;
@@ -98,8 +91,6 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
     List<ReviewsModel> reviewsModelList;
      ReviewsAdapter adapter7;
 
-    List<Slider_Top_Model> sliderTopModelList;
-    Slider_Top_Adapter sliderTopAdapter;
     int[] images = {R.drawable.first_one,
             R.drawable.banner,
             R.drawable.bank_banner,
@@ -163,28 +154,11 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
         sliderView1.startAutoCycle();
 
 
-//        ArrayList<Slider_Bottom_Model> sliderBottomModelArrayList= new ArrayList<>();
-//            sliderview1 = root.findViewById(R.id.slider_bottom1);
-//
-//
-//        Slider_Bottom_Model sd1 = new Slider_Bottom_Model();
-//
-//        sd1.setImage("https://media.istockphoto.com/photos/blue-christmas-and-new-year-holiday-frame-picture-id1336074248?b=1&k=20&m=1336074248&s=170667a&w=0&h=YV0m1tzqq2F-DJhoX-W_FBy8HFTBojptjbfzLkQcLF0=");
-//        sliderBottomModelArrayList.add(sd1);
-//
-//
-//        Slider_Bottom_Adapter adapter2 = new Slider_Bottom_Adapter(getActivity(), sliderBottomModelArrayList);
-//        sliderview1.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_RIGHT);
-//        sliderview1.setSliderAdapter(adapter2);
-
-
-
-//        sliderView.setScrollTimeInSec(3);
-//        sliderView.setAutoCycle(true);
-//        sliderView.startAutoCycle();
 //
 
-        drawer = root.findViewById(R.id.drawerr);
+       drawer = root.findViewById(R.id.drawerr);
+
+
 //        extra = root.findViewById(R.id.layoutRow4);
 //     extra_one = root.findViewById(R.id.layoutRow5);
 //     see_more = root.findViewById(R.id.see_more_layout);
@@ -230,6 +204,7 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 
 
 
+
      recyclerModelList = new ArrayList<>();
 
         RecyclerView recycler = root.findViewById(R.id.top_rated_recycle);
@@ -258,34 +233,7 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 
 
 
-//        newsModelList = new ArrayList<>();
-//
-//        RecyclerView recyclerView5 = root.findViewById(R.id.news_recycle);
-//
-//
-//        for (int i = 0; i < 5; i++) {
-//
-//            News_Model viewmodel = new News_Model();
-//
-//
-//
-//            viewmodel.setImage("1");
-//            viewmodel.setImg1("2");
-//            viewmodel.setImg2("3");
-//
-//            viewmodel.setText_one("186");
-//            viewmodel.setText("Lorem ispum may be used as a placeholder before the final");
-//
-//
-//           newsModelList.add(viewmodel);
-//
-//        }
-//
-//        recyclerView5.setLayoutManager(new LinearLayoutManager(getContext()));
-//
-//        adapter5 =  new News_recycler_Adapter(getContext(),newsModelList);
-//        recyclerView5.setAdapter(adapter5);
-//        recyclerView5.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
 
 
 
@@ -488,13 +436,7 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 //            }
 //        });
 //
-//        bell.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), JobSearchActivity.class);
-//                startActivity(shopsIntent);
-//            }
-//        });
+
 //
 //       blood.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -622,13 +564,22 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 //            }
 //        });
 //
-//        message.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), Chat_Activity.class);
-//                startActivity(shopsIntent);
-//            }
-//        });
+
+        bell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent shopsIntent = new Intent(getActivity(), JobSearchActivity.class);
+                startActivity(shopsIntent);
+            }
+        });
+
+        message.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent shopsIntent = new Intent(getActivity(), Chat_Activity.class);
+                startActivity(shopsIntent);
+            }
+        });
 
 
         category();

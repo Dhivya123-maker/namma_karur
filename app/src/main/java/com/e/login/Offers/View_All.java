@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class View_All extends AppCompatActivity {
     RecyclerView recyclerView;
-    String data;
+    String data,data1;
     TextView offer;
     String api;
     String id,title,desc,img,view_count = null;
@@ -42,10 +42,12 @@ public class View_All extends AppCompatActivity {
 
     List<Offer_two_model> offerTwoModelList;
     Offer_two_Adapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_all);
+
 
 
 
@@ -60,6 +62,11 @@ public class View_All extends AppCompatActivity {
 
         Intent intent = getIntent();
         data = intent.getStringExtra("cat1");
+        data1 =  intent.getStringExtra("id");
+
+
+        Toast.makeText(View_All.this, data, Toast.LENGTH_SHORT).show();
+        Toast.makeText(View_All.this, data1, Toast.LENGTH_SHORT).show();
 
         if(data.equals("top_offers")){
             String url = api+"top-offer-full-page";
@@ -124,6 +131,7 @@ public class View_All extends AppCompatActivity {
                             viewmodel.setImg(img);
                             viewmodel.setTxt(title);
                             viewmodel.setTxt1(desc);
+                            viewmodel.setId(id);
 
                             offerTwoModelList.add(viewmodel);
 

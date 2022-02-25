@@ -153,17 +153,6 @@ public class News_Fragment extends Fragment implements NewsoneAdapter.OnItemClic
                     breaking = jsonObject.getJSONArray("breaking");
                     all = jsonObject.getJSONArray("all");
 
-//                    Toast.makeText(getActivity(), all.toString(), Toast.LENGTH_SHORT).show();
-//                    Log.i("uwgye9iuhrf9yui",all.toString());
-
-//                    breaking = jsonObject.getString("breaking");
-//                    all = jsonObject.getString("all");
-
-//
-//                    if(Success.equals("true")){
-//                        Log.i("123",msg);
-//                        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
-
 
                         for (int i = 0; i < latest.length(); i++) {
                             JSONObject jsonObject1 = latest.getJSONObject((i));

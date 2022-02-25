@@ -5,9 +5,6 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:Context = ".Home"
-
-    android:id="@+id/ProfileParent"
-    android:layout_marginBottom="70dp"
     android:background="@color/white">
 
 

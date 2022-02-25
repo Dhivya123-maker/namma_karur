@@ -11,12 +11,8 @@
     android:layout_centerInParent="true"
     android:id="@+id/ProfileParent"
     android:background="@color/white"
-    android:layout_marginBottom="70dp"
 
-
-
-
-    android:layout_alignParentBottom="true">
+>
 
 
     <RelativeLayout
@@ -71,10 +67,8 @@
             android:id="@+id/relativeLayout2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:layout_marginTop="0dp"
-
-            android:background="@drawable/mpty">
+            android:background="@color/white">
 
 
             <TextView
@@ -125,10 +119,6 @@
                 android:text="Scan QR code"
                 android:textAllCaps="false"
                 android:textColor="@color/white" />
-
-
-
-
 
 
         </RelativeLayout>

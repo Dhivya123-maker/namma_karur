@@ -141,6 +141,7 @@
                             android:singleLine="true"
                             android:hint="Needed within"
                             android:textColorHint="#656565"
+                            android:inputType="number"
                             android:padding="10dp"
                             android:background="@drawable/border_two">
 
@@ -158,6 +159,7 @@
                             android:textSize="14dp"
                             android:hint="No.of.units"
                             android:textColorHint="#656565"
+                            android:inputType="number"
                             android:padding="10dp"
                             android:background="@drawable/border_two">
 

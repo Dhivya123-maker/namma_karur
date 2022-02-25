@@ -42,10 +42,11 @@ public class JobSearchActivity extends AppCompatActivity {
         viewPagerAdapter_job = new ViewPagerAdapter(getSupportFragmentManager());
 
         // add the fragments
-        viewPagerAdapter_job.add(new Job_Fragment(), "All news");
-        viewPagerAdapter_job.add(new Karur(), "Today news");
-        viewPagerAdapter_job.add(new Karur(), "Karur news");
-        viewPagerAdapter_job.add(new Karur(), "astrology news");
+        viewPagerAdapter_job.add(new Job_Fragment(), "All");
+        viewPagerAdapter_job.add(new Karur(), "Shops");
+        viewPagerAdapter_job.add(new Karur(), "Market");
+        viewPagerAdapter_job.add(new Karur(), "Jobs");
+        viewPagerAdapter_job.add(new Karur(), "Events");
 
 
         // Set the adapter

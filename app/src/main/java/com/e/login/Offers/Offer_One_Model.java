@@ -1,10 +1,11 @@
 package com.e.login.Offers;
 
 public class Offer_One_Model {
-    public Offer_One_Model(String img,String txt,String txt1) {
+    public Offer_One_Model(String img,String txt,String txt1,String cat) {
         this.img = img;
         this.txt = txt;
         this.txt1 = txt1;
+        this.cat = cat;
     }
 
     public Offer_One_Model() {
@@ -39,4 +40,28 @@ public class Offer_One_Model {
 
     private String txt;
     private  String txt1;
+
+    public String getCat() {
+        return cat;
+    }
+
+    public void setCat(String cat) {
+        this.cat = cat;
+    }
+
+    String cat;
+
+    public Offer_One_Model(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    String id;
 }
