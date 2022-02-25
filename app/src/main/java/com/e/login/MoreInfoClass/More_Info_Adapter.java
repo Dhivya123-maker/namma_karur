@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.e.login.AmbulanceClass.AmbulanceModel;
 import com.e.login.R;
 
@@ -46,7 +47,10 @@ public class More_Info_Adapter extends RecyclerView.Adapter<More_Info_Adapter.Vi
         holder.textView.setText(moreInfoModelList.get(position).getTxt());
 
         holder.img.setImageResource(R.drawable.sharee);
-        holder.img1.setImageResource(R.drawable.banner);
+        Glide.with(context)
+                .load(moreInfoModelList.get(position).getImg1())
+                .into(holder.img1);
+
     }
 
 
@@ -57,7 +61,7 @@ public class More_Info_Adapter extends RecyclerView.Adapter<More_Info_Adapter.Vi
     @Override
     public int getItemCount() {
 
-        return 4;
+        return moreInfoModelList.size();
 
     }
 
@@ -80,6 +84,6 @@ public class More_Info_Adapter extends RecyclerView.Adapter<More_Info_Adapter.Vi
 
 
     }
-    }
+}
 
 

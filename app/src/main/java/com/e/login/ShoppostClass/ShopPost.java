@@ -90,8 +90,8 @@ public class ShopPost extends Fragment {
             public void onResponse(JSONObject response) {
 
 
-                Log.i("0000000",response.toString());
-                Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
+//                Log.i("0000000",response.toString());
+//                Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
 
 
 
@@ -107,8 +107,8 @@ public class ShopPost extends Fragment {
 
                     for (int i=0;i<res.length();i++){
 //
-                        Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
-                        Log.i("jbfhusduycfhb",response.toString());
+//                        Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
+//                        Log.i("jbfhusduycfhb",response.toString());
 
                         JSONObject jsonObject = res.getJSONObject(i);
                         title = jsonObject.getString("title");

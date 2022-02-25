@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.e.login.R;
 import com.e.login.ShoppostClass.ShopPostModel;
 
@@ -47,7 +48,10 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
         holder.textView2.setText(infoModelList.get(position).getText_two());
         holder.textView3.setText(infoModelList.get(position).getText_three());
         holder.img.setImageResource(R.drawable.ac);
-        holder.img2.setImageResource(R.drawable.sam);
+        Glide.with(context)
+                .load(infoModelList.get(position).getImage2())
+                .into(holder.img2);
+
         holder.img3.setImageResource(R.drawable.heartt);
         holder.img5.setImageResource(R.drawable.sharee);
 
@@ -59,7 +63,7 @@ public class InformationAdapter extends RecyclerView.Adapter<InformationAdapter.
     @Override
     public int getItemCount() {
 
-        return 4;
+        return infoModelList.size();
 
     }
 

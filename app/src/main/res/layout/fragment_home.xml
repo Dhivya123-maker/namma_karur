@@ -5,7 +5,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="#4C9A2A"
-    android:layout_marginBottom="70dp"
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
     android:id="@+id/draw_lay"
@@ -337,8 +336,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/category"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="wrap_content" />
 
             <com.smarteist.autoimageslider.SliderView
                 android:id="@+id/slider_bottom1"

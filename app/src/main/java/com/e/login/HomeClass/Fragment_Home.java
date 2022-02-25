@@ -696,7 +696,16 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
                 }
 
 
-                GridLayoutManager layoutManager=new GridLayoutManager(getActivity(),4);
+                GridLayoutManager layoutManager=new GridLayoutManager(getActivity(),4){
+                    @Override
+                    public boolean canScrollVertically() {
+                        return false;
+                    }
+                };
+
+//                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity()) {
+//
+//                };
 
                 cat_recyclerView.setLayoutManager(layoutManager);
                 CAtAdapter =  new CategoryAdapter(getActivity(),cat);

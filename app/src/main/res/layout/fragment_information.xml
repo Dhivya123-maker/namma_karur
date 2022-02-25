@@ -33,9 +33,7 @@
             android:textSize="18dp" />
 
     </RelativeLayout>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -52,14 +50,13 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                    android:layout_marginBottom="140dp"
-                    android:layout_marginTop="10dp">
+                    >
 
                 </androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
         </RelativeLayout>
-    </ScrollView>
+
 
 
 
