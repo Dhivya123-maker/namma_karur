@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -25,16 +23,12 @@ import com.e.login.AmbulanceClass.Ambulance;
 import com.e.login.AmbulanceClass.AmbulanceAdapter;
 import com.e.login.AmbulanceClass.AmbulanceModel;
 import com.e.login.R;
-import com.e.login.utils.PreferenceUtils;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Blood_Fragment extends AppCompatActivity {
 
@@ -42,8 +36,6 @@ public class Blood_Fragment extends AppCompatActivity {
     Blood_Adapter adapter;
     Button blood;
     RecyclerView recyclerView;
-    String data = null;
-    String id,p_name,problem,blood_grp,needed,units,hos,address,primary,secondary;
     TextView txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9;
     String data1,data2,data3,data4,data5,data6,data7,data8,data9;
 
@@ -52,13 +44,45 @@ public class Blood_Fragment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_fragment);
 
-        Intent intent = getIntent();
-        data = intent.getStringExtra("cat");
-//        Toast.makeText(Blood_Fragment.this, data, Toast.LENGTH_SHORT).show();
-
         recyclerView = findViewById(R.id.blood_screen);
 
-        request();
+//
+//        bloodModelList = new ArrayList<>();
+//
+//
+//        for (int i = 0; i < 4; i++) {
+//
+//
+//
+//            Blood_Model viewmodel = new Blood_Model();
+
+
+//
+//            viewmodel.setImg("1");
+//            viewmodel.setName("Jenifer");
+//            viewmodel.setPosted("Posted on 30");
+//            viewmodel.setP_name("Patient name4566666666666666666frcyuswgyswi4jrftigshwj");
+//            viewmodel.setB_grp("Blood group7454646444444444444444444");
+//            viewmodel.setProblem("Problem546666666frwtfvrwrgtrd44444444444444444444444");
+//            viewmodel.setNeed("Needed within546cdvfgbjhvguhjhjighvjohjhgjo");
+//            viewmodel.setUnits("No.of.Units456ahbgfrhgviofrhgvibytgpijh");
+//            viewmodel.setHospital("Hospitalhgv45ip6tguhb;povgpdep");
+//            viewmodel.setC_num("Contact number456etfjghbpot9be3");
+//            viewmodel.setA_num("Alternative number546hib4444444444444444444444");
+//            viewmodel.setAddress("karur, India,TamilNadudthytdujh7");
+//
+
+
+//
+//            bloodModelList.add(viewmodel);
+//
+//        }
+//
+//        recyclerView.setLayoutManager(new LinearLayoutManager(Blood_Fragment.this));
+//
+//        adapter =  new Blood_Adapter(Blood_Fragment.this,bloodModelList);
+//        recyclerView.setAdapter(adapter);
+
 
 
 
@@ -69,121 +93,11 @@ public class Blood_Fragment extends AppCompatActivity {
 
 
                 Intent intent = new Intent(Blood_Fragment.this,Blood_One.class);
-                intent.putExtra("cat",data);
                 startActivity(intent);
             }
         });
     }
 
-
-
-        String url = "http://nk.inevitabletech.email/public/api/get-blood-request-list";
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @SuppressLint("CheckResult")
-            @Override
-            public void onResponse(JSONObject response) {
-
-
-//                Log.i("0000000",response.toString());
-//                Toast.makeText(Blood_Fragment.this, response.toString(), Toast.LENGTH_SHORT).show();
-//
-//
-
-
-                try {
-                    JSONArray res = response.getJSONArray("data");
-
-                    bloodModelList = new ArrayList<>();
-
-
-                    for (int i=0;i<res.length();i++){
-//
-//                        Toast.makeText(Blood_Fragment.this, response.toString(), Toast.LENGTH_SHORT).show();
-//                        Log.i("jbfhusduycfhb",response.toString());
-
-                        JSONObject jsonObject = res.getJSONObject(i);
-                        id = jsonObject.getString("id");
-                        p_name = jsonObject.getString("patient_name");
-                        blood_grp = jsonObject.getString("blood_group");
-                        problem = jsonObject.getString("problem");
-                        needed = jsonObject.getString("needed_within");
-                        units = jsonObject.getString("no_of_units");
-                        hos = jsonObject.getString("hospital");
-                        address = jsonObject.getString("address");
-                        primary = jsonObject.getString("primary_contact");
-                        secondary = jsonObject.getString("secondary_contact");
-
-
-                        Blood_Model viewmodel = new Blood_Model();
-
-
-
-                        viewmodel.setImg("1");
-                        viewmodel.setName("Jenifer");
-                        viewmodel.setPosted("Posted on 30");
-                        viewmodel.setP_name(p_name);
-                        viewmodel.setB_grp(blood_grp);
-                        viewmodel.setProblem(problem);
-                        viewmodel.setNeed(needed);
-                        viewmodel.setUnits(units);
-                        viewmodel.setHospital(hos);
-                        viewmodel.setC_num(primary);
-                        viewmodel.setA_num(secondary);
-                        viewmodel.setAddress(address);
-
-
-
-
-                        bloodModelList.add(viewmodel);
-
-
-
-                    }
-
-                    recyclerView.setLayoutManager(new LinearLayoutManager(Blood_Fragment.this));
-
-                    adapter =  new Blood_Adapter(Blood_Fragment.this,bloodModelList);
-                    recyclerView.setAdapter(adapter);
-
-
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-
-            }
-
-
-
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }){
-            @Override
-            protected Map<String,String> getParams(){
-                Map<String,String> params = new HashMap<String, String>();
-
-
-
-                return params;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String,String> params = new HashMap<String, String>();
-
-                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(Blood_Fragment.this));
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(Blood_Fragment.this);
-        requestQueue.add(jsonObjectRequest);
 
 
 

@@ -711,8 +711,7 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 
         String cat_name = model.getCat_name();
 
-        Toast.makeText(getActivity(), cat_name.toString(), Toast.LENGTH_SHORT).show();
-        Log.i("bdfhgfyhsdufs",cat_name);
+
 
         if(cat_name.equals("OfferCatalog")){
 
