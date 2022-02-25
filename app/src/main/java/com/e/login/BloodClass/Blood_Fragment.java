@@ -99,9 +99,6 @@ public class Blood_Fragment extends AppCompatActivity {
     }
 
 
-    public void request(){
 
-
-    }
 
 }
