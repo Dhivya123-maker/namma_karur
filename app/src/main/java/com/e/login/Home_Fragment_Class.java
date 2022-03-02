@@ -10,6 +10,8 @@ import android.widget.Toast;
 
 import com.e.login.BlankFragment.Blank_PostFragment;
 import com.e.login.CarrierClass.Carrier_Fragment;
+import com.e.login.Facility_Class.Facility_Fragment;
+import com.e.login.Gallery_Class.Gallery_Fragment;
 import com.e.login.HelperClass.ViewPagerAdapter;
 import com.e.login.MoreInfoClass.MoreInfo;
 import com.e.login.ProductsFragmentClass.Products_Fragment;
@@ -26,7 +28,7 @@ public class Home_Fragment_Class extends AppCompatActivity {
 
     FloatingActionButton floatingActionButton;
     public static final String TAG = "bottom_sheet";
-    String data;
+    String data,data1,data2;
 
 
     @Override
@@ -37,6 +39,9 @@ public class Home_Fragment_Class extends AppCompatActivity {
 
         Intent intent = getIntent();
         data = intent.getStringExtra("name");
+        data1 = intent.getStringExtra("list");
+        data2 = intent.getStringExtra("id");
+
 
         textView = findViewById(R.id.name);
         textView.setText(data);
@@ -58,10 +63,55 @@ public class Home_Fragment_Class extends AppCompatActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         // add the fragments
-        viewPagerAdapter.add(new Blank_PostFragment(), "Home");
-        viewPagerAdapter.add(new Products_Fragment(), "Products");
-        viewPagerAdapter.add(new ShopPost(), "Flash");
-        viewPagerAdapter.add(new MoreInfo(), "Offers");
+
+        if(data1.equals("EventCatalog")){
+            viewPagerAdapter.add(new Blank_PostFragment(), "Home");
+            viewPagerAdapter.add(new Gallery_Fragment(), "Gallery");
+            viewPagerAdapter.add(new Facility_Fragment(), "Facility");
+        }else if(data1.equals("ShopCatalog")){
+            viewPagerAdapter.add(new Blank_PostFragment(), "Home");
+            viewPagerAdapter.add(new Products_Fragment(), "Products");
+            viewPagerAdapter.add(new ShopPost(), "Flash");
+            viewPagerAdapter.add(new MoreInfo(), "Offers");
+
+        }else if(data1.equals("ServiceCatalog")){
+            viewPagerAdapter.add(new Blank_PostFragment(), "Home");
+            viewPagerAdapter.add(new Products_Fragment(), "Services");
+            viewPagerAdapter.add(new ShopPost(), "Flash");
+            viewPagerAdapter.add(new MoreInfo(), "Offers");
+
+        }else if(data1.equals("EducationCatalog")){
+            viewPagerAdapter.add(new Blank_PostFragment(), "Home");
+            viewPagerAdapter.add(new Products_Fragment(), "Courses");
+            viewPagerAdapter.add(new ShopPost(), "Flash");
+            viewPagerAdapter.add(new MoreInfo(), "Offers");
+
+        }else if(data1.equals("TransportCatalog")){
+            viewPagerAdapter.add(new Blank_PostFragment(), "Home");
+            viewPagerAdapter.add(new Products_Fragment(), "Transports");
+            viewPagerAdapter.add(new ShopPost(), "Flash");
+            viewPagerAdapter.add(new MoreInfo(), "Offers");
+
+        }else if(data1.equals("HotelCatalog")){
+            viewPagerAdapter.add(new Blank_PostFragment(), "Home");
+            viewPagerAdapter.add(new Products_Fragment(), "Menu");
+            viewPagerAdapter.add(new ShopPost(), "Flash");
+            viewPagerAdapter.add(new MoreInfo(), "Offers");
+
+        }
+        else if(data1.equals("HospitalCatalog")){
+            viewPagerAdapter.add(new Blank_PostFragment(), "Home");
+            viewPagerAdapter.add(new Products_Fragment(), "Treatment");
+            viewPagerAdapter.add(new ShopPost(), "Flash");
+            viewPagerAdapter.add(new MoreInfo(), "Offers");
+
+        }
+        else if(data1.equals("BankCatalog")){
+            viewPagerAdapter.add(new Blank_PostFragment(), "Home");
+            viewPagerAdapter.add(new ShopPost(), "Flash");
+
+
+        }
 
 
         // Set the adapter

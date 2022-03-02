@@ -9,11 +9,6 @@
 
 
 
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
-
 
     <LinearLayout
         android:id="@+id/full"
@@ -22,17 +17,6 @@
         android:orientation="vertical">
 
 
-
-<!--            <ImageView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="150dp"-->
-<!--                android:scaleType="fitXY"-->
-<!--                android:layout_marginStart="5dp"-->
-<!--                android:layout_marginEnd="5dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:src="@drawable/girl"-->
-
-<!--                />-->
 
 
 
@@ -61,15 +45,21 @@
 
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical">
+
 
 
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginTop="5dp"
-        android:layout_gravity="center"
+
 
         >
 
@@ -79,9 +69,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-
                 android:orientation="horizontal">
 
 
@@ -460,9 +447,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
-
             android:text="Description"
             android:textColor="#4c9a2a"
             android:textStyle="bold">
@@ -472,10 +458,11 @@
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:textSize="12dp"
+            android:justificationMode="inter_word"
             android:letterSpacing="0.01"
             android:text="Karur Taluk, which was once a part of Coimbatore district, was merged with Tiruchirappalli district during 1910"
             android:textColor="@color/black"
@@ -491,8 +478,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:layout_marginStart="35dp"
-            android:layout_marginEnd="35dp"
             android:weightSum="4"
             android:orientation="horizontal">
             <LinearLayout
@@ -678,8 +663,8 @@
             android:layout_marginTop="5dp"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:weightSum="2"
             android:orientation="horizontal">
 
@@ -720,7 +705,7 @@
                 android:backgroundTint="#4c9a2a"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 android:layout_gravity="center"
 
                 >
@@ -751,8 +736,8 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:weightSum="5"
-            android:layout_marginStart="35dp"
-            android:layout_marginEnd="35dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
@@ -886,8 +871,8 @@
             android:gravity="center"
             android:layout_marginTop="15dp"
             android:weightSum="2"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -909,7 +894,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Reviews"
-                    android:layout_marginStart="10dp"
+
                     android:textSize="12dp"
                     android:textStyle="bold"
                     android:gravity="center"
@@ -927,7 +912,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/border_only"
                 android:elevation="2dp"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:orientation="horizontal"
                 >
@@ -938,7 +923,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Follow"
-                    android:layout_marginStart="10dp"
                     android:textSize="12dp"
                     android:textStyle="bold"
                     android:gravity="center"
@@ -957,17 +941,18 @@
             android:id="@+id/visible_lnr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
+
             android:layout_marginEnd="15dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="comments"
+                android:text="Comments"
                 android:textStyle="bold"
-                android:textColor="#4c9a2a"/>
+                android:layout_marginStart="20dp"
+                android:textColor="@color/black"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/reviews_recycle_postt"
@@ -975,7 +960,9 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="25dp"
+
                  />
 
             <Button
@@ -996,9 +983,8 @@
 
         </LinearLayout>
 
-
+</LinearLayout>
 
     </LinearLayout>
 
-</FrameLayout>
 </ScrollView>

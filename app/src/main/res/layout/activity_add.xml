@@ -93,7 +93,6 @@
 
                         <EditText
 
-
                             android:id="@+id/NameDetails"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
@@ -136,7 +135,7 @@
                             android:layout_marginTop="15dp"
                             android:layout_marginEnd="20dp"
                             android:background="@drawable/border_only"
-                            android:hint="Email"
+                            android:hint="gender"
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
@@ -154,7 +153,7 @@
                             android:layout_marginTop="15dp"
                             android:layout_marginEnd="20dp"
                             android:background="@drawable/border_only"
-                            android:hint="Contact No"
+                            android:hint="address"
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
@@ -162,22 +161,22 @@
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
-                        <EditText
+<!--                        <EditText-->
 
-                            android:id="@+id/NameDetails4"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginEnd="20dp"
-                            android:background="@drawable/border_only"
-                            android:hint="Gender"
-                            android:inputType="text"
-                            android:padding="5dp"
-                            android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
-                            android:textColorHint="@color/black"
-                            android:textSize="14dp" />
+<!--                            android:id="@+id/NameDetails4"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="50dp"-->
+<!--                            android:layout_marginStart="20dp"-->
+<!--                            android:layout_marginTop="15dp"-->
+<!--                            android:layout_marginEnd="20dp"-->
+<!--                            android:background="@drawable/border_only"-->
+<!--                            android:hint="Gender"-->
+<!--                            android:inputType="text"-->
+<!--                            android:padding="5dp"-->
+<!--                            android:paddingStart="15dp"-->
+<!--                            android:paddingLeft="10dp"-->
+<!--                            android:textColorHint="@color/black"-->
+<!--                            android:textSize="14dp" />-->
 
                         <EditText
 
@@ -279,16 +278,31 @@
                             android:paddingStart="15dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
+                        <EditText
+
+                            android:id="@+id/NameDetails11"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="20dp"
+                            android:background="@drawable/border_only"
+                            android:hint="About Company"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:paddingStart="15dp"
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                          android:layout_gravity="center"
+                            android:layout_gravity="center"
                             android:orientation="horizontal">
 
                             <EditText
 
-                                android:id="@+id/NameDetails11"
+                                android:id="@+id/NameDetails12"
                                 android:layout_width="wrap_content"
                                 android:layout_height="50dp"
                                 android:layout_marginStart="20dp"
@@ -305,7 +319,7 @@
 
                             <EditText
 
-                                android:id="@+id/NameDetails12"
+                                android:id="@+id/NameDetails13"
                                 android:layout_width="wrap_content"
                                 android:layout_height="50dp"
                                 android:layout_marginStart="20dp"
@@ -324,11 +338,10 @@
 
 
                         <Button
+                            android:id="@+id/submit"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_gravity="center"
-
-
                             android:layout_marginStart="110dp"
                             android:layout_marginTop="40dp"
                             android:layout_marginEnd="110dp"

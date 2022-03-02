@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 public class PreferenceUtils {
     private static String token = null;
+
+    private static  String email = null;
     private static int length;
     private static String id;
     private static Context context;
@@ -44,5 +46,9 @@ public class PreferenceUtils {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getString(Constants.KEY_ID, null);
     }
+
+
+
+
 
 }

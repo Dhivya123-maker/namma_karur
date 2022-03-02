@@ -7,7 +7,7 @@
 
 
     <LinearLayout
-        android:id="@+id/ac_one"
+        android:id="@+id/ac_onee"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -126,7 +126,7 @@
 
                 </TextView>
                 <ImageView
-                    android:id="@+id/star"
+
                     android:layout_width="50dp"
                     android:layout_height="20dp"
                     android:src="@drawable/five_starr"
@@ -155,6 +155,154 @@
                         android:textSize="12dp"/>
 
                 </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/atm_lnr"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:background="@drawable/border_one"
+        android:backgroundTint="#4c9a2a"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/border"
+                    android:backgroundTint="@color/white"
+                    android:gravity="center">
+
+                    <ImageView
+                      android:id="@+id/atm_img"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        >
+
+                    </ImageView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+                    <TextView
+                       android:id="@+id/atm_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="zdrgt"
+                        android:textColor="@color/white"
+                        android:textSize="15dp">
+
+                    </TextView>
+
+                    <TextView
+                       android:id="@+id/atm_desc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="rtfr4s"
+                        android:textColor="@color/white"
+                        android:textSize="12dp">
+
+                    </TextView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/location"
+                            android:layout_marginTop="5dp"/>
+                        <TextView
+                            android:id="@+id/locationn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="5dp"
+                            android:textColor="@color/white"
+                            android:text="location"/>
+
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:orientation="horizontal">
+
+                <TextView
+                  android:id="@+id/atm_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="4.6"
+                    android:textColor="@color/white"
+                    android:textSize="12dp">
+
+                </TextView>
+                <ImageView
+                    android:id="@+id/atm_star"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/five_starr"
+                    android:layout_marginStart="5dp"
+
+                    />
+
 
 
             </LinearLayout>

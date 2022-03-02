@@ -45,7 +45,7 @@ public class All_news extends AppCompatActivity {
 
         Intent intent = getIntent();
         String get_id = intent.getStringExtra("id");
-        Toast.makeText(All_news.this, get_id, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(All_news.this, get_id, Toast.LENGTH_SHORT).show();
 
         String JSON_URL = "http://nk.inevitabletech.email/public/api/get-news-details?news_id="+get_id;
 

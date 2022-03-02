@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.HomeClass.Home;
+import com.e.login.Profile;
 import com.e.login.R;
 import com.e.login.utils.PreferenceUtils;
 
@@ -38,7 +39,7 @@ public class Email_OTP extends AppCompatActivity {
     Button verification;
     EditText otp1,otp2,otp3,otp4;
     String OTP1,OTP2,OTP3,OTP4;
-    String data,data1,data2;
+    String data,data1,data2,data3;
     TextView resend,mail;
 
     private Context mContext;
@@ -56,11 +57,10 @@ public class Email_OTP extends AppCompatActivity {
         Intent i = getIntent();
         data = i.getStringExtra("token");
         Intent i1 = getIntent();
-        data1 = i1.getStringExtra("id");
+        data1 = i1.getStringExtra("user_id");
         data2 = i1.getStringExtra("email");
+        data3 = i1.getStringExtra("user_name");
         mail.setText(data2);
-
-
 
         initialize();
 
@@ -132,8 +132,8 @@ public class Email_OTP extends AppCompatActivity {
 
 //                    Log.i("000000000000",response.toString());
 //
-//                    Toast.makeText(Email_OTP.this, data, Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(Email_OTP.this, data1, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(Email_OTP.this, data, Toast.LENGTH_SHORT).show();
+
                     // Toast.makeText(VerifyActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
 
 
@@ -145,12 +145,16 @@ public class Email_OTP extends AppCompatActivity {
                         if (Success.equals("true")){
 
                             Toast.makeText(Email_OTP.this, msg, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Email_OTP.this,Home.class);
+
+                            Intent intent = new Intent(Email_OTP.this, Profile.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                            intent.putExtra("user_name",data3);
+
                             startActivity(intent);
 
-                            PreferenceUtils.saveid(data1,Email_OTP.this);
-                            PreferenceUtils.saveToken(data,Email_OTP.this);
-
+//                            PreferenceUtils.saveid(data1,Email_OTP.this);
+//                            PreferenceUtils.saveToken(data,Email_OTP.this);
+//
 
                         }
                         else {
@@ -183,7 +187,7 @@ public class Email_OTP extends AppCompatActivity {
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String,String> params = new HashMap<String, String>();
                     params.put("Accept","application/json");
-                   params.put("Authorization","Bearer "+data);
+                   params.put("Authorization","Bearer "+ PreferenceUtils.getToken(Email_OTP.this));
                     //  params.put("Content-Type","application/x-www-form-urlencoded");
                     //params.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNmYwZGY2MTljYWE0NDJlMWM2NTM4YTRjYTcyNjc0Mjc1ZGY3YWJiZTU4ODgyZjEyZGM0MGQxNTA0ZGI5NTJmNzQ1ZWIwYzQ3OTQ4ZTIxZWQiLCJpYXQiOjE2NDQ0ODQ3OTIuMzc0NTU1LCJuYmYiOjE2NDQ0ODQ3OTIuMzc0NTYsImV4cCI6MTY3NjAyMDc5Mi4zNzA5MzIsInN1YiI6IjE5Iiwic2NvcGVzIjpbXX0.PLityoxwwHfLl4DMJz77NoxIAT6bbPx9UFaEn8LKjxYFyFcAnTDxVFobY43BkKR1xOm27YX3420XTxBf0s0iB1EW_XrJcTDClP8Y9G4rBZ0c06_2siDUDFYTPA8KeuQBDeCr8Aj6B7E_pT3qp9p3yG99AIUPK4onZNYDG_gZR6kQrvTlWwwgOSKD3ViTVTy91vQYZe7oxWbqUb_nhmL3Gb2wPdpZZ6j3FJiAj2MilCWml-doKID905ltazZc14aAEHOWFkB3UM4ryAEvFaXteAi5-gB1HseIPgguS8elMZ4BemaeJ1d7IJBnwY8pllsJmC9GKfpt66IPxT8KkSaILTLItJjtsCxretOx-x3Ngh6AULjQLvMFt1D27Z2PNei_zvVHDI7ECm0QjA-dO-rUuphq4Nrxw34qfcL4eW0znGbeHIQtSIL8AnPlFavJ7MjjnN24EZSrNjD_X8jJoNSqjUbwZgTef76RjHWUahja_w7IoX7IdjU9w6dvtEhwm5z_5LWORlCpND5zBxmQeoyHftgaokGPNK5tzc4It4VYt_K24s018Uwow4XE0_B3urSIkxJqzBVbEueV_w9tpTQSVp6P2YtH29SAkHDkw4j5FrdhHVK694-QHM-_qFQFol3CgEYWb7RfpcpDwkLXUd4Z4hqBAFJUmbD0HCoRBm73yGo");
                     return params;
@@ -282,7 +286,7 @@ public class Email_OTP extends AppCompatActivity {
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String,String> params = new HashMap<String, String>();
                     params.put("Accept","application/json");
-                    params.put("Authorization","Bearer "+data);
+                    params.put("Authorization","Bearer "+PreferenceUtils.getToken(Email_OTP.this));
                     //  params.put("Content-Type","application/x-www-form-urlencoded");
                     //params.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNmYwZGY2MTljYWE0NDJlMWM2NTM4YTRjYTcyNjc0Mjc1ZGY3YWJiZTU4ODgyZjEyZGM0MGQxNTA0ZGI5NTJmNzQ1ZWIwYzQ3OTQ4ZTIxZWQiLCJpYXQiOjE2NDQ0ODQ3OTIuMzc0NTU1LCJuYmYiOjE2NDQ0ODQ3OTIuMzc0NTYsImV4cCI6MTY3NjAyMDc5Mi4zNzA5MzIsInN1YiI6IjE5Iiwic2NvcGVzIjpbXX0.PLityoxwwHfLl4DMJz77NoxIAT6bbPx9UFaEn8LKjxYFyFcAnTDxVFobY43BkKR1xOm27YX3420XTxBf0s0iB1EW_XrJcTDClP8Y9G4rBZ0c06_2siDUDFYTPA8KeuQBDeCr8Aj6B7E_pT3qp9p3yG99AIUPK4onZNYDG_gZR6kQrvTlWwwgOSKD3ViTVTy91vQYZe7oxWbqUb_nhmL3Gb2wPdpZZ6j3FJiAj2MilCWml-doKID905ltazZc14aAEHOWFkB3UM4ryAEvFaXteAi5-gB1HseIPgguS8elMZ4BemaeJ1d7IJBnwY8pllsJmC9GKfpt66IPxT8KkSaILTLItJjtsCxretOx-x3Ngh6AULjQLvMFt1D27Z2PNei_zvVHDI7ECm0QjA-dO-rUuphq4Nrxw34qfcL4eW0znGbeHIQtSIL8AnPlFavJ7MjjnN24EZSrNjD_X8jJoNSqjUbwZgTef76RjHWUahja_w7IoX7IdjU9w6dvtEhwm5z_5LWORlCpND5zBxmQeoyHftgaokGPNK5tzc4It4VYt_K24s018Uwow4XE0_B3urSIkxJqzBVbEueV_w9tpTQSVp6P2YtH29SAkHDkw4j5FrdhHVK694-QHM-_qFQFol3CgEYWb7RfpcpDwkLXUd4Z4hqBAFJUmbD0HCoRBm73yGo");
                     return params;

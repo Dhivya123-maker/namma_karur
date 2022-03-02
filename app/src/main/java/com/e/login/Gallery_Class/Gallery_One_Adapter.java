@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.e.login.R;
 
 import java.util.List;
@@ -40,7 +41,10 @@ public class Gallery_One_Adapter extends RecyclerView.Adapter<Gallery_One_Adapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.img.setImageResource(R.drawable.mahal_one);
+//        holder.img.setImageResource(R.drawable.mahal_one);
+        Glide.with(context)
+                .load(galleryOneModelList.get(position).getImg())
+                .into(holder.img);
     }
 
 
@@ -49,7 +53,7 @@ public class Gallery_One_Adapter extends RecyclerView.Adapter<Gallery_One_Adapte
     @Override
     public int getItemCount() {
 
-        return 4;
+        return galleryOneModelList.size();
 
     }
 

@@ -59,6 +59,7 @@
             android:textColor="#808080"
             android:textSize="15dp"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/mobile"
             android:layout_width="wrap_content"
@@ -66,7 +67,7 @@
             android:layout_below="@id/verification_img"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
-            android:text="+91 8056553064"
+            android:text="+91 "
             android:textAlignment="center"
             android:textColor="#808080"
             android:textSize="15dp"

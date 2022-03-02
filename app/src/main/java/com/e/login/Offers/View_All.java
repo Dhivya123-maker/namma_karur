@@ -65,8 +65,8 @@ public class View_All extends AppCompatActivity {
         data1 =  intent.getStringExtra("id");
 
 
-        Toast.makeText(View_All.this, data, Toast.LENGTH_SHORT).show();
-        Toast.makeText(View_All.this, data1, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(View_All.this, data, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(View_All.this, data1, Toast.LENGTH_SHORT).show();
 
         if(data.equals("top_offers")){
             String url = api+"top-offer-full-page";

@@ -25,6 +25,12 @@
         android:theme="@style/Theme.login"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".JobsClass.Closing_All"
+            android:exported="false" />
+        <activity
+            android:name=".JobsClass.View_MoreJobs"
+            android:exported="false" />
+        <activity
             android:name=".Offers.View_All"
             android:exported="false" />
         <activity

@@ -98,7 +98,7 @@ public class Blood_Fragment extends AppCompatActivity {
 
 
                     for (int i=0;i<res.length();i++){
-//
+
 //                        Toast.makeText(Blood_Fragment.this, response.toString(), Toast.LENGTH_SHORT).show();
 //                        Log.i("jbfhusduycfhb",response.toString());
 
@@ -124,7 +124,6 @@ public class Blood_Fragment extends AppCompatActivity {
                         Blood_Model viewmodel = new Blood_Model();
 
 
-
                         viewmodel.setImg(img);
                         viewmodel.setName(name);
                         viewmodel.setPosted(mail);
@@ -137,8 +136,6 @@ public class Blood_Fragment extends AppCompatActivity {
                         viewmodel.setC_num(primary);
                         viewmodel.setA_num(secondary);
                         viewmodel.setAddress(address);
-
-
 
 
                         bloodModelList.add(viewmodel);

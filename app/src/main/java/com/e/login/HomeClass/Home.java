@@ -60,7 +60,7 @@ public class Home extends AppCompatActivity {
     NavigationView navigationView;
     FloatingActionButton floatingActionButton;
     EditText editText;
-    String data,data1;
+    String data,data1,data2,data3;
     private long pressedTime;
 
     public static final String TAG = "bottom_sheet";
@@ -90,9 +90,9 @@ public class Home extends AppCompatActivity {
 
         Intent i = getIntent();
         data = i.getStringExtra("token");
-        Intent i1 = getIntent();
-        data1 = i1.getStringExtra("id");
-
+        data1 = i.getStringExtra("id");
+        data2 = i.getStringExtra("user_name");
+        data3 = i.getStringExtra("email");
 
 
 //
@@ -178,6 +178,8 @@ public class Home extends AppCompatActivity {
                         Intent home = new Intent(Home.this, Profile.class);
                         home.putExtra("token",data);
                         home.putExtra("id",data1);
+                        home.putExtra("user_name",data2);
+                        home.putExtra("email",data3);
                         home.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(home);
                         break;
@@ -341,9 +343,9 @@ public class Home extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
 
-
-                Log.i("0000000",response.toString());
-                Toast.makeText(Home.this, response.toString(), Toast.LENGTH_SHORT).show();
+//
+//                Log.i("0000000",response.toString());
+//                Toast.makeText(Home.this, response.toString(), Toast.LENGTH_SHORT).show();
 
                 try {
 
@@ -353,9 +355,11 @@ public class Home extends AppCompatActivity {
 
 
                     if(Success.equals("true")){
-                        Log.i("123",msg);
-                        Toast.makeText(Home.this, msg, Toast.LENGTH_SHORT).show();
+//                        Log.i("123",msg);
+//                        Toast.makeText(Home.this, msg, Toast.LENGTH_SHORT).show();
                         finishAffinity();
+                        PreferenceUtils.saveid(null,Home.this);
+                        PreferenceUtils.saveToken(null,Home.this);
 
 
                         String id = null;

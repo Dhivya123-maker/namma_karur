@@ -1,21 +1,7 @@
 package com.e.login.JobsClass;
 
-public class Jobs_Model {
-    private  String img;
-
-    public String getImg1() {
-        return img1;
-    }
-
-    public void setImg1(String img1) {
-        this.img1 = img1;
-    }
-
-    String img1;
-
-    public Jobs_Model(String id) {
-        this.id = id;
-    }
+public class View_MoreJob_Model {
+    String img;
 
     public String getId() {
         return id;
@@ -27,11 +13,13 @@ public class Jobs_Model {
 
     String id;
 
-    public Jobs_Model(String img, String txt, String img1) {
+    public View_MoreJob_Model(String img, String txt,String id) {
         this.img = img;
         this.txt = txt;
-        this.img1 = img1;
+        this.id = id;
     }
+
+    String txt;
 
     public String getImg() {
         return img;
@@ -49,10 +37,5 @@ public class Jobs_Model {
         this.txt = txt;
     }
 
-
-    public Jobs_Model(){
-
-    }
-
-    private  String txt;
+    public  View_MoreJob_Model(){}
 }

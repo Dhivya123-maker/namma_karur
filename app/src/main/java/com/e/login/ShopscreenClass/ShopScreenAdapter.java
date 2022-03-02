@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -66,46 +67,59 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+//
+//        holder.textView.setText(shopScreenModelList.get(position).getText());
+//        holder.textView1.setText(shopScreenModelList.get(position).getText_one());
+//        holder.textView2.setText(shopScreenModelList.get(position).getText_two());
+//        holder.textView3.setText(shopScreenModelList.get(position).getText_three());
+//        holder.textView4.setText(shopScreenModelList.get(position).getText_four());
 
-        holder.textView.setText(shopScreenModelList.get(position).getText());
-        holder.textView1.setText(shopScreenModelList.get(position).getText_one());
-        holder.textView2.setText(shopScreenModelList.get(position).getText_two());
-        holder.textView3.setText(shopScreenModelList.get(position).getText_three());
-        holder.textView4.setText(shopScreenModelList.get(position).getText_four());
+//
+////        holder.img.setImageResource(R.drawable.ac_one);
+//
+//        Glide.with(context)
+//                .load(shopScreenModelList.get(position).getImage())
+//                .into(holder.img);
+
+        if (shopScreenModelList.get(position).getCategory().equals("AtmCatalog")){
+
+            holder.textView.setText(shopScreenModelList.get(position).getText());
+            holder.textView1.setText(shopScreenModelList.get(position).getText_one());
+            holder.textView2.setText(shopScreenModelList.get(position).getText_two());
+            holder.loc.setText(shopScreenModelList.get(position).getText_three());
+
+            Glide.with(context)
+                    .load(shopScreenModelList.get(position).getImage())
+                    .into(holder.img);
+
+            holder.lnr.setVisibility(View.GONE);
+            holder.atm_lnr.setVisibility(View.VISIBLE);
+
+//            holder.filter.setVisibility(View.GONE);
 
 
-//        holder.img.setImageResource(R.drawable.ac_one);
+        }else {
 
-        Glide.with(context)
-                .load(shopScreenModelList.get(position).getImage())
-                .into(holder.img);
+            holder.textView.setText(shopScreenModelList.get(position).getText());
+            holder.textView1.setText(shopScreenModelList.get(position).getText_one());
+            holder.textView2.setText(shopScreenModelList.get(position).getText_two());
+            holder.textView3.setText(shopScreenModelList.get(position).getText_three());
+            holder.textView4.setText(shopScreenModelList.get(position).getText_four());
+
+            holder.lnr.setVisibility(View.VISIBLE);
+            holder.atm_lnr.setVisibility(View.GONE);
+//            holder.filter.setVisibility(View.VISIBLE);
+
+            Glide.with(context)
+                    .load(shopScreenModelList.get(position).getImage())
+                    .into(holder.img);
 
 
-//        holder.img1.setImageResource(R.drawable.starr);
-//        holder.img2.setImageResource(R.drawable.verified);
-//        holder.img3.setImageResource(R.drawable.clock);
+        }
+
+
 
     }
-    // inflates the row layout from xml when needed
-//    @Override
-//    public ShopClassAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        View view = mInflater.inflate(R.layout.recycler_row_three, parent, false);
-////        return new com.e.login.HomeClass.MyRecyclerViewAdapter.ViewHolder(view);
-//
-//       return new ViewHolder(view);
-//    }
-
-    // binds the data to the TextView in each row
-//    @Override
-//    public void onBindViewHolder(com.e.login.ShopClass.ShopClassAdapter.ViewHolder holder, int position) {
-////        String animal = mData.get(position);
-////         holder.textView.setText(animal);
-//
-
-//
-//
-//
-//    }
 
     // total number of rows
     @Override
@@ -118,21 +132,35 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView img,img1,img2,img3;
-        TextView textView, textView1,textView2,textView3,textView4;
+        ImageView img,img1,img2,img3,atm_img;
+        LinearLayout lnr,atm_lnr,filter;
+        TextView textView, textView1,textView2,textView3,textView4,atm_txt,atm_desc,atm_rat,loc;
 
         ViewHolder(View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.sr_img);
-            img1 = itemView.findViewById(R.id.star);
+            img1 = itemView.findViewById(R.id.atm_star);
             img2 = itemView.findViewById(R.id.verify_img);
             img3 = itemView.findViewById(R.id.time_img);
+
+            lnr = itemView.findViewById(R.id.ac_onee);
+            atm_lnr = itemView.findViewById(R.id.atm_lnr);
+            filter = itemView.findViewById(R.id.filter_lnr);
 
             textView = itemView.findViewById(R.id.sr_txt_one);
             textView1 = itemView.findViewById(R.id.sr_txt_two);
             textView2 = itemView.findViewById(R.id.sr_txt_three);
             textView3 = itemView.findViewById(R.id.verified_txt);
             textView4 = itemView.findViewById(R.id.time_txt);
+            loc = itemView.findViewById(R.id.locationn);
+
+
+            atm_txt = itemView.findViewById(R.id.atm_name);
+            atm_desc = itemView.findViewById(R.id.atm_desc);
+            atm_rat = itemView.findViewById(R.id.atm_rate);
+
+
+
 
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -143,6 +171,7 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
                         if (position != RecyclerView.NO_POSITION) {
                             mListener1.onItemClick(position);
                         }
+
                     }
 
                 }

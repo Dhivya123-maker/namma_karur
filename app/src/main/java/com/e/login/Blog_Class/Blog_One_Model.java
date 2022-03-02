@@ -6,6 +6,20 @@ public class Blog_One_Model {
     private String txt;
     private String txt1;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Blog_One_Model(String id) {
+        this.id = id;
+    }
+
+    String id;
+
     public Blog_One_Model(String img, String txt, String txt1) {
         this.img = img;
         this.txt = txt;

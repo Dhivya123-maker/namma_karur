@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.e.login.R;
 
 import java.util.List;
@@ -43,8 +44,11 @@ public class Blog_two_Adapter extends RecyclerView.Adapter<Blog_two_Adapter.View
         holder.textView.setText(blogTwoModelList.get(position).getTxt());
         holder.textView1.setText(blogTwoModelList.get(position).getTxt1());
 
+        Glide.with(context)
+                .load(blogTwoModelList.get(position).getImg())
+                .into(holder.img);
 
-        holder.img.setImageResource(R.drawable.veg);
+
     }
 
 
@@ -56,7 +60,7 @@ public class Blog_two_Adapter extends RecyclerView.Adapter<Blog_two_Adapter.View
     @Override
     public int getItemCount() {
 
-        return 4;
+        return blogTwoModelList.size();
 
     }
 

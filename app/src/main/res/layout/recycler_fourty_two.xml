@@ -8,6 +8,6 @@
         android:id="@+id/mahal_two_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/mahal_one"/>
+      />
 
 </LinearLayout>

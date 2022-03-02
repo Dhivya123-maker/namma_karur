@@ -1,8 +1,13 @@
 package com.e.login.Gallery_Class;
 
-public class Gallery_Model {
-    public Gallery_Model(String img) {
+import android.content.Context;
+
+import java.util.List;
+
+public class Gallery_two_Model {
+    public Gallery_two_Model(String img,String txt) {
         this.img = img;
+        this.txt = txt;
     }
 
     public String getImg() {
@@ -24,20 +29,5 @@ public class Gallery_Model {
         this.txt = txt;
     }
 
-    public String getTxt1() {
-        return txt1;
-    }
-
-    public void setTxt1(String txt1) {
-        this.txt1 = txt1;
-    }
-
-    public Gallery_Model(String txt, String txt1) {
-        this.txt = txt;
-        this.txt1 = txt1;
-    }
-
-    String txt1;
-
-    public Gallery_Model(){}
+    public Gallery_two_Model(Context applicationContext, List<Gallery_two_Model> galleryTwoModelList){}
 }

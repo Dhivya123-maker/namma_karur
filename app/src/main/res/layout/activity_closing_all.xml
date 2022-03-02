@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".JobsClass.Closing_All">
+    <RelativeLayout
+        android:id="@+id/brandAndItsLocation"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/profile_empty"
+        android:backgroundTint="#4C9A2A"
+
+
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/break_txtt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="70dp"
+                android:text="All Jobs"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/closing_all"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

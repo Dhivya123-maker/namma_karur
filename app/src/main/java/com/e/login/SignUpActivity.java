@@ -84,13 +84,16 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
 
-        //Initializing Views
+
 
 
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SignUpActivity.this,LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                i.putExtra("user_name",Name);
+                i.putExtra("email",Email);
+                i.putExtra("phone",Phone);
                 startActivity(i);
 
             }
@@ -287,6 +290,7 @@ public class SignUpActivity extends AppCompatActivity {
                                intent.putExtra("id",id);
                                intent.putExtra("email",Email);
                                intent.putExtra("password",Password);
+                               intent.putExtra("user_name",Name);
                             Log.i("456",token);
                             Log.i("789",id);
 //                            Toast.makeText(SignUpActivity.this, token, Toast.LENGTH_SHORT).show();

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.e.login.AmbulanceClass.AmbulanceModel;
 import com.e.login.R;
 
@@ -46,7 +47,10 @@ public class Blog_One_Adapter extends RecyclerView.Adapter<Blog_One_Adapter.View
         holder.textView1.setText(blogOneModelList.get(position).getTxt1());
 
 
-        holder.img.setImageResource(R.drawable.veg);
+        Glide.with(context)
+                .load(blogOneModelList.get(position).getImg())
+                .into(holder.img);
+
     }
 
 
@@ -58,7 +62,7 @@ public class Blog_One_Adapter extends RecyclerView.Adapter<Blog_One_Adapter.View
     @Override
     public int getItemCount() {
 
-        return 4;
+        return blogOneModelList.size();
 
     }
 

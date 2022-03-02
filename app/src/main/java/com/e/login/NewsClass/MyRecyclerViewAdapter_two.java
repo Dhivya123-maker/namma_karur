@@ -86,7 +86,7 @@ public class MyRecyclerViewAdapter_two extends RecyclerView.Adapter<com.e.login.
 //                    intent1.putExtra("cat1","All_news");
                     intent1.putExtra("id",id);
                     view.getContext().startActivity(intent1);
-                    Toast.makeText(context.getApplicationContext(), id, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context.getApplicationContext(), id, Toast.LENGTH_SHORT).show();
 
 
 //                    if (mListener != null) {

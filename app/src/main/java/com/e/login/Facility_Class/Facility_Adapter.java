@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.e.login.AmbulanceClass.AmbulanceModel;
 import com.e.login.Gallery_Class.Gallery_Model;
 import com.e.login.R;
@@ -44,7 +45,10 @@ public class Facility_Adapter extends RecyclerView.Adapter<Facility_Adapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.img.setImageResource(R.drawable.mahal_two);
+//        holder.img.setImageResource(R.drawable.mahal_two);
+        Glide.with(context)
+                .load(facilityModelList.get(position).getImg())
+                .into(holder.img);
         holder.txt.setText(facilityModelList.get(position).getTxt());
         holder.txt1.setText(facilityModelList.get(position).getTxt1());
     }
@@ -56,7 +60,7 @@ public class Facility_Adapter extends RecyclerView.Adapter<Facility_Adapter.View
     @Override
     public int getItemCount() {
 
-        return 4;
+        return facilityModelList.size();
 
     }
 

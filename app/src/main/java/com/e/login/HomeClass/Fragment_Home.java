@@ -33,6 +33,7 @@ import com.e.login.AmbulanceClass.Ambulance;
 import com.e.login.Bank.BankActivity;
 import com.e.login.BaseApi.Api;
 import com.e.login.Blog_Class.BlogActivity;
+import com.e.login.Blog_Class.Blog_Fragment;
 import com.e.login.BloodClass.Blood_Fragment;
 import com.e.login.BloodClass.Blood_One;
 import com.e.login.BusTimeClass.Bus_TimeActivity;
@@ -118,6 +119,7 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
         Api a = new Api();
         api = a.getBASE_URL();
 
+        Log.i("qufdryuwgdr",PreferenceUtils.getToken(getActivity()));
         Intent intent = getActivity().getIntent();
         data = intent.getStringExtra("token");
         Intent i1 = getActivity().getIntent();
@@ -694,6 +696,7 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
                 Map<String,String> params = new HashMap<String, String>();
 
                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
+
                 return params;
             }
         };
@@ -712,8 +715,7 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
         String cat_name = model.getCat_name();
 
 
-
-        if(cat_name.equals("OfferCatalog")){
+             if(cat_name.equals("OfferCatalog")){
 
             Intent intent = new Intent(getActivity(), OfferActivity.class);
             intent.putExtra("cat",cat_name);
@@ -725,8 +727,21 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
         }else if (cat_name.equals("BloodCatalog")){
             Intent intent = new Intent(getActivity(), Blood_Fragment.class);
             startActivity(intent);
-        }else {
+        }else if (cat_name.equals("KarurblogCatalog")){
+                 Intent intent = new Intent(getActivity(), BlogActivity.class);
+                 intent.putExtra("cat",cat_name);
+                 startActivity(intent);
+             }
+             else if (cat_name.equals("JobCatalog")){
+            Intent intent = new Intent(getActivity(), Jobs.class);
+            intent.putExtra("cat",cat_name);
+
+            startActivity(intent);
+        }
+
+        else {
             Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
+           // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
             intent.putExtra("cat", cat_name);
             startActivity(intent);
         }

@@ -77,7 +77,6 @@ public class OnBoarding extends AppCompatActivity {
         else {
 
             linearLayout.setVisibility(View.VISIBLE);
-//        hooks
             viewPager = findViewById(R.id.slider);
             dotsLayout = findViewById(R.id.dots);
             back = findViewById(R.id.board_back);

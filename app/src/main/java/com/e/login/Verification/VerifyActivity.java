@@ -25,8 +25,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.HomeClass.Home;
+import com.e.login.Profile;
 import com.e.login.R;
 import com.e.login.SignUpActivity;
+import com.e.login.utils.PreferenceUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,7 +40,7 @@ public class VerifyActivity extends AppCompatActivity {
     Button verify;
    EditText otp1,otp2,otp3,otp4;
    String OTP1,OTP2,OTP3,OTP4;
-    String data,data1,data2,data3;
+    String data,data1,data2,data3,data4;
     ImageView back;
     TextView resend,mobile;
     private Context mContext;
@@ -84,6 +86,7 @@ public class VerifyActivity extends AppCompatActivity {
         data1 = i1.getStringExtra("id");
         data2 = i1.getStringExtra("phone");
         data3 = i1.getStringExtra("email");
+        data4 = i1.getStringExtra("user_name");
         mobile.setText(data2);
 
 
@@ -151,10 +154,16 @@ public class VerifyActivity extends AppCompatActivity {
                         if (Success.equals("true")){
 
                             Toast.makeText(VerifyActivity.this, msg, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(VerifyActivity.this,Email_OTP.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                            intent.putExtra("token",data);
+                            Intent intent = new Intent(VerifyActivity.this, Home.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                            intent.putExtra("token",data);
                             intent.putExtra("id",data1);
                             intent.putExtra("email",data3);
+//                            intent.putExtra("user_name",data4);
+
+                            PreferenceUtils.saveid(data1,VerifyActivity.this);
+                            PreferenceUtils.saveToken(data,VerifyActivity.this);
+
+
                             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent);
 

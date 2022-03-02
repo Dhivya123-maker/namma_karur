@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.e.login.HospitalClass.HospitalModel;
 import com.e.login.R;
 
@@ -53,18 +54,17 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> {
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-//        String animal = mData.get(position);
-//         holder.textView.setText(animal);
+
 
         holder.textView.setText(blogModelList.get(position).getText());
        holder.textView1.setText(blogModelList.get(position).getText_one());
-       holder.imageView.setImageResource(R.drawable.veg);
+     //  holder.imageView.setImageResource(R.drawable.veg);
       //  holder.imageView.setImageResource(shopModelList.get(position).getImage());
 
 
-//        Glide.with(context)
-//                .load(servicesModelList.get(position).getImage())
-//                .into(holder.imageView);
+        Glide.with(context)
+                .load(blogModelList.get(position).getImage())
+                .into(holder.imageView);
 
 
 
@@ -75,7 +75,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
 
-        return 2;
+        return blogModelList.size();
 
     }
 
@@ -88,7 +88,6 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> {
         ViewHolder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.blog_one_img);
-
             textView = itemView.findViewById(R.id.blog_one_txt);
             textView1 = itemView.findViewById(R.id.blog_two_txt);
 

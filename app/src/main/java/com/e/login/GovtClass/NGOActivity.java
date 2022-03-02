@@ -83,9 +83,9 @@ public class NGOActivity extends AppCompatActivity {
                         name = jsonObject.getString("title");
                         des = jsonObject.getString("address");
 
-
-                        Toast.makeText(NGOActivity.this, image.toString(), Toast.LENGTH_SHORT).show();
-                        Log.i("jbfhusduycfhb",image.toString());
+//
+//                        Toast.makeText(NGOActivity.this, image.toString(), Toast.LENGTH_SHORT).show();
+//                        Log.i("jbfhusduycfhb",image.toString());
 
                         NGOModel viewmodel = new NGOModel();
 

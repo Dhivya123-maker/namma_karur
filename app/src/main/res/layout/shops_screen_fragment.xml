@@ -38,10 +38,10 @@
                     android:layout_marginStart="20dp"
                     android:text=""
                     android:textColor="@color/white"
-                    android:textSize="16dp"
-                   />
+                    android:textSize="16dp" />
 
                 <LinearLayout
+                    android:id="@+id/visible_linear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -84,6 +84,7 @@
 
 
                         <LinearLayout
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="end"
@@ -111,7 +112,7 @@
 
 
                             <LinearLayout
-                                android:id="@+id/filter"
+                                android:id="@+id/filter_lnr"
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
                                 android:layout_gravity="center"
@@ -135,6 +136,99 @@
                 </LinearLayout>
 
 
+                <LinearLayout
+                    android:id="@+id/atm_visivle_lnr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="60dp"
+                            android:background="@drawable/bg"
+                            android:hint="Search"
+                            android:paddingStart="20dp"
+                            android:textSize="15dp">
+
+                        </EditText>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="70dp"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@drawable/ic_baseline_search_24">
+
+                            </ImageView>
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+
+
+                            <LinearLayout
+
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:layout_gravity="center"
+                                android:layout_marginEnd="20dp"
+                                android:background="@drawable/bg_one"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="15dp"
+                                    android:layout_height="15dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/filter" />
+
+                            </LinearLayout>
+
+
+                            <!--                            <LinearLayout-->
+
+                            <!--                                android:layout_width="35dp"-->
+                            <!--                                android:layout_height="35dp"-->
+                            <!--                                android:layout_gravity="center"-->
+                            <!--                                android:layout_marginEnd="10dp"-->
+                            <!--                                android:background="@drawable/bg_one"-->
+                            <!--                                android:gravity="center">-->
+
+                            <!--                                <ImageView-->
+                            <!--                                    android:layout_width="15dp"-->
+                            <!--                                    android:layout_height="15dp"-->
+                            <!--                                    android:layout_gravity="center"-->
+                            <!--                                    android:src="@drawable/loc" />-->
+
+                            <!--                            </LinearLayout>-->
+
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
             </LinearLayout>
 
 
@@ -150,15 +244,10 @@
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-
-            <LinearLayout
-                android:id="@+id/relativeLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginTop="0dp"
-                android:background="@drawable/mpty">
 
 
 
@@ -264,10 +353,10 @@
                     </LinearLayout>
 
 
+                </RelativeLayout>
 
 
 
-            </LinearLayout>
             </ScrollView>
 
 

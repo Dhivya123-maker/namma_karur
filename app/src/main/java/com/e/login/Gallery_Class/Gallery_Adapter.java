@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.e.login.AmbulanceClass.AmbulanceModel;
 import com.e.login.R;
 
@@ -43,7 +44,13 @@ public class Gallery_Adapter extends RecyclerView.Adapter<Gallery_Adapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.img.setImageResource(R.drawable.mahal_one);
+        //holder.img.setImageResource(R.drawable.mahal_one);
+        Glide.with(context)
+                .load(galleryModelList.get(position).getImg())
+                .into(holder.img);
+//        holder.txt.setText(galleryModelList.get(position).getTxt());
+//        holder.txt1.setText(galleryModelList.get(position).getTxt1());
+
     }
 
 
@@ -52,7 +59,7 @@ public class Gallery_Adapter extends RecyclerView.Adapter<Gallery_Adapter.ViewHo
     @Override
     public int getItemCount() {
 
-        return 4;
+        return galleryModelList.size();
 
     }
 
@@ -60,12 +67,12 @@ public class Gallery_Adapter extends RecyclerView.Adapter<Gallery_Adapter.ViewHo
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
+        TextView txt,txt1;
 
 
         ViewHolder(View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.mahal_image);
-
 
 
 

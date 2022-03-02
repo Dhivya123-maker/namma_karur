@@ -3,9 +3,19 @@ package com.e.login.Blog_Class;
 public class BlogModel {
     private String image;
 
+    public BlogModel(String id) {
+        this.id = id;
+    }
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
+    String id;
     private String text;
     private String text_one;
 

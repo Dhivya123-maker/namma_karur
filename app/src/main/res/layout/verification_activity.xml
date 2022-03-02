@@ -74,7 +74,7 @@
             android:layout_height="50dp"
             android:layout_below="@+id/log_lnr"
             android:layout_marginTop="120dp"
-            android:hint="Mobile Number"
+            android:hint="Email/Phone.no"
             android:textSize="14dp"
             android:textStyle="bold"
             android:textColorHint="#808080"

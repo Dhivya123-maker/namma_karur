@@ -2,6 +2,7 @@ package com.e.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
@@ -25,6 +26,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.HomeClass.Home;
 import com.e.login.Verification.Email_OTP;
+import com.e.login.Verification.Mobile_verification;
 import com.e.login.Verification.VerificationActivity;
 import com.e.login.utils.PreferenceUtils;
 
@@ -41,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
     TextView textsignup,forget;
     ImageView show_pass_btn,back;
     EditText password,email;
-    String Email,Password,email_intent,pass_intent;
+    String Email,Password,email_intent,pass_intent,user_intent,phone;
     private  long pressedTime;
 
 
@@ -95,13 +97,23 @@ public class LoginActivity extends AppCompatActivity {
         email_intent = i.getStringExtra("email");
         Intent i1 = getIntent();
         pass_intent = i1.getStringExtra("password");
+        user_intent = i1.getStringExtra("user_name");
+        phone = i1.getStringExtra("phone");
+
+        Toast.makeText(LoginActivity.this, user_intent, Toast.LENGTH_SHORT).show();
 
 
         forget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this, VerificationActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+
+                Intent intent= new Intent(LoginActivity.this,VerificationActivity.class);
+                intent.putExtra("user_name",user_intent);
+                intent.putExtra("email",email_intent);
+                intent.putExtra("phone",phone);
                 startActivity(intent);
+
+
             }
         });
 
@@ -233,7 +245,10 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-        public void ShowHidePass(View view){
+
+
+
+    public void ShowHidePass(View view){
 
         if(view.getId() == R.id.show_pass_btn_login){
 

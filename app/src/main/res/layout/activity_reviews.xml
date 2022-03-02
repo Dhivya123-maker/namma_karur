@@ -128,52 +128,12 @@
 
                 </RatingBar>
                 </LinearLayout>
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_gravity="center"-->
-<!--                    android:layout_marginStart="20dp"-->
-<!--                    android:layout_marginTop="30dp"-->
-<!--                    android:layout_marginEnd="20dp"-->
-<!--                    android:gravity="center"-->
-<!--                    android:orientation="horizontal">-->
-
-<!--                    <ImageView-->
-<!--                        android:id="@+id/star_rating"-->
-<!--                        android:layout_width="20dp"-->
-<!--                        android:layout_height="20dp"-->
-<!--                        android:src="@drawable/review_star" />-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="20dp"-->
-<!--                        android:layout_height="20dp"-->
-<!--                        android:layout_marginStart="10dp"-->
-<!--                        android:src="@drawable/review_star" />-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="20dp"-->
-<!--                        android:layout_height="20dp"-->
-<!--                        android:layout_marginStart="10dp"-->
-<!--                        android:src="@drawable/review_star" />-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="20dp"-->
-<!--                        android:layout_height="20dp"-->
-<!--                        android:layout_marginStart="10dp"-->
-<!--                        android:layout_marginEnd="10dp"-->
-<!--                        android:src="@drawable/review_star" />-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="20dp"-->
-<!--                        android:layout_height="20dp"-->
-<!--                        android:src="@drawable/review_star" />-->
-<!--                </LinearLayout>-->
 
 
                 <EditText
                     android:id="@+id/review_desc"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="110dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="35dp"
                     android:layout_marginEnd="20dp"
@@ -181,7 +141,9 @@
                     android:hint="Write your comments"
                     android:inputType="text"
                     android:paddingStart="15dp"
-                    android:paddingBottom="120dp"
+                    android:paddingBottom="80dp"
+                    android:lines="1"
+                    android:maxLines="1"
                     android:textColorHint="#B5D5A7"
                     android:textSize="14dp" />
 

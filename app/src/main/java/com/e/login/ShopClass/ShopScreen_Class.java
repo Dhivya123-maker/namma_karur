@@ -1,7 +1,10 @@
 package com.e.login.ShopClass;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -9,9 +12,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -69,6 +75,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
     String nimage=null;
     String nid = null;
     String bid= null;
+    private static final int REQUEST_CALL = 1 ;
 
 
 
@@ -134,6 +141,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
         }else if (data3.equals("AmbulanceCatalog")) {
             String url = api + "get-Ambulance-list";
             ambulance(url);
+
             shop_name.setText("Ambulance");
         }else  if (data3.equals("HotelCatalog")){
             String url = api + "get-hotel-category-list";
@@ -154,6 +162,10 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
             String url = api + "get-ngo-govt-category-list";
             ngo(url);
             shop_name.setText("Govt/NGO");
+        }else if (data3.equals("AtmCatalog")){
+            String url = api + "get-atm-category-list";
+            atm(url);
+            shop_name.setText("ATM");
         }
 
 
@@ -220,10 +232,6 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
 
 public void shop(String url) {
-
-
-
-
 
 
 
@@ -354,10 +362,10 @@ public void shop(String url) {
                         aname = jsonObject.getString("name");
                         ades = jsonObject.getString("description");
                         aimg = jsonObject.getString("image");
-                        apri = jsonObject.getString("primary_number");
+                        apri = jsonObject.getString("vehicle_no");
                         asec = jsonObject.getString("secondary_number");
 
-
+//                        makePhoneCall();
 
                         ShopModel model = new ShopModel();
 
@@ -367,7 +375,7 @@ public void shop(String url) {
                         model.setAimg(aimg);
                         model.setAname(aname);
                         model.setApri(apri);
-                        model.setAsec(asec);
+                        model.setAsec("Call Now");
 
 
 
@@ -715,6 +723,134 @@ public void shop(String url) {
         requestQueue.add(jsonObjectRequest);
 
     }
+
+
+
+    private void atm(String url) {
+
+
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("CheckResult")
+            @Override
+            public void onResponse(JSONObject response) {
+
+                Log.i("huq1rduq4oa",response.toString());
+                try {
+                    JSONArray res = response.getJSONArray("data");
+
+                    shop_model = new ArrayList<>();
+
+
+                    for (int i=0;i<res.length();i++){
+
+
+                        JSONObject jsonObject = res.getJSONObject(i);
+
+
+
+                        id = jsonObject.getString("id");
+                        name = jsonObject.getString("name");
+                        image = jsonObject.getString("image");
+//                        view_count = jsonObject.getString("view_count") ;
+//
+
+
+
+
+                        ShopModel model = new ShopModel();
+
+                        model.setImage(image);
+                        model.setText(name);
+//                        model.setText_one(view_count+" views");
+                        model.setId(id);
+
+                        model.setCategory(data3);
+
+
+
+
+
+                        shop_model.add(model);
+
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+                recyclerView.setLayoutManager(new LinearLayoutManager(ShopScreen_Class.this));
+                adapter =  new ShopClassAdapter(ShopScreen_Class.this,shop_model);
+                adapter.setOnItemClickListener(ShopScreen_Class.this);
+                recyclerView.setAdapter(adapter);
+
+
+
+            }
+
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+
+
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+
+                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken(ShopScreen_Class.this));
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(ShopScreen_Class.this);
+        requestQueue.add(jsonObjectRequest);
+
+    }
+    private void makePhoneCall() {
+        String number = asec;
+
+        if (number.trim().length() > 0) {
+
+            if (ContextCompat.checkSelfPermission(ShopScreen_Class.this,
+                    Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(ShopScreen_Class.this,
+                        new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+            }
+            else {
+                String dial = "tel:" + number;
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+            }
+
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CALL) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                makePhoneCall();
+            } else {
+                Toast.makeText(ShopScreen_Class.this, "Permission Denied to make a call" + "", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+
 
 
 

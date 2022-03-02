@@ -2,6 +2,7 @@ package com.e.login.ShopClass;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -70,12 +72,6 @@ public class ShopClassAdapter extends RecyclerView.Adapter<ShopClassAdapter.View
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-//        String animal = mData.get(position);
-//         holder.textView.setText(animal);
-
-
-
-
 
 
         if (shopModelList.get(position).getCategory().equals("AmbulanceCatalog")){
@@ -84,6 +80,9 @@ public class ShopClassAdapter extends RecyclerView.Adapter<ShopClassAdapter.View
             holder.aname.setText(shopModelList.get(position).getAname());
             holder.apri.setText(shopModelList.get(position).getApri());
             holder.asec.setText(shopModelList.get(position).getAsec());
+
+
+
 
             Glide.with(context)
                     .load(shopModelList.get(position).getAimg())
@@ -217,6 +216,25 @@ public class ShopClassAdapter extends RecyclerView.Adapter<ShopClassAdapter.View
             nimg = itemView.findViewById(R.id.government_img);
             nname = itemView.findViewById(R.id.government_txt);
             n_liear =  itemView.findViewById(R.id.govtt);
+
+            asec.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+//                    String[] number = {"8056553064","9360999506"};
+//
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(context.getApplicationContext());
+//                    builder.setTitle("Choose Contact");
+//                    builder.setItems(number, new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            // the user clicked on colors[which]
+//
+//
+//                        }
+//                    });
+//                    builder.show();
+                }
+            });
 
 
             itemView.setOnClickListener(new View.OnClickListener() {

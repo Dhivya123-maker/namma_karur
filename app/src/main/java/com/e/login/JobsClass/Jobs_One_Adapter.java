@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.e.login.R;
 import com.e.login.ViewActivity;
 
@@ -52,7 +53,11 @@ public class Jobs_One_Adapter extends RecyclerView.Adapter<Jobs_One_Adapter.View
         holder.txt4.setText(jobsOneModelList.get(position).getTxt4());
 
 
-        holder.img.setImageResource(R.drawable.ambulance);
+        Glide.with(context)
+                .load(jobsOneModelList.get(position).getImg())
+                .into(holder.img);
+
+//        holder.img.setImageResource(R.drawable.ambulance);
     }
 
 
@@ -63,7 +68,7 @@ public class Jobs_One_Adapter extends RecyclerView.Adapter<Jobs_One_Adapter.View
     @Override
     public int getItemCount() {
 
-        return 4;
+        return jobsOneModelList.size();
 
     }
 

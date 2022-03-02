@@ -230,21 +230,22 @@ public class Blank_PostFragment extends Fragment {
         phone_call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 makePhoneCall();
-//                String[] number = {"8056553064","9360999506"};
+
+//                String[] number = {"8056553064","9965919585"};
 //
 //                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 //                builder.setTitle("Choose Contact");
 //                builder.setItems(number, new DialogInterface.OnClickListener() {
 //                    @Override
 //                    public void onClick(DialogInterface dialog, int which) {
-//                        // the user clicked on colors[which]
+//
 //
 //
 //                    }
 //                });
 //                builder.show();
+
             }
         });
 

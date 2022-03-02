@@ -109,7 +109,7 @@ class NewsoneAdapter extends RecyclerView.Adapter<com.e.login.NewsClass.NewsoneA
                     Intent intent1 = new Intent(view.getContext(),All_news.class);
                     intent1.putExtra("id",id);
                     view.getContext().startActivity(intent1);
-                    Toast.makeText(context.getApplicationContext(), id, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context.getApplicationContext(), id, Toast.LENGTH_SHORT).show();
 
 //                    if (mListener != null) {
 //                        int position = getAdapterPosition();
