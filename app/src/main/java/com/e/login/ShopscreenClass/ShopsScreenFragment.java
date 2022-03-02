@@ -450,11 +450,18 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
         String S_name = model.getText();
 
 
-        Intent intent = new Intent(ShopsScreenFragment.this, Home_Fragment_Class.class);
-        intent.putExtra("list",data2);
-        intent.putExtra("id",S_id);
-        intent.putExtra("name",S_name);
-        startActivity(intent);
+        if(data2.equals("AtmCatalog")){
+
+
+        }
+        else{
+            Intent intent = new Intent(ShopsScreenFragment.this, Home_Fragment_Class.class);
+            intent.putExtra("list",data2);
+            intent.putExtra("id",S_id);
+            intent.putExtra("name",S_name);
+            startActivity(intent);
+        }
+
     }
 
 

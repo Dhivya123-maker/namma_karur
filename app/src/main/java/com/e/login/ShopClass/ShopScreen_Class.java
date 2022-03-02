@@ -2,14 +2,19 @@ package com.e.login.ShopClass;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +34,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.e.login.AmbulanceClass.Ambulance_call;
 import com.e.login.BaseApi.Api;
 import com.e.login.GovtClass.GovtActivity;
 import com.e.login.HomeClass.Fragment_Home;
@@ -68,7 +74,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
     String api;
     TextView shop_name,bustime;
     RecyclerView recyclerView;
-    String aname=null,ades=null,aimg=null,anum=null,apri =null,asec =null;
+    String aname=null,ades=null,aimg=null,anum=null,apri =null,asec =null,primary= null;
     String mid=null,mimg= null,mname = null,mview_count = null;
     String bname=null,bimage=null,bdes=null;
     String nname=null;
@@ -76,6 +82,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
     String nid = null;
     String bid= null;
     private static final int REQUEST_CALL = 1 ;
+    Dialog dialog;
 
 
 
@@ -90,6 +97,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
         shop_name =  findViewById(R.id.shopp_post);
         recyclerView =findViewById(R.id.shop_screen);
         bustime = findViewById(R.id.bus_txt_one);
+        dialog = new Dialog(this);
 
 
 
@@ -363,6 +371,8 @@ public void shop(String url) {
                         ades = jsonObject.getString("description");
                         aimg = jsonObject.getString("image");
                         apri = jsonObject.getString("vehicle_no");
+                        primary = jsonObject.getString("primary_number");
+
                         asec = jsonObject.getString("secondary_number");
 
 //                        makePhoneCall();
@@ -821,6 +831,23 @@ public void shop(String url) {
 
     }
     private void makePhoneCall() {
+        String number = primary;
+
+        if (number.trim().length() > 0) {
+
+            if (ContextCompat.checkSelfPermission(ShopScreen_Class.this,
+                    Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(ShopScreen_Class.this,
+                        new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+            }
+            else {
+                String dial = "tel:" + number;
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+            }
+
+        }
+    }
+    private void makePhoneCall_one() {
         String number = asec;
 
         if (number.trim().length() > 0) {
@@ -869,6 +896,9 @@ public void shop(String url) {
 
         if (data3.equals("AmbulanceCatalog")){
 
+                dialog();
+
+
         }else if (data3.equals("MarketCatalog"))
         {
             Intent intent = new Intent(ShopScreen_Class.this, MarketActivity.class);
@@ -885,7 +915,8 @@ public void shop(String url) {
             intent.putExtra("id",n_id);
             startActivity(intent);
 
-        } else {
+        }
+        else {
             Intent intent = new Intent(ShopScreen_Class.this, ShopsScreenFragment.class);
             intent.putExtra("list", data3);
             intent.putExtra("id", S_id);
@@ -894,6 +925,39 @@ public void shop(String url) {
         }
 
     }
+
+        public  void dialog(){
+        dialog.setContentView(R.layout.ambulance_call_recycle);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+        TextView txt = dialog.findViewById(R.id.primary_con_txt);
+        TextView txt1 = dialog.findViewById(R.id.sec_con_txt);
+        ImageView img = dialog.findViewById(R.id.primary_con_img);
+        ImageView img1 = dialog.findViewById(R.id.sec_img);
+            Button btn = dialog.findViewById(R.id.cancel_buttonn);
+
+
+        img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                makePhoneCall();
+            }
+        });
+            img1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    makePhoneCall_one();
+                }
+            });
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                   dialog.cancel();
+                }
+            });
+        dialog.show();
+
+        }
 }
 
 

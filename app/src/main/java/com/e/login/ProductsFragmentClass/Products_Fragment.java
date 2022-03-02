@@ -50,7 +50,7 @@ public class Products_Fragment extends Fragment {
 
     List<ProductsModel> productsModelList;
     ProductsAdapter adapter;
-    String data1,data2,data3,data4,data5,api,id,image,product_title,desc;
+    String data1,data2,data3,data4,data5,api,id,name,image,product_title,desc,course_title;
     RecyclerView recyclerView;
 
 
@@ -69,34 +69,36 @@ public class Products_Fragment extends Fragment {
         api = a.getBASE_URL();
         Intent intent = getActivity().getIntent();
 
-        data3 = intent.getStringExtra("name");
-        data4 = intent.getStringExtra("list");
-        data5 = intent.getStringExtra("id");
+        data1 = intent.getStringExtra("name");
+//        data4 = intent.getStringExtra("list");
+//        data5 = intent.getStringExtra("id");
+        data2 = intent.getStringExtra("list");
+        data3 = intent.getStringExtra("id");
 
 
-        if(data4.equals("ShopCatalog")){
-            String url = api + "get-shop-products?shop_id="+data5;
+        if(data2.equals("ShopCatalog")){
+            String url = api + "get-shop-products?shop_id="+data3;
             products(url);
 
-        }else if(data4.equals("ServiceCatalog")) {
-            String url = api + "get-service-list?service_id="+data5;
-            products(url);
+        }else if(data2.equals("ServiceCatalog")) {
+            String url = api + "get-service-list?service_id="+data3;
+            p_services(url);
 
 
 
-        } else if(data4.equals("EducationCatalog")){
-            String url = api + "get-education-courses-list?education_id="+data5;
-            products(url);
+        } else if(data2.equals("EducationCatalog")){
+            String url = api + "get-education-courses-list?education_id="+data3;
+           courses(url);
 
 
-        }else if(data4.equals("TransportCatalog")){
-            String url = api + "get-transport-list-detail?transport_id="+data5;
-            products(url);
+        }else if(data2.equals("TransportCatalog")){
+            String url = api + "get-transport-list-detail?transport_id="+data3;
+           p_services(url);
 
 
-        }else if(data4.equals("HospitalCatalog")){
-            String url = api + "get-hospital-treatments?hospital_id="+data5;
-            products(url);
+        }else if(data2.equals("HospitalCatalog")){
+            String url = api + "get-hospital-treatments?hospital_id="+data3;
+            p_services(url);
 
 
         }
@@ -117,32 +119,18 @@ public class Products_Fragment extends Fragment {
             public void onResponse(JSONObject response) {
 
 
-//                Log.i("d",response.toString());
-
-
-//                Log.i("l",id);
-
-//                Log.i("e",email);
-//                Log.i("p",phone);
-//                Log.i("w",whatsapp);
-//                Log.i("f",facebook);
-//                Log.i("i",instagram);
-//                Log.i("tt",twitter);
-//                Log.i("u",youtube);
-//                Log.i("vv",view_count);
 
                 try {
-                    JSONArray res = response.getJSONArray("data");
+
 
                     productsModelList = new ArrayList<>();
 
+                    JSONArray res = response.getJSONArray("data");
 
                     for (int i=0;i<res.length();i++){
 
 
                         JSONObject jsonObject = res.getJSONObject(i);
-
-
 
                         id = jsonObject.getString("id");
                         product_title = jsonObject.getString("product_title");
@@ -151,10 +139,7 @@ public class Products_Fragment extends Fragment {
 
 
 
-
-
                             ProductsModel viewmodel = new ProductsModel();
-
 
                             viewmodel.setText(product_title);
                             viewmodel.setImage(image);
@@ -200,6 +185,180 @@ public class Products_Fragment extends Fragment {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String, String>();
+                params.put("Accept","application/json");
+                params.put("Authorization","Bearer  "+ PreferenceUtils.getToken(getActivity()));
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(jsonObjectRequest);
+    }
+
+
+    public void p_services(String url){
+
+
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("CheckResult")
+            @Override
+            public void onResponse(JSONObject response) {
+
+
+
+                try {
+
+
+                    productsModelList = new ArrayList<>();
+
+                    JSONArray res = response.getJSONArray("data");
+
+                    for (int i=0;i<res.length();i++){
+
+
+                        JSONObject jsonObject = res.getJSONObject(i);
+
+                        id = jsonObject.getString("id");
+                       name = jsonObject.getString("name");
+                        image = jsonObject.getString("image");
+                        desc = jsonObject.getString("description");
+
+
+
+                        ProductsModel viewmodel = new ProductsModel();
+
+                        viewmodel.setText(name);
+                        viewmodel.setImage(image);
+                        viewmodel.setButton("more");
+                        viewmodel.setText_one(desc);
+
+
+                        productsModelList.add(viewmodel);
+
+                    }
+
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    adapter =  new ProductsAdapter(getActivity(),productsModelList);
+                    recyclerView.setAdapter(adapter);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+            }
+
+//
+//
+//        }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+
+
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Accept","application/json");
+                params.put("Authorization","Bearer  "+ PreferenceUtils.getToken(getActivity()));
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(jsonObjectRequest);
+    }
+
+    public void courses(String url){
+
+
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("CheckResult")
+            @Override
+            public void onResponse(JSONObject response) {
+
+
+
+                try {
+
+
+                    productsModelList = new ArrayList<>();
+
+                    JSONArray res = response.getJSONArray("data");
+
+                    for (int i=0;i<res.length();i++){
+
+
+                        JSONObject jsonObject = res.getJSONObject(i);
+
+                        id = jsonObject.getString("id");
+                       course_title= jsonObject.getString("course_title");
+                        image = jsonObject.getString("image");
+                        desc = jsonObject.getString("description");
+
+
+
+                        ProductsModel viewmodel = new ProductsModel();
+
+                        viewmodel.setText(course_title);
+                        viewmodel.setImage(image);
+                        viewmodel.setButton("more");
+                        viewmodel.setText_one(desc);
+
+
+                        productsModelList.add(viewmodel);
+
+                    }
+
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    adapter =  new ProductsAdapter(getActivity(),productsModelList);
+                    recyclerView.setAdapter(adapter);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+            }
+
+//
+//
+//        }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+
+
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Accept","application/json");
                 params.put("Authorization","Bearer  "+ PreferenceUtils.getToken(getActivity()));
                 return params;
             }

@@ -87,8 +87,6 @@ public class Blog_Fragment extends Fragment {
         sliderView.startAutoCycle();
 
 
-        blogModelList = new ArrayList<>();
-        blogOneModelList = new ArrayList<>();
 
       recyclerView = root.findViewById(R.id.blog_recycler);
       recyclerView1 = root.findViewById(R.id.blog1_recycler);
@@ -107,6 +105,10 @@ public class Blog_Fragment extends Fragment {
                 Log.i("hgtviuy",response.toString());
 
 
+
+                blogModelList = new ArrayList<>();
+                blogOneModelList = new ArrayList<>();
+                blogTwoModelList = new ArrayList<>();
 
                 try {
 
@@ -191,27 +193,27 @@ public class Blog_Fragment extends Fragment {
                         desc = jsonObject3.getString("description");
 
                         Log.i("41oijuyhtf98",jsonArray2.toString());
-                        Blog_One_Model viewmodel = new Blog_One_Model();
+                        Blog_two_Model viewmodel = new Blog_two_Model();
 
                         viewmodel.setImg(image);
 
                         viewmodel.setTxt1("Read more");
                         viewmodel.setTxt(desc);
-                        viewmodel.setId(id);
+//                        viewmodel.setId(id);
 
-                        blogOneModelList.add(viewmodel);
+                       blogTwoModelList.add(viewmodel);
 
 
                     }
                     recyclerView2.setLayoutManager(new LinearLayoutManager(getContext()));
 
-                    adapter1 =  new Blog_One_Adapter(getContext(),blogOneModelList);
-                    recyclerView2.setAdapter(adapter1);
+                    adapter2 =  new Blog_two_Adapter(getContext(),blogTwoModelList);
+                    recyclerView2.setAdapter(adapter2);
                     recyclerView2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-
-
-
+//
+//
+//
 
 
                 } catch (Exception e) {

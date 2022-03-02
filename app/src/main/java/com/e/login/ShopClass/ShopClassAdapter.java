@@ -216,25 +216,13 @@ public class ShopClassAdapter extends RecyclerView.Adapter<ShopClassAdapter.View
             nimg = itemView.findViewById(R.id.government_img);
             nname = itemView.findViewById(R.id.government_txt);
             n_liear =  itemView.findViewById(R.id.govtt);
-
-            asec.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-//                    String[] number = {"8056553064","9360999506"};
 //
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(context.getApplicationContext());
-//                    builder.setTitle("Choose Contact");
-//                    builder.setItems(number, new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialog, int which) {
-//                            // the user clicked on colors[which]
+//            asec.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
 //
-//
-//                        }
-//                    });
-//                    builder.show();
-                }
-            });
+//                }
+//            });
 
 
             itemView.setOnClickListener(new View.OnClickListener() {

@@ -25,6 +25,9 @@
         android:theme="@style/Theme.login"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".AmbulanceClass.Ambulance_call"
+            android:exported="false" />
+        <activity
             android:name=".JobsClass.Closing_All"
             android:exported="false" />
         <activity

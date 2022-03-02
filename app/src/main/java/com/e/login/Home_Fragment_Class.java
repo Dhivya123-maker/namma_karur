@@ -106,10 +106,16 @@ public class Home_Fragment_Class extends AppCompatActivity {
             viewPagerAdapter.add(new MoreInfo(), "Offers");
 
         }
+
         else if(data1.equals("BankCatalog")){
             viewPagerAdapter.add(new Blank_PostFragment(), "Home");
             viewPagerAdapter.add(new ShopPost(), "Flash");
 
+
+        }  else if(data1.equals("KarurblogCatalog")){
+            viewPagerAdapter.add(new Blank_PostFragment(), "Home");
+            viewPagerAdapter.add(new ShopPost(), "Quotes");
+            viewPagerAdapter.add(new MoreInfo(), "Videos");
 
         }
 

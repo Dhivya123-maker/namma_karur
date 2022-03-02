@@ -122,22 +122,6 @@ public class Blank_PostFragment extends Fragment {
         data2 = intent.getStringExtra("list");
         data3 = intent.getStringExtra("id");
 
-//        token= intent.getStringExtra("token");
-//        idd = intent.getStringExtra("id");
-//        Toast.makeText(getContext(),data2, Toast.LENGTH_SHORT).show();
-//      Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
-//        Toast.makeText(getContext(), data3, Toast.LENGTH_SHORT).show();
-//        String data = intent.getStringExtra("shop_category_id");
-//
-//
-//
-//        String data1 = intent.getStringExtra("comment");
-//        String data2 = intent.getStringExtra("rating");
-
-
-       // Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
-//        Toast.makeText(getContext(), data2, Toast.LENGTH_SHORT).show();
-//        Toast.makeText(getContext(), data3, Toast.LENGTH_SHORT).show();
 
 
 
@@ -147,6 +131,7 @@ public class Blank_PostFragment extends Fragment {
         if(data2.equals("ShopCatalog")){
             String url = api + "get-shop-details?shop_id="+data3;
           social(url);
+
 
         }else if(data2.equals("ServiceCatalog")) {
             String url = api + "get-service-details?service_id="+data3;
@@ -529,10 +514,7 @@ public void social(String url){
                 adapter =  new Blank_Comments_Adapter(getContext(),blank_comments_modelList);
                 recyclerView.setAdapter(adapter);
 
-                if(Success.equals("true")){
-//                        Log.i("123",msg);
-//                        Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
-//
+
 
 
                     titlee.setText(title);
@@ -545,14 +527,11 @@ public void social(String url){
 //                    phone_num.setText(phone);
                     view_ct.setText(view_count);
 
-                    blank_comments_modelList= new ArrayList<>();
 
 
 
-                }else{
-                    Log.i("1234",msg);
-                    Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
-                }
+
+
 
 
 

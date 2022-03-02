@@ -78,6 +78,14 @@ public class ProductsAdapter extends RecyclerView.Adapter<com.e.login.ProductsFr
         holder.textView1.setText(productsModelList.get(position).getText_one());
        holder.btn.setText(productsModelList.get(position).getButton());
         //holder.img.setImageResource(R.drawable.ac);
+        holder.btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), Carrier_Activity.class);
+                view.getContext().startActivity(intent);
+
+            }
+        });
 
         Glide.with(context)
                 .load(productsModelList.get(position).getImage())
@@ -111,13 +119,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<com.e.login.ProductsFr
             textView1 = itemView.findViewById(R.id.carrier_txt_two);
 
 
+//
+//           btn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                            Intent intent = new Intent(view.getContext(), Carrier_Activity.class);
-                            view.getContext().startActivity(intent);
 
 
 //                    if (mListener != null) {
@@ -126,8 +132,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<com.e.login.ProductsFr
 //                            mListener.onItemClick(position);
 //                        }
 //                    }
-                }
-            });
+//                }
+//            });
 
 //
 
