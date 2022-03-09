@@ -1,6 +1,7 @@
 package com.e.login.Blog_Class;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,6 +81,15 @@ public class Quotes_Adapter extends RecyclerView.Adapter<Quotes_Adapter.ViewHold
 
             textView = itemView.findViewById(R.id.quotes_txt_one);
             txt1 = itemView.findViewById(R.id.quotes_txt_two);
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(),Quotes_Catalog.class);
+                    view.getContext().startActivity(intent);
+                }
+            });
 
 
 

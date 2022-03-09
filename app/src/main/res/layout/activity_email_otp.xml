@@ -88,7 +88,7 @@
 
 
             <EditText
-                android:id="@+id/et_otp11"
+                android:id="@+id/et_otp_email"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -108,7 +108,7 @@
 
 
             <EditText
-                android:id="@+id/et_otp22"
+                android:id="@+id/et_otp_email1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -125,7 +125,7 @@
                 android:background="@drawable/rounded_borders"
                 />
             <EditText
-                android:id="@+id/et_otp33"
+                android:id="@+id/et_otp_email2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -142,7 +142,7 @@
                 android:background="@drawable/rounded_borders"
                 />
             <EditText
-                android:id="@+id/et_otp44"
+                android:id="@+id/et_otp_email3"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"

@@ -27,9 +27,11 @@ import com.e.login.AmbulanceClass.Ambulance;
 import com.e.login.AmbulanceClass.AmbulanceAdapter;
 import com.e.login.BaseApi.Api;
 import com.e.login.BusTimeClass.Bus_TimeActivity;
+import com.e.login.CarrierClass.Carrier_Activity;
 import com.e.login.CarrierClass.Carrier_Fragment;
 import com.e.login.R;
 import com.e.login.ShopClass.ShopClassAdapter;
+import com.e.login.ShopClass.ShopModel;
 import com.e.login.ShopClass.ShopScreen_Class;
 import com.e.login.ShopscreenClass.ShopScreenAdapter;
 import com.e.login.ShopscreenClass.ShopScreenModel;
@@ -45,7 +47,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Products_Fragment extends Fragment {
+public class Products_Fragment extends Fragment implements ProductsAdapter.OnItemClickListener  {
 
 
     List<ProductsModel> productsModelList;
@@ -74,6 +76,10 @@ public class Products_Fragment extends Fragment {
 //        data5 = intent.getStringExtra("id");
         data2 = intent.getStringExtra("list");
         data3 = intent.getStringExtra("id");
+
+        Toast.makeText(getActivity(), data2, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), data3, Toast.LENGTH_SHORT).show();
+
 
 
         if(data2.equals("ShopCatalog")){
@@ -145,6 +151,11 @@ public class Products_Fragment extends Fragment {
                             viewmodel.setImage(image);
                             viewmodel.setButton("more");
                             viewmodel.setText_one(desc);
+                            viewmodel.setId(id);
+                            viewmodel.setCat(data2);
+//
+//                            Log.i("gfdutfd7ut7fro",data2);
+
 
 
                             productsModelList.add(viewmodel);
@@ -154,6 +165,7 @@ public class Products_Fragment extends Fragment {
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     adapter =  new ProductsAdapter(getActivity(),productsModelList);
                     recyclerView.setAdapter(adapter);
+                    adapter.setOnItemClickListener(Products_Fragment.this::onItemClick);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -232,6 +244,9 @@ public class Products_Fragment extends Fragment {
                         viewmodel.setImage(image);
                         viewmodel.setButton("more");
                         viewmodel.setText_one(desc);
+                        viewmodel.setId(id);
+                        viewmodel.setCat(data2);
+
 
 
                         productsModelList.add(viewmodel);
@@ -241,6 +256,7 @@ public class Products_Fragment extends Fragment {
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     adapter =  new ProductsAdapter(getActivity(),productsModelList);
                     recyclerView.setAdapter(adapter);
+                    adapter.setOnItemClickListener(Products_Fragment.this::onItemClick);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -318,6 +334,9 @@ public class Products_Fragment extends Fragment {
                         viewmodel.setImage(image);
                         viewmodel.setButton("more");
                         viewmodel.setText_one(desc);
+                        viewmodel.setId(id);
+                        viewmodel.setCat(data2);
+
 
 
                         productsModelList.add(viewmodel);
@@ -327,6 +346,7 @@ public class Products_Fragment extends Fragment {
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     adapter =  new ProductsAdapter(getActivity(),productsModelList);
                     recyclerView.setAdapter(adapter);
+                    adapter.setOnItemClickListener(Products_Fragment.this::onItemClick);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -368,11 +388,25 @@ public class Products_Fragment extends Fragment {
         requestQueue.add(jsonObjectRequest);
     }
 
-//    @Override
-//    public void onItemClick(int position) {
-//        Intent intent = new Intent(getContext(),Carrier_Fragment.class);
-//        startActivity(intent);
-//    }
+    @Override
+    public void onItemClick(int position) {
+
+
+        ProductsModel model = productsModelList.get(position);
+
+        String id = model.getId();
+        String list = model.getCat();
+
+
+        Intent intent = new Intent(getContext(), Carrier_Activity.class);
+        intent.putExtra("id",id);
+        intent.putExtra("list",list);
+        startActivity(intent);
+
+
+    }
+
+
 
 
 }

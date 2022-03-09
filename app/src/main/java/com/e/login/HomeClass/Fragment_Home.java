@@ -114,12 +114,20 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
      View root =  inflater.inflate(R.layout.fragment_home, container, false);
-     DrawerLayout drawerLayout = root.findViewById(R.id.drawer_layout);
+//     DrawerLayout drawerLayout = root.findViewById(R.id.drawer_layout);
+        drawer = root.findViewById(R.id.drawerr);
+//
+//        drawer.setOnClickListener(new View.OnClickListener() {
+//         @Override
+//         public void onClick(View view) {
+//             drawerLayout.openDrawer(GravityCompat.START);
+//         }
+//     });
 
         Api a = new Api();
         api = a.getBASE_URL();
 
-        Log.i("qufdryuwgdr",PreferenceUtils.getToken(getActivity()));
+//        Log.i("qufdryuwgdr",PreferenceUtils.getToken(getActivity()));
         Intent intent = getActivity().getIntent();
         data = intent.getStringExtra("token");
         Intent i1 = getActivity().getIntent();
@@ -128,6 +136,8 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
         cat_recyclerView =  root.findViewById(R.id.category);
 
         cat = new ArrayList<>();
+
+
 //
 //        Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
 //        Toast.makeText(getContext(), data1, Toast.LENGTH_SHORT).show();
@@ -158,7 +168,6 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 
 //
 
-       drawer = root.findViewById(R.id.drawerr);
 
 
 //        extra = root.findViewById(R.id.layoutRow4);

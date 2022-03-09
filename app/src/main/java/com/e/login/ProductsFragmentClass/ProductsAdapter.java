@@ -8,7 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -41,20 +43,20 @@ public class ProductsAdapter extends RecyclerView.Adapter<com.e.login.ProductsFr
 
 
 
-//    public static ProductsAdapter.OnItemClickListener mListener;
-//
-//
-//
-//
-//    public interface OnItemClickListener{
-//        void onItemClick(int position);
-//    }
-//
-//    public void setOnItemClickListener(ProductsAdapter.OnItemClickListener listener){
-//
-//        mListener = listener;
-//
-//    }
+    public static ProductsAdapter.OnItemClickListener mListener;
+
+
+
+
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(ProductsAdapter.OnItemClickListener listener){
+
+        mListener = listener;
+
+    }
 
     public ProductsAdapter(Context context, List<ProductsModel> productsModelList) {
         this.context = context;
@@ -78,14 +80,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<com.e.login.ProductsFr
         holder.textView1.setText(productsModelList.get(position).getText_one());
        holder.btn.setText(productsModelList.get(position).getButton());
         //holder.img.setImageResource(R.drawable.ac);
-        holder.btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), Carrier_Activity.class);
-                view.getContext().startActivity(intent);
 
-            }
-        });
 
         Glide.with(context)
                 .load(productsModelList.get(position).getImage())
@@ -108,6 +103,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<com.e.login.ProductsFr
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
         Button btn;
+        LinearLayout button;
         TextView textView, textView1;
 
         ViewHolder(View itemView) {
@@ -119,21 +115,38 @@ public class ProductsAdapter extends RecyclerView.Adapter<com.e.login.ProductsFr
             textView1 = itemView.findViewById(R.id.carrier_txt_two);
 
 
-//
-//           btn.setOnClickListener(new View.OnClickListener() {
+//            btn.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View view) {
-
-
-
-//                    if (mListener != null) {
-//                        int position = getAdapterPosition();
-//                        if (position != RecyclerView.NO_POSITION) {
-//                            mListener.onItemClick(position);
-//                        }
-//                    }
+//
+//                    int position = getAdapterPosition();
+//                    String id = productsModelList.get(position).getId();
+//                    String list = productsModelList.get(position).getCat();
+//
+//
+//                    Intent intent = new Intent(view.getContext(),Carrier_Activity.class);
+//                    intent.putExtra("id",id);
+//                    intent.putExtra("list",list);
+//                    view.getContext().startActivity(intent);
 //                }
 //            });
+
+
+
+           btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+
+
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
 
 //
 

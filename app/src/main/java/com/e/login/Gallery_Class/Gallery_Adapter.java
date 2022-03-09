@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.e.login.AmbulanceClass.AmbulanceModel;
+import com.e.login.ProductsFragmentClass.ProductsAdapter;
 import com.e.login.R;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class Gallery_Adapter extends RecyclerView.Adapter<Gallery_Adapter.ViewHo
 
     List<Gallery_Model> galleryModelList;
     private Context context;
+
 
 
     public Gallery_Adapter(Context context, List<Gallery_Model> galleryModelList) {
@@ -73,9 +75,8 @@ public class Gallery_Adapter extends RecyclerView.Adapter<Gallery_Adapter.ViewHo
         ViewHolder(View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.mahal_image);
-
-
-
+//            txt = itemView.findViewById(R.id.category_one_txt);
+//            txt1 = itemView.findViewById(R.id.view_one_txt);
 
 
         }

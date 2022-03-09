@@ -1,10 +1,13 @@
 package com.e.login;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,9 +16,12 @@ import com.e.login.CarrierClass.Carrier_Fragment;
 import com.e.login.Facility_Class.Facility_Fragment;
 import com.e.login.Gallery_Class.Gallery_Fragment;
 import com.e.login.HelperClass.ViewPagerAdapter;
+import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.MoreInfoClass.MoreInfo;
 import com.e.login.ProductsFragmentClass.Products_Fragment;
 import com.e.login.ShoppostClass.ShopPost;
+import com.e.login.info_Class.InformationFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
@@ -45,6 +51,9 @@ public class Home_Fragment_Class extends AppCompatActivity {
 
         textView = findViewById(R.id.name);
         textView.setText(data);
+
+        BottomNavigationView btnNav = findViewById(R.id.bottomNavigation_frag);
+        btnNav.setOnNavigationItemSelectedListener(navListener);
 
 
 //
@@ -166,6 +175,43 @@ public class Home_Fragment_Class extends AppCompatActivity {
 
 
     }
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            int id = item.getItemId();
+            Fragment fragment = null;
+
+            switch (id) {
+                case R.id.nav_home:
+                    fragment = new Fragment_Home();
+                    break;
+                case R.id.nav_tree:
+                    fragment = new InformationFragment();
+                    break;
+                case R.id.nav_qr:
+                    fragment = new QrCodeFragment();
+                    break;
+                case R.id.nav_profilee:
+
+                    fragment = new Helpline();
+                    break;
+                case R.id.nav_notifications:
+                    fragment = new EnquiryFragment();
+                    break;
+
+
+            }
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, fragment).commit();
+
+            return true;
+        }
+    };
+
+
 
 //    private void clickEvents() {
 //

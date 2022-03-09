@@ -1,10 +1,15 @@
 package com.e.login;
 
+import static android.content.ContentValues.TAG;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -16,10 +21,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
@@ -27,35 +39,55 @@ import com.e.login.Verification.Signup_google;
 import com.e.login.Verification.VerificationActivity;
 import com.e.login.Verification.VerifyActivity;
 import com.e.login.utils.PreferenceUtils;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.OptionalPendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.internal.OnConnectionFailedListener;
 import com.google.android.gms.tasks.Task;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SignUpActivity extends AppCompatActivity {
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+
+public class SignUpActivity extends AppCompatActivity implements OnConnectionFailedListener, GoogleApiClient.OnConnectionFailedListener  {
+    private static final int RC_SIGN_IN = 1;
     Button signupbtn;
     TextView signin;
     ImageView show_pass_btn_reg,signupback;
     EditText password, name, email, phone;
     String Password, Name, Email, Phone;
     private long pressedTime;
-
+    String msg = null;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     String MobilePattern = "[0-9]{10}";
+    String pass_pattern =" \"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$\";";
 
     JSONObject data = null, user = null;
     String id = null;
     String token = null;
     String phonee = null;
+    String goo_token = null;
+    String goo_id = null;
 
-    int RC_SIGN_IN = 0;
+
+
     LinearLayout reg;
     GoogleSignInClient mGoogleSignInClient;
+    private GoogleApiClient googleApiClient;
+
+    private GoogleSignInOptions gso;
 
 
     @Override
@@ -70,6 +102,7 @@ public class SignUpActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         phone = findViewById(R.id.Phone_number);
         password = findViewById(R.id.signup_pass);
+
 
 
 
@@ -94,6 +127,8 @@ public class SignUpActivity extends AppCompatActivity {
                 i.putExtra("user_name",Name);
                 i.putExtra("email",Email);
                 i.putExtra("phone",Phone);
+//                PreferenceUtils.saveEmail(Email, SignUpActivity.this);
+//                PreferenceUtils.savePhone(Phone,SignUpActivity.this);
                 startActivity(i);
 
             }
@@ -101,14 +136,21 @@ public class SignUpActivity extends AppCompatActivity {
 
         reg = findViewById(R.id.reg_google);
 
+
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(SignUpActivity.this, Signup_google.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(i);
 
 
-               // signIn();
+                switch (view.getId()) {
+                    case R.id.reg_google:
+                        signIn();
+                        break;
+
+                }
+
+
+
             }
         });
 
@@ -163,58 +205,83 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
 
-////        // Configure sign-in to request the user's ID, email address, and basic
-////        // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-//        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//                .requestEmail()
-//                .build();
-////
-////        // Build a GoogleSignInClient with the options specified by gso.
-//        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        googleApiClient=new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
+                .build();
+
 //
-//
-//        signupback.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(SignUpActivity.this,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//                startActivity(intent);
-//
-//
-//            }
-//        });
-//    }
-////
-//    private void signIn() {
-//        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-//        startActivityForResult(signInIntent, RC_SIGN_IN);
-//    }
-//
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-//        if (requestCode == RC_SIGN_IN) {
-//            // The Task returned from this call is always completed, no need to attach
-//            // a listener.
-//            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-//            handleSignInResult(task);
+//        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        signupback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(SignUpActivity.this,MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+
+
+            }
+        });
+    }
+
+
+
+    private void signIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }
+    }
+
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+//            updateUI(account);
+
+            Toast.makeText(SignUpActivity.this, "Signup successfull", Toast.LENGTH_SHORT).show();
+
+
+            // Signed in successfully, show authenticated UI.
+            Intent intent = new Intent(SignUpActivity.this,Signup_google.class);
+
+            startActivity(intent);
+//            startActivity(new Intent(SignUpActivity.this,Signup_google.class));
+
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.w("Google Sign In Error", "signInResult:failed code=" + e.getStatusCode());
+            Toast.makeText(SignUpActivity.this, "Failed", Toast.LENGTH_LONG).show();
+        }
+
+
+      //  GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(SignUpActivity.this);
+//        if (acct != null) {
+//            String personName = acct.getDisplayName();
+//            String personGivenName = acct.getGivenName();
+//            String personFamilyName = acct.getFamilyName();
+//            String personEmail = acct.getEmail();
+//            String personId = acct.getId();
+//            Uri personPhoto = acct.getPhotoUrl();
 //        }
-//    }
-//
-//    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
-//        try {
-//            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-//            // Signed in successfully, show authenticated UI.
-//            startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
-//        } catch (ApiException e) {
-//            // The ApiException status code indicates the detailed failure reason.
-//            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-//            Log.w("Google Sign In Error", "signInResult:failed code=" + e.getStatusCode());
-//            Toast.makeText(SignUpActivity.this, "Failed", Toast.LENGTH_LONG).show();
-//        }
-//
-//
+
 //
 //
 
@@ -224,7 +291,6 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
-//
     }
 
 
@@ -257,18 +323,13 @@ public class SignUpActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(JSONObject response) {
 
-//                    Log.i("0000000000000",response.toString());
-//                    Toast.makeText(SignUpActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
-
-
-//                   Boolean Success ;
-//                    String msg;
-
 
 
                     try{
                        String Success = response.getString("success");
-                       String msg = response.getString("message");
+                       msg = response.getString("message");
+
+
 
                        data = response.getJSONObject("data");
                        token = data.getString("token");
@@ -291,10 +352,6 @@ public class SignUpActivity extends AppCompatActivity {
                                intent.putExtra("email",Email);
                                intent.putExtra("password",Password);
                                intent.putExtra("user_name",Name);
-                            Log.i("456",token);
-                            Log.i("789",id);
-//                            Toast.makeText(SignUpActivity.this, token, Toast.LENGTH_SHORT).show();
-//                            Toast.makeText(SignUpActivity.this,id, Toast.LENGTH_SHORT).show();
 
 
                             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -304,7 +361,8 @@ public class SignUpActivity extends AppCompatActivity {
                         }
                         else {
 
-                            Toast.makeText(SignUpActivity.this, msg, Toast.LENGTH_SHORT).show();
+
+//                            Toast.makeText(SignUpActivity.this, msg, Toast.LENGTH_SHORT).show();
 
 
                         }
@@ -321,7 +379,72 @@ public class SignUpActivity extends AppCompatActivity {
                 public void onErrorResponse(VolleyError error) {
 
 
+                    Charset charset = Charset.defaultCharset();
+                    String str = new String(error.networkResponse.data,charset);
+//                    Log.i("wkjlgroiwt",str);
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        if (Name.isEmpty()) {
+
+                            JSONArray jsonArray = data.getJSONArray("name");
+                            Toast.makeText(SignUpActivity.this, jsonArray.toString(), Toast.LENGTH_SHORT).show();
+                            Log.i("wkhgiuktrehg",jsonArray.toString());
+
+                        }
+
+                       else if (Email.isEmpty()) {
+                            JSONArray jsonArray1 = data.getJSONArray("email");
+                            Toast.makeText(SignUpActivity.this, jsonArray1.toString(), Toast.LENGTH_SHORT).show();
+                        }
+
+                        else if (Phone.isEmpty() ) {
+                            JSONArray jsonArray3 = data.getJSONArray("phone");
+                            Toast.makeText(SignUpActivity.this, jsonArray3.toString(), Toast.LENGTH_SHORT).show();
+
+
+                        }
+                       else if (Password.isEmpty() ) {
+                            JSONArray jsonArray2 = data.getJSONArray("password");
+                            Toast.makeText(SignUpActivity.this, jsonArray2.toString(), Toast.LENGTH_SHORT).show();
+
+
+                        }else if(!email.getText().toString().trim().matches(emailPattern) ){
+                            JSONArray jsonArray1 = data.getJSONArray("email");
+                            Toast.makeText(SignUpActivity.this, jsonArray1.toString(), Toast.LENGTH_SHORT).show();
+
+                        }else if(!phone.getText().toString().trim().matches(MobilePattern) ){
+                            JSONArray jsonArray3 = data.getJSONArray("phone");
+                            Toast.makeText(SignUpActivity.this, jsonArray3.toString(), Toast.LENGTH_SHORT).show();
+
+                        }else if(!password.getText().toString().trim().matches(pass_pattern) ){
+                            JSONArray jsonArray2 = data.getJSONArray("password");
+                            Toast.makeText(SignUpActivity.this, jsonArray2.toString(), Toast.LENGTH_SHORT).show();
+
+                        }else  {
+                            Toast.makeText(SignUpActivity.this, str, Toast.LENGTH_SHORT).show();
+
+                        }
+
+
+
+
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+
+
+
                 }
+
+
+
+
             });
             jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
                     10000,
@@ -340,18 +463,11 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
+
+
     }
 
-//        @Override
-//    protected void onStart() {
-//        // Check for existing Google Sign In account, if the user is already signed in
-//        // the GoogleSignInAccount will be non-null.
-//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-//        if(account != null) {
-//            startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
-//        }
-//        super.onStart();
-//    }
+
 
 
     public void ShowHidePass(View view){
@@ -372,6 +488,13 @@ public class SignUpActivity extends AppCompatActivity {
 
             }
         }}
+
+
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+
 
 
     }

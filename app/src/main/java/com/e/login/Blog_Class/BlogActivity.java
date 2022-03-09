@@ -1,13 +1,22 @@
 package com.e.login.Blog_Class;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
+import com.e.login.EnquiryFragment;
 import com.e.login.HelperClass.ViewPagerAdapter;
+import com.e.login.Helpline;
+import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.NewsClass.Karur;
+import com.e.login.QrCodeFragment;
 import com.e.login.R;
+import com.e.login.info_Class.InformationFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class BlogActivity extends AppCompatActivity {
@@ -21,7 +30,12 @@ public class BlogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog_fragment);
 
+//        BottomNavigationView btnNav = findViewById(R.id.bottomNavigation_blog);
+//        btnNav.setOnNavigationItemSelectedListener(navListener);
+
+
         viewPager = findViewById(R.id.viewpager_blog);
+
 
         // setting up the adapter
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -74,4 +88,40 @@ public class BlogActivity extends AppCompatActivity {
             }
         });
     }
+
+//    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+//
+//
+//        @Override
+//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//            int id = item.getItemId();
+//            Fragment fragment = null;
+//
+//            switch (id) {
+//                case R.id.nav_home:
+//                    fragment = new Fragment_Home();
+//                    break;
+//                case R.id.nav_tree:
+//                    fragment = new InformationFragment();
+//                    break;
+//                case R.id.nav_qr:
+//                    fragment = new QrCodeFragment();
+//                    break;
+//                case R.id.nav_profilee:
+//
+//                    fragment = new Helpline();
+//                    break;
+//                case R.id.nav_notifications:
+//                    fragment = new EnquiryFragment();
+//                    break;
+//
+//
+//            }
+//
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout_home, fragment).commit();
+//
+//            return true;
+//        }
+//    };
 }

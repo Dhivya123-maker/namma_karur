@@ -355,7 +355,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragment_layout"
-        android:layout_above="@+id/bottomNavigationView_shops"
+        android:layout_above="@+id/bottomNavigationView_jobs"
         tools:ignore="MissingConstraints">
 
     </FrameLayout>
@@ -363,7 +363,7 @@
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView_shops"
+        android:id="@+id/bottomNavigationView_jobs"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         app:itemIconTint="@color/white"

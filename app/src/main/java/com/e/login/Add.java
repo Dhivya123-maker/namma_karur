@@ -34,6 +34,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -52,6 +53,7 @@ public class Add extends AppCompatActivity {
         Intent intent = getIntent();
         data = intent.getStringExtra("cat");
         data1 = intent.getStringExtra("id");
+        Toast.makeText(Add.this, data1, Toast.LENGTH_SHORT).show();
 
 
 
@@ -102,27 +104,27 @@ public class Add extends AppCompatActivity {
 
         JSONObject jsonBody = new JSONObject();
         try {
-            jsonBody.put("job_name","a");
-            jsonBody.put("company_name","a" );
-            jsonBody.put("category_id","1");
-            jsonBody.put("gender","a");
-            jsonBody.put("address","a");
-            jsonBody.put("no_of_vacancy","1");
-            jsonBody.put("qualification[0]","a");
-            jsonBody.put("qualification[1]","a");
-            jsonBody.put("experience", "5" );
-            jsonBody.put("age_limit","5");
-            jsonBody.put("salary","1000");
-            jsonBody.put("skills[0]","a");
-            jsonBody.put("skills[1]","a");
-            jsonBody.put("apply_start_date","2022-02-12");
-            jsonBody.put("apply_end_date","2022-02-12");
-            jsonBody.put("about_company","aaa");
+            jsonBody.put("job_name",J_name);
+            jsonBody.put("company_name",Comp_name );
+            jsonBody.put("category_id",data1);
+            jsonBody.put("gender",Gender);
+            jsonBody.put("address",Address);
+            jsonBody.put("no_of_vacancy",No_vacancy);
+            jsonBody.put("qualification","[1,2]");
+//            jsonBody.put("qualification[1]",Qualify);
+            jsonBody.put("experience", Exp );
+            jsonBody.put("age_limit",Age);
+            jsonBody.put("salary",Salary);
+            jsonBody.put("skills","[1,2]");
+//            jsonBody.put("skills[1]",Skills);
+            jsonBody.put("apply_start_date",Start);
+            jsonBody.put("apply_end_date",End);
+            jsonBody.put("about_company",About);
 
 
 
 
-//        final String requestBody = jsonBody.toString();
+      //  final String requestBody = jsonBody.toString();
 
         Log.i("jhdoq",jsonBody.toString());
 
@@ -168,7 +170,11 @@ public class Add extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Log.e("VOLLEY", error.toString());
+                    Charset charset = Charset.defaultCharset();
+                    String str = new String(error.networkResponse.data,charset);
+                    Log.i("wkjlgroiwt",str);
+
+
                 }
             }) {
                 @Override

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -14,7 +15,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,15 +30,21 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.BaseApi.Api;
 import com.e.login.BlankFragment.Blank_PostFragment;
+import com.e.login.EnquiryFragment;
 import com.e.login.HelperClass.ViewPagerAdapter;
+import com.e.login.Helpline;
+import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.HomeClass.Slider_Top_Adapter;
 import com.e.login.Home_Fragment_Class;
+import com.e.login.QrCodeFragment;
 import com.e.login.R;
 import com.e.login.ShopClass.ShopClassAdapter;
 import com.e.login.ShopClass.ShopModel;
 import com.e.login.ShopClass.ShopScreen_Class;
 import com.e.login.fragment_dialog.BottomSheetFragment_filter;
+import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
@@ -221,6 +230,8 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 //            }
 //        });
 
+        BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_shops1);
+        btnNav.setOnNavigationItemSelectedListener(navListener);
 
 
         Slidershop_Top_Adapter sliderAdapter = new Slidershop_Top_Adapter(images);
@@ -233,6 +244,46 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
 
 }
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            int id = item.getItemId();
+            Fragment fragment = null;
+
+            switch (id) {
+                case R.id.nav_home:
+                    fragment = new Fragment_Home();
+                    break;
+                case R.id.nav_tree:
+                    fragment = new InformationFragment();
+                    break;
+                case R.id.nav_qr:
+                    fragment = new QrCodeFragment();
+                    break;
+                case R.id.nav_profilee:
+
+                    fragment = new Helpline();
+                    break;
+                case R.id.nav_notifications:
+                    fragment = new EnquiryFragment();
+                    break;
+
+
+            }
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, fragment).commit();
+
+            return true;
+        }
+    };
+
+
+
+
+
     public  void shop_screen(String url){
 
 

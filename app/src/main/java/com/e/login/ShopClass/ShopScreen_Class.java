@@ -38,6 +38,8 @@ import com.e.login.AmbulanceClass.Ambulance_call;
 import com.e.login.BaseApi.Api;
 import com.e.login.GovtClass.GovtActivity;
 import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.HomeClass.Home;
+import com.e.login.Offers.OfferActivity;
 import com.e.login.info_Class.InformationFragment;
 import com.e.login.EnquiryFragment;
 import com.e.login.Helpline;
@@ -109,7 +111,6 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
        Intent intent = getIntent();
        data3 = intent.getStringExtra("cat");
 
-        Log.i("dfgdfg",data3);
 
 
         if (data3.equals("ShopCatalog")){
@@ -178,8 +179,6 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
 
 
-
-
             BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_shops);
         btnNav.setOnNavigationItemSelectedListener(navListener);
 
@@ -202,35 +201,37 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment selectedFragment = null;
 
-//          #3  to create fragements for each
+            int id = item.getItemId();
+            Fragment fragment = null;
 
-            switch (item.getItemId()) {
+            switch (id) {
                 case R.id.nav_home:
-                    selectedFragment = new Fragment_Home();
+                    fragment = new Fragment_Home();
                     break;
                 case R.id.nav_tree:
-                    selectedFragment = new InformationFragment();
+                 fragment = new InformationFragment();
                     break;
                 case R.id.nav_qr:
-                    selectedFragment = new QrCodeFragment();
+                    fragment = new QrCodeFragment();
                     break;
                 case R.id.nav_profilee:
 
-                    selectedFragment = new Helpline();
+                    fragment = new Helpline();
                     break;
                 case R.id.nav_notifications:
-                    selectedFragment = new EnquiryFragment();
+                    fragment = new EnquiryFragment();
                     break;
 
 
             }
 
-//           #4  begin transaction
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, selectedFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, fragment).commit();
+
             return true;
         }
     };

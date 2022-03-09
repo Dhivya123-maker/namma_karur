@@ -84,7 +84,6 @@ public class MarketClassAdapter extends RecyclerView.Adapter<com.e.login.MarketC
                 public void onClick(View view) {
 
                     int position = getAdapterPosition();
-
                     String id = marketClassModelList.get(position).getId();
 
                     Intent intent = new Intent(view.getContext(), MarketActivity.class);

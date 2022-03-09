@@ -43,20 +43,23 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Profile extends AppCompatActivity {
     Button btn,edit,save,email_verify,contact_verify;
-    String data,data1,data2;
-    TextView name,dob,b_grp,desc,inst,deg,yea,com_txt,exp_txt,pos_txt,emailtxt,contacttxt,verified;
+    String data,data1,data2,user_id;
+    TextView user_name,summary,edu,exp_head,skills_head,name,dob,b_grp,desc,inst,deg,yea,com_txt,exp_txt,pos_txt,emailtxt,contacttxt,verified;
     LinearLayout skill,comm;
     ImageView profile,edit_img,email_edit,con_edit;
     EditText edit_txt,ins,degree,year,com,exp,pos,skill_edit,com_edit,user,doob,blood,email_edit_txt,con_edit_txt;
     String Edit,Ins,Degree,Year,Comp,Exp,Pos,Skill,Com,User,Dob,Blood,Img;
     private long pressedTime;
     String data3;
+    View view,view1,view2,view3;
+
 
 
 
@@ -71,32 +74,43 @@ public class Profile extends AppCompatActivity {
 
 
 
+        view =findViewById(R.id.first_view);
+        view1 =findViewById(R.id.second_view);
+        view2 =findViewById(R.id.third_view);
+        view3 =findViewById(R.id.fourth_view);
+        user_name = findViewById(R.id.user_name);
 
 
         edit_img = findViewById(R.id.img_edit);
 
+        summary = findViewById(R.id.summary_head);
+        edu = findViewById(R.id.edu_head);
+        exp_head = findViewById(R.id.experience_head);
+        skills_head = findViewById(R.id.skills_head);
+
         btn = findViewById(R.id.change_btn);
         save = findViewById(R.id.save_btn);
-        edit_txt = findViewById(R.id.edit_txt);
-        ins = findViewById(R.id.ins_edit_txt);
-        degree = findViewById(R.id.degree_edit_txt);
-        year = findViewById(R.id.year_edit_txt);
+//        edit_txt = findViewById(R.id.edit_txt);
+//        ins = findViewById(R.id.ins_edit_txt);
+//        degree = findViewById(R.id.degree_edit_txt);
+//        year = findViewById(R.id.year_edit_txt);
         inst = findViewById(R.id.ins_txt);
         deg = findViewById(R.id.deg_txt);
         yea = findViewById(R.id.year_txt);
         com_txt = findViewById(R.id.com_txt);
         exp_txt = findViewById(R.id.exp_txt);
         pos_txt = findViewById(R.id.pos_txt);
-        com = findViewById(R.id.com_edit_txt);
-        exp = findViewById(R.id.exp_edit_txt);
-        pos = findViewById(R.id.pos_edit_txt);
+        desc = findViewById(R.id.descrip);
+//        com = findViewById(R.id.com_edit_txt);
+//        exp = findViewById(R.id.exp_edit_txt);
+//        pos = findViewById(R.id.pos_edit_txt);
         skill = findViewById(R.id.skill_lnr);
-        comm = findViewById(R.id.com_linear);
-        skill_edit = findViewById(R.id.skill_edit);
-        com_edit = findViewById(R.id.com_edit);
-        user = findViewById(R.id.user_edit);
-        doob = findViewById(R.id.dob_edit);
-        blood = findViewById(R.id.blood_edit);
+//        comm = findViewById(R.id.com_linear);
+//        skill_edit = findViewById(R.id.skill_edit);
+       // com_edit = findViewById(R.id.com_edit);
+//        user = findViewById(R.id.user_edit);
+//        doob = findViewById(R.id.dob_edit);
+//        blood = findViewById(R.id.blood_edit);
         profile = findViewById(R.id.profile_img);
         email_edit = findViewById(R.id.gmail_edit);
         con_edit = findViewById(R.id.contact_edit);
@@ -109,19 +123,28 @@ public class Profile extends AppCompatActivity {
         verified = findViewById(R.id.verified_txt);
 
 
+
         save.setVisibility(GONE);
-        edit_txt.setVisibility(GONE);
-        ins.setVisibility(GONE);
-        degree.setVisibility(GONE);
-        year.setVisibility(GONE);
-        com.setVisibility(GONE);
-        exp.setVisibility(GONE);
-        pos.setVisibility(GONE);
-        skill_edit.setVisibility(GONE);
-        com_edit.setVisibility(GONE);
-        user.setVisibility(GONE);
-        doob.setVisibility(GONE);
-        blood.setVisibility(GONE);
+
+
+        summary.setVisibility(GONE);
+        edu.setVisibility(GONE);
+        exp_head.setVisibility(GONE);
+        skills_head.setVisibility(GONE);
+        inst.setVisibility(GONE);
+        deg.setVisibility(GONE);
+        yea.setVisibility(GONE);
+        com_txt.setVisibility(GONE);
+        exp_txt.setVisibility(GONE);
+        pos_txt.setVisibility(GONE);
+        desc .setVisibility(GONE);
+        skill.setVisibility(GONE);
+
+        view1.setVisibility(GONE);
+        view2.setVisibility(GONE);
+        view3.setVisibility(GONE);
+//        comm.setVisibility(GONE);
+
         edit_img.setVisibility(GONE);
         email_edit_txt.setVisibility(GONE);
         con_edit_txt.setVisibility(GONE);
@@ -133,9 +156,9 @@ public class Profile extends AppCompatActivity {
 //        verified.setVisibility(GONE);
 
 
-        name = findViewById(R.id.user_name);
-        dob = findViewById(R.id.d_o_b);
-        b_grp = findViewById(R.id.blood_grp);
+
+//        dob = findViewById(R.id.d_o_b);
+//        b_grp = findViewById(R.id.blood_grp);
         desc = findViewById(R.id.descrip);
 
         Intent intent = getIntent();
@@ -143,8 +166,13 @@ public class Profile extends AppCompatActivity {
         data1 = intent.getStringExtra("id");
         data2 = intent.getStringExtra("user_name");
         data3 = intent.getStringExtra("email");
+        user_id = intent.getStringExtra("user_id");
         emailtxt.setText(data3);
-
+        user_name.setText(data2);
+//        Toast.makeText(Profile.this, user_id, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(Profile.this, data, Toast.LENGTH_SHORT).show();
+        Toast.makeText(Profile.this, data2, Toast.LENGTH_SHORT).show();
+//
 
         email_edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -207,15 +235,15 @@ public class Profile extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edit_txt.setVisibility(GONE);
-                ins.setVisibility(GONE);
-                degree.setVisibility(GONE);
-                year.setVisibility(GONE);
-                com.setVisibility(GONE);
-                exp.setVisibility(GONE);
-                pos.setVisibility(GONE);
-                skill_edit.setVisibility(GONE);
-                com_edit.setVisibility(GONE);
+//                edit_txt.setVisibility(GONE);
+//                ins.setVisibility(GONE);
+//                degree.setVisibility(GONE);
+//                year.setVisibility(GONE);
+//                com.setVisibility(GONE);
+//                exp.setVisibility(GONE);
+//                pos.setVisibility(GONE);
+               // skill_edit.setVisibility(GONE);
+                //com_edit.setVisibility(GONE);
 
                 save.setVisibility(GONE);
                 btn.setVisibility(View.VISIBLE);
@@ -254,15 +282,15 @@ public class Profile extends AppCompatActivity {
                 edit_txt.setVisibility(View.VISIBLE);
                 desc.setVisibility(GONE);
 
-                ins.setVisibility(View.VISIBLE);
-                degree.setVisibility(View.VISIBLE);
-                year.setVisibility(View.VISIBLE);
-                inst.setVisibility(GONE);
-                deg.setVisibility(GONE);
-                yea.setVisibility(GONE);
-                com.setVisibility(View.VISIBLE);
-                exp.setVisibility(View.VISIBLE);
-                pos.setVisibility(View.VISIBLE);
+//                ins.setVisibility(View.VISIBLE);
+//                degree.setVisibility(View.VISIBLE);
+//                year.setVisibility(View.VISIBLE);
+//                inst.setVisibility(GONE);
+//                deg.setVisibility(GONE);
+//                yea.setVisibility(GONE);
+//                com.setVisibility(View.VISIBLE);
+//                exp.setVisibility(View.VISIBLE);
+//                pos.setVisibility(View.VISIBLE);
                 com_txt.setVisibility(GONE);
                 exp_txt.setVisibility(GONE);
                 pos_txt.setVisibility(GONE);
@@ -279,9 +307,6 @@ public class Profile extends AppCompatActivity {
                 edit_img.setVisibility(View.VISIBLE);
                 email_edit.setVisibility(View.VISIBLE);
                 con_edit.setVisibility(View.VISIBLE);
-
-
-
 
 
 
@@ -388,7 +413,8 @@ public class Profile extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.i("5679809",error.toString());
+                Charset charset = Charset.defaultCharset();
+                String str = new String(error.networkResponse.data,charset);
             }
         }){
 
@@ -447,16 +473,13 @@ public class Profile extends AppCompatActivity {
 
 
 
-                        if (Success == "true"){
-                            Log.i("rdesytrdy",msg);
-
+                        if (Success.equals("true")){
                             Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
-
 
                             Intent intent1 = new Intent(Profile.this, Email_OTP.class);
                             intent1.putExtra("email",data3);
-                            intent1.putExtra("user_id",data1);
-
+                            intent1.putExtra("user_id",user_id);
+//
                             intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent1);
 //                            PreferenceUtils.saveid(data1,Profile.this);
@@ -481,7 +504,25 @@ public class Profile extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Log.i("5679809",error.toString());
+
+                    Charset charset = Charset.defaultCharset();
+                    String str = new String(error.networkResponse.data,charset);
+                    Toast.makeText(Profile.this, str, Toast.LENGTH_SHORT).show();
+
+
+                    try {
+                        JSONObject   jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        Toast.makeText(Profile.this, data.toString(), Toast.LENGTH_SHORT).show();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+
+
+
                 }
             }){
 
@@ -490,6 +531,7 @@ public class Profile extends AppCompatActivity {
                     Map<String,String> params = new HashMap<String, String>();
                     params.put("Accept","application/json");
                     params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(Profile.this));
+                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(Profile.this));
                     return params;
 
 

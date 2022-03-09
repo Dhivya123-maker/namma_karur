@@ -164,6 +164,8 @@
 
         </EditText>
 
+
+
     <ImageView
         android:id="@+id/show_pass_btn_reg"
         android:layout_width="wrap_content"

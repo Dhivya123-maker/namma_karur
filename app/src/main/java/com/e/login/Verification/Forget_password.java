@@ -25,7 +25,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.HomeClass.Home;
-import com.e.login.Profile;
 import com.e.login.R;
 import com.e.login.SignUpActivity;
 import com.e.login.utils.PreferenceUtils;
@@ -36,34 +35,32 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VerifyActivity extends AppCompatActivity {
+public class Forget_password extends AppCompatActivity {
     Button verify;
-   EditText otp1,otp2,otp3,otp4;
-   String OTP1,OTP2,OTP3,OTP4;
+    EditText otp1,otp2,otp3,otp4;
+    String OTP1,OTP2,OTP3,OTP4;
     String data,data1,data2,data3,data4;
     ImageView back;
     TextView resend,mobile;
     private Context mContext;
-    String u_name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verify);
+        setContentView(R.layout.activity_forget_password);
 
-        back = findViewById(R.id.back_verify);
-
-        back = findViewById(R.id.back_verify);
+        back = findViewById(R.id.back_forget);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(VerifyActivity.this, SignUpActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                Intent intent = new Intent(Forget_password.this,VerificationActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
             }
         });
 
-        mobile = findViewById(R.id.mobile);
+        mobile = findViewById(R.id.verification_mai);
 
-        resend = findViewById(R.id.resend_otp_main);
+        resend = findViewById(R.id.resend_otp_forget);
         resend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,18 +87,17 @@ public class VerifyActivity extends AppCompatActivity {
         data2 = i1.getStringExtra("phone");
         data3 = i1.getStringExtra("email");
         data4 = i1.getStringExtra("user_name");
-        u_name = i1.getStringExtra("name");
         mobile.setText(data2);
 
 
 
-        verify = findViewById(R.id.verify_otp);
+        verify = findViewById(R.id.verify_button_forget);
 
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 otp();
-               // ResendOtp();
+                // ResendOtp();
 
 //                Intent intent = new Intent(VerifyActivity.this,Email_OTP.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 //                startActivity(intent);
@@ -109,15 +105,14 @@ public class VerifyActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
+
     public void otp(){
 
 
 
-       OTP1 = otp1.getText().toString();
-       OTP2 = otp2.getText().toString();
+        OTP1 = otp1.getText().toString();
+        OTP2 = otp2.getText().toString();
         OTP3 = otp3.getText().toString();
         OTP4 = otp4.getText().toString();
 
@@ -147,7 +142,7 @@ public class VerifyActivity extends AppCompatActivity {
 //
 //                    Toast.makeText(VerifyActivity.this, data, Toast.LENGTH_SHORT).show();
 //                    Toast.makeText(VerifyActivity.this, data1, Toast.LENGTH_SHORT).show();
-                   // Toast.makeText(VerifyActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(VerifyActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
 
 
                     try{
@@ -157,19 +152,12 @@ public class VerifyActivity extends AppCompatActivity {
 
                         if (Success.equals("true")){
 
-                            Toast.makeText(VerifyActivity.this, msg, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(VerifyActivity.this, Home.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            Toast.makeText(Forget_password.this, msg, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Forget_password.this, PasswordActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             intent.putExtra("token",data);
                             intent.putExtra("id",data1);
                             intent.putExtra("email",data3);
-                            intent.putExtra("name",u_name);
-                            intent.putExtra("phone",data2);
-                            intent.putExtra("user_name",data4);
-                            Toast.makeText(VerifyActivity.this, data3, Toast.LENGTH_SHORT).show();
-
-                            PreferenceUtils.saveid(data1,VerifyActivity.this);
-                            PreferenceUtils.saveToken(data,VerifyActivity.this);
-//                            PreferenceUtils.saveEmail(data3,VerifyActivity.this);
+//                            intent.putExtra("user_name",data4);
 
 
                             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -180,7 +168,7 @@ public class VerifyActivity extends AppCompatActivity {
                         }
                         else {
 
-                            Toast.makeText(VerifyActivity.this, msg, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Forget_password.this, msg, Toast.LENGTH_SHORT).show();
 
 
                         }
@@ -207,8 +195,8 @@ public class VerifyActivity extends AppCompatActivity {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String,String> params = new HashMap<String, String>();
-                  //  params.put("Content-Type","application/x-www-form-urlencoded");
-                    params.put("Authorization","Bearer "+PreferenceUtils.getToken(VerifyActivity.this));
+                    //  params.put("Content-Type","application/x-www-form-urlencoded");
+                    params.put("Authorization","Bearer "+data);
                     return params;
                 }
 
@@ -218,7 +206,7 @@ public class VerifyActivity extends AppCompatActivity {
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-            RequestQueue requestQueue = Volley.newRequestQueue(VerifyActivity.this);
+            RequestQueue requestQueue = Volley.newRequestQueue(Forget_password.this);
             requestQueue.add(jsonObjectRequest);
 
         } catch (JSONException e) {
@@ -265,8 +253,8 @@ public class VerifyActivity extends AppCompatActivity {
 
                         if (Success.equals("true")){
 
-                            Toast.makeText(VerifyActivity.this, msg, Toast.LENGTH_SHORT).show();
-
+                            Toast.makeText(Forget_password.this, msg, Toast.LENGTH_SHORT).show();
+                            Log.i("123",msg);
 //                            Intent intent = new Intent(VerifyActivity.this,Email_OTP.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 //                            startActivity(intent);
 
@@ -275,7 +263,7 @@ public class VerifyActivity extends AppCompatActivity {
                         }
                         else {
 
-                            Toast.makeText(VerifyActivity.this, msg, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Forget_password.this, msg, Toast.LENGTH_SHORT).show();
 
 
                         }
@@ -304,7 +292,7 @@ public class VerifyActivity extends AppCompatActivity {
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String,String> params = new HashMap<String, String>();
                     //  params.put("Content-Type","application/x-www-form-urlencoded");
-                    params.put("Authorization","Bearer "+PreferenceUtils.getToken(VerifyActivity.this));
+                    params.put("Authorization","Bearer "+data);
                     return params;
                 }
 
@@ -316,7 +304,7 @@ public class VerifyActivity extends AppCompatActivity {
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-            RequestQueue requestQueue = Volley.newRequestQueue(VerifyActivity.this);
+            RequestQueue requestQueue = Volley.newRequestQueue(Forget_password.this);
             requestQueue.add(jsonObjectRequest);
 
         } catch (JSONException e) {
@@ -328,13 +316,20 @@ public class VerifyActivity extends AppCompatActivity {
 
 
 
-    private void initialize() {
-        otp1 = findViewById(R.id.et_otp1);
-        otp2= findViewById(R.id.et_otp2);
-        otp3 = findViewById(R.id.et_otp3);
-        otp4 = findViewById(R.id.et_otp4);
 
-        mContext = VerifyActivity.this;
+
+
+
+
+
+
+    private void initialize() {
+        otp1 = findViewById(R.id.et_otp111);
+        otp2= findViewById(R.id.et_otp222);
+        otp3 = findViewById(R.id.et_otp333);
+        otp4 = findViewById(R.id.et_otp444);
+
+        mContext = Forget_password.this;
     }
     private void addTextWatcher(final EditText one) {
         one.addTextChangedListener(new TextWatcher() {
@@ -351,30 +346,30 @@ public class VerifyActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 switch (one.getId()) {
-                    case R.id.et_otp1:
+                    case R.id.et_otp111:
                         if (one.length() == 1) {
                             otp2.requestFocus();
                         }
                         break;
-                    case R.id.et_otp2:
+                    case R.id.et_otp222:
                         if (one.length() == 1) {
                             otp3.requestFocus();
                         } else if (one.length() == 0) {
                             otp1.requestFocus();
                         }
                         break;
-                    case R.id.et_otp3:
+                    case R.id.et_otp333:
                         if (one.length() == 1) {
-                           otp4.requestFocus();
+                            otp4.requestFocus();
                         } else if (one.length() == 0) {
                             otp2.requestFocus();
                         }
                         break;
 
-                    case R.id.et_otp4:
+                    case R.id.et_otp444:
                         if (one.length() == 1) {
                             InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-                            inputManager.hideSoftInputFromWindow(VerifyActivity.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+                            inputManager.hideSoftInputFromWindow(Forget_password.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
                         } else if (one.length() == 0) {
                             otp3.requestFocus();
                         }
@@ -384,6 +379,8 @@ public class VerifyActivity extends AppCompatActivity {
         });
 
 
-}
+    }
+
+
 
 }

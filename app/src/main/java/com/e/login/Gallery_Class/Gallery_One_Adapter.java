@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -49,6 +50,7 @@ public class Gallery_One_Adapter extends RecyclerView.Adapter<Gallery_One_Adapte
 
 
 
+
     // total number of rows
     @Override
     public int getItemCount() {
@@ -61,13 +63,16 @@ public class Gallery_One_Adapter extends RecyclerView.Adapter<Gallery_One_Adapte
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
+        TextView txt,txt1;
 
 
         ViewHolder(View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.mahal_two_image);
-
-
+//            txt = itemView.findViewById(R.id.category_txt);
+//            txt1 = itemView.findViewById(R.id.view_all_txt);
+//
+//
 
 
 

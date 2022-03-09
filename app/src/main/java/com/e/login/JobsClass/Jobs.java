@@ -1,6 +1,8 @@
 package com.e.login.JobsClass;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -22,9 +25,12 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.Add;
+import com.e.login.EnquiryFragment;
 import com.e.login.GovtClass.GovtActivity;
 import com.e.login.GovtClass.GovtAdapter;
 import com.e.login.GovtClass.GovtModel;
+import com.e.login.Helpline;
+import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.HospitalClass.HospitalAdapter;
 import com.e.login.NewsClass.MyRecyclerViewAdapter_two;
 import com.e.login.NewsClass.NewsModel;
@@ -32,8 +38,11 @@ import com.e.login.NewsClass.NewsOneModel;
 import com.e.login.NewsClass.Recycler_news_Adapter;
 import com.e.login.NewsClass.View_Breaking;
 import com.e.login.Offers.OfferActivity;
+import com.e.login.QrCodeFragment;
 import com.e.login.R;
+import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -65,6 +74,11 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
 
         closing_view = findViewById(R.id.closing_view);
         all_view = findViewById(R.id.all_view);
+
+        BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_jobs);
+        btnNav.setOnNavigationItemSelectedListener(navListener);
+
+
 
 
         closing_view.setOnClickListener(new View.OnClickListener() {
@@ -440,6 +454,41 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
 
 
     }
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            int id = item.getItemId();
+            Fragment fragment = null;
+
+            switch (id) {
+                case R.id.nav_home:
+                    fragment = new Fragment_Home();
+                    break;
+                case R.id.nav_tree:
+                    fragment = new InformationFragment();
+                    break;
+                case R.id.nav_qr:
+                    fragment = new QrCodeFragment();
+                    break;
+                case R.id.nav_profilee:
+
+                    fragment = new Helpline();
+                    break;
+                case R.id.nav_notifications:
+                    fragment = new EnquiryFragment();
+                    break;
+
+
+            }
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, fragment).commit();
+
+            return true;
+        }
+    };
 
     @Override
     public void onItemClick(int position) {

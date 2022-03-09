@@ -7,6 +7,35 @@
     android:background="@color/white"
    >
 
+    <Button
+        android:id="@+id/change_btn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/bg"
+        android:backgroundTint="#4c9a2a"
+        android:text="Change password"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/save_btn "
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/bg"
+        android:backgroundTint="#4c9a2a"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
 
     <LinearLayout
         android:id="@+id/linear"
@@ -46,551 +75,535 @@
     android:layout_above="@id/bottomNavigationView_profile">
 
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    >
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:orientation="vertical">
+
+
+        >
+
+
 
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/profile_img"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/twitter" />
-
-            <ImageView
-                android:id="@+id/img_edit"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginTop="60dp"
-                android:src="@drawable/edits" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/user_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text="Patrick"
-                    android:textColor="#4c9a2a"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/user_edit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"/>
-
-
-                <TextView
-                    android:id="@+id/d_o_b"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text="September 20, 1996"
-                    android:textColor="@color/black"
-                    android:textSize="12dp" />
-
-                <EditText
-                    android:id="@+id/dob_edit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"/>
-
-
-                <TextView
-                    android:id="@+id/blood_grp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text="B+ positive"
-                    android:textColor="@color/black"
-                    android:textSize="12dp" />
-
-                <EditText
-                    android:id="@+id/blood_edit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true"/>
-
-
-                <Button
-                    android:id="@+id/edit_button"
-                    android:layout_width="55dp"
-                    android:layout_height="25dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/bg"
-                    android:backgroundTint="#4c9a2a"
-                    android:text="Edit"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="12dp">
-
-                </Button>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Contact info"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/maill" />
-
-            <TextView
-                android:id="@+id/emailtxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="patrick245@gmail.com"
-                android:textColor="@color/black" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:orientation="horizontal">
-
-<!--                <TextView-->
-<!--                    android:id="@+id/verified_txt"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="verified"-->
-<!--                    android:textColor="#4c9a2a"/>-->
-
-
-                <ImageView
-                    android:id="@+id/gmail_edit"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/edits" />
-
-                <Button
-                    android:id="@+id/email_verify"
-                    android:layout_width="50dp"
-                    android:layout_height="25dp"
-                    android:background="@drawable/bg"
-                    android:backgroundTint="#4c9a2a"
-                    android:text="Verify"
-                    android:layout_gravity="center"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:padding="2dp"
-                    android:textSize="12dp"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/email_edit_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:layout_marginStart="15dp">
-
-        </EditText>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="#f5f5f5" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:src="@drawable/phones" />
-
-            <TextView
-                android:id="@+id/contacttxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="0123456987"
-                android:textColor="@color/black" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/contact_edit"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:src="@drawable/edits"
-                    android:layout_marginEnd="10dp"/>
-                <Button
-                    android:id="@+id/contact_verify"
-                    android:layout_width="50dp"
-                    android:layout_height="25dp"
-                    android:background="@drawable/bg"
-                    android:backgroundTint="#4c9a2a"
-                    android:text="Verify"
-                    android:layout_gravity="center"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:padding="2dp"
-                    android:textSize="12dp"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/contact_edit_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:layout_marginStart="15dp">
-
-        </EditText>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="#f5f5f5" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Summary"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/descrip"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="lorem ispum may be used as a placeholderghrkijethgki4jer4hgtkje4rh"
-            android:textColor="@color/black"
-            android:textSize="14dp" />
-
-        <EditText
-            android:id="@+id/edit_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true">
-
-        </EditText>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="#f5f5f5" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Education"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/graduation" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/ins_txt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text="PSG arts &amp; science"
-                    android:textColor="@color/black" />
-
-                <EditText
-                    android:id="@+id/ins_edit_txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true">
-
-                </EditText>
-
-                <TextView
-                    android:id="@+id/deg_txt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text="B.SC(Computer science)"
-                    android:textColor="@color/black" />
-
-                <EditText
-                    android:id="@+id/degree_edit_txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true">
-
-                </EditText>
-
-                <TextView
-                    android:id="@+id/year_txt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp"
-                    android:text="2018 - 2021"
-                    android:textColor="@color/black" />
-
-                <EditText
-                    android:id="@+id/year_edit_txt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:singleLine="true">
-
-                </EditText>
-
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="#f5f5f5" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Experience"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:textStyle="bold" />
-
-
-        <TextView
-            android:id="@+id/com_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SPK Systems pvt.Ltd"
-            android:textColor="@color/black" />
-
-        <EditText
-            android:id="@+id/com_edit_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true">
-
-        </EditText>
-
-        <TextView
-            android:id="@+id/exp_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Experience : 2years"
-            android:textColor="@color/black" />
-
-        <EditText
-            android:id="@+id/exp_edit_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true">
-
-        </EditText>
-
-        <TextView
-            android:id="@+id/pos_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Position : Android developer"
-            android:textColor="@color/black"
-
-            />
-
-        <EditText
-            android:id="@+id/pos_edit_txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true">
-
-        </EditText>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginTop="10dp"
-            android:background="#f5f5f5" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Skills"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/skill_lnr"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_gravity="center"
-                android:background="@drawable/rounded_corners" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="Team work"
-                android:textColor="@color/black" />
-
-
-        </LinearLayout>
-
-
-        <EditText
-            android:id="@+id/skill_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true">
-
-        </EditText>
-
-
-        <LinearLayout
-            android:id="@+id/com_linear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="10dp"
-                android:layout_height="10dp"
-                android:layout_gravity="center"
-                android:background="@drawable/rounded_corners" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="Communication skills"
-                android:textColor="@color/black" />
-
-
-        </LinearLayout>
-
-
-        <EditText
-            android:id="@+id/com_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true">
-
-        </EditText>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="20dp"
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/change_btn"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg"
-                android:backgroundTint="#4c9a2a"
-                android:text="Change password"
-                android:textAllCaps="false"
-                android:textColor="@color/white" />
 
-            <Button
-                android:id="@+id/save_btn "
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginStart="50dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/profile_img"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/twitter" />
+
+                <ImageView
+                    android:id="@+id/img_edit"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_marginTop="60dp"
+                    android:src="@drawable/edits" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:text="Patrick"
+                        android:textColor="#4c9a2a"
+                        android:textStyle="bold" />
+
+                    <!--                <EditText-->
+                    <!--                    android:id="@+id/user_edit"-->
+                    <!--                    android:layout_width="match_parent"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:singleLine="true"/>-->
+
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/d_o_b"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="15dp"-->
+<!--                        android:text="September 20, 1996"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="12dp" />-->
+
+                    <!--                <EditText-->
+                    <!--                    android:id="@+id/dob_edit"-->
+                    <!--                    android:layout_width="match_parent"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:singleLine="true"/>-->
+
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/blood_grp"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginStart="15dp"-->
+<!--                        android:text="B+ positive"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textSize="12dp" />-->
+
+                    <!--                <EditText-->
+                    <!--                    android:id="@+id/blood_edit"-->
+                    <!--                    android:layout_width="match_parent"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:singleLine="true"/>-->
+
+
+                    <Button
+                        android:id="@+id/edit_button"
+                        android:layout_width="55dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg"
+                        android:backgroundTint="#4c9a2a"
+                        android:text="Edit"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12dp">
+
+                    </Button>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="50dp"
-                android:layout_weight="1"
-                android:background="@drawable/bg"
-                android:backgroundTint="#4c9a2a"
-                android:text="Save"
-                android:textAllCaps="false"
-                android:textColor="@color/white" />
+                android:text="Contact info"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/maill" />
+
+                <TextView
+                    android:id="@+id/emailtxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="patrick245@gmail.com"
+                    android:textColor="@color/black" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <!--                <TextView-->
+                    <!--                    android:id="@+id/verified_txt"-->
+                    <!--                    android:layout_width="wrap_content"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:text="verified"-->
+                    <!--                    android:textColor="#4c9a2a"/>-->
+
+
+                    <ImageView
+                        android:id="@+id/gmail_edit"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/edits" />
+
+                    <Button
+                        android:id="@+id/email_verify"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg"
+                        android:backgroundTint="#4c9a2a"
+                        android:padding="2dp"
+                        android:text="Verify"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/email_edit_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:singleLine="true">
+
+            </EditText>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="#f5f5f5" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/phones" />
+
+                <TextView
+                    android:id="@+id/contacttxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:text="0123456987"
+                    android:textColor="@color/black" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/contact_edit"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/edits" />
+
+                    <Button
+                        android:id="@+id/contact_verify"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg"
+                        android:backgroundTint="#4c9a2a"
+                        android:padding="2dp"
+                        android:text="Verify"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/contact_edit_txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:singleLine="true">
+
+            </EditText>
+
+            <View
+                android:id="@+id/first_view"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="#f5f5f5" />
+
+
+            <TextView
+                android:id="@+id/summary_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Summary"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/descrip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="lorem ispum may be used as a placeholderghrkijethgki4jer4hgtkje4rh"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <!--        <EditText-->
+            <!--            android:id="@+id/edit_txt"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:singleLine="true">-->
+
+            <!--        </EditText>-->
+
+            <View
+                android:id="@+id/second_view"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="#f5f5f5" />
+
+            <TextView
+                android:id="@+id/edu_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Education"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <!--            <ImageView-->
+                <!--                android:layout_width="40dp"-->
+                <!--                android:layout_height="40dp"-->
+                <!--                android:src="@drawable/graduation" />-->
+
+                <LinearLayout
+                    android:id="@+id/edu_lnr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/ins_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:text="PSG arts &amp; science"
+                        android:textColor="@color/black" />
+
+                    <!--                <EditText-->
+                    <!--                    android:id="@+id/ins_edit_txt"-->
+                    <!--                    android:layout_width="match_parent"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:singleLine="true">-->
+
+                    <!--                </EditText>-->
+
+                    <TextView
+                        android:id="@+id/deg_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:text="B.SC(Computer science)"
+                        android:textColor="@color/black" />
+
+                    <!--                <EditText-->
+                    <!--                    android:id="@+id/degree_edit_txt"-->
+                    <!--                    android:layout_width="match_parent"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:singleLine="true">-->
+
+                    <!--                </EditText>-->
+
+                    <TextView
+                        android:id="@+id/year_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:text="2018 - 2021"
+                        android:textColor="@color/black" />
+
+                    <!--                <EditText-->
+                    <!--                    android:id="@+id/year_edit_txt"-->
+                    <!--                    android:layout_width="match_parent"-->
+                    <!--                    android:layout_height="wrap_content"-->
+                    <!--                    android:singleLine="true">-->
+
+                    <!--                </EditText>-->
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <View
+                android:id="@+id/third_view"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="#f5f5f5" />
+
+
+            <TextView
+                android:id="@+id/experience_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Experience"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/com_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SPK Systems pvt.Ltd"
+                android:textColor="@color/black" />
+
+            <!--        <EditText-->
+            <!--            android:id="@+id/com_edit_txt"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:singleLine="true">-->
+
+            <!--        </EditText>-->
+
+            <TextView
+                android:id="@+id/exp_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Experience : 2years"
+                android:textColor="@color/black" />
+
+            <!--        <EditText-->
+            <!--            android:id="@+id/exp_edit_txt"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:singleLine="true">-->
+
+            <!--        </EditText>-->
+
+            <TextView
+                android:id="@+id/pos_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Position : Android developer"
+                android:textColor="@color/black"
+
+                />
+
+            <!--        <EditText-->
+            <!--            android:id="@+id/pos_edit_txt"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:singleLine="true">-->
+
+            <!--        </EditText>-->
+
+            <View
+                android:id="@+id/fourth_view"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginTop="10dp"
+                android:background="#f5f5f5" />
+
+            <TextView
+                android:id="@+id/skills_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Skills"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/skill_lnr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/rounded_corners" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Team work"
+                    android:textColor="@color/black" />
+
+
+            </LinearLayout>
+
+
+            <!--        <EditText-->
+            <!--            android:id="@+id/skill_edit"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:singleLine="true">-->
+
+            <!--        </EditText>-->
+
+
+            <!--        <LinearLayout-->
+            <!--            android:id="@+id/com_linear"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:layout_marginTop="5dp"-->
+            <!--            android:orientation="horizontal">-->
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="10dp"-->
+            <!--                android:layout_height="10dp"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:background="@drawable/rounded_corners" />-->
+
+            <!--            <TextView-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="10dp"-->
+            <!--                android:text="Communication skills"-->
+            <!--                android:textColor="@color/black" />-->
+
+
+            <!--        </LinearLayout>-->
+
+
+            <!--        <EditText-->
+            <!--            android:id="@+id/com_edit"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:singleLine="true">-->
+
+            <!--        </EditText>-->
+
+
+
         </LinearLayout>
 
 
-    </LinearLayout>
-</RelativeLayout>
+
+
+
+    </RelativeLayout>
 
 </ScrollView>
 

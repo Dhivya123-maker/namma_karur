@@ -73,13 +73,13 @@
                 android:id="@+id/viewpager_home"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_above="@+id/bottomNavigation_frag"
                 android:layout_below="@+id/appbar"
-                android:layout_above="@+id/bottomNavigation"
                 app:layout_anchorGravity="center"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                 <FrameLayout
-                    android:id="@+id/fragment_layout_home"
+                    android:id="@+id/fragment_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:ignore="MissingConstraints">
@@ -88,17 +88,17 @@
                 </FrameLayout>
             </androidx.viewpager.widget.ViewPager>
 
+
             <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavigation"
+                android:id="@+id/bottomNavigation_frag"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
-                app:itemIconTint="@color/white"
-                android:background="#4c9a2a"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="bottom"
-                app:menu="@menu/bottom_nav"
+                android:background="#4c9a2a"
+                app:itemIconTint="@color/white"
                 app:itemTextColor="@color/white"
-                >
+                app:menu="@menu/bottom_nav">
 
             </com.google.android.material.bottomnavigation.BottomNavigationView>
 

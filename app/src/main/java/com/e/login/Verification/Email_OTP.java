@@ -31,6 +31,7 @@ import com.e.login.utils.PreferenceUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +40,7 @@ public class Email_OTP extends AppCompatActivity {
     Button verification;
     EditText otp1,otp2,otp3,otp4;
     String OTP1,OTP2,OTP3,OTP4;
-    String data,data1,data2,data3;
+    String data,data1,data2,data3,phone,user_id;
     TextView resend,mail;
 
     private Context mContext;
@@ -57,9 +58,14 @@ public class Email_OTP extends AppCompatActivity {
         Intent i = getIntent();
         data = i.getStringExtra("token");
         Intent i1 = getIntent();
-        data1 = i1.getStringExtra("user_id");
+        data1 = i1.getStringExtra("id");
         data2 = i1.getStringExtra("email");
         data3 = i1.getStringExtra("user_name");
+        phone = i1.getStringExtra("phone");
+        user_id = i1.getStringExtra("user_id");
+
+        //Toast.makeText(Email_OTP.this, data2, Toast.LENGTH_SHORT).show();
+
         mail.setText(data2);
 
         initialize();
@@ -71,10 +77,10 @@ public class Email_OTP extends AppCompatActivity {
         addTextWatcher(otp3);
         addTextWatcher(otp4);
 
-        otp1 = findViewById(R.id.et_otp11);
-        otp2 = findViewById(R.id.et_otp22);
-        otp3 = findViewById(R.id.et_otp33);
-        otp4 = findViewById(R.id.et_otp44);
+        otp1 = findViewById(R.id.et_otp_email);
+        otp2 = findViewById(R.id.et_otp_email1);
+        otp3 = findViewById(R.id.et_otp_email2);
+        otp4 = findViewById(R.id.et_otp_email3);
         resend = findViewById(R.id.resend_otpp);
 
         verification = findViewById(R.id.verify_buttonn);
@@ -208,6 +214,8 @@ public class Email_OTP extends AppCompatActivity {
 
     }
 
+
+
     public void email_resend_otp(){
 
         OTP1 = otp1.getText().toString();
@@ -252,6 +260,9 @@ public class Email_OTP extends AppCompatActivity {
                         if (Success.equals("true")){
 
                             Toast.makeText(Email_OTP.this, msg, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Email_OTP.this,Profile.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            startActivity(intent);
 
 
 
@@ -277,6 +288,9 @@ public class Email_OTP extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
 
+                    Charset charset = Charset.defaultCharset();
+                    String str = new String(error.networkResponse.data,charset);
+                    Toast.makeText(Email_OTP.this, str, Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -287,6 +301,7 @@ public class Email_OTP extends AppCompatActivity {
                     Map<String,String> params = new HashMap<String, String>();
                     params.put("Accept","application/json");
                     params.put("Authorization","Bearer "+PreferenceUtils.getToken(Email_OTP.this));
+                    params.put("Authorization","Bearer "+PreferenceUtils.getToken1(Email_OTP.this));
                     //  params.put("Content-Type","application/x-www-form-urlencoded");
                     //params.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNmYwZGY2MTljYWE0NDJlMWM2NTM4YTRjYTcyNjc0Mjc1ZGY3YWJiZTU4ODgyZjEyZGM0MGQxNTA0ZGI5NTJmNzQ1ZWIwYzQ3OTQ4ZTIxZWQiLCJpYXQiOjE2NDQ0ODQ3OTIuMzc0NTU1LCJuYmYiOjE2NDQ0ODQ3OTIuMzc0NTYsImV4cCI6MTY3NjAyMDc5Mi4zNzA5MzIsInN1YiI6IjE5Iiwic2NvcGVzIjpbXX0.PLityoxwwHfLl4DMJz77NoxIAT6bbPx9UFaEn8LKjxYFyFcAnTDxVFobY43BkKR1xOm27YX3420XTxBf0s0iB1EW_XrJcTDClP8Y9G4rBZ0c06_2siDUDFYTPA8KeuQBDeCr8Aj6B7E_pT3qp9p3yG99AIUPK4onZNYDG_gZR6kQrvTlWwwgOSKD3ViTVTy91vQYZe7oxWbqUb_nhmL3Gb2wPdpZZ6j3FJiAj2MilCWml-doKID905ltazZc14aAEHOWFkB3UM4ryAEvFaXteAi5-gB1HseIPgguS8elMZ4BemaeJ1d7IJBnwY8pllsJmC9GKfpt66IPxT8KkSaILTLItJjtsCxretOx-x3Ngh6AULjQLvMFt1D27Z2PNei_zvVHDI7ECm0QjA-dO-rUuphq4Nrxw34qfcL4eW0znGbeHIQtSIL8AnPlFavJ7MjjnN24EZSrNjD_X8jJoNSqjUbwZgTef76RjHWUahja_w7IoX7IdjU9w6dvtEhwm5z_5LWORlCpND5zBxmQeoyHftgaokGPNK5tzc4It4VYt_K24s018Uwow4XE0_B3urSIkxJqzBVbEueV_w9tpTQSVp6P2YtH29SAkHDkw4j5FrdhHVK694-QHM-_qFQFol3CgEYWb7RfpcpDwkLXUd4Z4hqBAFJUmbD0HCoRBm73yGo");
                     return params;
@@ -309,11 +324,11 @@ public class Email_OTP extends AppCompatActivity {
 
 
 
-    private void initialize() {
-        otp1 = findViewById(R.id.et_otp11);
-        otp2= findViewById(R.id.et_otp22);
-        otp3 = findViewById(R.id.et_otp33);
-        otp4 = findViewById(R.id.et_otp44);
+    private void initialize(){
+        otp1 = findViewById(R.id.et_otp_email);
+        otp2= findViewById(R.id.et_otp_email1);
+        otp3 = findViewById(R.id.et_otp_email2);
+        otp4 = findViewById(R.id.et_otp_email3);
 
         mContext = Email_OTP.this;
     }
@@ -332,19 +347,19 @@ public class Email_OTP extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 switch (one.getId()) {
-                    case R.id.et_otp11:
+                    case R.id.et_otp_email:
                         if (one.length() == 1) {
                             otp2.requestFocus();
                         }
                         break;
-                    case R.id.et_otp22:
+                    case R.id.et_otp_email1:
                         if (one.length() == 1) {
                             otp3.requestFocus();
                         } else if (one.length() == 0) {
                             otp1.requestFocus();
                         }
                         break;
-                    case R.id.et_otp33:
+                    case R.id.et_otp_email2:
                         if (one.length() == 1) {
                             otp4.requestFocus();
                         } else if (one.length() == 0) {
@@ -352,7 +367,7 @@ public class Email_OTP extends AppCompatActivity {
                         }
                         break;
 
-                    case R.id.et_otp44:
+                    case R.id.et_otp_email3:
                         if (one.length() == 1) {
                             InputMethodManager inputManager = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
                             inputManager.hideSoftInputFromWindow(Email_OTP.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);

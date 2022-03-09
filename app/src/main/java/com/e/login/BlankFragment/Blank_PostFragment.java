@@ -97,11 +97,13 @@ public class Blank_PostFragment extends Fragment {
             R.drawable.banner};
 
     String token,idd;
+    LinearLayout ifsc;
 
     List<Blank_Comments_Model> blank_comments_modelList;
     Blank_Comments_Adapter adapter;
     String data = null,data2 = null,data3 = null;
     RecyclerView recyclerView;
+
 
     com.kyleduo.switchbutton.SwitchButton switchButton;
     @Override
@@ -113,6 +115,7 @@ public class Blank_PostFragment extends Fragment {
 
 
         recyclerView = root.findViewById(R.id.reviews_recycle_postt);
+        ifsc = root.findViewById(R.id.ifsc_linear);
 
         Api a = new Api();
         api = a.getBASE_URL();
@@ -121,50 +124,50 @@ public class Blank_PostFragment extends Fragment {
         data = intent.getStringExtra("rate");
         data2 = intent.getStringExtra("list");
         data3 = intent.getStringExtra("id");
-
-
-
-
-
-
+        verify = root.findViewById(R.id.verifyy_txt);
 
         if(data2.equals("ShopCatalog")){
             String url = api + "get-shop-details?shop_id="+data3;
           social(url);
+          ifsc.setVisibility(View.GONE);
+          verify.setText("Yes");
 
 
         }else if(data2.equals("ServiceCatalog")) {
             String url = api + "get-service-details?service_id="+data3;
             social(url);
 
-
+            ifsc.setVisibility(View.GONE);
 
         } else if(data2.equals("EducationCatalog")){
             String url = api + "get-education-catalog-details?education_id="+data3;
             social(url);
-
+            ifsc.setVisibility(View.GONE);
 
         }else if(data2.equals("TransportCatalog")){
             String url = api + "get-transport-details?transport_id="+data3;
             social(url);
 
-
+            ifsc.setVisibility(View.GONE);
         }else if(data2.equals("HospitalCatalog")){
             String url = api + "get-hospital-details?hospital_id="+data3;
             social(url);
-
+            ifsc.setVisibility(View.GONE);
 
         }else if(data2.equals("EventCatalog")){
             String url = api + "get-event-details?event_id="+data3;
             social(url);
+            ifsc.setVisibility(View.GONE);
 
         }else if(data2.equals("HotelCatalog")){
             String url = api + "get-hotel-details?hotel_id="+data3;
             social(url);
+            ifsc.setVisibility(View.GONE);
 
         }else if(data2.equals("BankCatalog")){
             String url = api + "get-bank-details?bank_id="+data3;
             social(url);
+            ifsc.setVisibility(View.VISIBLE);
 
         }
 
@@ -184,7 +187,7 @@ public class Blank_PostFragment extends Fragment {
         titlee = root.findViewById(R.id.ac_title);
         addres = root.findViewById(R.id.address_txt);
         rate = root.findViewById(R.id.rate);
-        verify = root.findViewById(R.id.verifyy_txt);
+
         view_ct = root.findViewById(R.id.view_count);
         desc = root.findViewById(R.id.description);
         open_tm = root.findViewById(R.id.open_time);
@@ -388,6 +391,7 @@ public class Blank_PostFragment extends Fragment {
                     Intent intentList = new Intent(getContext(),ReviewsActivity.class);
                     intentList.putExtra("cat",data2);
                     intentList.putExtra("id",data3);
+                    intentList.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intentList);
             //    visible.setVisibility(View.VISIBLE);
 //
@@ -522,7 +526,7 @@ public void social(String url){
                     open_tm.setText(open_time);
                     close_tm.setText(close_time);
                     rate.setText(rating);
-                    verify.setText(verified);
+                   // verify.setText(verified);
                     desc.setText(description);
 //                    phone_num.setText(phone);
                     view_ct.setText(view_count);

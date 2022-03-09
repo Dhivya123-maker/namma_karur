@@ -11,11 +11,13 @@ import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +25,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -35,6 +38,8 @@ import com.android.volley.toolbox.Volley;
 import com.e.login.BuildConfig;
 import com.e.login.ContactusActivity;
 import com.e.login.Feedback;
+import com.e.login.LoginActivity;
+import com.e.login.Verification.Mobile_verification;
 import com.e.login.info_Class.InformationFragment;
 import com.e.login.JoinwithUs;
 import com.e.login.EnquiryFragment;
@@ -42,7 +47,17 @@ import com.e.login.Profile;
 import com.e.login.Helpline;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
+import com.e.login.utils.Constants;
 import com.e.login.utils.PreferenceUtils;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.OptionalPendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.internal.OnConnectionFailedListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
@@ -52,19 +67,23 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Home extends AppCompatActivity {
+public class Home extends AppCompatActivity implements OnConnectionFailedListener,GoogleApiClient.OnConnectionFailedListener {
 
     SearchView searchView;
     LinearLayout lnr;
     Button logout;
     NavigationView navigationView;
     FloatingActionButton floatingActionButton;
-    EditText editText;
     String data,data1,data2,data3;
     private long pressedTime;
-
+    TextView userName, userEmail, userId;
+    String Name, Email, Id;
     public static final String TAG = "bottom_sheet";
+    private GoogleApiClient googleApiClient;
+    private GoogleSignInOptions gso;
+    GoogleSignInAccount account;
 
+    String goo_token,goo_id,u_name,phone,user_id;
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -73,15 +92,15 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.home);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
+
+
+
         logout = findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
-
                     logout();
-
 
 
             }
@@ -91,8 +110,32 @@ public class Home extends AppCompatActivity {
         Intent i = getIntent();
         data = i.getStringExtra("token");
         data1 = i.getStringExtra("id");
-        data2 = i.getStringExtra("user_name");
+       data2 = i.getStringExtra("user_name");
         data3 = i.getStringExtra("email");
+        goo_token = i.getStringExtra("goo_token");
+        goo_id = i.getStringExtra("google_id");
+        u_name = i.getStringExtra("name");
+        phone = i.getStringExtra("phone");
+        user_id = i.getStringExtra("user_id");
+//        Toast.makeText(Home.this, data3, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(Home.this, goo_id, Toast.LENGTH_SHORT).show();
+
+//         Toast.makeText(Home.this, user_id, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(Home.this, data1, Toast.LENGTH_SHORT).show();
+
+
+
+
+
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
 
 
 //
@@ -117,18 +160,6 @@ public class Home extends AppCompatActivity {
 
         DrawerLayout drawerLayout = findViewById(R.id.drawerr_layout);
         lnr= findViewById(R.id.touch_drawer);
-       // editText = findViewById(R.id.edit_home);
-
-//
-//        editText.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//               btnNav.setVisibility(View.GONE);
-//            }
-//        });
-
-
-
 
         navigationView = findViewById(R.id.nav_view1);
 
@@ -136,6 +167,7 @@ public class Home extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
@@ -178,8 +210,14 @@ public class Home extends AppCompatActivity {
                         Intent home = new Intent(Home.this, Profile.class);
                         home.putExtra("token",data);
                         home.putExtra("id",data1);
+                        home.putExtra("user_id",user_id);
                         home.putExtra("user_name",data2);
                         home.putExtra("email",data3);
+                        Toast.makeText(Home.this, data2, Toast.LENGTH_SHORT).show();
+
+//
+
+
                         home.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(home);
                         break;
@@ -409,6 +447,9 @@ public class Home extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("Authorization","Bearer "+ PreferenceUtils.getToken(Home.this));
+                params.put("Authorization", "Bearer " + PreferenceUtils.getToken1(Home.this));
+
+
 
                 return params;
             }
@@ -418,4 +459,8 @@ public class Home extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
 }

@@ -44,7 +44,8 @@ public class OnBoarding extends AppCompatActivity {
     Button LetsGetStarted,skip,nxt;
     String data,data1;
     String id = null;
-    String tokan = null;
+    String token = null;
+    String goo_id;
 
 //    animations for get started
 
@@ -72,6 +73,12 @@ public class OnBoarding extends AppCompatActivity {
             Intent intent = new Intent(OnBoarding.this, Home.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
+
+//            PreferenceUtils.saveid(id, OnBoarding.this);
+//            PreferenceUtils.saveToken(token,OnBoarding.this);
+//            PreferenceUtils.saveid1(goo_id, OnBoarding.this);
+//            PreferenceUtils.saveToken1(token,OnBoarding.this);
+
             linearLayout.setVisibility(View.INVISIBLE);
         }
         else {

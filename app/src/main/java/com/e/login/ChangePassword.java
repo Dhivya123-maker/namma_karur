@@ -18,12 +18,15 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.e.login.HomeClass.Home;
 import com.e.login.Verification.Email_OTP;
 import com.e.login.Verification.VerifyActivity;
+import com.e.login.utils.PreferenceUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,14 +48,8 @@ public class ChangePassword extends AppCompatActivity {
         data1 = i1.getStringExtra("id");
 
 
-
-
-
-
-
-
-
-
+//        Toast.makeText(ChangePassword.this, data, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(ChangePassword.this, data1, Toast.LENGTH_SHORT).show();
 
 
         old = findViewById(R.id.old_pass);
@@ -152,6 +149,11 @@ public class ChangePassword extends AppCompatActivity {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
+                    Charset charset = Charset.defaultCharset();
+                    String str = new String(error.networkResponse.data, charset);
+
+                    Toast.makeText(ChangePassword.this, str, Toast.LENGTH_SHORT).show();
+
 
 
                 }
@@ -162,7 +164,7 @@ public class ChangePassword extends AppCompatActivity {
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String,String> params = new HashMap<String, String>();
                     params.put("Accept","application/json");
-                    params.put("Authorization", "Bearer "+data);
+                    params.put("Authorization","Bearer "+ PreferenceUtils.getToken(ChangePassword.this));
                  //   params.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODY0NjNlZTcxNWNlMmZjMzdmNTFjZTU3YTkwMTJkZDQ4YTZiZjU5MWJjYWFjNzNlM2RhYjM5ZDk4NGE5ZWYzZGIwNjBiZGFkNzNjMDY1YTciLCJpYXQiOjE2NDQ0ODg4OTQuMjQ5NTQ1LCJuYmYiOjE2NDQ0ODg4OTQuMjQ5NTUxLCJleHAiOjE2NzYwMjQ4OTQuMjMzMDg0LCJzdWIiOiIzNSIsInNjb3BlcyI6W119.mkvSK7-SBsD3kgrB6VUGkJ5G-lnDMTOQd6xwtOUQQRAVvKqd9ZHVNmfaD5G5kmDZkv_cs6lKjJFoO05JZ2NtHFbZbtVh-afYAKP7HWXEBvBvQmiP7zcDnD0mNlYRWYn-gK_pExNNYjlcLM8LZ2D5hZ_G8X57nbMA4Ak1gt8VUrpnnZbrYtk_1R6OEt6uXct1IAIHUWxmebpoH1ZbaIDya8aimn4HpLxwYj5wsxbttjivYmRTZ9qSybciAB85tSsUyrD5uHC1i5m1xrqsKVupN8Zv8DVPPniluoqgidhhxm5WWoX48QQIbHOntggDRUms8VdCG1dl_YgHe1C276IDztKJzfGwHEdEYg5Vr1Yv2YkpHE49pLys0gyL5MYE0wKWPHjOJXFEetN-4yrA_XSgPJesgs6vkV5uJLcKSbt4X-puTzrHYS4lQQBybXSr5bCrWkGrCZxeeO2IspJv5ylZGONvu2CnuJYffkuwHHW-1CnFW_elOu2_eDY4dwkCGEo7MujzcyySAIq9q9dG1b5jp2nf5lGx45smM5aktFLd-kkho8w_dCSEWmW6QPd2aA_9JIpLrFWIXAw1iGQ73ySeZxPbv_SLbLtv0Wtd-B4IpI-03GklSA6qDLw0zeW7xCfofnU2BQqtKOeYfVd3KHp4ZNkF5uilf79hvQm-85_vRCM");
                     return params;
                 }

@@ -25,6 +25,18 @@
         android:theme="@style/Theme.login"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Verification.Forget_OTP"
+            android:exported="false" />
+        <activity
+            android:name=".Verification.Forget_password"
+            android:exported="false" />
+        <activity
+            android:name=".Gallery_Class.View_All_Cat"
+            android:exported="false" />
+        <activity
+            android:name=".Blog_Class.Quotes_Catalog"
+            android:exported="true" />
+        <activity
             android:name=".AmbulanceClass.Ambulance_call"
             android:exported="false" />
         <activity

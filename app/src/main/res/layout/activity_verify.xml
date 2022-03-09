@@ -176,7 +176,7 @@
 
 
         <TextView
-            android:id="@+id/resend_otp_signup"
+            android:id="@+id/resend_otp_main"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Resend code"

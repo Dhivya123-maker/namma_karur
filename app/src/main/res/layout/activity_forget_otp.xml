@@ -13,7 +13,7 @@
 
 
         <ImageView
-            android:id="@+id/back_mobile"
+            android:id="@+id/back_verify_forget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -54,19 +54,20 @@
             android:layout_below="@id/verification_img"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:text="Please Enter The 4 Digit Code Sent To\n"
+            android:text="Please Enter The 4 Digit Code Sent To"
             android:textAlignment="center"
             android:textColor="#808080"
             android:textSize="15dp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/num_txt"
+            android:id="@+id/mobile_forget"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/verification_txt"
+            android:layout_below="@id/verification_img"
             android:layout_centerHorizontal="true"
-            android:text="+91 "
+            android:layout_marginTop="30dp"
+            android:text=""
             android:textAlignment="center"
             android:textColor="#808080"
             android:textSize="15dp"
@@ -87,7 +88,7 @@
 
 
             <EditText
-                android:id="@+id/et_otp_mobile"
+                android:id="@+id/et_otp_forget"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -107,7 +108,7 @@
 
 
             <EditText
-                android:id="@+id/et_otp_mobile1"
+                android:id="@+id/et_otp_forget1"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -124,7 +125,7 @@
                 android:background="@drawable/rounded_borders"
                 />
             <EditText
-                android:id="@+id/et_otp_mobile2"
+                android:id="@+id/et_otp_forget2"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -141,7 +142,7 @@
                 android:background="@drawable/rounded_borders"
                 />
             <EditText
-                android:id="@+id/et_otp_mobile3"
+                android:id="@+id/et_otp_forget3"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -175,7 +176,7 @@
 
 
             <TextView
-                android:id="@+id/resend_otp_mobile"
+                android:id="@+id/resend_otp_forget"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Resend code"
@@ -190,7 +191,7 @@
 
             <Button
 
-                android:id="@+id/verifyy"
+                android:id="@+id/verify_otp_forget"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"

@@ -78,7 +78,7 @@ public class Shop_Carrier_Adapter extends RecyclerView.Adapter<Shop_Carrier_Adap
     @Override
     public int getItemCount() {
 
-        return 1;
+        return shopCarrierModelList.size();
 
     }
 

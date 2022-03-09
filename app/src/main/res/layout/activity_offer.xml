@@ -315,6 +315,8 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="75dp"
                             android:adjustViewBounds="true" />
+
+
                         </LinearLayout>
 
                     </RelativeLayout>
@@ -330,25 +332,27 @@
     </RelativeLayout>
 
 
+
     <FrameLayout
-        android:id="@+id/fragment_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/fragment_layout"
 
         tools:ignore="MissingConstraints">
 
     </FrameLayout>
 
 
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView_shops"
+        android:id="@+id/bottomNavigationView_offers"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:background="#4c9a2a"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:itemIconTint="@color/white"
+        android:background="#4c9a2a"
         app:layout_constraintStart_toEndOf="parent"
+        app:itemTextColor="@color/white"
         app:menu="@menu/bottom_nav" />
 
 

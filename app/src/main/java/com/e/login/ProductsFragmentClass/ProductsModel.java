@@ -8,6 +8,29 @@ public class ProductsModel {
     private String text;
     private String text_one;
 
+    public String getCat() {
+        return cat;
+    }
+
+    public void setCat(String cat) {
+        this.cat = cat;
+    }
+
+    public ProductsModel(String cat) {
+        this.cat = cat;
+    }
+
+    String cat;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    String id;
 
     public ProductsModel(){}
 
@@ -46,11 +69,13 @@ public class ProductsModel {
         this.text = text;
     }
 
-    public ProductsModel(String image,String button, String text,String text_one) {
+    public ProductsModel(String image, String text,String text_one,String id,String cat) {
 
         this.image= image;
 //        this.button = button;
         this.text= text;
         this.text_one= text_one;
+        this.id = id;
+        this.cat = cat;
 
     }}
