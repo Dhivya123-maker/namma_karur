@@ -35,6 +35,9 @@ import com.e.login.AmbulanceClass.AmbulanceAdapter;
 import com.e.login.AmbulanceClass.AmbulanceModel;
 import com.e.login.HomeClass.Home;
 import com.e.login.ShopClass.ShopScreen_Class;
+import com.e.login.Verification.Change_Email_OTP;
+import com.e.login.Verification.Change_Phone;
+import com.e.login.Verification.Edit;
 import com.e.login.Verification.Email_OTP;
 import com.e.login.Verification.VerifyActivity;
 import com.e.login.utils.PreferenceUtils;
@@ -59,6 +62,11 @@ public class Profile extends AppCompatActivity {
     private long pressedTime;
     String data3;
     View view,view1,view2,view3;
+    String id,email,phone,namee,email_verifyy,phone_verifyy;
+    Button savee,save1;
+    String Email_get,Phone_get;
+    LinearLayout gone1,gone2;
+
 
 
 
@@ -73,12 +81,16 @@ public class Profile extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
 
+        get_profile();
 
         view =findViewById(R.id.first_view);
         view1 =findViewById(R.id.second_view);
         view2 =findViewById(R.id.third_view);
         view3 =findViewById(R.id.fourth_view);
         user_name = findViewById(R.id.user_name);
+        gone1 = findViewById(R.id.gone1);
+        gone2 = findViewById(R.id.gone2);
+//        verified = findViewById(R.id.verified_txtt);
 
 
         edit_img = findViewById(R.id.img_edit);
@@ -116,29 +128,35 @@ public class Profile extends AppCompatActivity {
         con_edit = findViewById(R.id.contact_edit);
         email_edit_txt = findViewById(R.id.email_edit_txt);
         con_edit_txt = findViewById(R.id.contact_edit_txt);
+        savee = findViewById(R.id.save_number);
+        save1 = findViewById(R.id.save_number1);
         emailtxt = findViewById(R.id.emailtxt);
         contacttxt = findViewById(R.id.contacttxt);
         email_verify = findViewById(R.id.email_verify);
         contact_verify = findViewById(R.id.contact_verify);
-        verified = findViewById(R.id.verified_txt);
-
+//        verified = findViewById(R.id.verified_txtt);
+//
 
 
         save.setVisibility(GONE);
 
+        email_edit.setVisibility(View.VISIBLE);
 
         summary.setVisibility(GONE);
         edu.setVisibility(GONE);
         exp_head.setVisibility(GONE);
         skills_head.setVisibility(GONE);
+
+
         inst.setVisibility(GONE);
         deg.setVisibility(GONE);
         yea.setVisibility(GONE);
         com_txt.setVisibility(GONE);
         exp_txt.setVisibility(GONE);
         pos_txt.setVisibility(GONE);
-        desc .setVisibility(GONE);
+//        desc .setVisibility(GONE);
         skill.setVisibility(GONE);
+//        verified.setVisibility(GONE);
 
         view1.setVisibility(GONE);
         view2.setVisibility(GONE);
@@ -148,9 +166,11 @@ public class Profile extends AppCompatActivity {
         edit_img.setVisibility(GONE);
         email_edit_txt.setVisibility(GONE);
         con_edit_txt.setVisibility(GONE);
+        savee.setVisibility(GONE);
+        save1.setVisibility(GONE);
         email_verify.setVisibility(View.VISIBLE);
-        email_edit.setVisibility(GONE);
-        contact_verify.setVisibility(GONE);
+
+
         emailtxt.setVisibility(View.VISIBLE);
         contacttxt.setVisibility(View.VISIBLE);
 //        verified.setVisibility(GONE);
@@ -159,19 +179,39 @@ public class Profile extends AppCompatActivity {
 
 //        dob = findViewById(R.id.d_o_b);
 //        b_grp = findViewById(R.id.blood_grp);
-        desc = findViewById(R.id.descrip);
+
+
+        savee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                email_edit.setVisibility(View.VISIBLE);
+//                gone1.setVisibility(GONE);
+
+                change_email();
+
+            }
+        });
+        save1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                change_phone();
+
+            }
+        });
 
         Intent intent = getIntent();
         data = intent.getStringExtra("token");
         data1 = intent.getStringExtra("id");
         data2 = intent.getStringExtra("user_name");
         data3 = intent.getStringExtra("email");
-        user_id = intent.getStringExtra("user_id");
+        //user_id = intent.getStringExtra("user_id");
         emailtxt.setText(data3);
-        user_name.setText(data2);
+
 //        Toast.makeText(Profile.this, user_id, Toast.LENGTH_SHORT).show();
 //        Toast.makeText(Profile.this, data, Toast.LENGTH_SHORT).show();
-        Toast.makeText(Profile.this, data2, Toast.LENGTH_SHORT).show();
+        Toast.makeText(Profile.this, data1, Toast.LENGTH_SHORT).show();
 //
 
         email_edit.setOnClickListener(new View.OnClickListener() {
@@ -181,6 +221,8 @@ public class Profile extends AppCompatActivity {
                 email_edit.setVisibility(GONE);
                 emailtxt.setVisibility(GONE);
                 email_verify.setVisibility(View.VISIBLE);
+                savee.setVisibility(View.VISIBLE);
+
 
 
             }
@@ -205,6 +247,7 @@ public class Profile extends AppCompatActivity {
                 con_edit.setVisibility(GONE);
                 contacttxt.setVisibility(GONE);
                 contact_verify.setVisibility(View.VISIBLE);
+                save1.setVisibility(View.VISIBLE);
 
 
 
@@ -213,15 +256,23 @@ public class Profile extends AppCompatActivity {
         contact_verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                con_edit_txt.setVisibility(GONE);
-                contact_verify.setVisibility(GONE);
-                con_edit.setVisibility(View.VISIBLE);
-                contacttxt.setVisibility(View.VISIBLE);
+//                con_edit_txt.setVisibility(GONE);
+//                contact_verify.setVisibility(GONE);
+//                con_edit.setVisibility(View.VISIBLE);
+//                contacttxt.setVisibility(View.VISIBLE);
+                send_mail();
             }
         });
 
 
         edit = findViewById(R.id.edit_button);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(Profile.this, com.e.login.Verification.Edit.class);
+                startActivity(intent1);
+            }
+        });
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -267,179 +318,16 @@ public class Profile extends AppCompatActivity {
 //                email_edit.setVisibility(View.GONE);
 //                con_edit.setVisibility(View.GONE);
 
-                profile_page();
-                get_profile();
+//                profile_page();
 
 
             }
         });
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                save.setVisibility(View.VISIBLE);
-                btn.setVisibility(GONE);
-                edit_txt.setVisibility(View.VISIBLE);
-                desc.setVisibility(GONE);
-
-//                ins.setVisibility(View.VISIBLE);
-//                degree.setVisibility(View.VISIBLE);
-//                year.setVisibility(View.VISIBLE);
-//                inst.setVisibility(GONE);
-//                deg.setVisibility(GONE);
-//                yea.setVisibility(GONE);
-//                com.setVisibility(View.VISIBLE);
-//                exp.setVisibility(View.VISIBLE);
-//                pos.setVisibility(View.VISIBLE);
-                com_txt.setVisibility(GONE);
-                exp_txt.setVisibility(GONE);
-                pos_txt.setVisibility(GONE);
-                skill_edit.setVisibility(View.VISIBLE);
-                com_edit.setVisibility(View.VISIBLE);
-                skill.setVisibility(GONE);
-                comm.setVisibility(GONE);
-                user.setVisibility(View.VISIBLE);
-                doob.setVisibility(View.VISIBLE);
-                blood.setVisibility(View.VISIBLE);
-                name.setVisibility(GONE);
-                dob.setVisibility(GONE);
-                b_grp.setVisibility(GONE);
-                edit_img.setVisibility(View.VISIBLE);
-                email_edit.setVisibility(View.VISIBLE);
-                con_edit.setVisibility(View.VISIBLE);
-
-
-
-
-
-//                Intent intent = new Intent(Profile.this,EditProfile.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//                startActivity(intent);
-            }
-        });
-
-    }
-
-
-    public  void profile_page(){
-        User = user.getText().toString();
-        Dob = doob.getText().toString();
-        Blood = blood.getText().toString();
-        Edit = edit_txt.getText().toString();
-        Ins = ins.getText().toString();
-        Degree = degree.getText().toString();
-        Year = year.getText().toString();
-        Comp = com.getText().toString();
-        Exp = exp.getText().toString();
-        Pos= pos.getText().toString();
-        Skill = skill_edit.getText().toString();
-        Com = com_edit.getText().toString();
-       Img = profile.getDrawable().toString();
-
-
-
-
-
-        String url = "http://nk.inevitabletech.email/public/api/send-profile-details";
-        JSONObject jsonBody = new JSONObject();
-
-
-        try {
-            jsonBody.put("name","raja");
-            jsonBody.put("dob", "2022-02-25");
-            jsonBody.put("blood_group", "a_positive");
-            jsonBody.put("description", "abcd");
-            jsonBody.put("education[0][year]", "bbb");
-            jsonBody.put("education[0][institute]", "zzzz");
-            jsonBody.put("education[0][degree]", "yyyyy");
-//
-//            jsonBody.put("education[1][year]","bbb" );
-//            jsonBody.put("education[1][institute]", "zzzz");
-//            jsonBody.put("education[1][degree]", "yyyyy");
-            jsonBody.put("experience[0][company]", "ccc");
-            jsonBody.put("experience[0][experience]", "ccc");
-            jsonBody.put("experience[0][position]", "ccc");
-//            jsonBody.put("experience[1][company]", "ccc");
-//            jsonBody.put("experience[1][experience]","ccc");
-//            jsonBody.put("experience[1][position]", "ccc");
-            jsonBody.put("skills[0]", "eee");
-//            jsonBody.put("skills[1]", "fff");
-//           jsonBody.put("image","/C:/Users/spk Systems/Downloads/teahub.io-aphromoo-wallpaper-3419573.png");
-
-
-
-
-
-
-
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-
-                    Log.i("0000000000000",response.toString());
-                    Toast.makeText(Profile.this, response.toString(), Toast.LENGTH_SHORT).show();
-
-
-
-                try{
-                    String Success = response.getString("success");
-                    String msg = response.getString("message");
-
-
-
-
-
-                    if (Success == "true"){
-                        Log.i("rdesytrdy",msg);
-                        Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
-
-
-                    }
-                    else {
-
-
-                        Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
-
-
-                    }
-
-
-                }catch (Exception e) {
-                    e.printStackTrace();
-
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Charset charset = Charset.defaultCharset();
-                String str = new String(error.networkResponse.data,charset);
-            }
-        }){
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String,String> params = new HashMap<String, String>();
-                params.put("Accept","application/json");
-                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(Profile.this));
-                return params;
-            }
-        };
-
-            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
-                    10000,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-        RequestQueue requestQueue = Volley.newRequestQueue(Profile.this);
-        requestQueue.add(jsonObjectRequest);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
 
     }
+
+
 
 
     public void send_mail(){
@@ -477,13 +365,15 @@ public class Profile extends AppCompatActivity {
                             Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
 
                             Intent intent1 = new Intent(Profile.this, Email_OTP.class);
-                            intent1.putExtra("email",data3);
-                            intent1.putExtra("user_id",user_id);
+                            intent1.putExtra("email",email);
+                            intent1.putExtra("user_id",data1);
 //
                             intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent1);
+                            Toast.makeText(Profile.this, email, Toast.LENGTH_SHORT).show();
 //                            PreferenceUtils.saveid(data1,Profile.this);
 //                            PreferenceUtils.saveToken(data,Profile.this);
+
 
                         }
                         else {
@@ -574,15 +464,26 @@ public class Profile extends AppCompatActivity {
                     String msg = response.getString("message");
 
 
+                    JSONObject jsonObject = response.getJSONObject("data");
+                    id = jsonObject.getString("id");
+                    namee = jsonObject.getString("name");
+                    email = jsonObject.getString("email");
+                    phone = jsonObject.getString("phone");
+                    email_verifyy = jsonObject.getString("email_verification_status");
+                    phone_verifyy = jsonObject.getString("phone_verification_status");
+
+
                     if(Success.equals("true")){
                         Log.i("123",msg);
 
                         Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
+                        emailtxt.setText(email);
+                        contacttxt.setText(phone);
+                        user_name.setText(namee);
+                        email_verify.setText(email_verifyy);
+                        contact_verify.setText(phone_verifyy);
 
-
-
-
-
+//
 
 
                     }else{
@@ -633,32 +534,239 @@ public class Profile extends AppCompatActivity {
 
 
     }
+    public void change_email(){
 
-//    public void onBackPressed() {
-//
-//        if (pressedTime + 1000 > System.currentTimeMillis()) {
-//            new AlertDialog.Builder(Profile.this).setIcon(R.drawable.ic_baseline_warning_24)
-//                    .setMessage("Are you sure want to exit without make changes")
-//                    .setNegativeButton(android.R.string.no,null)
-//                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//                           Profile.super.onBackPressed();
-////                            Intent intent = new Intent(Profile.this,Profile.class);
-////                            startActivity(intent);
-//                        }
-//                    }).create().show();
-//
-//        }
-//        else  {
-//
-//            Toast.makeText(Profile.this, "Press back to exit", Toast.LENGTH_SHORT).show();
-//
-//        }
-//        pressedTime = System.currentTimeMillis();
-//
-//
-//
-//
-//    }
+        Email_get = email_edit_txt.getText().toString();
+
+
+        String url = "http://nk.inevitabletech.email/public/api/change-email";
+        JSONObject jsonBody = new JSONObject();
+
+
+        try {
+            jsonBody.put("email",Email_get);
+            Toast.makeText(Profile.this, Email_get, Toast.LENGTH_SHORT).show();
+
+
+
+
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+
+                    Log.i("0000000000000",response.toString());
+                    Toast.makeText(Profile.this, response.toString(), Toast.LENGTH_SHORT).show();
+
+
+
+                    try{
+                        String Success = response.getString("success");
+                        String msg = response.getString("message");
+
+
+
+
+
+                        if (Success.equals("true")){
+                            Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
+
+                            Intent intent1 = new Intent(Profile.this, Change_Email_OTP.class);
+                            intent1.putExtra("email",Email_get);
+                            intent1.putExtra("user_id",data1);
+
+                            intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            startActivity(intent1);
+//                            PreferenceUtils.saveid(data1,Profile.this);
+//                            PreferenceUtils.saveToken(data,Profile.this);
+
+
+                        }
+                        else {
+
+
+                            Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
+
+
+                        }
+
+
+                    }catch (Exception e) {
+                        e.printStackTrace();
+
+                    }
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                    Charset charset = Charset.defaultCharset();
+                    String str = new String(error.networkResponse.data,charset);
+                    Toast.makeText(Profile.this, str, Toast.LENGTH_SHORT).show();
+
+
+                    try {
+                        JSONObject   jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        Toast.makeText(Profile.this, data.toString(), Toast.LENGTH_SHORT).show();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+
+
+
+                }
+            }){
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String,String> params = new HashMap<String, String>();
+                    params.put("Accept","application/json");
+                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(Profile.this));
+                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(Profile.this));
+                    return params;
+
+
+                }
+            };
+
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    10000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+            RequestQueue requestQueue = Volley.newRequestQueue(Profile.this);
+            requestQueue.add(jsonObjectRequest);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+    public void change_phone(){
+
+
+        Phone_get = con_edit_txt.getText().toString();
+
+
+        String url = "http://nk.inevitabletech.email/public/api/change-phone";
+        JSONObject jsonBody = new JSONObject();
+
+
+        try {
+            jsonBody.put("phone",Phone_get);
+            Toast.makeText(Profile.this, Phone_get, Toast.LENGTH_SHORT).show();
+
+
+
+
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+
+                    Log.i("0000000000000",response.toString());
+                    Toast.makeText(Profile.this, response.toString(), Toast.LENGTH_SHORT).show();
+
+
+
+                    try{
+                        String Success = response.getString("success");
+                        String msg = response.getString("message");
+
+
+
+
+
+                        if (Success.equals("true")){
+                            Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
+
+                            Intent intent1 = new Intent(Profile.this, Change_Phone.class);
+                            intent1.putExtra("phone",Phone_get);
+                            intent1.putExtra("user_id",id);
+
+                            Toast.makeText(Profile.this, id, Toast.LENGTH_SHORT).show();
+
+                            intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            startActivity(intent1);
+//                            PreferenceUtils.saveid(data1,Profile.this);
+//                            PreferenceUtils.saveToken(data,Profile.this);
+
+
+                        }
+                        else {
+
+
+                            Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
+
+
+                        }
+
+
+                    }catch (Exception e) {
+                        e.printStackTrace();
+
+                    }
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                    Charset charset = Charset.defaultCharset();
+                    String str = new String(error.networkResponse.data,charset);
+                    Toast.makeText(Profile.this, str, Toast.LENGTH_SHORT).show();
+
+
+                    try {
+                        JSONObject   jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        Toast.makeText(Profile.this, data.toString(), Toast.LENGTH_SHORT).show();
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+
+
+
+                }
+            }){
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String,String> params = new HashMap<String, String>();
+                    params.put("Accept","application/json");
+                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(Profile.this));
+                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(Profile.this));
+                    return params;
+
+
+                }
+            };
+
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    10000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+            RequestQueue requestQueue = Volley.newRequestQueue(Profile.this);
+            requestQueue.add(jsonObjectRequest);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

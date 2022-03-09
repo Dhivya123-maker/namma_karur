@@ -90,9 +90,8 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
+
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
-
-
 
 
         logout = findViewById(R.id.logout);
@@ -117,11 +116,6 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         u_name = i.getStringExtra("name");
         phone = i.getStringExtra("phone");
         user_id = i.getStringExtra("user_id");
-//        Toast.makeText(Home.this, data3, Toast.LENGTH_SHORT).show();
-//        Toast.makeText(Home.this, goo_id, Toast.LENGTH_SHORT).show();
-
-//         Toast.makeText(Home.this, user_id, Toast.LENGTH_SHORT).show();
-       // Toast.makeText(Home.this, data1, Toast.LENGTH_SHORT).show();
 
 
 
@@ -213,7 +207,9 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
                         home.putExtra("user_id",user_id);
                         home.putExtra("user_name",data2);
                         home.putExtra("email",data3);
-                        Toast.makeText(Home.this, data2, Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(Home.this, user_id, Toast.LENGTH_SHORT).show();
+                      //  Toast.makeText(Home.this, data1, Toast.LENGTH_SHORT).show();
+
 
 //
 

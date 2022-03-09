@@ -83,8 +83,6 @@
         >
 
 
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -134,14 +132,14 @@
                     <!--                    android:singleLine="true"/>-->
 
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/d_o_b"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="15dp"-->
-<!--                        android:text="September 20, 1996"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textSize="12dp" />-->
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/d_o_b"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginStart="15dp"-->
+                    <!--                        android:text="September 20, 1996"-->
+                    <!--                        android:textColor="@color/black"-->
+                    <!--                        android:textSize="12dp" />-->
 
                     <!--                <EditText-->
                     <!--                    android:id="@+id/dob_edit"-->
@@ -150,14 +148,14 @@
                     <!--                    android:singleLine="true"/>-->
 
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/blood_grp"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginStart="15dp"-->
-<!--                        android:text="B+ positive"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textSize="12dp" />-->
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/blood_grp"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_marginStart="15dp"-->
+                    <!--                        android:text="B+ positive"-->
+                    <!--                        android:textColor="@color/black"-->
+                    <!--                        android:textSize="12dp" />-->
 
                     <!--                <EditText-->
                     <!--                    android:id="@+id/blood_edit"-->
@@ -210,7 +208,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:text="patrick245@gmail.com"
+                    android:text=""
                     android:textColor="@color/black" />
 
                 <LinearLayout
@@ -241,23 +239,60 @@
                         android:layout_gravity="center"
                         android:background="@drawable/bg"
                         android:backgroundTint="#4c9a2a"
-                        android:padding="2dp"
+                        android:padding="5dp"
                         android:text="Verify"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:textSize="12dp" />
+                        android:textSize="11dp" />
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/verified_txtt"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:text="verified"-->
+                    <!--                        android:textColor="#4c9a2a"-->
+                    <!--                        android:textSize="12dp"/>-->
                 </LinearLayout>
 
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/email_edit_txt"
+            <LinearLayout
+                android:id="@+id/gone1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:singleLine="true">
+                android:orientation="horizontal">
 
-            </EditText>
+                <EditText
+                    android:id="@+id/email_edit_txt"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:singleLine="true">
+
+                </EditText>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/save_number"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg"
+                        android:backgroundTint="#4c9a2a"
+                        android:padding="2dp"
+                        android:text="sumbit"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="11dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
 
             <View
                 android:layout_width="match_parent"
@@ -282,7 +317,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
-                    android:text="0123456987"
+                    android:text=""
                     android:textColor="@color/black" />
 
                 <LinearLayout
@@ -305,23 +340,54 @@
                         android:layout_gravity="center"
                         android:background="@drawable/bg"
                         android:backgroundTint="#4c9a2a"
-                        android:padding="2dp"
+                        android:padding="5dp"
                         android:text="Verify"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:textSize="12dp" />
+                        android:textSize="11dp" />
                 </LinearLayout>
 
             </LinearLayout>
 
-            <EditText
-                android:id="@+id/contact_edit_txt"
+            <LinearLayout
+                android:id="@+id/gone2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:singleLine="true">
+                android:orientation="horizontal">
 
-            </EditText>
+                <EditText
+                    android:id="@+id/contact_edit_txt"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:inputType="number"
+                    android:singleLine="true">
+
+                </EditText>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="end"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/save_number1"
+                        android:layout_width="50dp"
+                        android:layout_height="25dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg"
+                        android:backgroundTint="#4c9a2a"
+                        android:padding="2dp"
+                        android:text="submit"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="11dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
 
             <View
                 android:id="@+id/first_view"
@@ -346,7 +412,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="lorem ispum may be used as a placeholderghrkijethgki4jer4hgtkje4rh"
+                android:text=""
                 android:textColor="@color/black"
                 android:textSize="14dp" />
 
@@ -397,7 +463,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
-                        android:text="PSG arts &amp; science"
+                        android:text=""
                         android:textColor="@color/black" />
 
                     <!--                <EditText-->
@@ -413,7 +479,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
-                        android:text="B.SC(Computer science)"
+                        android:text=""
                         android:textColor="@color/black" />
 
                     <!--                <EditText-->
@@ -429,7 +495,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="15dp"
-                        android:text="2018 - 2021"
+                        android:text=""
                         android:textColor="@color/black" />
 
                     <!--                <EditText-->
@@ -470,7 +536,7 @@
                 android:id="@+id/com_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SPK Systems pvt.Ltd"
+                android:text=""
                 android:textColor="@color/black" />
 
             <!--        <EditText-->
@@ -485,7 +551,7 @@
                 android:id="@+id/exp_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Experience : 2years"
+                android:text=""
                 android:textColor="@color/black" />
 
             <!--        <EditText-->
@@ -500,7 +566,7 @@
                 android:id="@+id/pos_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Position : Android developer"
+                android:text=""
                 android:textColor="@color/black"
 
                 />
@@ -547,7 +613,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:text="Team work"
+                    android:text=""
                     android:textColor="@color/black" />
 
 
@@ -594,7 +660,6 @@
             <!--            android:singleLine="true">-->
 
             <!--        </EditText>-->
-
 
 
         </LinearLayout>

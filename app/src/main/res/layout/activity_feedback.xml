@@ -80,12 +80,44 @@
                             android:src="@drawable/nk_onee">
 
                         </ImageView>
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="20dp"
                             android:layout_marginTop="25dp"
+                            android:text="Rate US"
+                            android:textColor="@color/black"
+                            android:textSize="15dp">
+
+                        </TextView>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_gravity="center">
+
+
+                            <RatingBar
+                                android:id="@+id/ratingBar"
+                                android:layout_width="wrap_content"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:scaleX=".5"
+                                android:scaleY=".5"
+                                android:layout_marginTop="5dp"
+                                android:transformPivotX="0dp"
+                                android:transformPivotY="0dp"
+                                android:isIndicator="false"
+                                android:max="5"
+                                >
+
+                            </RatingBar>
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="10dp"
                             android:text="How can we improve our product?"
                             android:textColor="@color/black"
                             android:textSize="15dp">
@@ -108,87 +140,6 @@
                             android:textColorHint="#949494"
                             android:textSize="14dp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="10dp"
-                            android:text="Rate us"
-                            android:textColor="@color/black"
-                            android:textSize="15dp" />
-
-                        <HorizontalScrollView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="10dp"
-                            android:scrollbars="none"
-                            android:layout_marginEnd="20dp">
-
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-
-                                <Button
-
-                                    android:layout_width="100dp"
-                                    android:layout_height="35dp"
-                                    android:background="@drawable/border_only"
-                                    android:gravity="center"
-                                    android:text="Awesome"
-                                    android:textAllCaps="false"
-                                    android:textColor="#949494"
-                                    android:textSize="15dp">
-
-                                </Button>
-
-                                <Button
-                                    android:layout_width="100dp"
-                                    android:layout_height="35dp"
-                                    android:layout_marginStart="10dp"
-                                    android:background="@drawable/border_only"
-                                    android:gravity="center"
-                                    android:text="Good"
-                                    android:textAllCaps="false"
-                                    android:textColor="#949494"
-                                    android:textSize="15dp">
-
-                                </Button>
-
-                                <Button
-                                    android:layout_width="100dp"
-                                    android:layout_height="35dp"
-                                    android:layout_marginStart="10dp"
-                                    android:background="@drawable/border_only"
-                                    android:gravity="center"
-                                    android:text="Average"
-                                    android:textAllCaps="false"
-                                    android:textColor="#949494"
-                                    android:textSize="15dp">
-
-                                </Button>
-
-                                <Button
-                                    android:layout_width="100dp"
-                                    android:layout_height="35dp"
-                                    android:layout_marginStart="10dp"
-                                    android:background="@drawable/border_only"
-                                    android:gravity="center"
-                                    android:text="Worst"
-                                    android:textAllCaps="false"
-                                    android:textColor="#949494"
-                                    android:textSize="15dp">
-
-                                </Button>
-
-
-                            </LinearLayout>
-
-
-                        </HorizontalScrollView>
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -210,55 +161,41 @@
                             android:layout_marginEnd="20dp"
                             android:orientation="horizontal">
 
-                            <LinearLayout
-                                android:layout_width="100dp"
-                                android:layout_height="35dp"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:background="@drawable/border_only"
-                                android:orientation="horizontal">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="#949494"
-                                    android:text="Yes"/>
-
-                               <ImageView
-                                   android:layout_width="15dp"
-                                   android:layout_height="15dp"
-                                   android:layout_marginStart="5dp"
-                                   android:src="@drawable/ic_baseline_thumb_up_grey">
-
-                               </ImageView>
-
-                            </LinearLayout>
+            <RadioGroup
+                android:id="@+id/radio_gp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
 
-                            <LinearLayout
-                                android:layout_width="100dp"
-                                android:layout_height="35dp"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:layout_marginStart="10dp"
-                                android:background="@drawable/border_only"
-                                android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/r1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="yes"
+                            android:textSize="14dp"
+                            android:textColor="@color/black">
 
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="#949494"
-                                    android:text="No"/>
+                            </RadioButton>
 
-                                <ImageView
-                                    android:layout_width="15dp"
-                                    android:layout_height="15dp"
-                                    android:layout_marginStart="5dp"
-                                    android:src="@drawable/ic_baseline_thumb_downn">
 
-                                </ImageView>
 
-                            </LinearLayout>
+                            <RadioButton
+                                android:id="@+id/r2"
+                                android:layout_marginStart="20dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="no"
+                                android:textSize="14dp"
+                                android:textColor="@color/black"
+                                >
+
+                            </RadioButton>
+            </RadioGroup>
+
+
+
 
 
 
@@ -268,11 +205,10 @@
 
 
                                                 <Button
+                                                    android:id="@+id/sub_rev"
                                                     android:layout_width="match_parent"
                                                     android:layout_height="45dp"
                                                     android:layout_gravity="center"
-
-
                                                     android:layout_marginStart="110dp"
                                                     android:layout_marginTop="40dp"
                                                     android:layout_marginEnd="110dp"

@@ -99,8 +99,7 @@ public class Quotes_Catalog extends AppCompatActivity {
                         }
 
 
-                        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(Quotes_Catalog.this, 2);
-                        recyclerView.setLayoutManager(mLayoutManager);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(Quotes_Catalog.this));
                         adapter =  new Quotes_Catalog_Adapter(Quotes_Catalog.this,quotesCatalogModelList);
                         recyclerView.setAdapter(adapter);
 

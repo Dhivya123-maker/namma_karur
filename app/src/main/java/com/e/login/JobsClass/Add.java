@@ -1,4 +1,4 @@
-package com.e.login;
+package com.e.login.JobsClass;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,26 +14,18 @@ import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.HttpHeaderParser;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.e.login.AmbulanceClass.Ambulance;
-import com.e.login.BloodClass.Blood_One;
-import com.e.login.JobsClass.Jobs;
-import com.e.login.Verification.VerifyActivity;
+import com.e.login.R;
 import com.e.login.utils.PreferenceUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;

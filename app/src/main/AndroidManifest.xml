@@ -25,6 +25,15 @@
         android:theme="@style/Theme.login"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Verification.Edit"
+            android:exported="false" />
+        <activity
+            android:name=".Verification.Change_Phone"
+            android:exported="false" />
+        <activity
+            android:name=".Verification.Change_Email_OTP"
+            android:exported="false" />
+        <activity
             android:name=".Verification.Forget_OTP"
             android:exported="false" />
         <activity
@@ -267,7 +276,7 @@
             android:name=".ViewActivity"
             android:exported="false" />
         <activity
-            android:name=".Add"
+            android:name=".JobsClass.Add"
             android:exported="false" />
         <activity
             android:name=".JobsClass.Jobs"
