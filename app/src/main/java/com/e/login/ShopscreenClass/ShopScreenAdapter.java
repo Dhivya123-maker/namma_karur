@@ -5,6 +5,8 @@ package com.e.login.ShopscreenClass;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,14 +85,14 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
 
         if (shopScreenModelList.get(position).getCategory().equals("AtmCatalog")){
 
-            holder.textView.setText(shopScreenModelList.get(position).getText());
-            holder.textView1.setText(shopScreenModelList.get(position).getText_one());
-            holder.textView2.setText(shopScreenModelList.get(position).getText_two());
+            holder.atm_txt.setText(shopScreenModelList.get(position).getText());
+            holder.  atm_desc.setText(shopScreenModelList.get(position).getText_one());
+//            holder.textView2.setText(shopScreenModelList.get(position).getText_two());
             holder.loc.setText(shopScreenModelList.get(position).getText_three());
 
             Glide.with(context)
                     .load(shopScreenModelList.get(position).getImage())
-                    .into(holder.img);
+                    .into(holder.img1);
 
             holder.lnr.setVisibility(View.GONE);
             holder.atm_lnr.setVisibility(View.VISIBLE);
@@ -139,9 +141,10 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
         ViewHolder(View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.sr_img);
-            img1 = itemView.findViewById(R.id.atm_star);
+//            img1 = itemView.findViewById(R.id.atm_star);
             img2 = itemView.findViewById(R.id.verify_img);
             img3 = itemView.findViewById(R.id.time_img);
+            atm_img = itemView.findViewById(R.id.img_loc);
 
             lnr = itemView.findViewById(R.id.ac_onee);
             atm_lnr = itemView.findViewById(R.id.atm_lnr);
@@ -156,12 +159,35 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
 
 
             atm_txt = itemView.findViewById(R.id.atm_name);
-            atm_desc = itemView.findViewById(R.id.atm_desc);
-            atm_rat = itemView.findViewById(R.id.atm_rate);
+            atm_desc = itemView.findViewById(R.id.atm_address);
+            img1 = itemView.findViewById(R.id.atm_img);
+//            atm_rat = itemView.findViewById(R.id.atm_rate);
+
+
+
+////
+            atm_img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    String loc = shopScreenModelList.get(position).getLoc();
+
+                    Uri gmmIntentUri = Uri.parse("geo:"+loc);
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setPackage("com.google.android.apps.maps");
+//                    mapIntent.setPackage("www.google.com");
+                  view.getContext().startActivity(mapIntent);
+
+//
 
 
 
 
+                }
+
+
+//
+            });
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -178,6 +204,7 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
             });
 
         }
+
 
 
 

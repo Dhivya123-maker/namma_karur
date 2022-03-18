@@ -243,7 +243,7 @@
             android:id="@+id/veg_img"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/veg"
+
             android:layout_marginStart="15dp"
             android:layout_gravity="center"/>
 
@@ -258,7 +258,7 @@
                 android:id="@+id/veg_txt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vegetables"
+                android:text=""
                 android:textColor="#4c9a2a"
                 android:textSize="15dp"
                 android:textStyle="bold"
@@ -421,7 +421,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:text="Govt"
+                    android:text=""
                     android:textColor="#4c9a2a"
                     android:textSize="15dp"
                     android:textStyle="bold">

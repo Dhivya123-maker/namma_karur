@@ -11,24 +11,24 @@ import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -38,32 +38,29 @@ import com.android.volley.toolbox.Volley;
 import com.e.login.BuildConfig;
 import com.e.login.ContactusActivity;
 import com.e.login.Feedback;
-import com.e.login.LoginActivity;
-import com.e.login.Verification.Mobile_verification;
+import com.e.login.NewsClass.Karur;
+import com.e.login.Post_Fragment;
+import com.e.login.Verification.Edit;
 import com.e.login.info_Class.InformationFragment;
-import com.e.login.JoinwithUs;
-import com.e.login.EnquiryFragment;
 import com.e.login.Profile;
-import com.e.login.Helpline;
+import com.e.login.Help_Class.Helpline;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
-import com.e.login.utils.Constants;
 import com.e.login.utils.PreferenceUtils;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.OptionalPendingResult;
-import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.internal.OnConnectionFailedListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -82,8 +79,12 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
     private GoogleApiClient googleApiClient;
     private GoogleSignInOptions gso;
     GoogleSignInAccount account;
+    String name,email;
+    ImageView profile;
+    TextView namee,mail;
 
     String goo_token,goo_id,u_name,phone,user_id;
+    String image;
     BottomNavigationView bottomNavigationView;
 
     @Override
@@ -117,6 +118,9 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         phone = i.getStringExtra("phone");
         user_id = i.getStringExtra("user_id");
 
+//        Toast.makeText(Home.this, data, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(Home.this, data1, Toast.LENGTH_SHORT).show();
+
 
 
 
@@ -145,10 +149,10 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
 //            }
 //        });
 
-        //bottomNavigationView = findViewById(R.id.bottomNavigation);
+        imag();
 
       BottomNavigationView btnNav= findViewById(R.id.bottomNavigation);
-//       btnNav.setBackgroundColor(ContextCompat.getColor(getApplicationContext(), android.R.color.transparent));
+
 
         btnNav.setOnNavigationItemSelectedListener(navListener);
 
@@ -156,6 +160,13 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         lnr= findViewById(R.id.touch_drawer);
 
         navigationView = findViewById(R.id.nav_view1);
+//        View headview = navigationView.getHeaderView(0);
+//       profile = headview.findViewById(R.id.head_img);
+        View hView =  navigationView.inflateHeaderView(R.layout.header);
+        profile = (ImageView)hView.findViewById(R.id.head_img);
+        namee = (TextView)hView.findViewById(R.id.name_txt);
+        mail = (TextView)hView.findViewById(R.id.mail_txtt);
+
 
         lnr.setOnClickListener(new View.OnClickListener() {
 
@@ -165,6 +176,8 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
+
 
 ////
 
@@ -194,6 +207,7 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+
                 int id = item.getItemId();
 
 
@@ -207,6 +221,7 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
                         home.putExtra("user_id",user_id);
                         home.putExtra("user_name",data2);
                         home.putExtra("email",data3);
+
                        // Toast.makeText(Home.this, user_id, Toast.LENGTH_SHORT).show();
                       //  Toast.makeText(Home.this, data1, Toast.LENGTH_SHORT).show();
 
@@ -302,26 +317,28 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
             switch  (item.getItemId()){
                 case R.id.nav_home:
                     selectedFragment = new Fragment_Home();
+                    lnr.setClickable(true);
 
                     break;
                 case R.id.nav_tree:
                     selectedFragment = new InformationFragment();
+                    lnr.setClickable(false);
 
                     break;
                 case R.id.nav_qr:
                     selectedFragment = new QrCodeFragment();
-
+                    lnr.setClickable(false);
                     break;
                 case R.id.nav_profilee:
                     selectedFragment = new Helpline();
+                    lnr.setClickable(false);
 
                     break;
+
                 case R.id.nav_notifications:
-                    selectedFragment = new EnquiryFragment();
-
-                    break;
-
-
+                  selectedFragment = new Post_Fragment();
+                    lnr.setClickable(false);
+                  break;
             }
 
 //           #4  begin transaction
@@ -454,6 +471,99 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         RequestQueue requestQueue = Volley.newRequestQueue(Home.this);
         requestQueue.add(jsonObjectRequest);
     }
+
+
+    public void imag(){
+
+        String JSON_URL = "http://nk.inevitabletech.email/public/api/get-profile-details";
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, JSON_URL, null, new Response.Listener<JSONObject>() {
+            @SuppressLint({"CheckResult", "ResourceType"})
+            @Override
+            public void onResponse(JSONObject response) {
+
+
+//                Log.i("0000000",response.toString());
+//                Toast.makeText(Profile.this, response.toString(), Toast.LENGTH_SHORT).show();
+                try {
+
+
+
+                    String Success = response.getString("success");
+                    String msg = response.getString("message");
+
+
+                    JSONObject jsonObject = response.getJSONObject("data");
+
+                    image = jsonObject.getString("image");
+                    name = jsonObject.getString("name");
+                    email = jsonObject.getString("email");
+                    Log.i("weloiht9urocty8d3w",image);
+
+
+
+                    if(Success.equals("true")){
+                        Log.i("123",msg);
+
+
+                        profile.setImageURI(Uri.parse(image));
+                        namee.setText(name);
+                        mail.setText(email);
+
+
+
+                        Log.i("akfjhowiuejtfhwoi",profile.toString());
+
+
+
+
+                    }else{
+                        Log.i("1234",msg);
+                        Toast.makeText(Home.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+
+                }
+
+
+
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+
+
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+
+                params.put("Accept","application/json");
+                params.put("Authorization", "Bearer " + PreferenceUtils.getToken(Home.this));
+                params.put("Authorization", "Bearer " + PreferenceUtils.getToken1(Home.this));
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(Home.this);
+        requestQueue.add(jsonObjectRequest);
+
+}
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {

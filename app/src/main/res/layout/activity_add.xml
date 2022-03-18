@@ -104,7 +104,6 @@
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
@@ -121,7 +120,6 @@
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
@@ -139,7 +137,6 @@
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
@@ -157,7 +154,6 @@
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
@@ -188,10 +184,9 @@
                             android:layout_marginEnd="20dp"
                             android:background="@drawable/border_only"
                             android:hint="No.of.Vacancies"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
@@ -208,7 +203,6 @@
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
@@ -222,10 +216,9 @@
                             android:layout_marginEnd="20dp"
                             android:background="@drawable/border_only"
                             android:hint="Experience"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
@@ -239,10 +232,9 @@
                             android:layout_marginEnd="20dp"
                             android:background="@drawable/border_only"
                             android:hint="Age Limit"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
@@ -256,10 +248,9 @@
                             android:layout_marginEnd="20dp"
                             android:background="@drawable/border_only"
                             android:hint="Salary"
-                            android:inputType="text"
+                            android:inputType="number"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
@@ -307,10 +298,9 @@
                                 android:layout_height="50dp"
                                 android:layout_marginStart="20dp"
                                 android:layout_marginTop="15dp"
-
                                 android:background="@drawable/border_only"
                                 android:hint="Apply Start Date"
-                                android:inputType="text"
+                                android:inputType="number"
                                 android:padding="5dp"
                                 android:paddingStart="15dp"
                                 android:paddingEnd="37dp"
@@ -326,7 +316,7 @@
                                 android:layout_marginTop="15dp"
                                 android:background="@drawable/border_only"
                                 android:hint="Apply End Date"
-                                android:inputType="text"
+                                android:inputType="number"
                                 android:padding="5dp"
                                 android:paddingStart="15dp"
                                 android:paddingEnd="37dp"

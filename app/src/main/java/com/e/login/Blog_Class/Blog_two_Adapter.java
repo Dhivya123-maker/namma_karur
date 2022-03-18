@@ -1,6 +1,8 @@
 package com.e.login.Blog_Class;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +79,17 @@ public class Blog_two_Adapter extends RecyclerView.Adapter<Blog_two_Adapter.View
 
             textView = itemView.findViewById(R.id.popular_txt);
             textView1 = itemView.findViewById(R.id.popular_txt_one);
+            textView1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    String link = blogTwoModelList.get(position).getLink();
+
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                    context.startActivity(browserIntent);
+
+                }
+            });
 
 
 

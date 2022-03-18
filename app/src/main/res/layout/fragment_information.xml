@@ -15,7 +15,7 @@
     <RelativeLayout
         android:id="@+id/brandAndItsLocation"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="130dp"
         android:layout_marginEnd="0dp"
         android:background="@drawable/profile_empty"
         android:backgroundTint="#4C9A2A"
@@ -27,16 +27,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="90dp"
             android:text="Flash"
             android:textColor="@color/white"
             android:textSize="18dp" />
 
     </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
 
 
@@ -54,8 +50,10 @@
 
                 </androidx.recyclerview.widget.RecyclerView>
 
+
+
             </LinearLayout>
-        </RelativeLayout>
+
 
 
 

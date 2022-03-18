@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -36,6 +37,7 @@ public class ChangePassword extends AppCompatActivity {
     EditText old,new_pass,confirm_pass;
     String Old,New_pass,Confirm_pass;
     String data,data1;
+    ImageView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +49,16 @@ public class ChangePassword extends AppCompatActivity {
         Intent i1 = getIntent();
         data1 = i1.getStringExtra("id");
 
+        back = findViewById(R.id.backk);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChangePassword.this,Profile.class);
+                startActivity(intent);
+            }
+        });
 
-//        Toast.makeText(ChangePassword.this, data, Toast.LENGTH_SHORT).show();
-//        Toast.makeText(ChangePassword.this, data1, Toast.LENGTH_SHORT).show();
+
 
 
         old = findViewById(R.id.old_pass);

@@ -7,6 +7,16 @@ public class Jobs_two_Model {
     private String txt3;
     private String txt4;
 
+    public String getCat_id() {
+        return cat_id;
+    }
+
+    public void setCat_id(String cat_id) {
+        this.cat_id = cat_id;
+    }
+
+    String cat_id;
+
     public String getId() {
         return id;
     }
@@ -17,7 +27,7 @@ public class Jobs_two_Model {
 
     String id;
 
-    public Jobs_two_Model(String txt, String txt1, String txt2, String txt3, String txt4, String img, String img1, String img2,String id) {
+    public Jobs_two_Model(String txt, String txt1, String txt2, String txt3, String txt4, String img, String img1, String img2,String id,String cat_id) {
         this.txt = txt;
         this.txt1 = txt1;
         this.txt2 = txt2;
@@ -27,6 +37,7 @@ public class Jobs_two_Model {
         this.img1 = img1;
         this.img2 = img2;
         this.id = id;
+        this.cat_id = cat_id;
     }
 
     private String img;

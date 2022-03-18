@@ -6,10 +6,21 @@ public class Blog_two_Model {
     private String txt;
     private String txt1;
 
-    public Blog_two_Model(String img, String txt, String txt1) {
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    String link;
+
+    public Blog_two_Model(String img, String txt, String txt1,String link) {
         this.img = img;
         this.txt = txt;
         this.txt1 = txt1;
+        this.link = link;
     }
 
     public String getImg() {

@@ -115,7 +115,7 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
         // Inflate the layout for this fragment
      View root =  inflater.inflate(R.layout.fragment_home, container, false);
 //     DrawerLayout drawerLayout = root.findViewById(R.id.drawer_layout);
-        drawer = root.findViewById(R.id.drawerr);
+      //  drawer = root.findViewById(R.id.drawerr);
 //
 //        drawer.setOnClickListener(new View.OnClickListener() {
 //         @Override
@@ -141,7 +141,7 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 //
 //        Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
 //        Toast.makeText(getContext(), data1, Toast.LENGTH_SHORT).show();
-//
+
 //
         category();
 
@@ -205,12 +205,6 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 //     ngo = root.findViewById(R.id.ngo_lr);
 
 
-
-
-//   extra.setVisibility(View.GONE);
-//   extra_one.setVisibility(View.GONE);
-//  see_less.setVisibility(View.GONE);
-//  see_more.setVisibility(View.VISIBLE);
 
 
 
@@ -576,21 +570,21 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 //        });
 //
 
-        bell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent shopsIntent = new Intent(getActivity(), JobSearchActivity.class);
-                startActivity(shopsIntent);
-            }
-        });
-
-        message.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent shopsIntent = new Intent(getActivity(), Chat_Activity.class);
-                startActivity(shopsIntent);
-            }
-        });
+//        bell.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent shopsIntent = new Intent(getActivity(), JobSearchActivity.class);
+//                startActivity(shopsIntent);
+//            }
+//        });
+//
+//        message.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent shopsIntent = new Intent(getActivity(), Chat_Activity.class);
+//                startActivity(shopsIntent);
+//            }
+//        });
 
 
 
@@ -705,6 +699,8 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
                 Map<String,String> params = new HashMap<String, String>();
 
                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
+                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(getActivity()));
+              //  params.put("Authorization", "Bearer  " + data);
 
                 return params;
             }

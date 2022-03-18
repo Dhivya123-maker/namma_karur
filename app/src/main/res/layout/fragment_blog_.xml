@@ -81,6 +81,7 @@
 
 
             <Button
+                android:id="@+id/view1"
                 android:layout_width="65dp"
                 android:layout_height="25dp"
                 android:background="@drawable/bg"
@@ -132,6 +133,7 @@
 
 
             <Button
+                android:id="@+id/view2"
                 android:layout_width="65dp"
                 android:layout_height="25dp"
                 android:background="@drawable/bg"

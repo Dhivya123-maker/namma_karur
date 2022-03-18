@@ -1,21 +1,12 @@
 package com.e.login.NewsClass;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import com.e.login.EnquiryFragment;
 import com.e.login.HelperClass.ViewPagerAdapter;
-import com.e.login.Helpline;
-import com.e.login.HomeClass.Fragment_Home;
-import com.e.login.QrCodeFragment;
 import com.e.login.R;
-import com.e.login.info_Class.InformationFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 
 public class NewsActivity extends AppCompatActivity {

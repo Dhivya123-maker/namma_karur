@@ -23,7 +23,6 @@
             android:id="@+id/only_offerr_img"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/offer_three"
             android:layout_marginStart="10dp"
             android:layout_gravity="center"/>
 

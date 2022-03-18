@@ -1,5 +1,7 @@
 package com.e.login.BlankFragment;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -23,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.provider.ContactsContract;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -44,15 +47,25 @@ import com.e.login.AmbulanceClass.Ambulance;
 import com.e.login.AmbulanceClass.AmbulanceAdapter;
 import com.e.login.AmbulanceClass.AmbulanceModel;
 import com.e.login.BaseApi.Api;
+import com.e.login.Help_Class.Helpline;
+import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.HomeClass.Home;
 import com.e.login.HomeClass.Slider_Top_Adapter;
+import com.e.login.LoginActivity;
+import com.e.login.Post_Fragment;
+import com.e.login.QrCodeFragment;
 import com.e.login.R;
 import com.e.login.ReviewsActivity;
+import com.e.login.ShopClass.ShopScreen_Class;
 import com.e.login.ShopscreenClass.ShopScreenAdapter;
 import com.e.login.ShopscreenClass.ShopScreenModel;
 import com.e.login.ShopscreenClass.ShopsScreenFragment;
 import com.e.login.SignUpActivity;
+import com.e.login.Verification.Edit;
 import com.e.login.Verification.VerifyActivity;
+import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kyleduo.switchbutton.SwitchButton;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -63,6 +76,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -70,48 +84,55 @@ import java.util.Map;
 
 
 public class Blank_PostFragment extends Fragment {
-    private static final int REQUEST_CALL = 1 ;
-    LinearLayout reviews,phone_call,visible;
+    private static final int REQUEST_CALL = 1;
+    LinearLayout reviews, phone_call, visible;
 
-   TextView titlee,addres,rate,verify,view_ct,open_tm,close_tm,desc,phone_num;
-   ImageView ac_image,loc,mail,whatsp,fb,inst,twitt,u_tube;
-   RelativeLayout web;
+    TextView titlee, addres, rate, verify, view_ct, open_tm, close_tm, desc, phone_num;
+    ImageView ac_image, loc, mail, whatsp, fb, inst, twitt, u_tube;
+    RelativeLayout web;
 
-    String id = null;
-    String shop_category_id = null;
-    String logo = null;
-    String Banner = null;
-    String title,address = null;
-    String open_time = null;
-    String close_time = null;
-    String rating = null;
+    String id;
+    String follow_id;
+
+    String logo;
+    String Banner;
+    String title, address;
+    String open_time;
+    String close_time;
+    String rating;
+    String category_id;
+    String catalog_id;
+    String catalog_type;
     String api;
-    String comment,com_rating;
-    String verified,description,location,website,email,phone,whatsapp,facebook,instagram,twitter,youtube,view_count = null,name=null,img = null;
+    String comment, com_rating;
+    String verified, description, location, website, email, phone, whatsapp, facebook, instagram, twitter, youtube, view_count = null, name = null, img = null;
 
     SliderView sliderView;
 
-    int images[]={R.drawable.banner,
+    int images[] = {R.drawable.banner,
             R.drawable.banner,
             R.drawable.banner,
             R.drawable.banner};
 
-    String token,idd;
+    String token, idd;
     LinearLayout ifsc;
 
     List<Blank_Comments_Model> blank_comments_modelList;
     Blank_Comments_Adapter adapter;
-    String data = null,data2 = null,data3 = null;
+    String data, data2, data3;
     RecyclerView recyclerView;
+    LinearLayout follow, unfollow, review1;
+    TextView follow_txt,unfollow_txt;
+    Button view_more;
 
 
     com.kyleduo.switchbutton.SwitchButton switchButton;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root =  inflater.inflate(R.layout.fragment_blank__post, container, false);
-
+        View root = inflater.inflate(R.layout.fragment_blank__post, container, false);
 
 
         recyclerView = root.findViewById(R.id.reviews_recycle_postt);
@@ -126,53 +147,124 @@ public class Blank_PostFragment extends Fragment {
         data3 = intent.getStringExtra("id");
         verify = root.findViewById(R.id.verifyy_txt);
 
-        if(data2.equals("ShopCatalog")){
-            String url = api + "get-shop-details?shop_id="+data3;
-          social(url);
-          ifsc.setVisibility(View.GONE);
-          verify.setText("Yes");
 
 
-        }else if(data2.equals("ServiceCatalog")) {
-            String url = api + "get-service-details?service_id="+data3;
+
+        if (data2.equals("ShopCatalog")) {
+            String url = api + "get-shop-details?shop_id=" + data3;
+            social(url);
+            ifsc.setVisibility(View.GONE);
+            verify.setText("Yes");
+
+
+        } else if (data2.equals("ServiceCatalog")) {
+            String url = api + "get-service-details?service_id=" + data3;
             social(url);
 
             ifsc.setVisibility(View.GONE);
 
-        } else if(data2.equals("EducationCatalog")){
-            String url = api + "get-education-catalog-details?education_id="+data3;
+        } else if (data2.equals("EducationCatalog")) {
+            String url = api + "get-education-catalog-details?education_id=" + data3;
             social(url);
             ifsc.setVisibility(View.GONE);
 
-        }else if(data2.equals("TransportCatalog")){
-            String url = api + "get-transport-details?transport_id="+data3;
+        } else if (data2.equals("TransportCatalog")) {
+            String url = api + "get-transport-details?transport_id=" + data3;
             social(url);
 
             ifsc.setVisibility(View.GONE);
-        }else if(data2.equals("HospitalCatalog")){
-            String url = api + "get-hospital-details?hospital_id="+data3;
+        } else if (data2.equals("HospitalCatalog")) {
+            String url = api + "get-hospital-details?hospital_id=" + data3;
             social(url);
             ifsc.setVisibility(View.GONE);
 
-        }else if(data2.equals("EventCatalog")){
-            String url = api + "get-event-details?event_id="+data3;
+        } else if (data2.equals("EventCatalog")) {
+            String url = api + "get-event-details?event_id=" + data3;
             social(url);
             ifsc.setVisibility(View.GONE);
 
-        }else if(data2.equals("HotelCatalog")){
-            String url = api + "get-hotel-details?hotel_id="+data3;
+        } else if (data2.equals("HotelCatalog")) {
+            String url = api + "get-hotel-details?hotel_id=" + data3;
             social(url);
             ifsc.setVisibility(View.GONE);
 
-        }else if(data2.equals("BankCatalog")){
-            String url = api + "get-bank-details?bank_id="+data3;
+        } else if (data2.equals("BankCatalog")) {
+            String url = api + "get-bank-details?bank_id=" + data3;
             social(url);
             ifsc.setVisibility(View.VISIBLE);
 
         }
 
 
+        follow_txt = root.findViewById(R.id.follow_txt);
 
+
+        follow = root.findViewById(R.id.follow_linear);
+        follow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (follow_id == null) {
+                        follow();
+                }
+
+                else if(follow_id != null){
+
+                      un_follow();
+
+                }
+
+            }
+        });
+
+
+
+
+        view_more = root.findViewById(R.id.view_more_btn);
+        view_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(data2.equals("ShopCatalog")){
+                    String url = api + "get-shop-comments?shop_id="+data3;
+                    shop_comments(url);
+
+
+                }else if(data2.equals("ServiceCatalog")) {
+                    String url = api + "get-service-comments?service_id="+data3;
+                    shop_comments(url);
+
+
+                } else if(data2.equals("EducationCatalog")){
+                    String url = api + "get-education-comments?education_id="+data3;
+                    shop_comments(url);
+
+                }else if(data2.equals("TransportCatalog")){
+                    String url = api + "get-transport-comments?transport_id="+data3;
+                    shop_comments(url);
+
+
+                }else if(data2.equals("HospitalCatalog")){
+                    String url = api + "get-hospital-comments?hospital_id="+data3;
+                    shop_comments(url);
+
+
+                }else if(data2.equals("EventCatalog")){
+                    String url = api + "get-event-comments?event_id="+data3;
+                    shop_comments(url);
+
+                }else if(data2.equals("HotelCatalog")){
+                    String url = api + "get-hotel-comments?hotel_id="+data3;
+                    shop_comments(url);
+
+                }else if(data2.equals("BankCatalog")){
+                    String url = api + "get-bank-comments?bank_id="+data3;
+                    shop_comments(url);
+
+
+                }
+            }
+        });
 
         sliderView = root.findViewById(R.id.slider_sr);
 
@@ -206,11 +298,6 @@ public class Blank_PostFragment extends Fragment {
         u_tube = root.findViewById(R.id.u_tube);
 
 
-
-
-
-
-
         reviews = root.findViewById(R.id.reviews_lnrr);
         switchButton = root.findViewById(R.id.sb_text1);
         phone_call = root.findViewById(R.id.phone_call);
@@ -238,8 +325,6 @@ public class Blank_PostFragment extends Fragment {
         });
 
 
-
-
         loc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -247,7 +332,7 @@ public class Blank_PostFragment extends Fragment {
                 String lc = location;
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://"+lc ));
+                intent.setData(Uri.parse("http://" + lc));
                 startActivity(intent);
             }
         });
@@ -260,11 +345,9 @@ public class Blank_PostFragment extends Fragment {
                 String ml = email;
 
 
-
-
                 Intent i = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + ml));
 
-                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{ml});
+                i.putExtra(Intent.EXTRA_EMAIL, new String[]{ml});
 //                i.putExtra(Intent.EXTRA_SUBJECT, "nk");
 //                i.putExtra(Intent.EXTRA_TEXT   , "nk");
                 try {
@@ -276,9 +359,6 @@ public class Blank_PostFragment extends Fragment {
         });
 
 
-
-
-
         whatsp.setOnClickListener(new View.OnClickListener() {
 
 
@@ -286,13 +366,12 @@ public class Blank_PostFragment extends Fragment {
             public void onClick(View view) {
 
 
-
                 String wp = whatsapp;
 //                String mobileNumber = "7397093106";
                 String message = "Hii";
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://api.whatsapp.com/send?phone="+"+91"+wp + "&text="+message));
+                intent.setData(Uri.parse("http://api.whatsapp.com/send?phone=" + "+91" + wp + "&text=" + message));
                 startActivity(intent);
             }
         });
@@ -306,7 +385,7 @@ public class Blank_PostFragment extends Fragment {
                 String fb = facebook;
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://"+fb ));
+                intent.setData(Uri.parse("http://" + fb));
                 startActivity(intent);
 
             }
@@ -322,9 +401,8 @@ public class Blank_PostFragment extends Fragment {
 
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://"+insta ));
+                intent.setData(Uri.parse("http://" + insta));
                 startActivity(intent);
-
 
 
             }
@@ -338,9 +416,8 @@ public class Blank_PostFragment extends Fragment {
 
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://"+tw ));
+                intent.setData(Uri.parse("http://" + tw));
                 startActivity(intent);
-
 
 
             }
@@ -355,7 +432,7 @@ public class Blank_PostFragment extends Fragment {
 
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://"+u ));
+                intent.setData(Uri.parse("http://" + u));
                 startActivity(intent);
 
 
@@ -371,44 +448,36 @@ public class Blank_PostFragment extends Fragment {
 
 
                 Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse("http://"+ web ));
+                intent.setData(Uri.parse("http://" + web));
                 startActivity(intent);
-
 
 
             }
         });
-
-
-
-
 
 
         reviews.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                    Intent intentList = new Intent(getContext(),ReviewsActivity.class);
-                    intentList.putExtra("cat",data2);
-                    intentList.putExtra("id",data3);
-                    intentList.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    startActivity(intentList);
-            //    visible.setVisibility(View.VISIBLE);
+                Intent intentList = new Intent(getContext(), ReviewsActivity.class);
+                intentList.putExtra("cat", data2);
+                intentList.putExtra("id", data3);
+                intentList.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intentList);
+                //    visible.setVisibility(View.VISIBLE);
 //
-
 
 
             }
         });
 
 
-
-
-
-        return  root;
+        return root;
     }
+
     private void makePhoneCall() {
-       String number = phone;
+        String number = phone;
 
         if (number.trim().length() > 0) {
 
@@ -416,8 +485,7 @@ public class Blank_PostFragment extends Fragment {
                     Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(getActivity(),
                         new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-            }
-            else {
+            } else {
                 String dial = "tel:" + number;
                 startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
             }
@@ -438,87 +506,82 @@ public class Blank_PostFragment extends Fragment {
     }
 
 
-
-public void social(String url){
-    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-        @SuppressLint("CheckResult")
-        @Override
-        public void onResponse(JSONObject response) {
-
+    public void social(String url) {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("CheckResult")
+            @Override
+            public void onResponse(JSONObject response) {
 
 
 //
 
-            try {
+                try {
 
-                JSONObject jsonObject = response.getJSONObject("data");
-                id = jsonObject.getString("id");
+                    JSONObject jsonObject = response.getJSONObject("data");
+
+                    JSONObject jsonObject1 = jsonObject.getJSONObject("follow");
+
+
+                    id = jsonObject.getString("id");
 //                shop_category_id = jsonObject.getString("shop_category_id");
-                Banner = jsonObject.getString("banner");
-                logo = jsonObject.getString("logo");
-                title = jsonObject.getString("title");
-                address = jsonObject.getString("address");
-                open_time = jsonObject.getString("open_time");
-                close_time = jsonObject.getString("close_time");
-                rating = jsonObject.getString("rating");
-                verified = jsonObject.getString("verified");
-                description = jsonObject.getString("description");
-                location = jsonObject.getString("location");
-                website = jsonObject.getString("website");
-                email = jsonObject.getString("email");
-                phone = jsonObject.getString("phone");
-               // whatsapp = jsonObject.getString("whatsapp");
-               // facebook = jsonObject.getString("facebook");
-              //  instagram = jsonObject.getString("instagram");
-              //  twitter = jsonObject.getString("twitter");
-              //    youtube = jsonObject.getString("youtube");
-                view_count = jsonObject.getString("view_count");
+                    Banner = jsonObject.getString("banner");
+                    logo = jsonObject.getString("logo");
+                    title = jsonObject.getString("title");
+                    address = jsonObject.getString("address");
+                    open_time = jsonObject.getString("open_time");
+                    close_time = jsonObject.getString("close_time");
+                    rating = jsonObject.getString("rating");
+                    verified = jsonObject.getString("verified");
+                    description = jsonObject.getString("description");
+                    location = jsonObject.getString("location");
+                    website = jsonObject.getString("website");
+                    email = jsonObject.getString("email");
+                    phone = jsonObject.getString("phone");
+
+                    catalog_id = jsonObject1.getString("catalog_id");
+                    catalog_type = jsonObject1.getString("catalog_type");
+                    follow_id = jsonObject1.getString("id");
 
 
+                    view_count = jsonObject.getString("view_count");
 
 
-                String Success = response.getString("success");
-                String msg = response.getString("message");
-
-                JSONArray res = jsonObject.getJSONArray("comments");
-
-//                Toast.makeText(getActivity(), res.toString(), Toast.LENGTH_SHORT).show();
-//                Log.i("yfyhtu",res.toString());
-                blank_comments_modelList = new ArrayList<>();
-                for (int i = 0; i < res.length(); i++) {
+                    Log.i("wekfiurwehg", jsonObject1.toString());
+                    Log.i("wekfiurwehg", catalog_type);
 
 
-                    JSONObject data = res.getJSONObject(i);
+//                String Success = response.getString("success");
+//                String msg = response.getString("message");
 
-                    comment = data.getString("comment");
-                    com_rating = data.getString("rating");
-                    JSONObject user = data.getJSONObject("user");
-                    name = user.getString("name");
-                    img = user.getString("image");
+                    JSONArray res = jsonObject.getJSONArray("comments");
 
-
-
-                    Blank_Comments_Model viewmodel = new Blank_Comments_Model();
-
-                    viewmodel.setImg(img);
-                    viewmodel.setTxt(name);
-                    viewmodel.setTxt1(comment);
-                    viewmodel.setTxt2(com_rating);
+                    blank_comments_modelList = new ArrayList<>();
+                    for (int i = 0; i < 3; i++) {
 
 
+                        JSONObject data = res.getJSONObject(i);
+
+                        comment = data.getString("comment");
+                        com_rating = data.getString("rating");
+                        JSONObject user = data.getJSONObject("user");
+                        name = user.getString("name");
+                        img = user.getString("image");
 
 
+                        Blank_Comments_Model viewmodel = new Blank_Comments_Model();
 
+                        viewmodel.setImg(img);
+                        viewmodel.setTxt(name);
+                        viewmodel.setTxt1(comment);
+                        viewmodel.setTxt2(com_rating);
 
-                    blank_comments_modelList.add(viewmodel);
+                        blank_comments_modelList.add(viewmodel);
 
-                }
+                    }
 
-                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                adapter =  new Blank_Comments_Adapter(getContext(),blank_comments_modelList);
-                recyclerView.setAdapter(adapter);
-
-
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    adapter = new Blank_Comments_Adapter(getContext(), blank_comments_modelList);
+                    recyclerView.setAdapter(adapter);
 
 
                     titlee.setText(title);
@@ -526,60 +589,368 @@ public void social(String url){
                     open_tm.setText(open_time);
                     close_tm.setText(close_time);
                     rate.setText(rating);
-                   // verify.setText(verified);
+                    // verify.setText(verified);
                     desc.setText(description);
 //                    phone_num.setText(phone);
                     view_ct.setText(view_count);
 
 
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
 
-
-
-
-
-
-
-
-            } catch (JSONException e) {
-                e.printStackTrace();
             }
 
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Charset charset = Charset.defaultCharset();
+                String str = new String(error.networkResponse.data, charset);
+                Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
+                Log.i("dsfigyrsuitr", str);
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
+                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(getActivity()));
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(jsonObjectRequest);
+
+
+    }
+
+    public void follow() {
+
+
+        String url = "http://nk.inevitabletech.email/public/api/follow";
+
+        JSONObject jsonBody = new JSONObject();
+
+
+        try {
+
+            jsonBody.put("catalog_type",data2);
+            jsonBody.put("catalog_id",data3);
 
 
 
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+
+
+                    try {
+                        String Success = response.getString("success");
+                        String msg = response.getString("message");
+
+
+                        if (Success == "true") {
+
+                            Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+                            follow_txt.setText("Following");
+
+                        } else {
+
+
+                            Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+
+
+                        }
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+
+                    }
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+//                    Charset charset = Charset.defaultCharset();
+//                    String str = new String(error.networkResponse.data, charset);
+//                    Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
+//                    Log.i("dsfigyrsuitr", str);
+
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<String, String>();
+
+                    return params;
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+
+                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
+                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(getActivity()));
+                    return params;
+                }
+            };
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    10000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+            requestQueue.add(jsonObjectRequest);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
 
-    }, new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
 
-        }
-    }){
-        @Override
-        protected Map<String,String> getParams(){
-            Map<String,String> params = new HashMap<String, String>();
+    }
+
+    public void un_follow() {
 
 
+        String url = "http://nk.inevitabletech.email/public/api/unfollow?id=" + follow_id;
 
-            return params;
-        }
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
 
-        @Override
-        public Map<String, String> getHeaders() throws AuthFailureError {
-            Map<String,String> params = new HashMap<String, String>();
+//                Log.i("sdkjbhftguirye",response.toString());
+//                Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
 
-            params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
-            return params;
-        }
-    };
 
-    RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-    requestQueue.add(jsonObjectRequest);
+
+                try {
+                    String Success = response.getString("success");
+                    String msg = response.getString("message");
+
+
+                    if (Success == "true") {
+
+
+                        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+
+                        follow_txt.setText("Follow");
+
+                    } else {
+
+
+                        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+
+
+                    }
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Charset charset = Charset.defaultCharset();
+                String str = new String(error.networkResponse.data, charset);
+                Toast.makeText(getActivity(), "The selected id is invalid", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+            }
+        }) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("Accept", "application/json");
+
+                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
+                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(getActivity()));
+                return params;
+            }
+        };
+
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                10000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(jsonObjectRequest);
+
+    }
+
+    public void shop_comments(String url) {
+
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+
+
+                try {
+
+                    JSONArray jsonArray = response.getJSONArray("data");
+
+
+
+                    blank_comments_modelList = new ArrayList<>();
+
+
+
+                        for (int i = 0; i < jsonArray.length(); i++) {
+
+
+                            JSONObject data = jsonArray.getJSONObject(i);
+
+                            comment = data.getString("comment");
+                            com_rating = data.getString("rating");
+                            JSONObject user = data.getJSONObject("user");
+                            name = user.getString("name");
+                            img = user.getString("image");
+
+
+                            Blank_Comments_Model viewmodel = new Blank_Comments_Model();
+
+                            viewmodel.setImg(img);
+                            viewmodel.setTxt(name);
+                            viewmodel.setTxt1(comment);
+                            viewmodel.setTxt2(com_rating);
+
+                            blank_comments_modelList.add(viewmodel);
+
+                        }
+
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                        adapter = new Blank_Comments_Adapter(getContext(), blank_comments_modelList);
+                        recyclerView.setAdapter(adapter);
+
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Charset charset = Charset.defaultCharset();
+                String str = new String(error.networkResponse.data, charset);
+                Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
+                Log.i("ewohfg9uwrytg9", str);
+            }
+        }) {
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Accept", "application/json");
+                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
+                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(getActivity()));
+
+                return params;
+            }
+        };
+
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                10000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(jsonObjectRequest);
+
+
+
+
+    }
+
+//public void identity(){
+//    if(data2.equals("ShopCatalog")){
+//        String url = api + "unfollow?id="+follow_id;
+//        un_follow(url);
+//        follow_txt.setText("Follow");
+//
+//
+//
+//
+//    }else if(data2.equals("ServiceCatalog")) {
+//        String url = api + "unfollow?id="+follow_id;
+//        un_follow(url);
+//        follow_txt.setText("Follow");
+//
+//    } else if(data2.equals("EducationCatalog")){
+//        String url = api + "unfollow?id="+follow_id;
+//        un_follow(url);
+//        follow_txt.setText("Follow");
+//
+//    }else if(data2.equals("TransportCatalog")){
+//        String url = api + "unfollow?id="+follow_id;
+//        un_follow(url);
+//        follow_txt.setText("Follow");
+//
+//    }else if(data2.equals("HospitalCatalog")){
+//        String url = api + "unfollow?id="+follow_id;
+//        un_follow(url);
+//
+//    }else if(data2.equals("EventCatalog")){
+//        String url = api + "unfollow?id="+follow_id;
+//        un_follow(url);
+//        follow_txt.setText("Follow");
+//
+//    }else if(data2.equals("HotelCatalog")){
+//        String url = api + "unfollow?id="+follow_id;
+//        un_follow(url);
+//        follow_txt.setText("Follow");
+//
+//
+//    }else if(data2.equals("BankCatalog")){
+//        String url = api + "unfollow?id="+follow_id;
+//        un_follow(url);
+//        follow_txt.setText("Follow");
+//
+//    }
+//
+//
+//
+//}
+
+
+
 
 
 
 }
 
-
-}

@@ -34,15 +34,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.e.login.AmbulanceClass.Ambulance_call;
 import com.e.login.BaseApi.Api;
 import com.e.login.GovtClass.GovtActivity;
 import com.e.login.HomeClass.Fragment_Home;
-import com.e.login.HomeClass.Home;
-import com.e.login.Offers.OfferActivity;
+import com.e.login.Post_Fragment;
 import com.e.login.info_Class.InformationFragment;
 import com.e.login.EnquiryFragment;
-import com.e.login.Helpline;
+import com.e.login.Help_Class.Helpline;
 import com.e.login.MarketListClass.MarketActivity;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
@@ -51,6 +49,7 @@ import com.e.login.ShopscreenClass.ShopsScreenFragment;
 import com.e.login.SmallBusClass.SmallBusActivity;
 import com.e.login.utils.PreferenceUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -105,7 +104,6 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
         Api a = new Api();
         api = a.getBASE_URL();
-
 
 
        Intent intent = getIntent();
@@ -224,7 +222,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
                     fragment = new Helpline();
                     break;
                 case R.id.nav_notifications:
-                    fragment = new EnquiryFragment();
+                   fragment = new Post_Fragment();
                     break;
 
 
@@ -331,8 +329,8 @@ public void shop(String url) {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String, String>();
 
-                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(ShopScreen_Class.this));
-               // params.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTM5N2QxNTAyOGZjZmFjYWVmNjg4MGI0M2Q2OWE0MjU0NjFhMjQwMDQ2ZDc2MDQ1MDk0ZWIxZDk2NDNhZTk4YmE3YTkwMGZhODQwZDIzZGMiLCJpYXQiOjE2NDQ2NjIwNDUuNjk5MTE4LCJuYmYiOjE2NDQ2NjIwNDUuNjk5MTIyLCJleHAiOjE2NzYxOTgwNDUuNjk2MDgxLCJzdWIiOiIxNiIsInNjb3BlcyI6W119.kCe6D4wazRjA5cmETRJhsbKiD6BKhyY_ENT8Ve9QluNjdix7PJI-3HK82fdOAD_A0KYtDhHtCqQlWEEVYT9E6MAueMvPTJ06LQyK5o8C_iUS1n_dWPS04bb1N5R_pIIRdS3wz20JuobRBkAXxTcYM74bnfMmKEVxcmyhwoFdlnDctm3aNEN7NI-2dFVrviYUIbN8L2y3bbZy8zlijMBs7vh77sSVVFMkLgJCiMaKxF-hTyS-wrRz-2ClGqRdQYMQK9y6zlw_-47I9arebNWxukZUGc4-cgJUSedJ7GNuJVBux4PclLns-z6hXIQjCr_C8icbMUmAU7GOWHTnpc1fA-lR-1OQfLFBcwksRWmEFB_O60PVjQzw3L1uh_rW-DsNJs_y1BADJ8RpwMfA9-dVcL7Df-EdnrMP-E1ZgI62_QfuMcc6jM1-LWXzmUHitb8sUSFLqX6OfUGpM2sQ6jtPF3bVR5H9P4Idck3RFfNa1OGikyoldYGFaMOKs-C5fgW2t4YtVFnKJ3ROC9Pg-7ipguu4uCAxUmqsOWDlTAfQglKWZuNsSq_4eKDbq2eq6oDtlFDgO8e5XeYk6bwIQFTcf5RZlcHbMz135zLYu4872r2nsCLrzgeyb5-aveqzS9I5rWufpAz3TkejDzUbb9yItuo0LjbppHY8cw3r4Vz837U");
+                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken(ShopScreen_Class.this));
+                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken1(ShopScreen_Class.this));               // params.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTM5N2QxNTAyOGZjZmFjYWVmNjg4MGI0M2Q2OWE0MjU0NjFhMjQwMDQ2ZDc2MDQ1MDk0ZWIxZDk2NDNhZTk4YmE3YTkwMGZhODQwZDIzZGMiLCJpYXQiOjE2NDQ2NjIwNDUuNjk5MTE4LCJuYmYiOjE2NDQ2NjIwNDUuNjk5MTIyLCJleHAiOjE2NzYxOTgwNDUuNjk2MDgxLCJzdWIiOiIxNiIsInNjb3BlcyI6W119.kCe6D4wazRjA5cmETRJhsbKiD6BKhyY_ENT8Ve9QluNjdix7PJI-3HK82fdOAD_A0KYtDhHtCqQlWEEVYT9E6MAueMvPTJ06LQyK5o8C_iUS1n_dWPS04bb1N5R_pIIRdS3wz20JuobRBkAXxTcYM74bnfMmKEVxcmyhwoFdlnDctm3aNEN7NI-2dFVrviYUIbN8L2y3bbZy8zlijMBs7vh77sSVVFMkLgJCiMaKxF-hTyS-wrRz-2ClGqRdQYMQK9y6zlw_-47I9arebNWxukZUGc4-cgJUSedJ7GNuJVBux4PclLns-z6hXIQjCr_C8icbMUmAU7GOWHTnpc1fA-lR-1OQfLFBcwksRWmEFB_O60PVjQzw3L1uh_rW-DsNJs_y1BADJ8RpwMfA9-dVcL7Df-EdnrMP-E1ZgI62_QfuMcc6jM1-LWXzmUHitb8sUSFLqX6OfUGpM2sQ6jtPF3bVR5H9P4Idck3RFfNa1OGikyoldYGFaMOKs-C5fgW2t4YtVFnKJ3ROC9Pg-7ipguu4uCAxUmqsOWDlTAfQglKWZuNsSq_4eKDbq2eq6oDtlFDgO8e5XeYk6bwIQFTcf5RZlcHbMz135zLYu4872r2nsCLrzgeyb5-aveqzS9I5rWufpAz3TkejDzUbb9yItuo0LjbppHY8cw3r4Vz837U");
                            // params.put("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOWUzNWRjYjg2ZjdjZGUwZTFmOTA5ZmM5YWQwMDdjZGI3ZTE1MzZkNjBhMTEyOTE2ZmQwYmQ0NjE5NzA5ZGYyNTQ3ZDQ5MTFkYzFiNmZkZDUiLCJpYXQiOjE2NDQyMjc1NzYuOTM5ODYyLCJuYmYiOjE2NDQyMjc1NzYuOTM5ODY3LCJleHAiOjE2NzU3NjM1NzYuOTMzMDM2LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.ggB8UvdkfGXmcnlz3KMShC00i-IEhJhq9UwYEq4Oagb73MxNm2WvllC_STJe2wD3FOZnpiYVul_crgERXcxh7C2LHK3UKLmsRSQfxSHHUs1nACk-KFalrcx-llruus8JYwTIjbWccyPWTljJI28aKlBApgfqivUEX0FveiE_LiJQpqSmpiMyojNSlJgN-ofZQc4vuHLdWUtNs-uTRjVpPyz9xw1zEVsPoy3EyVIZ321wlG9ZHGBzUTihuOEHpg0qsCOz_6dJOhQ4CQltWBrg6SJn0_QJ7qBaiMAITQbou2ebemuh945uapuqUCXJVbdFzsMTU2B-JOYoq2G2FrTdaxs_vxCO4ZENoPKFM1Vv-T1HPNnLeAv3Nsuhil5ou-2-uCHsn0tWsPn4zknlwIOulJNs8FbFDcmOG7Hqb8CwlZ-ihp5garS5QPcZxNvC5Qcay6Vijmq93snrR5rgPlq_hW-VFyOm7ZJKkv7uLIfJR529U310wP88Dv68FoOpmlpauO3iuyXt8qwhd_TIwbQM_EanLgz5jWsqtcSsTeMvVpdM8SL-tl_G2b-wjViP4vKqvgiSExZquMahW5yYUdTRN1vtlZ5U0jiQwGMAhKNs45AGgfHcXw68hAigKUQ_qbV7IAIwlun0T1fDvnbfU7tBeTRuX1yJVISTC0k-k4_H8lM");
                 return params;
             }
@@ -387,6 +385,9 @@ public void shop(String url) {
                         model.setAname(aname);
                         model.setApri(apri);
                         model.setAsec("Call Now");
+                        model.setNum(primary);
+                        model.setNum_one(asec);
+
 
 
 
@@ -403,7 +404,7 @@ public void shop(String url) {
 
                 recyclerView.setLayoutManager(new LinearLayoutManager(ShopScreen_Class.this));
                 adapter =  new ShopClassAdapter(ShopScreen_Class.this,shop_model);
-                adapter.setOnItemClickListener(ShopScreen_Class.this);
+               // adapter.setOnItemClickListener(ShopScreen_Class.this);
                 recyclerView.setAdapter(adapter);
 
 
@@ -436,8 +437,8 @@ public void shop(String url) {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String, String>();
 
-                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(ShopScreen_Class.this));
-                // params.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTM5N2QxNTAyOGZjZmFjYWVmNjg4MGI0M2Q2OWE0MjU0NjFhMjQwMDQ2ZDc2MDQ1MDk0ZWIxZDk2NDNhZTk4YmE3YTkwMGZhODQwZDIzZGMiLCJpYXQiOjE2NDQ2NjIwNDUuNjk5MTE4LCJuYmYiOjE2NDQ2NjIwNDUuNjk5MTIyLCJleHAiOjE2NzYxOTgwNDUuNjk2MDgxLCJzdWIiOiIxNiIsInNjb3BlcyI6W119.kCe6D4wazRjA5cmETRJhsbKiD6BKhyY_ENT8Ve9QluNjdix7PJI-3HK82fdOAD_A0KYtDhHtCqQlWEEVYT9E6MAueMvPTJ06LQyK5o8C_iUS1n_dWPS04bb1N5R_pIIRdS3wz20JuobRBkAXxTcYM74bnfMmKEVxcmyhwoFdlnDctm3aNEN7NI-2dFVrviYUIbN8L2y3bbZy8zlijMBs7vh77sSVVFMkLgJCiMaKxF-hTyS-wrRz-2ClGqRdQYMQK9y6zlw_-47I9arebNWxukZUGc4-cgJUSedJ7GNuJVBux4PclLns-z6hXIQjCr_C8icbMUmAU7GOWHTnpc1fA-lR-1OQfLFBcwksRWmEFB_O60PVjQzw3L1uh_rW-DsNJs_y1BADJ8RpwMfA9-dVcL7Df-EdnrMP-E1ZgI62_QfuMcc6jM1-LWXzmUHitb8sUSFLqX6OfUGpM2sQ6jtPF3bVR5H9P4Idck3RFfNa1OGikyoldYGFaMOKs-C5fgW2t4YtVFnKJ3ROC9Pg-7ipguu4uCAxUmqsOWDlTAfQglKWZuNsSq_4eKDbq2eq6oDtlFDgO8e5XeYk6bwIQFTcf5RZlcHbMz135zLYu4872r2nsCLrzgeyb5-aveqzS9I5rWufpAz3TkejDzUbb9yItuo0LjbppHY8cw3r4Vz837U");
+                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken(ShopScreen_Class.this));
+                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken1(ShopScreen_Class.this));                // params.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTM5N2QxNTAyOGZjZmFjYWVmNjg4MGI0M2Q2OWE0MjU0NjFhMjQwMDQ2ZDc2MDQ1MDk0ZWIxZDk2NDNhZTk4YmE3YTkwMGZhODQwZDIzZGMiLCJpYXQiOjE2NDQ2NjIwNDUuNjk5MTE4LCJuYmYiOjE2NDQ2NjIwNDUuNjk5MTIyLCJleHAiOjE2NzYxOTgwNDUuNjk2MDgxLCJzdWIiOiIxNiIsInNjb3BlcyI6W119.kCe6D4wazRjA5cmETRJhsbKiD6BKhyY_ENT8Ve9QluNjdix7PJI-3HK82fdOAD_A0KYtDhHtCqQlWEEVYT9E6MAueMvPTJ06LQyK5o8C_iUS1n_dWPS04bb1N5R_pIIRdS3wz20JuobRBkAXxTcYM74bnfMmKEVxcmyhwoFdlnDctm3aNEN7NI-2dFVrviYUIbN8L2y3bbZy8zlijMBs7vh77sSVVFMkLgJCiMaKxF-hTyS-wrRz-2ClGqRdQYMQK9y6zlw_-47I9arebNWxukZUGc4-cgJUSedJ7GNuJVBux4PclLns-z6hXIQjCr_C8icbMUmAU7GOWHTnpc1fA-lR-1OQfLFBcwksRWmEFB_O60PVjQzw3L1uh_rW-DsNJs_y1BADJ8RpwMfA9-dVcL7Df-EdnrMP-E1ZgI62_QfuMcc6jM1-LWXzmUHitb8sUSFLqX6OfUGpM2sQ6jtPF3bVR5H9P4Idck3RFfNa1OGikyoldYGFaMOKs-C5fgW2t4YtVFnKJ3ROC9Pg-7ipguu4uCAxUmqsOWDlTAfQglKWZuNsSq_4eKDbq2eq6oDtlFDgO8e5XeYk6bwIQFTcf5RZlcHbMz135zLYu4872r2nsCLrzgeyb5-aveqzS9I5rWufpAz3TkejDzUbb9yItuo0LjbppHY8cw3r4Vz837U");
                 // params.put("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOWUzNWRjYjg2ZjdjZGUwZTFmOTA5ZmM5YWQwMDdjZGI3ZTE1MzZkNjBhMTEyOTE2ZmQwYmQ0NjE5NzA5ZGYyNTQ3ZDQ5MTFkYzFiNmZkZDUiLCJpYXQiOjE2NDQyMjc1NzYuOTM5ODYyLCJuYmYiOjE2NDQyMjc1NzYuOTM5ODY3LCJleHAiOjE2NzU3NjM1NzYuOTMzMDM2LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.ggB8UvdkfGXmcnlz3KMShC00i-IEhJhq9UwYEq4Oagb73MxNm2WvllC_STJe2wD3FOZnpiYVul_crgERXcxh7C2LHK3UKLmsRSQfxSHHUs1nACk-KFalrcx-llruus8JYwTIjbWccyPWTljJI28aKlBApgfqivUEX0FveiE_LiJQpqSmpiMyojNSlJgN-ofZQc4vuHLdWUtNs-uTRjVpPyz9xw1zEVsPoy3EyVIZ321wlG9ZHGBzUTihuOEHpg0qsCOz_6dJOhQ4CQltWBrg6SJn0_QJ7qBaiMAITQbou2ebemuh945uapuqUCXJVbdFzsMTU2B-JOYoq2G2FrTdaxs_vxCO4ZENoPKFM1Vv-T1HPNnLeAv3Nsuhil5ou-2-uCHsn0tWsPn4zknlwIOulJNs8FbFDcmOG7Hqb8CwlZ-ihp5garS5QPcZxNvC5Qcay6Vijmq93snrR5rgPlq_hW-VFyOm7ZJKkv7uLIfJR529U310wP88Dv68FoOpmlpauO3iuyXt8qwhd_TIwbQM_EanLgz5jWsqtcSsTeMvVpdM8SL-tl_G2b-wjViP4vKqvgiSExZquMahW5yYUdTRN1vtlZ5U0jiQwGMAhKNs45AGgfHcXw68hAigKUQ_qbV7IAIwlun0T1fDvnbfU7tBeTRuX1yJVISTC0k-k4_H8lM");
                 return params;
             }
@@ -538,7 +539,8 @@ public void shop(String url) {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String, String>();
 
-                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(ShopScreen_Class.this));
+                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken(ShopScreen_Class.this));
+                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken1(ShopScreen_Class.this));
                 return params;
             }
         };
@@ -630,7 +632,9 @@ public void shop(String url) {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String, String>();
 
-                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(ShopScreen_Class.this));
+                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken(ShopScreen_Class.this));
+                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken1(ShopScreen_Class.this));
+
                 return params;
             }
         };
@@ -726,6 +730,7 @@ public void shop(String url) {
                 Map<String,String> params = new HashMap<String, String>();
 
                 params.put("Authorization", "Bearer  " +PreferenceUtils.getToken(ShopScreen_Class.this));
+                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken1(ShopScreen_Class.this));
                 return params;
             }
         };
@@ -763,6 +768,8 @@ public void shop(String url) {
                         id = jsonObject.getString("id");
                         name = jsonObject.getString("name");
                         image = jsonObject.getString("image");
+
+
 //                        view_count = jsonObject.getString("view_count") ;
 //
 
@@ -823,7 +830,7 @@ public void shop(String url) {
                 Map<String,String> params = new HashMap<String, String>();
 
                 params.put("Authorization", "Bearer  " +PreferenceUtils.getToken(ShopScreen_Class.this));
-                return params;
+                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken1(ShopScreen_Class.this));                return params;
             }
         };
 
@@ -831,52 +838,52 @@ public void shop(String url) {
         requestQueue.add(jsonObjectRequest);
 
     }
-    private void makePhoneCall() {
-        String number = primary;
-
-        if (number.trim().length() > 0) {
-
-            if (ContextCompat.checkSelfPermission(ShopScreen_Class.this,
-                    Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(ShopScreen_Class.this,
-                        new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-            }
-            else {
-                String dial = "tel:" + number;
-                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
-            }
-
-        }
-    }
-    private void makePhoneCall_one() {
-        String number = asec;
-
-        if (number.trim().length() > 0) {
-
-            if (ContextCompat.checkSelfPermission(ShopScreen_Class.this,
-                    Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(ShopScreen_Class.this,
-                        new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-            }
-            else {
-                String dial = "tel:" + number;
-                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
-            }
-
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == REQUEST_CALL) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                makePhoneCall();
-            } else {
-                Toast.makeText(ShopScreen_Class.this, "Permission Denied to make a call" + "", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
+//    private void makePhoneCall() {
+//        String number = primary;
+//
+//        if (number.trim().length() > 0) {
+//
+//            if (ContextCompat.checkSelfPermission(ShopScreen_Class.this,
+//                    Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//                ActivityCompat.requestPermissions(ShopScreen_Class.this,
+//                        new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+//            }
+//            else {
+//                String dial = "tel:" + number;
+//                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+//            }
+//
+//        }
+//    }
+//    private void makePhoneCall_one() {
+//        String number = asec;
+//
+//        if (number.trim().length() > 0) {
+//
+//            if (ContextCompat.checkSelfPermission(ShopScreen_Class.this,
+//                    Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//                ActivityCompat.requestPermissions(ShopScreen_Class.this,
+//                        new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+//            }
+//            else {
+//                String dial = "tel:" + number;
+//                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+//            }
+//
+//        }
+//    }
+//
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        if (requestCode == REQUEST_CALL) {
+//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                makePhoneCall();
+//            } else {
+//                Toast.makeText(ShopScreen_Class.this, "Permission Denied to make a call" + "", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+//    }
 
 
 
@@ -897,10 +904,10 @@ public void shop(String url) {
 
         if (data3.equals("AmbulanceCatalog")){
 
-                dialog();
 
 
-        }else if (data3.equals("MarketCatalog"))
+        }
+       if (data3.equals("MarketCatalog"))
         {
             Intent intent = new Intent(ShopScreen_Class.this, MarketActivity.class);
             intent.putExtra("id",m_id);
@@ -922,43 +929,47 @@ public void shop(String url) {
             intent.putExtra("list", data3);
             intent.putExtra("id", S_id);
             intent.putExtra("name", S_name);
+
             startActivity(intent);
         }
 
     }
 
-        public  void dialog(){
-        dialog.setContentView(R.layout.ambulance_call_recycle);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        public  void dialog(){
+//        dialog.setContentView(R.layout.ambulance_call_recycle);
+//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//
+//        TextView txt = dialog.findViewById(R.id.primary_con_txt);
+//        TextView txt1 = dialog.findViewById(R.id.sec_con_txt);
+//        ImageView img = dialog.findViewById(R.id.primary_con_img);
+//        ImageView img1 = dialog.findViewById(R.id.sec_img);
+//            Button btn = dialog.findViewById(R.id.cancel_buttonn);
+//
+//
+//        img.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                makePhoneCall();
+//            }
+//        });
+//            img1.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    makePhoneCall_one();
+//                }
+//            });
+//            btn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//
+//                    dialog.cancel();
+//                }
+//            });
+//        dialog.show();
+//
+//        }
 
-        TextView txt = dialog.findViewById(R.id.primary_con_txt);
-        TextView txt1 = dialog.findViewById(R.id.sec_con_txt);
-        ImageView img = dialog.findViewById(R.id.primary_con_img);
-        ImageView img1 = dialog.findViewById(R.id.sec_img);
-            Button btn = dialog.findViewById(R.id.cancel_buttonn);
-
-
-        img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                makePhoneCall();
-            }
-        });
-            img1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    makePhoneCall_one();
-                }
-            });
-            btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                   dialog.cancel();
-                }
-            });
-        dialog.show();
-
-        }
 }
 
 

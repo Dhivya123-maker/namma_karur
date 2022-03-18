@@ -186,6 +186,7 @@ public class InformationFragment extends Fragment {
                 Map<String,String> params = new HashMap<String, String>();
 
                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
+                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(getActivity()));
                 return params;
             }
         };

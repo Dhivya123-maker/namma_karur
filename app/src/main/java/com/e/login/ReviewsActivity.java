@@ -1,5 +1,9 @@
 package com.e.login;
 
+import static android.content.ContentValues.TAG;
+
+import static java.net.Proxy.Type.HTTP;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,9 +38,11 @@ import com.e.login.ShopClass.ShopScreen_Class;
 import com.e.login.Verification.VerifyActivity;
 import com.e.login.utils.PreferenceUtils;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -49,6 +55,7 @@ public class ReviewsActivity extends AppCompatActivity {
     String Comment,Rating,data,data2;
     Button send;
     float rat;
+    String Rt;
 
 
     @Override
@@ -85,95 +92,9 @@ public class ReviewsActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                Comment = comment.getText().toString();
-//
                 register();
 
-//
-////                Toast.makeText(ReviewsActivity.this, (int) rat, Toast.LENGTH_SHORT).show();
-////                Log.i("gtsgdgsh", String.valueOf(rt.getRating()));
-//                 Toast.makeText(ReviewsActivity.this, data, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(ReviewsActivity.this, data2, Toast.LENGTH_SHORT).show();
-//                Toast.makeText(ReviewsActivity.this, Comment, Toast.LENGTH_SHORT).show();
-//
-//
-//                String URL = "http://nk.inevitabletech.email/public/api/review-submit";
-//                RequestQueue requestQueue1 = Volley.newRequestQueue(ReviewsActivity.this);
-//                JSONObject jsonBody = new JSONObject();
-//
-//                try{
-//                    jsonBody.put("model",data);
-//                    jsonBody.put("model_id",data2);
-//                    jsonBody.put("rating","3");
-//                    jsonBody.put("comment",Comment);
-//
-//
-//                    JsonObjectRequest jsonObjectRequest1 = new JsonObjectRequest(Request.Method.POST, URL, jsonBody, new Response.Listener<JSONObject>() {
-//                        @Override
-//                        public void onResponse(JSONObject response) {
-//
-//
-//                            Toast.makeText(ReviewsActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
-//
-//
-////                    try{
-////                        String Success = response.getString("success");
-////                        String msg = response.getString("message");
-////
-////
-////
-////
-////                        if (Success.equals("true")){
-////
-////                            Toast.makeText(ReviewsActivity.this, msg, Toast.LENGTH_SHORT).show();
-////                            Log.i("yut86t8",msg);
-//
-//
-//                            Intent intent = new Intent(ReviewsActivity.this,Home_Fragment_Class.class);
-//                            intent.putExtra("list",data);
-//                            intent.putExtra("id",data2);
-//                            startActivity(intent);
-////
-////                        }
-////                        else {
-////
-////                            Toast.makeText(ReviewsActivity.this, msg, Toast.LENGTH_SHORT).show();
-////
-////
-////                        }
-////
-////
-////                    }catch (Exception e) {
-////                        e.printStackTrace();
-////
-////                    }
-////
-//                        }
-//                    }, new Response.ErrorListener() {
-//                        @Override
-//                        public void onErrorResponse(VolleyError error) {
-//
-//                        }
-//                    }){
-//
-//                        @Override
-//                        public Map<String, String> getHeaders() throws AuthFailureError {
-//                            Map<String,String> params = new HashMap<String, String>();
-//                            params.put("Authorization","Bearer "+ PreferenceUtils.getToken(ReviewsActivity.this));
-//                            return params;
-//                        }
-//                    };
-//
-//                    jsonObjectRequest1.setRetryPolicy(new DefaultRetryPolicy(
-//                            10000,
-//                            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-//                            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//
-//                    requestQueue1.add(jsonObjectRequest1);
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-            }
+       }
 
 
         });
@@ -191,7 +112,7 @@ public class ReviewsActivity extends AppCompatActivity {
         String URL = "http://nk.inevitabletech.email/public/api/review-submit";
 
         JSONObject jsonBody = new JSONObject();
-
+        Comment = comment.getText().toString();
 
 
 
@@ -207,16 +128,65 @@ public class ReviewsActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(JSONObject response) {
 
-                    Intent intent = new Intent(ReviewsActivity.this,Home_Fragment_Class.class);
-                    intent.putExtra("list",data);
-                    intent.putExtra("id",data2);
+                    try {
+                        String Success = response.getString("success");
+                        String msg = response.getString("message");
 
-                    startActivity(intent);
+                        if(Success == "true"){
+                            Toast.makeText(ReviewsActivity.this, msg, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ReviewsActivity.this,Home_Fragment_Class.class);
+                            intent.putExtra("list",data);
+                            intent.putExtra("id",data2);
+
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(ReviewsActivity.this, msg, Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+
 
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
+
+//                    Charset charset = Charset.defaultCharset();
+//                    String str = new String(error.networkResponse.data,charset);
+
+
+                    if(Comment.isEmpty()){
+                        Toast.makeText(ReviewsActivity.this,"Please enter your comments", Toast.LENGTH_SHORT).show();
+                    }
+//                    else if(Rt.isEmpty()) {
+//                        Toast.makeText(ReviewsActivity.this,  "Please rate us", Toast.LENGTH_SHORT).show();
+//                    }
+
+//                    try {
+//                        JSONObject   jsonObject = new JSONObject(str);
+//                        JSONObject jsonObject1 = jsonObject.getJSONObject("errors");
+//
+//
+//
+//                            if (Comment.isEmpty()){
+//
+//                                JSONArray jsonArray = jsonObject1.getJSONArray("comment");
+//                                Toast.makeText(ReviewsActivity.this, jsonArray.toString(), Toast.LENGTH_SHORT).show();
+//
+//                            }
+//
+//                        else{
+//                            Toast.makeText(getApplicationContext(),str, Toast.LENGTH_LONG).show();
+//                        }
+//
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//
 
 
                 }
@@ -227,6 +197,8 @@ public class ReviewsActivity extends AppCompatActivity {
                     Map<String,String> params = new HashMap<String, String>();
 
                     params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(ReviewsActivity.this));
+                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(ReviewsActivity.this));
+
                     return params;
                 }
 
@@ -243,9 +215,6 @@ public class ReviewsActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
-
 
 
 

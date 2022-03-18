@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -67,9 +67,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_below="@+id/relativeLayout2"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
                         android:orientation="vertical"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="20dp"
                         tools:ignore="NotSibling">
 
 
@@ -77,16 +78,12 @@
 
                             android:id="@+id/p_details1"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="30dp"
-                            android:layout_marginEnd="20dp"
+                            android:layout_height="40dp"
                             android:background="@drawable/border_only"
                             android:hint="Date of birth"
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
@@ -94,16 +91,13 @@
 
                             android:id="@+id/p_details2"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginEnd="20dp"
+                            android:layout_height="40dp"
                             android:background="@drawable/border_only"
                             android:hint="Blood group"
+                            android:layout_marginTop="15dp"
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
@@ -112,23 +106,20 @@
 
                             android:id="@+id/p_details3"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginEnd="20dp"
+                            android:layout_height="40dp"
                             android:background="@drawable/border_only"
                             android:hint="description"
                             android:inputType="text"
+                            android:layout_marginTop="15dp"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="30dp">
+                           >
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -143,6 +134,7 @@
                                     android:layout_width="18dp"
                                     android:layout_height="18dp"
                                     android:layout_marginTop="20dp"
+                                    android:layout_marginEnd="10dp"
                                     android:src="@drawable/ad" />
 
                                 <ImageView
@@ -160,8 +152,8 @@
                                 android:id="@+id/p_details4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="25dp"
                                 android:layout_marginTop="15dp"
+                                android:layout_marginStart="5dp"
                                 android:hint="Education"
                                 android:inputType="text"
                                 android:textColorHint="@color/black"
@@ -169,215 +161,68 @@
                                 android:textStyle="bold" />
                         </RelativeLayout>
 
-                        <EditText
-                            android:id="@+id/add1"
+                        <LinearLayout
+                            android:id="@+id/linn"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
-                            android:layout_marginEnd="20dp"
+                            android:orientation="vertical">
+
+
+
+                        <EditText
+                            android:id="@+id/inst1"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
                             android:background="@drawable/border_only"
                             android:hint="Institute"
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
-                        <!--                        <EditText-->
 
-                        <!--                            android:id="@+id/NameDetails4"-->
-                        <!--                            android:layout_width="match_parent"-->
-                        <!--                            android:layout_height="50dp"-->
-                        <!--                            android:layout_marginStart="20dp"-->
-                        <!--                            android:layout_marginTop="15dp"-->
-                        <!--                            android:layout_marginEnd="20dp"-->
-                        <!--                            android:background="@drawable/border_only"-->
-                        <!--                            android:hint="Gender"-->
-                        <!--                            android:inputType="text"-->
-                        <!--                            android:padding="5dp"-->
-                        <!--                            android:paddingStart="15dp"-->
-                        <!--                            android:paddingLeft="10dp"-->
-                        <!--                            android:textColorHint="@color/black"-->
-                        <!--                            android:textSize="14dp" />-->
-<!--                        <RelativeLayout-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content">-->
-
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:orientation="horizontal"-->
-<!--                            android:gravity="end"-->
-<!--                            android:layout_marginEnd="30dp"-->
-<!--                            >-->
-
-<!--                            <ImageView-->
-<!--                                android:id="@+id/add_s"-->
-<!--                                android:layout_width="18dp"-->
-<!--                                android:layout_height="18dp"-->
-<!--                                android:layout_marginTop="30dp"-->
-<!--                                android:src="@drawable/add"/>-->
-<!--                            <ImageView-->
-<!--                                android:id="@+id/minus_s"-->
-<!--                                android:layout_width="15dp"-->
-<!--                                android:layout_height="15dp"-->
-<!--                                android:layout_marginTop="33dp"-->
-<!--                                android:src="@drawable/minus"/>-->
-
-<!--                        </LinearLayout>-->
 
                         <EditText
 
                             android:id="@+id/p_details5"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
+                            android:layout_height="40dp"
                             android:layout_marginTop="15dp"
-                            android:layout_marginEnd="20dp"
                             android:background="@drawable/border_only"
                             android:hint="degree"
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
 <!--                        </RelativeLayout>-->
 
-                        <EditText
-                            android:id="@+id/add2"
-                            android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginEnd="20dp"
-                            android:background="@drawable/border_only"
-                            android:hint="academic year"
-                            android:inputType="text"
-                            android:padding="5dp"
-                            android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
-                            android:textColorHint="@color/black"
-                            android:textSize="14dp" />
-<!--                        <RelativeLayout-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content">-->
-
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:orientation="horizontal"-->
-<!--                            android:gravity="end"-->
-<!--                            android:layout_marginEnd="30dp"-->
-<!--                            >-->
-
-<!--                            <ImageView-->
-<!--                                android:id="@+id/add_year"-->
-<!--                                android:layout_width="18dp"-->
-<!--                                android:layout_height="18dp"-->
-<!--                                android:layout_marginTop="30dp"-->
-<!--                                android:src="@drawable/add"/>-->
-<!--                            <ImageView-->
-<!--                                android:id="@+id/minus_year"-->
-<!--                                android:layout_width="15dp"-->
-<!--                                android:layout_height="15dp"-->
-<!--                                android:layout_marginTop="33dp"-->
-<!--                                android:src="@drawable/minus"/>-->
-
-<!--                        </LinearLayout>-->
-
-
-<!--                            <EditText-->
-
-<!--                                android:id="@+id/p_details6"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="50dp"-->
-<!--                                android:layout_marginStart="20dp"-->
-<!--                                android:layout_marginTop="15dp"-->
-<!--                                android:layout_marginEnd="20dp"-->
-<!--                                android:background="@drawable/border_only"-->
-<!--                                android:hint="Year"-->
-<!--                                android:inputType="text"-->
-<!--                                android:padding="5dp"-->
-<!--                                android:paddingStart="15dp"-->
-<!--                                android:paddingLeft="10dp"-->
-<!--                                android:textColorHint="@color/black"-->
-<!--                                android:textSize="14dp" />-->
-
-<!--                        </RelativeLayout>-->
-<!--                        <EditText-->
-<!--                            android:id="@+id/add3"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="50dp"-->
-<!--                            android:layout_marginStart="20dp"-->
-<!--                            android:layout_marginTop="15dp"-->
-<!--                            android:layout_marginEnd="20dp"-->
-<!--                            android:background="@drawable/border_only"-->
-<!--                            android:hint="Add your academic year"-->
-<!--                            android:inputType="text"-->
-<!--                            android:padding="5dp"-->
-<!--                            android:paddingStart="15dp"-->
-<!--                            android:paddingLeft="10dp"-->
-<!--                            android:textColorHint="@color/black"-->
-<!--                            android:textSize="14dp" />-->
-
-<!--                        <RelativeLayout-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content">-->
-
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:orientation="horizontal"-->
-<!--                            android:gravity="end"-->
-<!--                            android:layout_marginEnd="30dp"-->
-<!--                            >-->
-
-<!--                            <ImageView-->
-<!--                                android:id="@+id/add_com"-->
-<!--                                android:layout_width="18dp"-->
-<!--                                android:layout_height="18dp"-->
-<!--                                android:layout_marginTop="30dp"-->
-<!--                                android:src="@drawable/add"/>-->
-<!--                            <ImageView-->
-<!--                                android:id="@+id/minus_com"-->
-<!--                                android:layout_width="15dp"-->
-<!--                                android:layout_height="15dp"-->
-<!--                                android:layout_marginTop="33dp"-->
-<!--                                android:src="@drawable/minus"/>-->
-
-<!--                        </LinearLayout>-->
-
-<!--                            <EditText-->
-
-<!--                                android:id="@+id/p_details7"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="50dp"-->
-<!--                                android:layout_marginStart="20dp"-->
-<!--                                android:layout_marginTop="15dp"-->
-<!--                                android:layout_marginEnd="20dp"-->
-<!--                                android:background="@drawable/border_only"-->
-<!--                                android:hint="Company"-->
-<!--                                android:inputType="text"-->
-<!--                                android:padding="5dp"-->
-<!--                                android:paddingStart="15dp"-->
-<!--                                android:paddingLeft="10dp"-->
-<!--                                android:textColorHint="@color/black"-->
-<!--                                android:textSize="14dp" />-->
-<!--                        </RelativeLayout>-->
+                            <EditText
+                                android:id="@+id/year"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginTop="15dp"
+                                android:background="@drawable/border_only"
+                                android:hint="academic year"
+                                android:inputType="text"
+                                android:padding="5dp"
+                                android:paddingStart="15dp"
+                                android:textColorHint="@color/black"
+                                android:textSize="14dp" />
+                        </LinearLayout>
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="30dp">
+                          >
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal"
                                 android:gravity="end"
+                                android:orientation="horizontal"
 
                                 >
 
@@ -387,13 +232,15 @@
                                     android:layout_width="18dp"
                                     android:layout_height="18dp"
                                     android:layout_marginTop="20dp"
-                                    android:src="@drawable/ad"/>
+                                    android:layout_marginEnd="10dp"
+                                    android:src="@drawable/ad" />
+
                                 <ImageView
                                     android:id="@+id/minus_exp"
                                     android:layout_width="18dp"
                                     android:layout_height="18dp"
                                     android:layout_marginTop="20dp"
-                                    android:src="@drawable/min"/>
+                                    android:src="@drawable/min" />
 
                             </LinearLayout>
 
@@ -401,7 +248,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="25dp"
+                                android:layout_marginStart="5dp"
                                 android:layout_marginTop="15dp"
                                 android:hint="Experience"
                                 android:inputType="text"
@@ -409,65 +256,40 @@
                                 android:textSize="14dp"
                                 android:textStyle="bold" />
                         </RelativeLayout>
+                    <LinearLayout
+                        android:id="@+id/linn1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="vertical">
 
                         <EditText
                             android:id="@+id/add4"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
+                            android:layout_height="40dp"
                             android:layout_marginTop="15dp"
-                            android:layout_marginEnd="20dp"
                             android:background="@drawable/border_only"
                             android:hint="company"
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
-<!--                        <RelativeLayout-->
-<!--                            android:layout_width="wrap_content"-->
-<!--                            android:layout_height="wrap_content">-->
 
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:orientation="horizontal"-->
-<!--                            android:gravity="end"-->
-<!--                            android:layout_marginEnd="30dp"-->
-<!--                            >-->
-
-<!--                            <ImageView-->
-<!--                                android:id="@+id/add_exp"-->
-<!--                                android:layout_width="18dp"-->
-<!--                                android:layout_height="18dp"-->
-<!--                                android:layout_marginTop="30dp"-->
-<!--                                android:src="@drawable/add"/>-->
-<!--                            <ImageView-->
-<!--                                android:id="@+id/minus_exp"-->
-<!--                                android:layout_width="15dp"-->
-<!--                                android:layout_height="15dp"-->
-<!--                                android:layout_marginTop="33dp"-->
-<!--                                android:src="@drawable/minus"/>-->
-
-<!--                        </LinearLayout>-->
 
 
                         <EditText
 
                             android:id="@+id/p_details8"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
+                            android:layout_height="40dp"
                             android:layout_marginTop="15dp"
-                            android:layout_marginEnd="20dp"
                             android:background="@drawable/border_only"
                             android:hint="experience"
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 <!--                        </RelativeLayout>-->
@@ -476,19 +298,16 @@
                         <EditText
                             android:id="@+id/add5"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
+                            android:layout_height="40dp"
                             android:layout_marginTop="15dp"
-                            android:layout_marginEnd="20dp"
                             android:background="@drawable/border_only"
                             android:hint="position"
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
-
+                    </LinearLayout>
 <!--                        <RelativeLayout-->
 <!--                            android:layout_width="wrap_content"-->
 <!--                            android:layout_height="wrap_content">-->
@@ -551,7 +370,7 @@
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="30dp">
+                         >
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -564,6 +383,7 @@
                                     android:layout_width="18dp"
                                     android:layout_height="18dp"
                                     android:layout_marginTop="20dp"
+                                    android:layout_marginEnd="10dp"
                                     android:src="@drawable/ad" />
 
                                 <ImageView
@@ -580,7 +400,7 @@
 
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="25dp"
+                                android:layout_marginStart="5dp"
                                 android:layout_marginTop="15dp"
                                 android:hint="Skills"
                                 android:inputType="text"
@@ -588,32 +408,36 @@
                                 android:textSize="14dp"
                                 android:textStyle="bold" />
                         </RelativeLayout>
+                    <LinearLayout
+                        android:id="@+id/linn2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:orientation="vertical">
 
                         <EditText
                             android:id="@+id/add7"
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
+                            android:layout_height="40dp"
                             android:layout_marginTop="15dp"
-                            android:layout_marginEnd="20dp"
                             android:background="@drawable/border_only"
                             android:hint="skills"
                             android:inputType="text"
                             android:padding="5dp"
                             android:paddingStart="15dp"
-                            android:paddingLeft="10dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
+                    </LinearLayout>
 
                         <Button
                             android:id="@+id/submit_profile"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_gravity="center"
-                            android:layout_marginStart="110dp"
+                            android:layout_marginStart="50dp"
                             android:layout_marginTop="40dp"
-                            android:layout_marginEnd="110dp"
-                            android:layout_marginBottom="100dp"
+                            android:layout_marginEnd="50dp"
+                            android:layout_marginBottom="120dp"
                             android:background="@drawable/bg"
                             android:backgroundTint="#4c9a2a"
                             android:gravity="center"
@@ -642,26 +466,21 @@
 
 
     </RelativeLayout>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/fragment_layout"
 
-        tools:ignore="MissingConstraints">
 
-    </FrameLayout>
+
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView_profile"
+        android:id="@+id/bottomNavigationView_edit"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:itemIconTint="@color/white"
         android:background="#4c9a2a"
-        app:layout_constraintStart_toEndOf="parent"
+        android:layout_alignParentBottom="true"
         app:itemTextColor="@color/white"
         app:menu="@menu/bottom_nav" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

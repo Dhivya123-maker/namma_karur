@@ -5,15 +5,14 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,19 +28,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.BaseApi.Api;
-import com.e.login.BlankFragment.Blank_PostFragment;
 import com.e.login.EnquiryFragment;
 import com.e.login.HelperClass.ViewPagerAdapter;
-import com.e.login.Helpline;
+import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
-import com.e.login.HomeClass.Slider_Top_Adapter;
 import com.e.login.Home_Fragment_Class;
+import com.e.login.Post_Fragment;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
-import com.e.login.ShopClass.ShopClassAdapter;
-import com.e.login.ShopClass.ShopModel;
-import com.e.login.ShopClass.ShopScreen_Class;
-import com.e.login.fragment_dialog.BottomSheetFragment_filter;
 import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -268,7 +262,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
                     fragment = new Helpline();
                     break;
                 case R.id.nav_notifications:
-                    fragment = new EnquiryFragment();
+                   fragment = new Post_Fragment();
                     break;
 
 
@@ -430,16 +424,23 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
 
                         viewmodel.setId(id);
-                        viewmodel.setText(title);
-                        viewmodel.setImage(logo);
+                        viewmodel.setText(name);
+                        viewmodel.setImage(image);
                         viewmodel.setText_one(address);
-                        viewmodel.setText_two(rating);
+//                        viewmodel.setText_two(rating);
                         viewmodel.setText_three(loc);
                         viewmodel.setCategory(data2);
+                        viewmodel.setLoc(loc);
+
+
 
                         shop_screen_model.add(viewmodel);
 
 
+                        recyclerView.setLayoutManager(new LinearLayoutManager(ShopsScreenFragment.this));
+                        adapter =  new ShopScreenAdapter(ShopsScreenFragment.this,shop_screen_model);
+                        //adapter.setOnItemClickListener(ShopsScreenFragment.this);
+                        recyclerView.setAdapter(adapter);
 
                     }
 
@@ -448,10 +449,6 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                recyclerView.setLayoutManager(new LinearLayoutManager(ShopsScreenFragment.this));
-                adapter =  new ShopScreenAdapter(ShopsScreenFragment.this,shop_screen_model);
-                adapter.setOnItemClickListener(ShopsScreenFragment.this);
-                recyclerView.setAdapter(adapter);
 
 
 
@@ -502,6 +499,13 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
 
         if(data2.equals("AtmCatalog")){
+//
+//            Uri gmmIntentUri = Uri.parse("geo:10.9601,78.0766");
+//            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+//            mapIntent.setPackage("com.google.android.apps.maps");
+//            if (mapIntent.resolveActivity(getPackageManager()) != null) {
+//                startActivity(mapIntent);
+//            }
 
 
         }

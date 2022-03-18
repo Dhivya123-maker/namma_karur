@@ -4,19 +4,21 @@ import static android.view.View.GONE;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.text.InputFilter;
-import android.text.InputType;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,23 +34,33 @@ import com.e.login.Profile;
 import com.e.login.R;
 import com.e.login.utils.PreferenceUtils;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Edit extends AppCompatActivity {
-    EditText dob,b_gp,desc,deg,year,com,exp,pos,skills,add1,add2,add3,add4,add5,add6,add7;
+    EditText dob,b_gp,desc,deg,year,com,exp,pos,skills,inst,yr,add3,add4,add5,add6,add7;
     TextView ins;
-    String Dob,B_gp,Desc,Ins,Deg,Year,Com,Exp,Pos,Skills;
+    String Dob,B_gp,Desc;
+     ArrayList<String> arrayList,arrayList1,arrayList2;
+     String  Ins,Deg,Year,Com,Exp,Pos,Skills;
     Button btn;
     private LinearLayout parentLayout;
     private int hint=0;
     ImageView add,minus,add_s,minus_s,add_skills,minus_skills;
+    Context myContext;
+    LinearLayout lnr,lnr1,lnr2;
+    Context context;
 
+   String picture;
+    byte[] byteArray;
+
+    Bitmap bitmap;
+    int imagevalue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +69,29 @@ public class Edit extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
 
-        ins = findViewById(R.id.p_details4);
 
+//        Intent intent = getIntent();
+//        byteArray = intent.getByteArrayExtra("image");
+//        Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray,0, byteArray.length);
+
+//        bitmap bmp = (Bitmap) getIntent().getParcelableExtra("image");
+//        Intent intent = getIntent();
+//        picture = intent.getStringExtra("image");
+
+
+//        Toast.makeText(Edit.this, bitmap.toString(), Toast.LENGTH_SHORT).show();
+
+
+      arrayList = new ArrayList<String>();
+      arrayList1 = new ArrayList<>();
+      arrayList2 = new ArrayList<>();
+
+
+        ins = findViewById(R.id.p_details4);
 
         dob = findViewById(R.id.p_details1);
         b_gp = findViewById(R.id.p_details2);
         desc = findViewById(R.id.p_details3);
-        deg = findViewById(R.id.p_details5);
         exp = findViewById(R.id.p_details8);
         btn = findViewById(R.id.submit_profile);
         add = findViewById(R.id.add);
@@ -75,15 +103,18 @@ public class Edit extends AppCompatActivity {
         add7 = findViewById(R.id.add7);
 
 
-        add1 = findViewById(R.id.add1);
-        add2 = findViewById(R.id.add2);
+        inst = findViewById(R.id.inst1);
+        yr = findViewById(R.id.year);
+        deg = findViewById(R.id.p_details5);
+
+
         add4 = findViewById(R.id.add4);
         add5 = findViewById(R.id.add5);
 
 
-        add1.setVisibility(GONE);
+        inst.setVisibility(GONE);
         deg.setVisibility(GONE);
-        add2.setVisibility(GONE);
+        yr.setVisibility(GONE);
         add.setVisibility(View.VISIBLE);
         minus.setVisibility(GONE);
         minus_s.setVisibility(GONE);
@@ -94,33 +125,149 @@ public class Edit extends AppCompatActivity {
         exp.setVisibility(GONE);
         add5.setVisibility(GONE);
 
+        lnr = (LinearLayout)findViewById(R.id.linn);
+        lnr1 = (LinearLayout)findViewById(R.id.linn1);
+        lnr2 = (LinearLayout)findViewById(R.id.linn2);
+
 
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+
                 minus.setVisibility(View.VISIBLE);
-                add.setVisibility(GONE);
-                add1.setVisibility(View.VISIBLE);
-                deg.setVisibility(View.VISIBLE);
-                add2.setVisibility(View.VISIBLE);
+                add.setVisibility(View.VISIBLE);
+
+
+                inst = new EditText(Edit.this);
+                inst.setHint("Institute");
+                inst.setTextSize(14);
+                inst.setBackgroundDrawable(getDrawable(R.drawable.border_only));
+                inst.setHeight(100);
+                inst.setHintTextColor(Color.BLACK);
+                inst.setMaxWidth(200);
+                inst.setSingleLine(true);
+                inst.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                inst.setPadding(30, 20, 20, 20);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp.setMargins(0,0,0,20);
+                inst.setLayoutParams(lp);
+
+
+                 lnr.addView(inst);
+
+
+                deg = new EditText(Edit.this);
+                deg.setHint("Degree");
+                deg.setTextSize(14);
+                deg.setBackgroundDrawable(getDrawable(R.drawable.border_only));
+                deg.setHeight(100);
+                deg.setHintTextColor(Color.BLACK);
+                deg.setMaxWidth(200);
+                deg.setSingleLine(true);
+                deg.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                deg.setPadding(30, 20, 20, 20);
+                LinearLayout.LayoutParams lp1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp1.setMargins(0,0,0,20);
+                deg.setLayoutParams(lp1);
+
+
+                lnr.addView(deg);
+
+                yr = new EditText(Edit.this);
+                yr.setHint("Academic Year");
+                yr.setTextSize(14);
+                yr.setBackgroundDrawable(getDrawable(R.drawable.border_only));
+                yr.setHeight(100);
+                yr.setHintTextColor(Color.BLACK);
+                yr.setMaxWidth(200);
+                yr.setSingleLine(true);
+                yr.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                yr.setPadding(30, 20, 20, 20);
+                LinearLayout.LayoutParams lp2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp2.setMargins(0,0,0,20);
+                yr.setLayoutParams(lp2);
+
+
+                lnr.addView(yr);
+
+
 
 
             }
+
+
         });
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 add.setVisibility(View.VISIBLE);
-                add1.setVisibility(GONE);
-                deg.setVisibility(GONE);
-                add2.setVisibility(GONE);
-                minus.setVisibility(GONE);
+                minus.setVisibility(View.VISIBLE);
+
+
+
+
+
+
+                inst = new EditText(Edit.this);
+                inst.setHint("Institute");
+                inst.setTextSize(14);
+                inst.setBackgroundDrawable(getDrawable(R.drawable.border_only));
+                inst.setHeight(100);
+                inst.setHintTextColor(Color.BLACK);
+                inst.setMaxWidth(200);
+                inst.setSingleLine(true);
+                inst.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                inst.setPadding(30, 20, 20, 20);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp.setMargins(0,0,0,20);
+                inst.setLayoutParams(lp);
+
+                lnr.removeViewAt(3);
+
+                deg = new EditText(Edit.this);
+                deg.setHint("Degree");
+                deg.setTextSize(14);
+                deg.setBackgroundDrawable(getDrawable(R.drawable.border_only));
+                deg.setHeight(100);
+                deg.setHintTextColor(Color.BLACK);
+                deg.setMaxWidth(200);
+                deg.setSingleLine(true);
+                deg.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                deg.setPadding(30, 20, 20, 20);
+                LinearLayout.LayoutParams lp1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp1.setMargins(0,0,0,20);
+                deg.setLayoutParams(lp1);
+
+                lnr.removeViewAt(3);
+
+
+                yr = new EditText(Edit.this);
+                yr.setHint("Academic Year");
+                yr.setTextSize(14);
+                yr.setBackgroundDrawable(getDrawable(R.drawable.border_only));
+                yr.setHeight(100);
+                yr.setHintTextColor(Color.BLACK);
+                yr.setMaxWidth(200);
+                yr.setSingleLine(true);
+                yr.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                yr.setPadding(30, 20, 20, 20);
+                LinearLayout.LayoutParams lp2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp2.setMargins(0,0,0,20);
+                yr.setLayoutParams(lp2);
+
+
+                lnr.removeViewAt(3);
+                lnr.setVisibility(GONE);
+
+
+
+
+
+
             }
         });
-
-
 
 
         add_s.setOnClickListener(new View.OnClickListener() {
@@ -128,10 +275,60 @@ public class Edit extends AppCompatActivity {
             public void onClick(View view) {
 
                 minus_s.setVisibility(View.VISIBLE);
-                add_s.setVisibility(GONE);
-                add4.setVisibility(View.VISIBLE);
-                exp.setVisibility(View.VISIBLE);
-                add5.setVisibility(View.VISIBLE);
+                add_s.setVisibility(View.VISIBLE);
+
+                add4 = new EditText(Edit.this);
+                add4.setHint("Company");
+                add4.setTextSize(14);
+                add4.setBackgroundDrawable(getDrawable(R.drawable.border_only));
+                add4.setHeight(100);
+                add4.setHintTextColor(Color.BLACK);
+                add4.setMaxWidth(200);
+                add4.setSingleLine(true);
+                add4.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                add4.setPadding(30, 20, 20, 20);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp.setMargins(0,0,0,20);
+                add4.setLayoutParams(lp);
+
+
+                lnr1.addView(add4);
+
+                exp = new EditText(Edit.this);
+                exp.setHint("Experience");
+                exp.setTextSize(14);
+                exp.setBackgroundDrawable(getDrawable(R.drawable.border_only));
+                exp.setHeight(100);
+                exp.setHintTextColor(Color.BLACK);
+                exp.setMaxWidth(200);
+                exp.setSingleLine(true);
+                exp.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                exp.setPadding(30, 20, 20, 20);
+                LinearLayout.LayoutParams lp1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp1.setMargins(0,0,0,20);
+                exp.setLayoutParams(lp1);
+
+
+                lnr1.addView(exp);
+
+                add5 = new EditText(Edit.this);
+                add5.setHint("Position");
+                add5.setTextSize(14);
+                add5.setBackgroundDrawable(getDrawable(R.drawable.border_only));
+                add5.setHeight(100);
+                add5.setHintTextColor(Color.BLACK);
+                add5.setMaxWidth(200);
+                add5.setSingleLine(true);
+                add5.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                add5.setPadding(30, 20, 20, 20);
+                LinearLayout.LayoutParams lp2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp2.setMargins(0,0,0,20);
+                add5.setLayoutParams(lp2);
+
+
+                lnr1.addView(add5);
+
+
 
 
             }
@@ -140,10 +337,60 @@ public class Edit extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 add_s.setVisibility(View.VISIBLE);
-                add4.setVisibility(GONE);
-                exp.setVisibility(GONE);
-                add5.setVisibility(GONE);
+                minus_s.setVisibility(View.VISIBLE);
+
+                add4 = new EditText(Edit.this);
+                add4.setHint("Company");
+                add4.setTextSize(14);
+                add4.setBackgroundDrawable(getDrawable(R.drawable.border_only));
+                add4.setHeight(100);
+                add4.setHintTextColor(Color.BLACK);
+                add4.setMaxWidth(200);
+                add4.setSingleLine(true);
+                add4.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                add4.setPadding(30, 20, 20, 20);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp.setMargins(0,0,0,20);
+                add4.setLayoutParams(lp);
+
+
+                lnr1.removeAllViews();
+
+                exp = new EditText(Edit.this);
+                exp.setHint("Experience");
+                exp.setTextSize(14);
+                exp.setBackgroundDrawable(getDrawable(R.drawable.border_only));
+                exp.setHeight(100);
+                exp.setHintTextColor(Color.BLACK);
+                exp.setMaxWidth(200);
+                exp.setSingleLine(true);
+                exp.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                exp.setPadding(30, 20, 20, 20);
+                LinearLayout.LayoutParams lp1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp1.setMargins(0,0,0,20);
+                exp.setLayoutParams(lp1);
+
+
+                lnr1.removeAllViews();
+
+                add5 = new EditText(Edit.this);
+                add5.setHint("Position");
+                add5.setTextSize(14);
+                add5.setBackgroundDrawable(getDrawable(R.drawable.border_only));
+                add5.setHeight(100);
+                add5.setHintTextColor(Color.BLACK);
+                add5.setMaxWidth(200);
+                add5.setSingleLine(true);
+                add5.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                add5.setPadding(30, 20, 20, 20);
+                LinearLayout.LayoutParams lp2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp2.setMargins(0,0,0,20);
+                add5.setLayoutParams(lp2);
+
+
+                lnr1.removeAllViews();
                 minus_s.setVisibility(GONE);
+
             }
         });
 
@@ -153,8 +400,25 @@ public class Edit extends AppCompatActivity {
             public void onClick(View view) {
 
                 minus_skills.setVisibility(View.VISIBLE);
-                add_skills.setVisibility(GONE);
-                add7.setVisibility(View.VISIBLE);
+                add_skills.setVisibility(View.VISIBLE);
+
+                add7 = new EditText(Edit.this);
+                add7.setHint("Skills");
+                add7.setTextSize(14);
+                add7.setBackgroundDrawable(getDrawable(R.drawable.border_only));
+                add7.setHeight(100);
+                add7.setHintTextColor(Color.BLACK);
+                add7.setMaxWidth(200);
+                add7.setSingleLine(true);
+                add7.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                add7.setPadding(30, 20, 20, 20);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp.setMargins(0,0,0,20);
+                add7.setLayoutParams(lp);
+
+
+                lnr2.addView(add7);
+
 
 
             }
@@ -163,9 +427,27 @@ public class Edit extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 add_skills.setVisibility(View.VISIBLE);
-                add7.setVisibility(GONE);
-
                 minus_skills.setVisibility(GONE);
+
+                add7 = new EditText(Edit.this);
+                add7.setHint("Skills");
+                add7.setTextSize(14);
+                add7.setBackgroundDrawable(getDrawable(R.drawable.border_only));
+                add7.setHeight(100);
+                add7.setHintTextColor(Color.BLACK);
+                add7.setMaxWidth(200);
+                add7.setSingleLine(true);
+                add7.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                add7.setPadding(30, 20, 20, 20);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                lp.setMargins(0,0,0,20);
+                add7.setLayoutParams(lp);
+
+
+                lnr2.removeAllViews();
+                minus_skills.setVisibility(GONE);
+
+
             }
         });
 
@@ -185,20 +467,36 @@ public class Edit extends AppCompatActivity {
 
     }
 
-    public  void profile_page(){
+    public  void profile_page() {
 
         Dob = dob.getText().toString();
         B_gp = b_gp.getText().toString();
-        Ins = add1.getText().toString();
         Desc = desc.getText().toString();
-        Deg = deg.getText().toString();
-        Year = add2.getText().toString();
-        Com= add4.getText().toString();
+
+        Com = add4.getText().toString();
         Exp = exp.getText().toString();
-        Pos= add5.getText().toString();
+        Pos = add5.getText().toString();
         Skills = add7.getText().toString();
 
 
+
+        for (int i = 0; i<arrayList.size();i++){
+
+            for (int j = 0; j< 3;j++){
+
+                Ins = inst.getText().toString();
+                Deg = deg.getText().toString();
+                Year = yr.getText().toString();
+
+                arrayList.add(Ins);
+                arrayList.add(Year);
+                arrayList.add(Deg);
+
+
+                Log.i("epjhrfueioyhrt9",arrayList.toString());
+
+        }
+        }
 
 
 
@@ -208,67 +506,57 @@ public class Edit extends AppCompatActivity {
 
         try {
 
-            JSONArray education = new JSONArray();
-            JSONArray education1 = new JSONArray();
-            JSONArray education2 = new JSONArray();
-
-            education.put(Year);
-            education1.put(Ins);
-            education2.put(Deg);
-
-            jsonBody.put("dob", Dob);
-            jsonBody.put("blood_group", B_gp);
-            jsonBody.put("description", Desc);
-            jsonBody.put("education[0][year]", education);
-            jsonBody.put("education[0][institute]",education1);
-            jsonBody.put("education[0][degree]", education2);
-
-//            jsonBody.put("education[1][year]", education);
-//            jsonBody.put("education[1][institute]",education1);
-//            jsonBody.put("education[1][degree]", education2);
-
-            jsonBody.put("experience[0][company]", Com);
-            jsonBody.put("experience[0][experience]", Exp);
-            jsonBody.put("experience[0][position]", Pos);
-
-//            jsonBody.put("experience[1][company]", Com);
-//            jsonBody.put("experience[1][experience]", Exp);
-//            jsonBody.put("experience[1][position]", Pos);
-
-            jsonBody.put("skills[0]", Skills);
-//            jsonBody.put("skills[1]", Skills);
+            final String education = "[\n" +
+                    " {\n" +
+                    "  \"education\": " + arrayList +
+                    " }\n" +
+                    "]"
+                    ;
 
 
+            try {
+                jsonBody.put("dob", Dob);
+                jsonBody.put("blood_group", B_gp);
+                jsonBody.put("description", Desc);
+//                jsonBody.put("image",picture);
 
-            Log.i("kjfhriuweryteruitoh",jsonBody.toString());
 
+                for (int i = 0; i < education.length(); i++) {
+                    for (int j = 0; j<education.length();j++){
+                        jsonBody.put("education", education);
+                        Log.i("kjfhggy",education);
+                    }
+
+               }
+
+
+//            Log.i("qpowru0qp9eruiop-",jsonBody.toString());
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
 
-//                    Log.i("0000000000000",response.toString());
-//                    Toast.makeText(Edit.this, response.toString(), Toast.LENGTH_SHORT).show();
-//
 
 
-                    try{
+
+
+                    try {
                         String Success = response.getString("success");
                         String msg = response.getString("message");
 
 
-
-
-
-                        if (Success == "true"){
+                        if (Success == "true") {
 
                             Toast.makeText(Edit.this, msg, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Edit.this,Profile.class);
+                            Intent intent = new Intent(Edit.this, Profile.class);
                             startActivity(intent);
 
-                        }
-                        else {
+                        } else {
 
 
                             Toast.makeText(Edit.this, msg, Toast.LENGTH_SHORT).show();
@@ -277,7 +565,7 @@ public class Edit extends AppCompatActivity {
                         }
 
 
-                    }catch (Exception e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
 
                     }
@@ -287,16 +575,18 @@ public class Edit extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     Charset charset = Charset.defaultCharset();
-                    String str = new String(error.networkResponse.data,charset);
+                    String str = new String(error.networkResponse.data, charset);
                     Toast.makeText(Edit.this, str, Toast.LENGTH_SHORT).show();
-                    Log.i("ewohfg9uwrytg9",str);
+                    Log.i("ewohfg9uwrytg9", str);
+
+
                 }
-            }){
+            }) {
 
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String,String> params = new HashMap<String, String>();
-                    params.put("Accept","application/json");
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("Accept", "application/json");
                     params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(Edit.this));
                     params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(Edit.this));
 
@@ -311,30 +601,14 @@ public class Edit extends AppCompatActivity {
 
             RequestQueue requestQueue = Volley.newRequestQueue(Edit.this);
             requestQueue.add(jsonObjectRequest);
-        } catch (JSONException e) {
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-    }
-    protected void createEditTextView() {
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams (
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-        params.setMargins(0,10,0,10);
-        EditText edittTxt = new EditText(this);
-        int maxLength = 5;
-        hint++;
-        edittTxt.setHint("editText"+hint);
-        edittTxt.setLayoutParams(params);
-        // edtTxt.setBackgroundColor(Color.WHITE);
-        edittTxt.setInputType(InputType.TYPE_CLASS_TEXT);
-        edittTxt.setTextSize(TypedValue.COMPLEX_UNIT_SP,18);
-        edittTxt.setId(hint);
-        InputFilter[] fArray = new InputFilter[1];
-        fArray[0] = new InputFilter.LengthFilter(maxLength);
-        edittTxt.setFilters(fArray);
-        parentLayout.addView(edittTxt);
+
     }
 }
+

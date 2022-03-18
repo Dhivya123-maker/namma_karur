@@ -410,7 +410,8 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
                             Toast.makeText(SignUpActivity.this, jsonArray2.toString(), Toast.LENGTH_SHORT).show();
 
 
-                        }else if(!email.getText().toString().trim().matches(emailPattern) ){
+                        }
+                       else if(!email.getText().toString().trim().matches(emailPattern) ){
                             JSONArray jsonArray1 = data.getJSONArray("email");
                             Toast.makeText(SignUpActivity.this, jsonArray1.toString(), Toast.LENGTH_SHORT).show();
 
@@ -422,7 +423,8 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
                             JSONArray jsonArray2 = data.getJSONArray("password");
                             Toast.makeText(SignUpActivity.this, jsonArray2.toString(), Toast.LENGTH_SHORT).show();
 
-                        }else  {
+                        }
+                       else  {
                             Toast.makeText(SignUpActivity.this, str, Toast.LENGTH_SHORT).show();
 
                         }

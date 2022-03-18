@@ -209,6 +209,7 @@ public class VerifyActivity extends AppCompatActivity {
                     Map<String,String> params = new HashMap<String, String>();
                   //  params.put("Content-Type","application/x-www-form-urlencoded");
                     params.put("Authorization","Bearer "+PreferenceUtils.getToken(VerifyActivity.this));
+                    params.put("Authorization","Bearer "+PreferenceUtils.getToken1(VerifyActivity.this));
                     return params;
                 }
 
@@ -305,6 +306,7 @@ public class VerifyActivity extends AppCompatActivity {
                     Map<String,String> params = new HashMap<String, String>();
                     //  params.put("Content-Type","application/x-www-form-urlencoded");
                     params.put("Authorization","Bearer "+PreferenceUtils.getToken(VerifyActivity.this));
+                    params.put("Authorization","Bearer "+PreferenceUtils.getToken1(VerifyActivity.this));
                     return params;
                 }
 

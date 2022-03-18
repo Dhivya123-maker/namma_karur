@@ -11,6 +11,16 @@ public class ShopScreenModel {
     private  String text_three;
     private String id;
 
+    public String getLoc() {
+        return loc;
+    }
+
+    public void setLoc(String loc) {
+        this.loc = loc;
+    }
+
+    String  loc;
+
 
     public String getCategory() {
         return category;
@@ -110,7 +120,7 @@ public class ShopScreenModel {
         this.text = text;
     }
 
-    public ShopScreenModel(String id,String image,String image1,String image2,String image3, String text,String text_one,String text_two,String text_three,String text_four,String category) {
+    public ShopScreenModel(String id,String image,String image1,String image2,String image3, String text,String text_one,String text_two,String text_three,String text_four,String category,String loc) {
 
         this.image= image;
         this.image1 = image1;
@@ -123,5 +133,6 @@ public class ShopScreenModel {
         this.text_four = text_four;
         this.id = id;
         this.category = category;
+        this.loc = loc;
 
     }}

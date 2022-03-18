@@ -20,6 +20,26 @@ public class ShopModel {
     String bimg;
     String bid;
 
+    public String getNum_one() {
+        return num_one;
+    }
+
+    public void setNum_one(String num_one) {
+        this.num_one = num_one;
+    }
+
+    String num_one;
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
+    }
+
+    String num;
+
     public String getNid() {
         return nid;
     }
@@ -224,7 +244,7 @@ public class ShopModel {
     }
 
     public ShopModel(String image, String image1, String text, String text_one, String id, String category, String ades, String aimg, String aname, String apri,String asec
-    ,String mname,String mid,String mimg,String mview_count,String bdes,String bid,String bname,String bimg,String nimage,String nname ) {
+    ,String mname,String mid,String mimg,String mview_count,String bdes,String bid,String bname,String bimg,String nimage,String nname, String num, String num_one ) {
 
         this.image= image;
        this.image1 = image1;
@@ -247,7 +267,8 @@ public class ShopModel {
         this.bname = bname;
         this.nname = nname;
         this.nimage = nimage;
-
+        this.num = num;
+        this.num_one = num_one;
 
 
 

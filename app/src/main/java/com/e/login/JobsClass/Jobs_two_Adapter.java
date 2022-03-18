@@ -92,8 +92,11 @@ public class Jobs_two_Adapter extends RecyclerView.Adapter<Jobs_two_Adapter.View
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    String cat_id = jobs_two_modelList.get(position).getCat_id();
 
                     Intent intent = new Intent(view.getContext(), ViewActivity.class);
+                    intent.putExtra("cat_id",cat_id);
                     view.getContext().startActivity(intent);
                 }
             });

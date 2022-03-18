@@ -9,12 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.e.login.BlankFragment.Blank_PostFragment;
-import com.e.login.CarrierClass.Carrier_Fragment;
 import com.e.login.Facility_Class.Facility_Fragment;
 import com.e.login.Gallery_Class.Gallery_Fragment;
+import com.e.login.Help_Class.Helpline;
 import com.e.login.HelperClass.ViewPagerAdapter;
 import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.MoreInfoClass.MoreInfo;
@@ -187,6 +186,7 @@ public class Home_Fragment_Class extends AppCompatActivity {
             switch (id) {
                 case R.id.nav_home:
                     fragment = new Fragment_Home();
+
                     break;
                 case R.id.nav_tree:
                     fragment = new InformationFragment();
@@ -199,13 +199,13 @@ public class Home_Fragment_Class extends AppCompatActivity {
                     fragment = new Helpline();
                     break;
                 case R.id.nav_notifications:
-                    fragment = new EnquiryFragment();
+                    fragment = new Post_Fragment();
                     break;
 
 
             }
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, fragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout1, fragment).commit();
 
             return true;
         }

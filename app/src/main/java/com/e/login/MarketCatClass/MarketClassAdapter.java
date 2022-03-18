@@ -91,7 +91,7 @@ public class MarketClassAdapter extends RecyclerView.Adapter<com.e.login.MarketC
                     view.getContext().startActivity(intent);
                 }
             });
-//
+
         }
 
 

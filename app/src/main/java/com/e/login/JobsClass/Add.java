@@ -21,8 +21,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.R;
+import com.e.login.SignUpActivity;
 import com.e.login.utils.PreferenceUtils;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -34,7 +36,8 @@ public class Add extends AppCompatActivity {
     EditText j_name,comp_name,gender,address,no_vacancy,qualify,exp,age,salary,skills,about,start,end;
     String J_name,Comp_name,Gender,Address,No_vacancy,Qualify,Exp,Age,Salary,Skills,About,Start,End;
     Button btn;
-    String data,data1;
+    String data,data1,category_id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,9 @@ public class Add extends AppCompatActivity {
         Intent intent = getIntent();
         data = intent.getStringExtra("cat");
         data1 = intent.getStringExtra("id");
-        Toast.makeText(Add.this, data1, Toast.LENGTH_SHORT).show();
+        category_id = intent.getStringExtra("category_id");
+
+        Toast.makeText(Add.this, category_id, Toast.LENGTH_SHORT).show();
 
 
 
@@ -94,15 +99,16 @@ public class Add extends AppCompatActivity {
         String URL = "http://nk.inevitabletech.email/public/api/post-a-jobs";
 
 
+
         JSONObject jsonBody = new JSONObject();
         try {
             jsonBody.put("job_name",J_name);
             jsonBody.put("company_name",Comp_name );
-            jsonBody.put("category_id",data1);
+           jsonBody.put("category_id",category_id);
             jsonBody.put("gender",Gender);
             jsonBody.put("address",Address);
             jsonBody.put("no_of_vacancy",No_vacancy);
-            jsonBody.put("qualification","[1,2]");
+            jsonBody.put("qualification",Qualify);
 //            jsonBody.put("qualification[1]",Qualify);
             jsonBody.put("experience", Exp );
             jsonBody.put("age_limit",Age);
@@ -165,6 +171,95 @@ public class Add extends AppCompatActivity {
                     Charset charset = Charset.defaultCharset();
                     String str = new String(error.networkResponse.data,charset);
                     Log.i("wkjlgroiwt",str);
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("errors");
+                        if (J_name.isEmpty()) {
+
+                            JSONArray jsonArray = data.getJSONArray("job_name");
+                            Toast.makeText(Add.this, jsonArray.toString(), Toast.LENGTH_SHORT).show();
+                            Log.i("wkhgiuktrehg",jsonArray.toString());
+
+                        }
+
+                        else if (Comp_name.isEmpty()) {
+                            JSONArray jsonArray1 = data.getJSONArray("company_name");
+                            Toast.makeText(Add.this, jsonArray1.toString(), Toast.LENGTH_SHORT).show();
+                        }
+
+                        else if (Gender.isEmpty() ) {
+                            JSONArray jsonArray2 = data.getJSONArray("gender");
+                            Toast.makeText(Add.this, jsonArray2.toString(), Toast.LENGTH_SHORT).show();
+
+
+                        }
+                        else if (Address.isEmpty()) {
+                            JSONArray jsonArray3 = data.getJSONArray("address");
+                            Toast.makeText(Add.this, jsonArray3.toString(), Toast.LENGTH_SHORT).show();
+
+
+                        }else if(No_vacancy.isEmpty()){
+                            JSONArray jsonArray4 = data.getJSONArray("no_of_vacancy");
+                            Toast.makeText(Add.this, jsonArray4.toString(), Toast.LENGTH_SHORT).show();
+
+                        }else if(Qualify.isEmpty()){
+                            JSONArray jsonArray5 = data.getJSONArray("qualification");
+                            Toast.makeText(Add.this, jsonArray5.toString(), Toast.LENGTH_SHORT).show();
+
+                        }else if(Exp.isEmpty()){
+                            JSONArray jsonArray6 = data.getJSONArray("experience");
+                            Toast.makeText(Add.this, jsonArray6.toString(), Toast.LENGTH_SHORT).show();
+
+                        }
+                        else if(Age.isEmpty() ){
+                            JSONArray jsonArray7 = data.getJSONArray("age_limit");
+                            Toast.makeText(Add.this, jsonArray7.toString(), Toast.LENGTH_SHORT).show();
+
+                        }
+                        else if(Salary.isEmpty() ){
+                            JSONArray jsonArray8 = data.getJSONArray("salary");
+                            Toast.makeText(Add.this, jsonArray8.toString(), Toast.LENGTH_SHORT).show();
+
+                        } else if(Skills.isEmpty() ){
+                            JSONArray jsonArray9 = data.getJSONArray("skills[0]");
+                            Toast.makeText(Add.this, jsonArray9.toString(), Toast.LENGTH_SHORT).show();
+
+                        }
+                        else if(Start.isEmpty() ){
+                            JSONArray jsonArray10 = data.getJSONArray("apply_start_date");
+                            Toast.makeText(Add.this, jsonArray10.toString(), Toast.LENGTH_SHORT).show();
+
+                        }
+
+                        else if(End.isEmpty() ){
+                            JSONArray jsonArray11 = data.getJSONArray("apply_end_date");
+                            Toast.makeText(Add.this, jsonArray11.toString(), Toast.LENGTH_SHORT).show();
+
+                        }
+                        else if(About.isEmpty() ){
+                            JSONArray jsonArray12 = data.getJSONArray("about");
+                            Toast.makeText(Add.this, jsonArray12.toString(), Toast.LENGTH_SHORT).show();
+
+                        }
+
+
+
+                        else  {
+                            Toast.makeText(Add.this, str, Toast.LENGTH_SHORT).show();
+
+                        }
+
+
+
+
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
 
 
                 }

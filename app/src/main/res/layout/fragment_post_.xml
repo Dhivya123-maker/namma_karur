@@ -7,427 +7,47 @@
     tools:context=".Post_Fragment">
 
 
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-
- <LinearLayout
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"
-     android:orientation="vertical"
-     android:layout_marginTop="0dp">
-
-
-     <LinearLayout
-         android:id="@+id/ac_one"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="10dp"
-         android:background="@drawable/border_one"
-         android:backgroundTint="#4c9a2a"
-         android:layout_marginStart="20dp"
-         android:orientation="horizontal">
-
-         <LinearLayout
-             android:layout_width="70dp"
-             android:layout_height="70dp"
-             android:layout_gravity="center"
-             android:layout_marginStart="15dp"
-             android:background="@drawable/border"
-             android:backgroundTint="@color/white"
-             android:gravity="center">
-
-             <ImageView
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 android:src="@drawable/ac_one"
-                 android:layout_gravity="center">
-
-             </ImageView>  </LinearLayout>
-
-<LinearLayout
+<RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:text="Sr Airconditioner"
-
-        android:textSize="15dp"
-        android:textColor="@color/white">
-
-    </TextView>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="2dp"
-        android:textSize="12dp"
-        android:text="No:421,Vaiyapuri nagar,1st cross,\nNear Canara bank,karur - 639 002"
-
-        android:textColor="@color/white">
-
-    </TextView>
-
-    <LinearLayout
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/brandAndItsLocation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="2dp"
-        android:layout_gravity="center"
->
+        android:layout_height="110dp"
+        android:layout_marginEnd="0dp"
 
-        <ImageView
-            android:layout_width="11dp"
-            android:layout_height="11dp"
-            android:src="@drawable/starr"
-            android:layout_gravity="center"
-            android:layout_marginStart="5dp"/>
+        android:background="@drawable/profile_empty"
+        android:backgroundTint="#4C9A2A"
 
-        <TextView
-            android:layout_width="wrap_content"
+
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="4.6"
-            android:textSize="12dp"
-            android:layout_marginStart="5dp"
-            android:textColor="@color/white">
+            android:orientation="vertical">
 
-        </TextView>
 
-    </LinearLayout>
 
-</LinearLayout>
+        </LinearLayout>
 
 
 
+    </RelativeLayout>
 
-
-     </LinearLayout>
-
-
-
-
-
-
-
-     <LinearLayout
-         android:id="@+id/ac_two"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="10dp"
-         android:background="@drawable/border_one"
-         android:backgroundTint="#4c9a2a"
-         android:layout_marginStart="20dp"
-         android:orientation="horizontal">
-
-         <LinearLayout
-             android:layout_width="70dp"
-             android:layout_height="70dp"
-             android:layout_gravity="center"
-             android:layout_marginStart="15dp"
-             android:background="@drawable/border"
-             android:backgroundTint="@color/white"
-             android:gravity="center">
-
-             <ImageView
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 android:src="@drawable/ac_two"
-                 android:layout_gravity="center">
-
-             </ImageView>  </LinearLayout>
-
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:padding="10dp"
-             android:orientation="vertical">
-
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginStart="5dp"
-                 android:text="Sr Airconditioner"
-
-                 android:textSize="15dp"
-                 android:textColor="@color/white">
-
-             </TextView>
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginStart="5dp"
-                 android:layout_marginTop="2dp"
-                 android:textSize="12dp"
-                 android:text="No:421,Vaiyapuri nagar,1st cross,\nNear Canara bank,karur - 639 002"
-
-                 android:textColor="@color/white">
-
-             </TextView>
-
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="horizontal"
-                 android:layout_marginTop="2dp"
-                 android:layout_gravity="center"
-                 >
-
-                 <ImageView
-                     android:layout_width="11dp"
-                     android:layout_height="11dp"
-                     android:src="@drawable/starr"
-                     android:layout_gravity="center"
-                     android:layout_marginStart="5dp"/>
-
-                 <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="4.6"
-                     android:textSize="12dp"
-                     android:layout_marginStart="5dp"
-                     android:textColor="@color/white">
-
-                 </TextView>
-
-             </LinearLayout>
-
-         </LinearLayout>
-
-
-
-
-
-     </LinearLayout>
-
-
-     <LinearLayout
-         android:id="@+id/ac_three"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="10dp"
-         android:background="@drawable/border_one"
-         android:backgroundTint="#4c9a2a"
-         android:layout_marginStart="20dp"
-         android:orientation="horizontal">
-
-         <LinearLayout
-             android:layout_width="70dp"
-             android:layout_height="70dp"
-             android:layout_gravity="center"
-             android:layout_marginStart="15dp"
-             android:background="@drawable/border"
-             android:backgroundTint="@color/white"
-             android:gravity="center">
-
-             <ImageView
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 android:src="@drawable/ac_three"
-                 android:layout_gravity="center">
-
-             </ImageView>  </LinearLayout>
-
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:padding="10dp"
-             android:orientation="vertical">
-
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginStart="5dp"
-                 android:text="Sr Airconditioner"
-
-                 android:textSize="15dp"
-                 android:textColor="@color/white">
-
-             </TextView>
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginStart="5dp"
-                 android:layout_marginTop="2dp"
-                 android:textSize="12dp"
-                 android:text="No:421,Vaiyapuri nagar,1st cross,\nNear Canara bank,karur - 639 002"
-
-                 android:textColor="@color/white">
-
-             </TextView>
-
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="horizontal"
-                 android:layout_marginTop="2dp"
-                 android:layout_gravity="center"
-                 >
-
-                 <ImageView
-                     android:layout_width="11dp"
-                     android:layout_height="11dp"
-                     android:src="@drawable/starr"
-                     android:layout_gravity="center"
-                     android:layout_marginStart="5dp"/>
-
-                 <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="4.6"
-                     android:textSize="12dp"
-                     android:layout_marginStart="5dp"
-                     android:textColor="@color/white">
-
-                 </TextView>
-
-             </LinearLayout>
-
-         </LinearLayout>
-
-
-
-
-
-     </LinearLayout>
-     <LinearLayout
-         android:id="@+id/ac_four"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:layout_marginTop="10dp"
-         android:background="@drawable/border_one"
-         android:backgroundTint="#4c9a2a"
-         android:layout_marginStart="20dp"
-         android:orientation="horizontal">
-
-         <LinearLayout
-             android:layout_width="70dp"
-             android:layout_height="70dp"
-             android:layout_gravity="center"
-             android:layout_marginStart="15dp"
-             android:background="@drawable/border"
-             android:backgroundTint="@color/white"
-             android:gravity="center">
-
-             <ImageView
-                 android:layout_width="50dp"
-                 android:layout_height="50dp"
-                 android:src="@drawable/ac_four"
-                 android:layout_gravity="center">
-
-             </ImageView>  </LinearLayout>
-
-         <LinearLayout
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:padding="10dp"
-             android:orientation="vertical">
-
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginStart="5dp"
-                 android:text="Sr Airconditioner"
-
-                 android:textSize="15dp"
-                 android:textColor="@color/white">
-
-             </TextView>
-             <TextView
-                 android:layout_width="wrap_content"
-                 android:layout_height="wrap_content"
-                 android:layout_marginStart="5dp"
-                 android:layout_marginTop="2dp"
-                 android:textSize="12dp"
-                 android:text="No:421,Vaiyapuri nagar,1st cross,\nNear Canara bank,karur - 639 002"
-
-                 android:textColor="@color/white">
-
-             </TextView>
-
-             <LinearLayout
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:orientation="horizontal"
-                 android:layout_marginTop="2dp"
-                 android:layout_gravity="center"
-                 >
-
-                 <ImageView
-                     android:layout_width="11dp"
-                     android:layout_height="11dp"
-                     android:src="@drawable/starr"
-                     android:layout_gravity="center"
-                     android:layout_marginStart="5dp"/>
-
-                 <TextView
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="4.6"
-                     android:textSize="12dp"
-                     android:layout_marginStart="5dp"
-                     android:textColor="@color/white">
-
-                 </TextView>
-
-             </LinearLayout>
-
-         </LinearLayout>
-
-
-
-
-
-     </LinearLayout>
-
-
-
-
-
-
-
-
- </LinearLayout>
-
-        </ScrollView>
-
-    </FrameLayout>
-
-
-
-    <FrameLayout
-        android:layout_width="match_parent"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fragment_layout"
+        android:layout_centerInParent="true"
+        android:text="Chat feature is comming soon"
+        android:textColor="#4c9a2a"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+</RelativeLayout>
 
-        tools:ignore="MissingConstraints">
-
-    </FrameLayout>
 
 
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView_shops"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:itemIconTint="@color/white"
-        android:background="#4c9a2a"
-        app:layout_constraintStart_toEndOf="parent"
-        app:itemTextColor="@color/white"
-        app:menu="@menu/bottom_nav" />
 
 
 

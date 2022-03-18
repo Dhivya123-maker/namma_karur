@@ -38,22 +38,27 @@ public class Gallery_Adapter extends RecyclerView.Adapter<Gallery_Adapter.ViewHo
     public Gallery_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_fourty_one,parent,false);
 
-
+        
         return new Gallery_Adapter.ViewHolder(view);
 
 
     }
 
+
+
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //holder.img.setImageResource(R.drawable.mahal_one);
-        Glide.with(context)
-                .load(galleryModelList.get(position).getImg())
-                .into(holder.img);
-//        holder.txt.setText(galleryModelList.get(position).getTxt());
-//        holder.txt1.setText(galleryModelList.get(position).getTxt1());
+//        Glide.with(context)
+//                .load(galleryModelList.get(position).getImg())
+//                .into(holder.img);
+
+        holder.txt.setText(galleryModelList.get(position).getTxt());
+        holder.txt1.setText(galleryModelList.get(position).getTxt1());
+
 
     }
+
 
 
 
@@ -70,13 +75,18 @@ public class Gallery_Adapter extends RecyclerView.Adapter<Gallery_Adapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
         TextView txt,txt1;
+        RecyclerView recyclerView;
 
 
         ViewHolder(View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.mahal_image);
-//            txt = itemView.findViewById(R.id.category_one_txt);
-//            txt1 = itemView.findViewById(R.id.view_one_txt);
+            //img = itemView.findViewById(R.id.mahal_image);
+            txt = itemView.findViewById(R.id.categoryy);
+            txt1 = itemView.findViewById(R.id.vieww);
+
+
+//            recyclerView = itemView.findViewById(R.id.gall_screen);
+
 
 
         }

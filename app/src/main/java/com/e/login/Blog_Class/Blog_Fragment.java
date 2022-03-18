@@ -8,10 +8,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -30,6 +32,7 @@ import com.e.login.JobsClass.Jobs_Adapter;
 import com.e.login.JobsClass.Jobs_Model;
 import com.e.login.JobsClass.Jobs_two_Adapter;
 import com.e.login.JobsClass.Jobs_two_Model;
+import com.e.login.NewsClass.View_Breaking;
 import com.e.login.R;
 import com.e.login.ShopscreenClass.Slidershop_Top_Adapter;
 import com.e.login.utils.PreferenceUtils;
@@ -68,8 +71,9 @@ public class Blog_Fragment extends Fragment {
     List<Blog_three_Model> blog_three_modelList;
     Blog_three_Adapter adapter3;
     RecyclerView recyclerView,recyclerView1,recyclerView2;
-    String id,image,desc;
+    String id,image,desc,link;
     String data;
+    Button view1,view2;
 
 
     @Override
@@ -77,6 +81,26 @@ public class Blog_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_blog_, container, false);
+
+
+        view1 = root.findViewById(R.id.view1);
+        view2 = root.findViewById(R.id.view2);
+        view1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(getActivity(), View_Blog.class);
+                intent1.putExtra("cat1","Latest");
+                startActivity(intent1);
+            }
+        });
+        view2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(getActivity(), View_Blog.class);
+                intent2.putExtra("cat1","popular");
+                startActivity(intent2);
+            }
+        });
 
         sliderView = root. findViewById(R.id.slider_blog);
         Slidershop_Top_Adapter sliderAdapter = new Slidershop_Top_Adapter(images);
@@ -127,15 +151,17 @@ public class Blog_Fragment extends Fragment {
                         id = jsonObject1.getString("id");
                         image = jsonObject1.getString("image");
                         desc = jsonObject1.getString("description");
+                        link = jsonObject1.getString("link");
 
 
                         BlogModel viewmodel = new BlogModel();
 
                         viewmodel.setImage(image);
 
-//                        viewmodel.setText_one("Read more");
+                        viewmodel.setText_one("Read more");
                         viewmodel.setText(desc);
                         viewmodel.setId(id);
+
 
                         blogModelList.add(viewmodel);
 
@@ -162,6 +188,7 @@ public class Blog_Fragment extends Fragment {
                         id = jsonObject2.getString("id");
                         image = jsonObject2.getString("image");
                         desc = jsonObject2.getString("description");
+                        link = jsonObject2.getString("link");
 
                         Log.i("41oijuyhtf98",jsonArray1.toString());
 
@@ -173,6 +200,7 @@ public class Blog_Fragment extends Fragment {
                         viewmodel.setTxt1("Read more");
                         viewmodel.setTxt(desc);
                         viewmodel.setId(id);
+                        viewmodel.setLink(link);
 
                         blogOneModelList.add(viewmodel);
 
@@ -191,15 +219,17 @@ public class Blog_Fragment extends Fragment {
                         id = jsonObject3.getString("id");
                         image = jsonObject3.getString("image");
                         desc = jsonObject3.getString("description");
+                        link = jsonObject3.getString("link");
 
-                        Log.i("41oijuyhtf98",jsonArray2.toString());
+
                         Blog_two_Model viewmodel = new Blog_two_Model();
 
                         viewmodel.setImg(image);
 
                         viewmodel.setTxt1("Read more");
                         viewmodel.setTxt(desc);
-//                        viewmodel.setId(id);
+                        viewmodel.setLink(link);
+
 
                        blogTwoModelList.add(viewmodel);
 
@@ -260,95 +290,21 @@ public class Blog_Fragment extends Fragment {
 
 
 
-//
-//        for (int i = 0; i < 2; i++) {
-//
-//            BlogModel viewmodel = new BlogModel();
-//
-//
-//
-//            viewmodel.setImage("1");
-//
-//            viewmodel.setText_one("Read more");
-//            viewmodel.setText("Lorem ispum may be used as a holder\nbefore the final copy is available");
-//
-//
-//
-//            blogModelList.add(viewmodel);
-//
-//        }
-//
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//
-//        adapter =  new BlogAdapter(getContext(),blogModelList);
-//        recyclerView.setAdapter(adapter);
-
-//
-//
-//
-
-//
-//        RecyclerView recyclerView1 = root.findViewById(R.id.blog1_recycler);
-//
-//
-//        for (int i = 0; i < 4; i++) {
-//
-//            Blog_One_Model viewmodel = new Blog_One_Model();
-//
-//
-//
-//            viewmodel.setImg("1");
-//
-//            viewmodel.setTxt1("Read more");
-//            viewmodel.setTxt("Lorem ispum may be used as a placeholder");
-//
-//
-//
-//            blogOneModelList.add(viewmodel);
-//
-//        }
-//
-//        recyclerView1.setLayoutManager(new LinearLayoutManager(getContext()));
-//
-//        adapter1 =  new Blog_One_Adapter(getContext(),blogOneModelList);
-//        recyclerView1.setAdapter(adapter1);
-//        recyclerView1.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-//
-//
-//
-//
-//        blogTwoModelList = new ArrayList<>();
-//
-//        RecyclerView recyclerView2 = root.findViewById(R.id.blog2_recycler);
-//
-//
-//        for (int i = 0; i < 4; i++) {
-//
-//            Blog_two_Model viewmodel = new Blog_two_Model();
-//
-//
-//
-//            viewmodel.setImg("1");
-//
-//            viewmodel.setTxt1("Read more");
-//            viewmodel.setTxt("Lorem ispum may be used as a placeholder");
-//
-//
-//
-//            blogTwoModelList.add(viewmodel);
-//
-//        }
-//
-//        recyclerView2.setLayoutManager(new LinearLayoutManager(getContext()));
-//
-//        adapter2 =  new Blog_two_Adapter(getContext(),blogTwoModelList);
-//        recyclerView2.setAdapter(adapter2);
-//        recyclerView2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-
-
 
 
 
         return  root;
     }
+
+//    @Override
+//    public void onItemClick(int position) {
+//        Blog_One_Model model = new Blog_One_Model();
+//        String link = model.getLink();
+//
+//
+//
+//
+//
+//
+//    }
 }
