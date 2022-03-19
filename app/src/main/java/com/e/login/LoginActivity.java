@@ -524,7 +524,7 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
 
                     headers.put("Accept", "application/json");
                     headers.put("Authorization", "Bearer " + PreferenceUtils.getToken(LoginActivity.this));
-                    headers.put("Authorization", "Bearer " + PreferenceUtils.getToken1(LoginActivity.this));
+//                    headers.put("Authorization", "Bearer " + PreferenceUtils.getToken1(LoginActivity.this));
                     return headers;
                 }
 

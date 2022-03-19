@@ -175,7 +175,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/fragment_layout"
+        android:id="@+id/fragment_layoutt"
 
         tools:ignore="MissingConstraints">
 
@@ -184,7 +184,7 @@
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView_shops"
+        android:id="@+id/bottomNavigationView_shops11"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         app:layout_constraintBottom_toBottomOf="parent"

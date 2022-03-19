@@ -107,6 +107,8 @@ public class Blank_PostFragment extends Fragment {
     String comment, com_rating;
     String verified, description, location, website, email, phone, whatsapp, facebook, instagram, twitter, youtube, view_count = null, name = null, img = null;
 
+    JSONObject followArray = null;
+
     SliderView sliderView;
 
     int images[] = {R.drawable.banner,
@@ -147,7 +149,15 @@ public class Blank_PostFragment extends Fragment {
         data3 = intent.getStringExtra("id");
         verify = root.findViewById(R.id.verifyy_txt);
 
+        follow_txt = root.findViewById(R.id.follow_txt);
 
+
+//        if(follow_id == null){
+//            follow_txt.setText("Follow");
+//
+//        }else if(follow_id!=null){
+//            follow_txt.setText("Following");
+//        }
 
 
         if (data2.equals("ShopCatalog")) {
@@ -155,6 +165,7 @@ public class Blank_PostFragment extends Fragment {
             social(url);
             ifsc.setVisibility(View.GONE);
             verify.setText("Yes");
+
 
 
         } else if (data2.equals("ServiceCatalog")) {
@@ -196,19 +207,24 @@ public class Blank_PostFragment extends Fragment {
         }
 
 
-        follow_txt = root.findViewById(R.id.follow_txt);
-
 
         follow = root.findViewById(R.id.follow_linear);
+
+
+
+
+
+
+
         follow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (follow_id == null) {
+                if (followArray == null) {
                         follow();
                 }
 
-                else if(follow_id != null){
+                else if(followArray != null){
 
                       un_follow();
 
@@ -224,6 +240,8 @@ public class Blank_PostFragment extends Fragment {
         view_more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                view_more.setVisibility(View.GONE);
 
                 if(data2.equals("ShopCatalog")){
                     String url = api + "get-shop-comments?shop_id="+data3;
@@ -519,8 +537,15 @@ public class Blank_PostFragment extends Fragment {
 
                     JSONObject jsonObject = response.getJSONObject("data");
 
-                    JSONObject jsonObject1 = jsonObject.getJSONObject("follow");
+                    followArray = jsonObject.getJSONObject("follow");
 
+                    if(jsonObject.getJSONObject("follow") != null){
+                        follow_txt.setText("Following");
+
+
+                    }else {
+                        follow_txt.setText("Follow");
+                    }
 
                     id = jsonObject.getString("id");
 //                shop_category_id = jsonObject.getString("shop_category_id");
@@ -538,15 +563,16 @@ public class Blank_PostFragment extends Fragment {
                     email = jsonObject.getString("email");
                     phone = jsonObject.getString("phone");
 
-                    catalog_id = jsonObject1.getString("catalog_id");
-                    catalog_type = jsonObject1.getString("catalog_type");
-                    follow_id = jsonObject1.getString("id");
+                    catalog_id = followArray.getString("catalog_id");
+                    catalog_type = followArray.getString("catalog_type");
+                    follow_id = followArray.getString("id");
+
 
 
                     view_count = jsonObject.getString("view_count");
 
 
-                    Log.i("wekfiurwehg", jsonObject1.toString());
+                    Log.i("wekfiurwehg", followArray.toString());
                     Log.i("wekfiurwehg", catalog_type);
 
 
@@ -556,7 +582,7 @@ public class Blank_PostFragment extends Fragment {
                     JSONArray res = jsonObject.getJSONArray("comments");
 
                     blank_comments_modelList = new ArrayList<>();
-                    for (int i = 0; i < 3; i++) {
+                    for (int i = 0; i <=3; i++) {
 
 
                         JSONObject data = res.getJSONObject(i);

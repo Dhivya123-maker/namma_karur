@@ -292,7 +292,8 @@ public class Forget_password extends AppCompatActivity {
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String,String> params = new HashMap<String, String>();
                     //  params.put("Content-Type","application/x-www-form-urlencoded");
-                    params.put("Authorization","Bearer "+data);
+                    params.put("Authorization","Bearer "+PreferenceUtils.getToken(Forget_password.this));
+
                     return params;
                 }
 

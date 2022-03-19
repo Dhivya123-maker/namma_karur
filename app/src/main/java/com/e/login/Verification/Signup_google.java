@@ -266,7 +266,6 @@ public class Signup_google extends AppCompatActivity implements OnConnectionFail
 
                     headers.put("Accept", "application/json");
                     headers.put("Authorization", "Bearer " + PreferenceUtils.getToken(Signup_google.this));
-                    headers.put("Authorization", "Bearer " + PreferenceUtils.getToken1(Signup_google.this));
                     return headers;
                 }
 

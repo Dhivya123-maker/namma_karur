@@ -197,7 +197,6 @@ public class ReviewsActivity extends AppCompatActivity {
                     Map<String,String> params = new HashMap<String, String>();
 
                     params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(ReviewsActivity.this));
-                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(ReviewsActivity.this));
 
                     return params;
                 }

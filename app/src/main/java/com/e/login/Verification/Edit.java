@@ -10,7 +10,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +39,10 @@ import com.e.login.utils.PreferenceUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -51,16 +56,15 @@ public class Edit extends AppCompatActivity {
     Button btn;
     private LinearLayout parentLayout;
     private int hint=0;
-    ImageView add,minus,add_s,minus_s,add_skills,minus_skills;
+    ImageView add,minus,add_s,minus_s,add_skills,minus_skills,profile,edit;
     Context myContext;
     LinearLayout lnr,lnr1,lnr2;
     Context context;
-
+    static final int PICK_IMAGE_REQUEST = 1;
    String picture;
     byte[] byteArray;
+    Bitmap bitmap = null;
 
-    Bitmap bitmap;
-    int imagevalue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,16 +74,12 @@ public class Edit extends AppCompatActivity {
 
 
 
-//        Intent intent = getIntent();
-//        byteArray = intent.getByteArrayExtra("image");
-//        Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray,0, byteArray.length);
-
-//        bitmap bmp = (Bitmap) getIntent().getParcelableExtra("image");
-//        Intent intent = getIntent();
-//        picture = intent.getStringExtra("image");
+        Intent intent = getIntent();
+        picture = intent.getStringExtra("image");
 
 
-//        Toast.makeText(Edit.this, bitmap.toString(), Toast.LENGTH_SHORT).show();
+
+
 
 
       arrayList = new ArrayList<String>();
@@ -101,6 +101,10 @@ public class Edit extends AppCompatActivity {
         add_skills = findViewById(R.id.add_skill);
         minus_skills = findViewById(R.id.minus_skill);
         add7 = findViewById(R.id.add7);
+
+        profile = findViewById(R.id.profile_img1);
+        edit = findViewById(R.id.img_choose);
+
 
 
         inst = findViewById(R.id.inst1);
@@ -130,6 +134,14 @@ public class Edit extends AppCompatActivity {
         lnr2 = (LinearLayout)findViewById(R.id.linn2);
 
 
+
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                imageBrowse();
+            }
+        });
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -518,7 +530,7 @@ public class Edit extends AppCompatActivity {
                 jsonBody.put("dob", Dob);
                 jsonBody.put("blood_group", B_gp);
                 jsonBody.put("description", Desc);
-//                jsonBody.put("image",picture);
+//                jsonBody.put("image","Q9Qke1NMU1.png");
 
 
                 for (int i = 0; i < education.length(); i++) {
@@ -530,7 +542,7 @@ public class Edit extends AppCompatActivity {
                }
 
 
-//            Log.i("qpowru0qp9eruiop-",jsonBody.toString());
+            Log.i("qpowru0qp9eruiop-",jsonBody.toString());
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -588,7 +600,6 @@ public class Edit extends AppCompatActivity {
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("Accept", "application/json");
                     params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(Edit.this));
-                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(Edit.this));
 
                     return params;
                 }
@@ -610,5 +621,40 @@ public class Edit extends AppCompatActivity {
 
 
     }
+
+
+    public byte[] getFileDataFromDrawable(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 80, byteArrayOutputStream);
+        return byteArrayOutputStream.toByteArray();
+    }
+
+
+    private void imageBrowse() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri picUri = data.getData();
+
+
+            try {
+
+                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), picUri);
+                profile.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+    }
+
 }
 
