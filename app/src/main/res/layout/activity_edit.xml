@@ -66,38 +66,62 @@
                         android:id="@+id/ProfileDetails"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_below="@+id/relativeLayout2"
                         android:orientation="vertical"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginEnd="20dp"
                      >
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
 
-                            <ImageView
-                                android:id="@+id/profile_img1"
-                                android:layout_width="80dp"
-                                android:layout_height="80dp" />
+                       <LinearLayout
+                            android:layout_width="120dp"
+                            android:layout_height="100dp"
+                           android:layout_gravity="center"
+                           android:gravity="center">
 
 
-                            <ImageView
-                                android:id="@+id/img_choose"
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
-                                android:src="@drawable/cam"
-                                android:layout_marginTop="60dp"/>
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:id="@+id/profile_image"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                app:civ_border_color="#4c9a2a"
+                                app:civ_border_width="2dp"
+                                android:src="@drawable/ic_baseline_person_24"
+                                />
+<!--                            <ImageView-->
+<!--                                android:id="@+id/profile_img1"-->
+<!--                                android:layout_width="40dp"-->
+<!--                                android:layout_height="40dp"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:layout_marginStart="20dp"-->
+<!--                                android:src="@drawable/ic_baseline_person_24" />-->
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+
+                                >
+
+                                <ImageView
+                                    android:id="@+id/img_choose"
+                                    android:layout_width="18dp"
+                                    android:layout_height="18dp"
+                                    android:layout_marginTop="50dp"
+                                    android:src="@drawable/galleryy"
+
+                                    />
+                            </RelativeLayout>
+
 
                         </LinearLayout>
-
 
                         <EditText
 
                             android:id="@+id/p_details1"
                             android:layout_width="match_parent"
-                            android:layout_height="40dp"
+                            android:layout_height="45dp"
                             android:background="@drawable/border_only"
                             android:hint="Date of birth"
                             android:inputType="text"
@@ -111,7 +135,7 @@
 
                             android:id="@+id/p_details2"
                             android:layout_width="match_parent"
-                            android:layout_height="40dp"
+                            android:layout_height="45dp"
                             android:background="@drawable/border_only"
                             android:hint="Blood group"
                             android:layout_marginTop="15dp"
@@ -126,7 +150,7 @@
 
                             android:id="@+id/p_details3"
                             android:layout_width="match_parent"
-                            android:layout_height="40dp"
+                            android:layout_height="45dp"
                             android:background="@drawable/border_only"
                             android:hint="description"
                             android:inputType="text"
@@ -151,18 +175,18 @@
 
                                 <ImageView
                                     android:id="@+id/add"
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
+                                    android:layout_width="22dp"
+                                    android:layout_height="22dp"
                                     android:layout_marginTop="20dp"
-                                    android:layout_marginEnd="10dp"
+                                    android:layout_marginEnd="30dp"
                                     android:src="@drawable/ad" />
 
                                 <ImageView
-                                    android:id="@+id/minus"
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
+                                    android:id="@+id/editt"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
                                     android:layout_marginTop="20dp"
-                                    android:src="@drawable/min" />
+                                    android:src="@drawable/edits" />
 
                             </LinearLayout>
 
@@ -172,8 +196,8 @@
                                 android:id="@+id/p_details4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="15dp"
                                 android:layout_marginStart="5dp"
+                                android:layout_marginTop="15dp"
                                 android:hint="Education"
                                 android:inputType="text"
                                 android:textColorHint="@color/black"
@@ -181,58 +205,58 @@
                                 android:textStyle="bold" />
                         </RelativeLayout>
 
-                        <LinearLayout
-                            android:id="@+id/linn"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:orientation="vertical">
+<!--                        <LinearLayout-->
+<!--                            android:id="@+id/linn"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginTop="15dp"-->
+<!--                            android:orientation="vertical">-->
 
 
 
-                        <EditText
-                            android:id="@+id/inst1"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:background="@drawable/border_only"
-                            android:hint="Institute"
-                            android:inputType="text"
-                            android:padding="5dp"
-                            android:paddingStart="15dp"
-                            android:textColorHint="@color/black"
-                            android:textSize="14dp" />
+<!--                        <EditText-->
+<!--                            android:id="@+id/inst1"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:background="@drawable/border_only"-->
+<!--                            android:hint="Institute"-->
+<!--                            android:inputType="text"-->
+<!--                            android:padding="5dp"-->
+<!--                            android:paddingStart="15dp"-->
+<!--                            android:textColorHint="@color/black"-->
+<!--                            android:textSize="14dp" />-->
 
 
 
-                        <EditText
+<!--                        <EditText-->
 
-                            android:id="@+id/p_details5"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="15dp"
-                            android:background="@drawable/border_only"
-                            android:hint="degree"
-                            android:inputType="text"
-                            android:padding="5dp"
-                            android:paddingStart="15dp"
-                            android:textColorHint="@color/black"
-                            android:textSize="14dp" />
+<!--                            android:id="@+id/p_details5"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:layout_marginTop="15dp"-->
+<!--                            android:background="@drawable/border_only"-->
+<!--                            android:hint="degree"-->
+<!--                            android:inputType="text"-->
+<!--                            android:padding="5dp"-->
+<!--                            android:paddingStart="15dp"-->
+<!--                            android:textColorHint="@color/black"-->
+<!--                            android:textSize="14dp" />-->
 
-<!--                        </RelativeLayout>-->
+<!--&lt;!&ndash;                        </RelativeLayout>&ndash;&gt;-->
 
-                            <EditText
-                                android:id="@+id/year"
-                                android:layout_width="match_parent"
-                                android:layout_height="40dp"
-                                android:layout_marginTop="15dp"
-                                android:background="@drawable/border_only"
-                                android:hint="academic year"
-                                android:inputType="text"
-                                android:padding="5dp"
-                                android:paddingStart="15dp"
-                                android:textColorHint="@color/black"
-                                android:textSize="14dp" />
-                        </LinearLayout>
+<!--                            <EditText-->
+<!--                                android:id="@+id/year"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="40dp"-->
+<!--                                android:layout_marginTop="15dp"-->
+<!--                                android:background="@drawable/border_only"-->
+<!--                                android:hint="academic year"-->
+<!--                                android:inputType="text"-->
+<!--                                android:padding="5dp"-->
+<!--                                android:paddingStart="15dp"-->
+<!--                                android:textColorHint="@color/black"-->
+<!--                                android:textSize="14dp" />-->
+<!--                        </LinearLayout>-->
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -276,58 +300,58 @@
                                 android:textSize="14dp"
                                 android:textStyle="bold" />
                         </RelativeLayout>
-                    <LinearLayout
-                        android:id="@+id/linn1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:orientation="vertical">
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/linn1"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:orientation="vertical">-->
 
-                        <EditText
-                            android:id="@+id/add4"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="15dp"
-                            android:background="@drawable/border_only"
-                            android:hint="company"
-                            android:inputType="text"
-                            android:padding="5dp"
-                            android:paddingStart="15dp"
-                            android:textColorHint="@color/black"
-                            android:textSize="14dp" />
-
-
+<!--                        <EditText-->
+<!--                            android:id="@+id/add4"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:layout_marginTop="15dp"-->
+<!--                            android:background="@drawable/border_only"-->
+<!--                            android:hint="company"-->
+<!--                            android:inputType="text"-->
+<!--                            android:padding="5dp"-->
+<!--                            android:paddingStart="15dp"-->
+<!--                            android:textColorHint="@color/black"-->
+<!--                            android:textSize="14dp" />-->
 
 
-                        <EditText
-
-                            android:id="@+id/p_details8"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="15dp"
-                            android:background="@drawable/border_only"
-                            android:hint="experience"
-                            android:inputType="text"
-                            android:padding="5dp"
-                            android:paddingStart="15dp"
-                            android:textColorHint="@color/black"
-                            android:textSize="14dp" />
-<!--                        </RelativeLayout>-->
 
 
-                        <EditText
-                            android:id="@+id/add5"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="15dp"
-                            android:background="@drawable/border_only"
-                            android:hint="position"
-                            android:inputType="text"
-                            android:padding="5dp"
-                            android:paddingStart="15dp"
-                            android:textColorHint="@color/black"
-                            android:textSize="14dp" />
-                    </LinearLayout>
+<!--                        <EditText-->
+
+<!--                            android:id="@+id/p_details8"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:layout_marginTop="15dp"-->
+<!--                            android:background="@drawable/border_only"-->
+<!--                            android:hint="experience"-->
+<!--                            android:inputType="text"-->
+<!--                            android:padding="5dp"-->
+<!--                            android:paddingStart="15dp"-->
+<!--                            android:textColorHint="@color/black"-->
+<!--                            android:textSize="14dp" />-->
+<!--&lt;!&ndash;                        </RelativeLayout>&ndash;&gt;-->
+
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/add5"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:layout_marginTop="15dp"-->
+<!--                            android:background="@drawable/border_only"-->
+<!--                            android:hint="position"-->
+<!--                            android:inputType="text"-->
+<!--                            android:padding="5dp"-->
+<!--                            android:paddingStart="15dp"-->
+<!--                            android:textColorHint="@color/black"-->
+<!--                            android:textSize="14dp" />-->
+<!--                    </LinearLayout>-->
 <!--                        <RelativeLayout-->
 <!--                            android:layout_width="wrap_content"-->
 <!--                            android:layout_height="wrap_content">-->
@@ -428,26 +452,26 @@
                                 android:textSize="14dp"
                                 android:textStyle="bold" />
                         </RelativeLayout>
-                    <LinearLayout
-                        android:id="@+id/linn2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:orientation="vertical">
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/linn2"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:orientation="vertical">-->
 
-                        <EditText
-                            android:id="@+id/add7"
-                            android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginTop="15dp"
-                            android:background="@drawable/border_only"
-                            android:hint="skills"
-                            android:inputType="text"
-                            android:padding="5dp"
-                            android:paddingStart="15dp"
-                            android:textColorHint="@color/black"
-                            android:textSize="14dp" />
-                    </LinearLayout>
+<!--                        <EditText-->
+<!--                            android:id="@+id/add7"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="40dp"-->
+<!--                            android:layout_marginTop="15dp"-->
+<!--                            android:background="@drawable/border_only"-->
+<!--                            android:hint="skills"-->
+<!--                            android:inputType="text"-->
+<!--                            android:padding="5dp"-->
+<!--                            android:paddingStart="15dp"-->
+<!--                            android:textColorHint="@color/black"-->
+<!--                            android:textSize="14dp" />-->
+<!--                    </LinearLayout>-->
 
                         <Button
                             android:id="@+id/submit_profile"

@@ -1,0 +1,104 @@
+<TableLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="20dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<!--    <TableRow-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:orientation="horizontal">-->
+
+        <EditText
+
+            android:id="@+id/Institute"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/border_only"
+            android:hint="Institute"
+            android:inputType="text"
+            android:padding="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:paddingStart="15dp"
+            android:textColorHint="@color/black"
+            android:textSize="14dp" />
+<!--    </TableRow>-->
+<!--    <TableRow-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:orientation="horizontal">-->
+
+    <EditText
+
+        android:id="@+id/Degree"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/border_only"
+        android:hint="Degree"
+        android:inputType="text"
+        android:padding="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingStart="15dp"
+        android:textColorHint="@color/black"
+        android:textSize="14dp" />
+    <EditText
+        android:id="@+id/year"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/border_only"
+        android:hint="Academic year"
+        android:inputType="text"
+        android:padding="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingStart="15dp"
+        android:textColorHint="@color/black"
+        android:textSize="14dp" />
+<!--    </TableRow>-->
+<!--    <TableRow-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:orientation="horizontal">-->
+
+
+<!--    </TableRow>-->
+    <TableRow android:gravity="center_horizontal">
+        <Button
+            android:id="@+id/button_cancel_user_data"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="Cancel"
+            android:textSize="15dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@drawable/bg"
+            android:backgroundTint="#4c9a2a"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"/>
+        <Button
+            android:id="@+id/button_save_user_data"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:text="Save"
+            android:textSize="15dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:background="@drawable/bg"
+            android:layout_marginStart="20dp"
+            android:backgroundTint="#4c9a2a"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"/>
+    </TableRow>
+</TableLayout>

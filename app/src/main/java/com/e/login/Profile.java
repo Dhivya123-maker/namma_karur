@@ -2,7 +2,10 @@ package com.e.login;
 
 import static android.view.View.GONE;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,12 +16,16 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +38,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.e.login.AmbulanceClass.Ambulance;
+import com.e.login.AmbulanceClass.AmbulanceAdapter;
+import com.e.login.AmbulanceClass.AmbulanceModel;
+import com.e.login.Profile_details.EducationAdapter;
+import com.e.login.Profile_details.Education_Model;
+import com.e.login.Profile_details.Education_details;
 import com.e.login.ShopClass.ShopScreen_Class;
 import com.e.login.Verification.Change_Email_OTP;
 import com.e.login.Verification.Change_Phone;
@@ -44,29 +57,45 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Profile extends AppCompatActivity {
     Button btn, edit, save, email_verify, contact_verify;
     String data, data1, data2, user_id;
-    TextView user_name, summary, edu, exp_head, skills_head, name, dob, b_grp, desc, inst, deg, yea, com_txt, exp_txt, pos_txt, emailtxt, contacttxt, verified;
-    LinearLayout skill, comm;
-    ImageView profile, edit_img, email_edit, con_edit;
-    EditText edit_txt, ins, degree, year, com, exp, pos, skill_edit, com_edit, user, doob, blood, email_edit_txt, con_edit_txt;
-    String Edit, Ins, Degree, Year, Comp, Exp, Pos, Skill, Com, User, Dob, Blood, Img;
-    private long pressedTime;
+    TextView user_name, emailtxt, contacttxt;
+    LinearLayout skill;
+    ImageView profile, email_edit, con_edit, edu_add, skill_add;
+    EditText email_edit_txt, con_edit_txt;
+
     String data3;
     View view, view1, view2, view3;
     String id, email, phone, namee, email_verifyy, phone_verifyy, image;
     Button savee, save1;
     String Email_get, Phone_get;
-    LinearLayout gone1, gone2;
 
+    private ImageView exp_add = null;
+    private ListView userDataListView = null;
+    // Below edittext and button are all exist in the popup dialog view.
+    private View popupInputDialogView = null;
+    // Contains user name data.
+    private EditText userNameEditText = null;
+    // Contains password data.
+    private EditText passwordEditText = null;
+    // Contains email data.
+    private EditText emailEditText = null;
+    // Click this button in popup dialog to save user input data in above three edittext.
+    private Button saveUserDataButton = null;
+    // Click this button to cancel edit user data.
+    private Button cancelUserDataButton = null;
+    private RecyclerView recyclerView = null;
 
-    String filePath;
-    Context context;
-    Bitmap bitmap = null;
+    List<Education_Model> educationModelList;
+    EducationAdapter adapter;
 
 
     @SuppressLint("WrongThread")
@@ -79,93 +108,111 @@ public class Profile extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
-
+//        initMainActivityControls();
         get_profile();
 
+        recyclerView = findViewById(R.id.recycler);
 
         view = findViewById(R.id.first_view);
-        view1 = findViewById(R.id.second_view);
         view2 = findViewById(R.id.third_view);
         view3 = findViewById(R.id.fourth_view);
         user_name = findViewById(R.id.user_name);
 
 
-//        verified = findViewById(R.id.verified_txtt);
-
-
-        summary = findViewById(R.id.summary_head);
-        edu = findViewById(R.id.edu_head);
-        exp_head = findViewById(R.id.experience_head);
-        skills_head = findViewById(R.id.skills_head);
-
-
         btn = findViewById(R.id.change_btn);
-        save = findViewById(R.id.save_btn);
-        inst = findViewById(R.id.ins_txt);
-        deg = findViewById(R.id.deg_txt);
-        yea = findViewById(R.id.year_txt);
-        com_txt = findViewById(R.id.com_txt);
-        exp_txt = findViewById(R.id.exp_txt);
-        pos_txt = findViewById(R.id.pos_txt);
-        desc = findViewById(R.id.descrip);
-        skill = findViewById(R.id.skill_lnr);
+
+
+        edu_add = findViewById(R.id.edu_add);
+        exp_add = findViewById(R.id.exp_add);
+        skill_add = findViewById(R.id.skill_add);
+
+
         profile = findViewById(R.id.profile_img);
         email_edit = findViewById(R.id.gmail_edit);
         con_edit = findViewById(R.id.contact_edit);
 
-//        con_edit_txt = findViewById(R.id.contact_edit_txt);
-//        savee = findViewById(R.id.save_number);
-//        save1 = findViewById(R.id.save_number1);
         emailtxt = findViewById(R.id.emailtxt);
         contacttxt = findViewById(R.id.contacttxt);
         email_verify = findViewById(R.id.email_verify);
         contact_verify = findViewById(R.id.contact_verify);
-//        verified = findViewById(R.id.verified_txtt);
+
+
+        exp_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Profile.this, Education_details.class);
+                startActivity(intent);
+            }
+        });
+
+        edu_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Profile.this);
+//                // Set title, icon, can not cancel properties.
+//                alertDialogBuilder.setTitle("Education Details");
+//                alertDialogBuilder.setCancelable(false);
+//                // Init popup dialog view and it's ui controls.
+//                initPopupViewControls();
+//                // Set the inflated layout view object to the AlertDialog builder.
+//                alertDialogBuilder.setView(popupInputDialogView);
+//                // Create AlertDialog and show.
+//                final AlertDialog alertDialog = alertDialogBuilder.create();
+//                alertDialog.show();
+//                // When user click the save user data button in the popup dialog.
+//                saveUserDataButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        // Get user data from popup dialog editeext.
+//                        String userName = userNameEditText.getText().toString();
+//                        String password = passwordEditText.getText().toString();
+//                        String email = emailEditText.getText().toString();
+//                        // Create data for the listview.
+//                        String[] titleArr = { "Institute", "Degree", "Year"};
+//                        String[] dataArr = {userName, password, email};
+////                        ArrayList<Map<String,Object>> itemDataList = new ArrayList<Map<String,Object>>();;
+////                        int titleLen = titleArr.length;
+////
+////                        for(int i =0; i < titleLen; i++) {
+////                            Map<String,Object> listItemMap = new HashMap<String,Object>();
+////                            listItemMap.put("title", titleArr[i]);
+////                            listItemMap.put("data", dataArr[i]);
+////                            itemDataList.add(listItemMap);
+////                        }
 //
-
-
-        save.setVisibility(View.VISIBLE);
-
-
-        email_edit.setVisibility(View.VISIBLE);
-
-        summary.setVisibility(GONE);
-        edu.setVisibility(GONE);
-        exp_head.setVisibility(GONE);
-        skills_head.setVisibility(GONE);
-
-
-        inst.setVisibility(GONE);
-        deg.setVisibility(GONE);
-        yea.setVisibility(GONE);
-        com_txt.setVisibility(GONE);
-        exp_txt.setVisibility(GONE);
-        pos_txt.setVisibility(GONE);
-        skill.setVisibility(GONE);
-        view1.setVisibility(GONE);
-        view2.setVisibility(GONE);
-        view3.setVisibility(GONE);
-
-        email_verify.setVisibility(View.VISIBLE);
-
-
-//        savee.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
+//                        educationModelList = new ArrayList<>();
+//                        int titlelen = titleArr.length;
+//                        for(int i =0; i < titlelen; i++) {
+//                           Education_Model listItemMap = new Education_Model();
+//                            listItemMap.setIns(dataArr[i]);
+//                            listItemMap.setYear(dataArr[i]);
+//                            listItemMap.setDeg(dataArr[i]);
 //
-//                change_email();
+//                            educationModelList.add(listItemMap);
+//                        }
 //
-//            }
-//        });
-//        save1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
+////
+//                        recyclerView.setLayoutManager(new LinearLayoutManager(Profile.this));
 //
+//                        adapter =  new EducationAdapter(Profile.this,educationModelList);
+//                        recyclerView.setAdapter(adapter);
 //
-//                change_phone();
-//
-//            }
-//        });
+////                        EducationAdapter simpleAdapter = new EducationAdapter(Profile.this,educationModelList,itemDataList,android.R.layout.simple_list_item_2,
+////                                new String[]{"title","data"},new int[]{android.R.id.text1,android.R.id.text2});
+////                        recyclerView.setAdapter(simpleAdapter);
+//                        alertDialog.cancel();
+//                    }
+//                });
+//                cancelUserDataButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        alertDialog.cancel();
+//                    }
+//                });
+            }
+        });
+
 
         Intent intent = getIntent();
         data = intent.getStringExtra("token");
@@ -176,18 +223,6 @@ public class Profile extends AppCompatActivity {
 
         emailtxt.setText(data3);
 
-//        email_edit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                email_edit_txt.setVisibility(View.VISIBLE);
-//                email_edit.setVisibility(GONE);
-//                emailtxt.setVisibility(GONE);
-//                email_verify.setVisibility(View.VISIBLE);
-//                savee.setVisibility(View.VISIBLE);
-//
-//
-//            }
-//        });
         email_verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -197,18 +232,7 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-        con_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                con_edit_txt.setVisibility(View.VISIBLE);
-                con_edit.setVisibility(GONE);
-                contacttxt.setVisibility(GONE);
-                contact_verify.setVisibility(View.VISIBLE);
-                save1.setVisibility(View.VISIBLE);
 
-
-            }
-        });
         contact_verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -217,27 +241,24 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-//
-//        Bitmap bmp = BitmapFactory.decodeResource(getResources(),SELECT_PICTURE);
-//        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//        bmp.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-
-
-//        profile.buildDrawingCache();
-//        Bitmap bitmap = profile.getDrawingCache();
-
-        edit = findViewById(R.id.edit_button);
-        edit.setOnClickListener(new View.OnClickListener() {
+        email_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
-                Intent intent1 = new Intent(Profile.this, com.e.login.Verification.Edit.class);
-
-                startActivity(intent1);
-
+                change_email();
             }
         });
+
+
+        con_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                change_phone();
+            }
+        });
+
+
+        edit = findViewById(R.id.edit_button);
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -245,17 +266,6 @@ public class Profile extends AppCompatActivity {
                 intent.putExtra("token", data);
                 intent.putExtra("id", data1);
                 startActivity(intent);
-            }
-        });
-
-
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                imageUpload();
-
             }
         });
 
@@ -296,9 +306,6 @@ public class Profile extends AppCompatActivity {
 //
                             intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent1);
-                            Toast.makeText(Profile.this, email, Toast.LENGTH_SHORT).show();
-//                            PreferenceUtils.saveid(data1,Profile.this);
-//                            PreferenceUtils.saveToken(data,Profile.this);
 
 
                         } else {
@@ -402,24 +409,7 @@ public class Profile extends AppCompatActivity {
                         contact_verify.setText(phone_verifyy);
 
 
-                        //  profile.setImageURI(Uri.parse(image));
-
-
                         profile.setImageURI(Uri.parse(image));
-
-//
-//                        ContextWrapper cw = new ContextWrapper(getApplicationContext());
-//                        File directory = cw.getDir(filePath, Context.MODE_PRIVATE);
-//                        File file = new File(directory,filePath);
-//                        profile.setImageDrawable(Drawable.createFromPath(file.toString()));
-
-
-//                        ContextWrapper cw = new ContextWrapper(getApplicationContext());
-//                        File directory = cw.getDir("image", Context.MODE_PRIVATE);
-//                        File file = new File(directory, "image" + ".png");
-//                        profile.setImageDrawable(Drawable.createFromPath(file.toString()));
-
-                        Toast.makeText(Profile.this, profile.toString(), Toast.LENGTH_SHORT).show();
 
 
                     } else {
@@ -681,221 +671,78 @@ public class Profile extends AppCompatActivity {
     }
 }
 
-//
-//    void imageChooser() {
-//
-//
-//        Intent pickImageIntent = new Intent(Intent.ACTION_PICK,
-//                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//        pickImageIntent.setType("image/*");
-//        pickImageIntent.putExtra("aspectX", 1);
-//        pickImageIntent.putExtra("aspectY", 1);
-//        pickImageIntent.putExtra("scale", true);
-//        pickImageIntent.putExtra("outputFormat",
-//                Bitmap.CompressFormat.JPEG.toString());
-//        startActivityForResult(pickImageIntent, SELECT_PICTURE);
-//
+//    private void initMainActivityControls()
+//    {
+//        if(edu_add == null)
+//        {
+//            edu_add = (ImageView) findViewById(R.id.edu_add);
+//        }
+//        if(recyclerView == null)
+//        {
+//            recyclerView = (RecyclerView) findViewById(R.id.recycler);
+//        }
 //    }
-
+//    /* Initialize popup dialog view and ui controls in the popup dialog. */
+//    private void initPopupViewControls()
+//    {
+//        // Get layout inflater object.
+//        LayoutInflater layoutInflater = LayoutInflater.from(Profile.this);
+//        // Inflate the popup dialog from a layout xml file.
+//        popupInputDialogView = layoutInflater.inflate(R.layout.popup_input_dialog, null);
+//        // Get user input edittext and button ui controls in the popup dialog.
+//        userNameEditText = (EditText) popupInputDialogView.findViewById(R.id.Institute);
+//        passwordEditText = (EditText) popupInputDialogView.findViewById(R.id.Degree);
+//        emailEditText = (EditText) popupInputDialogView.findViewById(R.id.year);
 //
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if (resultCode == RESULT_OK ) {
-//
-//            // compare the resultCode with the
-//            // SELECT_PICTURE constant
-//            if (requestCode == SELECT_PICTURE) {
-//                // Get the url of the image from data
-//                Uri selectedImageUri = data.getData();
-//                if (null != selectedImageUri) {
-//                    // update the preview image in the layout
-//                    profile.setImageURI(selectedImageUri);
-//
+//        saveUserDataButton = popupInputDialogView.findViewById(R.id.button_save_user_data);
+//        cancelUserDataButton = popupInputDialogView.findViewById(R.id.button_cancel_user_data);
+//        // Display values from the main activity list view in user input edittext.
+//        initEditTextUserDataInPopupDialog();
+//    }
+//    /* Get current user data from listview and set them in the popup dialog edittext controls. */
+//    private void initEditTextUserDataInPopupDialog()
+//    {
+//        List<String> userDataList = getExistUserDataInListView(recyclerView);
+//        if(userDataList.size() == 3)
+//        {
+//            String userName = userDataList.get(0);
+//            String password = userDataList.get(1);
+//            String email = userDataList.get(2);
+//            if(userNameEditText != null)
+//            {
+//                userNameEditText.setText(userName);
+//            }
+//            if(passwordEditText != null)
+//            {
+//                passwordEditText.setText(password);
+//            }
+//            if(emailEditText != null)
+//            {
+//                emailEditText.setText(email);
+//            }
+//        }
+//    }
+//    /* If user data exist in the listview then retrieve them to a string list. */
+//    private List<String> getExistUserDataInListView(RecyclerView listView)
+//    {
+//        List<String> ret = new ArrayList<String>();
+//        if(listView != null)
+//        {
+//            EducationAdapter listAdapter = (EducationAdapter) listView.getAdapter();
+//            if(listAdapter != null) {
+//                int itemCount = listAdapter.getCount();
+//                for (int i = 0; i < itemCount; i++) {
+//                    Object itemObject = listAdapter.getItem(i);
+//                    HashMap<String, String> itemMap = (HashMap<String, String>)itemObject;
+//                    Set<String> keySet = itemMap.keySet();
+//                    Iterator<String> iterator = keySet.iterator();
+//                    String key = iterator.next();
+//                    String value = itemMap.get(key);
+//                    ret.add(value);
 //                }
 //            }
 //        }
+//        return ret;
 //    }
 
-
-
-//    private void imageUpload() {
-//
-//
-//        JSONObject jsonObject = new JSONObject();
-////        try {
-////            jsonObject.put("image",filePath);
-////
-////            Toast.makeText(Profile.this, filePath, Toast.LENGTH_SHORT).show();
-//
-//  String url = "http://nk.inevitabletech.email/public/api/send-profile-details";
-//        VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, url,null, new Response.Listener<NetworkResponse>() {
-//            @Override
-//            public void onResponse(NetworkResponse response) {
-//
-//                try {
-//                    JSONObject obj = new JSONObject(new String(response.data));
-//
-//                    Toast.makeText(Profile.this, obj.toString(), Toast.LENGTH_SHORT).show();
-//                    Log.i("uyfdthggu",obj.toString());
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//
-//
-//
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Charset charset = Charset.defaultCharset();
-//                String str = new String(error.networkResponse.data,charset);
-//                Toast.makeText(Profile.this, str, Toast.LENGTH_SHORT).show();
-//                Log.i("uyfdthggu", str.toString());
-//            }
-//        }) {
-//            @Override
-//            protected Map<String, String> getParams() {
-//                Map<String, String> params = new HashMap<>();
-//
-//                return params;
-//            }
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                Map<String,String> params = new HashMap<String, String>();
-//                params.put("Accept","application/json");
-//                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken(Profile.this));
-//
-//                return params;
-//            }
-//
-//
-//
-//            @Override
-//            protected Map<String, DataPart> getByteData() {
-//                Map<String, DataPart> params = new HashMap<>();
-//                long imagename = System.currentTimeMillis();
-//                params.put("image", new DataPart(imagename + ".png", getFileDataFromDrawable(bitmap)));
-//                return params;
-//            }
-//        };
-//
-//        multipartRequest.setRetryPolicy(new DefaultRetryPolicy(5000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-//        MyApplication.getInstance().addToRequestQueue(multipartRequest);
-//    }
-
-
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//
-//        VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
-//            @Override
-//            public void onResponse(NetworkResponse response) {
-//
-//
-//                Toast.makeText(getApplicationContext(), "Profile photo uploaded", Toast.LENGTH_LONG).show();
-//
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//
-//            }
-//        }) {
-//            @Override
-//            protected Map<String, String> getParams() {
-//                Map<String, String> params = new HashMap<>();
-//
-//                return params;
-//            }
-//
-//            @Override
-//            protected Map<String, DataPart> getByteData() {
-//                Map<String, DataPart> params = new HashMap<>();
-//                // file name could found file base or direct access from real path
-//                // for now just get bitmap data from ImageView
-////                params.put("avatar", new DataPart("file_avatar.jpg", AppHelper.getFileDataFromDrawable(getBaseContext(), mAvatarImage.getDrawable()), "image/jpeg"));
-////                params.put("cover", new DataPart("file_cover.jpg", AppHelper.getFileDataFromDrawable(getBaseContext(), mCoverImage.getDrawable()), "image/jpeg"));
-//
-//                return params;
-//            }
-//        };
-//
-//        VolleySingleton.getInstance(getBaseContext()).addToRequestQueue(multipartRequest);
-
-//
-//        SimpleMultiPartRequest smr = new SimpleMultiPartRequest(Request.Method.POST, url,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        Log.d("Response", response);
-//                        try {
-//                            JSONObject jObj = new JSONObject(response);
-//                            String message = jObj.getString("message");
-//
-//                            Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-//
-//                        } catch (JSONException e) {
-//                            // JSON error
-//                            e.printStackTrace();
-//                            Toast.makeText(getApplicationContext(), "Json error: " + e.getMessage(), Toast.LENGTH_LONG).show();
-//                        }
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-//        smr.addFile("image", imagePath);
-//        MyApplication.getInstance().addToRequestQueue(smr);
-//
-//    }
-//
-
-
-//    private String getPath(Uri contentUri) {
-//        String[] proj = { MediaStore.Images.Media.DATA };
-//        CursorLoader loader = new CursorLoader(getApplicationContext(), contentUri, proj, null, null, null);
-//        Cursor cursor = loader.loadInBackground();
-//        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-//        cursor.moveToFirst();
-//        String result = cursor.getString(column_index);
-//        cursor.close();
-//        return result;
-//    }
-
-
-
-  //  public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if (resultCode == RESULT_OK) {
-//
-//            if(requestCode == PICK_IMAGE_REQUEST){
-//                Uri picUri = data.getData();
-//
-//                filePath = getPath(picUri);
-//
-//                Log.d("picUri", picUri.toString());
-//                Log.d("filePath", filePath);
-//
-//                profile.setImageURI(picUri);
-//
-//            }
-//
-//        }
-//
-//    }
-//            @Override
-//            public Map<String, String> getHeaders() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<String, String>();
-//
-////                params.put("image",filePath);
-////                Log.i("lwhgfiruweyt3ru",params.toString());
-//                return params;
 //            }

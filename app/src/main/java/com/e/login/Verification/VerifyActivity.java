@@ -36,7 +36,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class VerifyActivity extends AppCompatActivity {
+public class
+
+VerifyActivity extends AppCompatActivity {
     Button verify;
    EditText otp1,otp2,otp3,otp4;
    String OTP1,OTP2,OTP3,OTP4;

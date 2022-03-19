@@ -473,8 +473,8 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
                             intent.putExtra("id",id);
                             intent.putExtra("token",token);
 
-//                            PreferenceUtils.saveid(id,LoginActivity.this);
-//                            PreferenceUtils.saveToken(token,LoginActivity.this);
+                            PreferenceUtils.saveid(id,LoginActivity.this);
+                            PreferenceUtils.saveToken(token,LoginActivity.this);
                             PreferenceUtils.saveid1(goo_id,LoginActivity.this);
                            PreferenceUtils.saveToken1(token,LoginActivity.this);
 
