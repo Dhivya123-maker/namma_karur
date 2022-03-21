@@ -409,7 +409,7 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 //            @Override
 //            public void onClick(View v) {
 //                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","NgoCatalog");
+//                shopsIntent.putExtra("cat","GovtNgoCatalog");
 //                startActivity(shopsIntent);
 //            }
 //        });
@@ -564,7 +564,7 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 //            @Override
 //            public void onClick(View v) {
 //                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","NgoCatalog");
+//                shopsIntent.putExtra("cat","GovtNgoCatalog");
 //                startActivity(shopsIntent);
 //            }
 //        });

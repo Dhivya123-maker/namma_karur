@@ -165,11 +165,11 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
             bustime(url);
             shop_name.setText("Bus Time");
             bustime.setVisibility(View.VISIBLE);
-        }else if (data3.equals("NgoCatalog")){
+        }else if (data3.equals("GovtNgoCatalog")){
             String url = api + "get-ngo-govt-category-list";
             ngo(url);
             shop_name.setText("Govt/NGO");
-        }else if (data3.equals("AtmCatalog")){
+        }else if (data3.equals("ATMCatalog")){
             String url = api + "get-atm-category-list";
             atm(url);
             shop_name.setText("ATM");
@@ -916,7 +916,7 @@ public void shop(String url) {
             intent.putExtra("b_id",b_id);
             startActivity(intent);
 
-        }else if (data3.equals("NgoCatalog")){
+        }else if (data3.equals("GovtNgoCatalog")){
             Intent intent = new Intent(ShopScreen_Class.this, GovtActivity.class);
             intent.putExtra("id",n_id);
             startActivity(intent);
