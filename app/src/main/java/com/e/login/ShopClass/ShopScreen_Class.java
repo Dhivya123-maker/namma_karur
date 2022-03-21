@@ -349,7 +349,6 @@ public void shop(String url) {
             @Override
             public void onResponse(JSONObject response) {
 
-                Log.i("dfgdfg",response.toString());
 
                 try {
                     JSONArray res = response.getJSONArray("data");
@@ -730,7 +729,6 @@ public void shop(String url) {
                 Map<String,String> params = new HashMap<String, String>();
 
                 params.put("Authorization", "Bearer  " +PreferenceUtils.getToken(ShopScreen_Class.this));
-                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken1(ShopScreen_Class.this));
                 return params;
             }
         };

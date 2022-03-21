@@ -50,7 +50,6 @@ public class Add extends AppCompatActivity {
         data1 = intent.getStringExtra("id");
         category_id = intent.getStringExtra("category_id");
 
-        Toast.makeText(Add.this, category_id, Toast.LENGTH_SHORT).show();
 
 
 
@@ -130,8 +129,7 @@ public class Add extends AppCompatActivity {
                 @SuppressLint("CheckResult")
                 @Override
                 public void onResponse(JSONObject response) {
-                    Log.i("0000000000000",response.toString());
-                    Toast.makeText(Add.this, response.toString(), Toast.LENGTH_SHORT).show();
+
 
                     try{
 

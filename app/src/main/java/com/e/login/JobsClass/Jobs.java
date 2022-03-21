@@ -108,7 +108,7 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
             @SuppressLint("CheckResult")
             @Override
             public void onResponse(JSONObject response) {
-                Log.i("hgtviuy",response.toString());
+
 
 
 

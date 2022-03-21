@@ -68,7 +68,7 @@ public class ReviewsActivity extends AppCompatActivity {
         data = intent.getStringExtra("cat");
         data2 = intent.getStringExtra("id");
 
-        Log.i("khjhjh",data);
+
 
         rt = (RatingBar) findViewById(R.id.ratingBar);
 
