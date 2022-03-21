@@ -164,14 +164,12 @@ VerifyActivity extends AppCompatActivity {
                             intent.putExtra("token",data);
                             intent.putExtra("id",data1);
                             intent.putExtra("email",data3);
-                            intent.putExtra("name",u_name);
                             intent.putExtra("phone",data2);
                             intent.putExtra("user_name",data4);
                             Toast.makeText(VerifyActivity.this, data3, Toast.LENGTH_SHORT).show();
 
                             PreferenceUtils.saveid(data1,VerifyActivity.this);
                             PreferenceUtils.saveToken(data,VerifyActivity.this);
-//                            PreferenceUtils.saveEmail(data3,VerifyActivity.this);
 
 
                             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);

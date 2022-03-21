@@ -32,6 +32,9 @@
         android:usesCleartextTraffic="true"
         tools:ignore="MissingClass">
         <activity
+            android:name=".Verification.Phone_txt"
+            android:exported="false" />
+        <activity
             android:name=".Profile_details.Education_details"
             android:exported="false" />
         <activity

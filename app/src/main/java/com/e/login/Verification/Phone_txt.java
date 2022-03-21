@@ -28,50 +28,46 @@ import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Email_Verification extends AppCompatActivity {
-
+public class Phone_txt extends AppCompatActivity {
     Button send;
-    EditText mail;
-    String Mail,id;
+    EditText number;
+    String Num,user_id,id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_email_verification);
-
-        send = findViewById(R.id.send_mail);
-        mail = findViewById(R.id.address);
-//        Mail = mail.getText().toString();
+        setContentView(R.layout.activity_phone_txt);
 
         Intent intent = getIntent();
+
         id = intent.getStringExtra("id");
 
-        Toast.makeText(Email_Verification.this, id, Toast.LENGTH_SHORT).show();
+        Toast.makeText(Phone_txt.this, id, Toast.LENGTH_SHORT).show();
 
+        send = findViewById(R.id.send_phone);
+        number = findViewById(R.id.verify_edit1);
 
-       send.setOnClickListener(new View.OnClickListener() {
+        send.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                //otp();
-
-              change_email();
+            public void onClick(View view) {
+                change_phone();
 
             }
         });
-
-
     }
-    public void change_email() {
 
-        Mail = mail.getText().toString();
+    public void change_phone() {
 
 
-        String url = "http://nk.inevitabletech.email/public/api/change-email";
+        Num = number.getText().toString();
+
+        String url = "http://nk.inevitabletech.email/public/api/change-phone";
         JSONObject jsonBody = new JSONObject();
 
 
         try {
-            jsonBody.put("email", Mail);
+            jsonBody.put("phone", Num);
 
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
@@ -88,22 +84,18 @@ public class Email_Verification extends AppCompatActivity {
 
 
                         if (Success.equals("true")) {
-                            Toast.makeText(Email_Verification.this, msg, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Phone_txt.this, msg, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(Phone_txt.this,Change_Phone.class);
+                            intent.putExtra("phone",Num);
+                            intent.putExtra("id", id);
 
-                            Intent intent = new Intent(Email_Verification.this,Email_OTP.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                            intent.putExtra("email",Mail);
-                            intent.putExtra("id",id);
+                            Toast.makeText(Phone_txt.this, id, Toast.LENGTH_SHORT).show();
                             startActivity(intent);
-
-                            Toast.makeText(Email_Verification.this, id, Toast.LENGTH_SHORT).show();
-//                            PreferenceUtils.saveid(data1,Profile.this);
-//                            PreferenceUtils.saveToken(data,Profile.this);
-
 
                         } else {
 
 
-                            Toast.makeText(Email_Verification.this, msg, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Phone_txt.this, msg, Toast.LENGTH_SHORT).show();
 
 
                         }
@@ -121,13 +113,13 @@ public class Email_Verification extends AppCompatActivity {
 
                     Charset charset = Charset.defaultCharset();
                     String str = new String(error.networkResponse.data, charset);
-                    Toast.makeText(Email_Verification.this, str, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Phone_txt.this, str, Toast.LENGTH_SHORT).show();
 
 
                     try {
                         JSONObject jsonObject = new JSONObject(str);
                         JSONObject data = jsonObject.getJSONObject("data");
-                        Toast.makeText(Email_Verification.this, data.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Phone_txt.this, data.toString(), Toast.LENGTH_SHORT).show();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -141,7 +133,7 @@ public class Email_Verification extends AppCompatActivity {
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("Accept", "application/json");
-                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(Email_Verification.this));
+                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(Phone_txt.this));
                     return params;
 
 
@@ -153,7 +145,7 @@ public class Email_Verification extends AppCompatActivity {
                     DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                     DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
 
-            RequestQueue requestQueue = Volley.newRequestQueue(Email_Verification.this);
+            RequestQueue requestQueue = Volley.newRequestQueue(Phone_txt.this);
             requestQueue.add(jsonObjectRequest);
 
 

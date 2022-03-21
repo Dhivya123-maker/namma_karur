@@ -28,6 +28,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.HomeClass.Home;
 import com.e.login.NewsClass.All_news;
+import com.e.login.Profile;
 import com.e.login.R;
 import com.e.login.utils.PreferenceUtils;
 
@@ -77,14 +78,13 @@ public class Mobile_verification extends AppCompatActivity {
 
         Intent intent = getIntent();
         data = intent.getStringExtra("email");
-        data1 = intent.getStringExtra("google_id");
+//        data1 = intent.getStringExtra("google_id");
         data4 = intent.getStringExtra("token");
         data2 = intent.getStringExtra("name");
         data3 = intent.getStringExtra("phone");
 //        token = intent.getStringExtra("token1");
         id = intent.getStringExtra("id");
         verify.setText("+91 "+data3);
-       // Toast.makeText(Mobile_verification.this, data1, Toast.LENGTH_SHORT).show();
 
 
         back = findViewById(R.id.back_mobile);
@@ -154,10 +154,12 @@ public class Mobile_verification extends AppCompatActivity {
                         if (Success.equals("true")){
 
                             Intent intent = new Intent(Mobile_verification.this, Home.class);
-                            intent.putExtra("goo_token",data4);
-                            intent.putExtra("goo_id",data1);
-                            PreferenceUtils.saveid1(data1,Mobile_verification.this);
-                            PreferenceUtils.saveToken1(data4,Mobile_verification.this);
+                            intent.putExtra("token",data4);
+                            intent.putExtra("id",id);
+                            intent.putExtra("email",data);
+
+                            PreferenceUtils.saveid(id,Mobile_verification.this);
+                            PreferenceUtils.saveToken(data4,Mobile_verification.this);
                             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
                             startActivity(intent);
@@ -244,7 +246,7 @@ public class Mobile_verification extends AppCompatActivity {
         try {
 
 
-            jsonBody.put("user_id",data1);
+            jsonBody.put("user_id",id);
 
 
 

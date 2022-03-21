@@ -64,9 +64,10 @@ public class Email_OTP extends AppCompatActivity {
         data2 = i1.getStringExtra("email");
         data3 = i1.getStringExtra("user_name");
         phone = i1.getStringExtra("phone");
-        user_id = i1.getStringExtra("user_id");
+//        user_id = i1.getStringExtra("user_id");
 //        email_get = i1.getStringExtra("email");
 
+        Toast.makeText(Email_OTP.this, data1, Toast.LENGTH_SHORT).show();
 
         mail.setText(data2);
 
@@ -92,8 +93,6 @@ public class Email_OTP extends AppCompatActivity {
             public void onClick(View v) {
                 email_otp();
 
-//                Intent intent = new Intent(Email_OTP.this, Home.class);
-//                startActivity(intent);
 
             }
         });
@@ -129,7 +128,7 @@ public class Email_OTP extends AppCompatActivity {
         try {
 
             jsonBody.put("otp", OTP1+OTP2+OTP3+OTP4);
-            jsonBody.put("user_id",user_id);
+            jsonBody.put("user_id",data1);
 
 
 
@@ -150,7 +149,7 @@ public class Email_OTP extends AppCompatActivity {
 
                         String Success = response.getString("success");
                         String msg = response.getString("message");
-
+//
                         JSONObject jsonObject = response.getJSONObject("data");
                         id = jsonObject.getString("id");
                         name = jsonObject.getString("name");
@@ -166,15 +165,15 @@ public class Email_OTP extends AppCompatActivity {
                             Intent intent = new Intent(Email_OTP.this, Profile.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             intent.putExtra("id",id);
-                            intent.putExtra("name",name);
-                            intent.putExtra("email",email);
-                            intent.putExtra("phone",phonee);
+                            intent.putExtra("name",data3);
+                            intent.putExtra("email",data2);
+                            intent.putExtra("phone",phone);
 
                             startActivity(intent);
 
-//                            PreferenceUtils.saveid(data1,Email_OTP.this);
-//                            PreferenceUtils.saveToken(data,Email_OTP.this);
-//
+                            PreferenceUtils.saveid(data1,Email_OTP.this);
+                            PreferenceUtils.saveToken(data,Email_OTP.this);
+
 
                         }
                         else {
@@ -211,7 +210,6 @@ public class Email_OTP extends AppCompatActivity {
                     Map<String,String> params = new HashMap<String, String>();
                     params.put("Accept","application/json");
                    params.put("Authorization","Bearer "+ PreferenceUtils.getToken(Email_OTP.this));
-                    params.put("Authorization","Bearer "+PreferenceUtils.getToken1(Email_OTP.this));
 
                     //  params.put("Content-Type","application/x-www-form-urlencoded");
                     //params.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNmYwZGY2MTljYWE0NDJlMWM2NTM4YTRjYTcyNjc0Mjc1ZGY3YWJiZTU4ODgyZjEyZGM0MGQxNTA0ZGI5NTJmNzQ1ZWIwYzQ3OTQ4ZTIxZWQiLCJpYXQiOjE2NDQ0ODQ3OTIuMzc0NTU1LCJuYmYiOjE2NDQ0ODQ3OTIuMzc0NTYsImV4cCI6MTY3NjAyMDc5Mi4zNzA5MzIsInN1YiI6IjE5Iiwic2NvcGVzIjpbXX0.PLityoxwwHfLl4DMJz77NoxIAT6bbPx9UFaEn8LKjxYFyFcAnTDxVFobY43BkKR1xOm27YX3420XTxBf0s0iB1EW_XrJcTDClP8Y9G4rBZ0c06_2siDUDFYTPA8KeuQBDeCr8Aj6B7E_pT3qp9p3yG99AIUPK4onZNYDG_gZR6kQrvTlWwwgOSKD3ViTVTy91vQYZe7oxWbqUb_nhmL3Gb2wPdpZZ6j3FJiAj2MilCWml-doKID905ltazZc14aAEHOWFkB3UM4ryAEvFaXteAi5-gB1HseIPgguS8elMZ4BemaeJ1d7IJBnwY8pllsJmC9GKfpt66IPxT8KkSaILTLItJjtsCxretOx-x3Ngh6AULjQLvMFt1D27Z2PNei_zvVHDI7ECm0QjA-dO-rUuphq4Nrxw34qfcL4eW0znGbeHIQtSIL8AnPlFavJ7MjjnN24EZSrNjD_X8jJoNSqjUbwZgTef76RjHWUahja_w7IoX7IdjU9w6dvtEhwm5z_5LWORlCpND5zBxmQeoyHftgaokGPNK5tzc4It4VYt_K24s018Uwow4XE0_B3urSIkxJqzBVbEueV_w9tpTQSVp6P2YtH29SAkHDkw4j5FrdhHVK694-QHM-_qFQFol3CgEYWb7RfpcpDwkLXUd4Z4hqBAFJUmbD0HCoRBm73yGo");

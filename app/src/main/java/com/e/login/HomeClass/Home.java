@@ -38,6 +38,7 @@ import com.android.volley.toolbox.Volley;
 import com.e.login.BuildConfig;
 import com.e.login.ContactusActivity;
 import com.e.login.Feedback;
+import com.e.login.LoginActivity;
 import com.e.login.NewsClass.Karur;
 import com.e.login.Post_Fragment;
 import com.e.login.Verification.Edit;
@@ -113,13 +114,13 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
        data2 = i.getStringExtra("user_name");
         data3 = i.getStringExtra("email");
         goo_token = i.getStringExtra("goo_token");
-        goo_id = i.getStringExtra("google_id");
+        goo_id = i.getStringExtra("goo_id");
         u_name = i.getStringExtra("name");
         phone = i.getStringExtra("phone");
         user_id = i.getStringExtra("user_id");
 
-//        Toast.makeText(Home.this, data, Toast.LENGTH_SHORT).show();
-//        Toast.makeText(Home.this, data1, Toast.LENGTH_SHORT).show();
+        Toast.makeText(Home.this, data1, Toast.LENGTH_SHORT).show();
+
 
 
 
@@ -222,11 +223,6 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
                         home.putExtra("user_name",data2);
                         home.putExtra("email",data3);
 
-                       // Toast.makeText(Home.this, user_id, Toast.LENGTH_SHORT).show();
-                      //  Toast.makeText(Home.this, data1, Toast.LENGTH_SHORT).show();
-
-
-//
 
 
                         home.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);

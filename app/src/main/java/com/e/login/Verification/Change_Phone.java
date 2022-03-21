@@ -38,7 +38,7 @@ public class Change_Phone extends AppCompatActivity {
     Button verification;
     EditText otp1,otp2,otp3,otp4;
     String OTP1,OTP2,OTP3,OTP4;
-    String data,data1,data2,data3,phone,user_id,id;
+    String data,data1,data2,data3,phone,id,goo_id;
     TextView resend,mail;
     String name,email,phonee;
     private Context mContext;
@@ -59,7 +59,9 @@ public class Change_Phone extends AppCompatActivity {
 
         Intent intent = getIntent();
         phone_get = intent.getStringExtra("phone");
-        user_id = intent.getStringExtra("user_id");
+       id = intent.getStringExtra("id");
+
+        Toast.makeText(Change_Phone.this, id, Toast.LENGTH_SHORT).show();
 
         mail = findViewById(R.id.maa);
         mail.setText("+91 "+phone_get);
@@ -102,11 +104,11 @@ public class Change_Phone extends AppCompatActivity {
 
 
 
-
         try {
 
             jsonBody.put("otp", OTP1+OTP2+OTP3+OTP4);
-            jsonBody.put("user_id",user_id);
+            jsonBody.put("user_id",id);
+
 
 
 
@@ -220,7 +222,7 @@ public class Change_Phone extends AppCompatActivity {
         try {
 
             jsonBody.put("otp", OTP1+OTP2+OTP3+OTP4);
-            jsonBody.put("user_id",user_id);
+            jsonBody.put("user_id",id);
 
 
 

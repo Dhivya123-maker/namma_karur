@@ -56,7 +56,7 @@ public class Signup_google extends AppCompatActivity implements OnConnectionFail
     String id = null;
     String token = null;
     String phonee = null;
-    String email,name,goo_id,goo_token;
+    String email,name,goo_id;
     String tok,idd;
 
 
@@ -215,15 +215,13 @@ public class Signup_google extends AppCompatActivity implements OnConnectionFail
                             Toast.makeText(Signup_google.this, msg, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Signup_google.this, Mobile_verification.class);
                             intent.putExtra("email",email);
-                            intent.putExtra("google_id", goo_id);
+//                            intent.putExtra("google_id", goo_id);
                             intent.putExtra("token", token);
                             intent.putExtra( "name", name);
                             intent.putExtra("phone", phonee);
 //                            intent.putExtra("token1",token);
                             intent.putExtra("id",id);
 
-//                            Toast.makeText(Signup_google.this, token, Toast.LENGTH_SHORT).show();
-//                            Toast.makeText(Signup_google.this, id, Toast.LENGTH_SHORT).show();
 
                             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent);

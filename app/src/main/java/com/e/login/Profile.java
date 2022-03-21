@@ -8,17 +8,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -41,6 +46,7 @@ import com.android.volley.toolbox.Volley;
 import com.e.login.AmbulanceClass.Ambulance;
 import com.e.login.AmbulanceClass.AmbulanceAdapter;
 import com.e.login.AmbulanceClass.AmbulanceModel;
+import com.e.login.HomeClass.Home;
 import com.e.login.Profile_details.EducationAdapter;
 import com.e.login.Profile_details.Education_Model;
 import com.e.login.Profile_details.Education_details;
@@ -49,6 +55,10 @@ import com.e.login.Verification.Change_Email_OTP;
 import com.e.login.Verification.Change_Phone;
 import com.e.login.Verification.Edit;
 import com.e.login.Verification.Email_OTP;
+import com.e.login.Verification.Email_Verification;
+import com.e.login.Verification.Phone_txt;
+import com.e.login.Verification.VerificationActivity;
+import com.e.login.Verification.VerifyActivity;
 import com.e.login.utils.PreferenceUtils;
 
 import org.json.JSONException;
@@ -66,11 +76,12 @@ import java.util.Set;
 
 public class Profile extends AppCompatActivity {
     Button btn, edit, save, email_verify, contact_verify;
-    String data, data1, data2, user_id;
-    TextView user_name, emailtxt, contacttxt;
+    String data, data1, data2, goo_id;
+    TextView user_name, emailtxt, contacttxt,b_gp,dob;
     LinearLayout skill;
     ImageView profile, email_edit, con_edit, edu_add, skill_add;
-    EditText email_edit_txt, con_edit_txt;
+    String OTP1,OTP2,OTP3,OTP4;
+    Context mContext;
 
     String data3;
     View view, view1, view2, view3;
@@ -97,6 +108,7 @@ public class Profile extends AppCompatActivity {
     List<Education_Model> educationModelList;
     EducationAdapter adapter;
 
+    EditText otp1,otp2,otp3,otp4;
 
     @SuppressLint("WrongThread")
     @Override
@@ -107,6 +119,16 @@ public class Profile extends AppCompatActivity {
 //       getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+
+
+
+        Intent intent = getIntent();
+        data = intent.getStringExtra("token");
+        data1 = intent.getStringExtra("id");
+        data2 = intent.getStringExtra("user_name");
+        data3 = intent.getStringExtra("email");
+
+
 
 //        initMainActivityControls();
         get_profile();
@@ -125,6 +147,9 @@ public class Profile extends AppCompatActivity {
         edu_add = findViewById(R.id.edu_add);
         exp_add = findViewById(R.id.exp_add);
         skill_add = findViewById(R.id.skill_add);
+
+        dob = findViewById(R.id.dob);
+        b_gp = findViewById(R.id.blood_gp);
 
 
         profile = findViewById(R.id.profile_img);
@@ -148,6 +173,11 @@ public class Profile extends AppCompatActivity {
         edu_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+//                Dialog dialog=new Dialog(Profile.this,R.style.MyDialogTheme);
+//                dialog.show();
+
 
 //                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Profile.this);
 //                // Set title, icon, can not cancel properties.
@@ -214,11 +244,8 @@ public class Profile extends AppCompatActivity {
         });
 
 
-        Intent intent = getIntent();
-        data = intent.getStringExtra("token");
-        data1 = intent.getStringExtra("id");
-        data2 = intent.getStringExtra("user_name");
-        data3 = intent.getStringExtra("email");
+
+
 
 
         emailtxt.setText(data3);
@@ -236,15 +263,25 @@ public class Profile extends AppCompatActivity {
         contact_verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                send_mail();
+//
+//                Intent intent1 = new Intent(Profile.this,VerifyActivity.class);
+//                startActivity(intent1);
+//                send_mail();
             }
         });
 
         email_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                change_email();
+
+                Intent intent1 = new Intent(Profile.this, Email_Verification.class);
+                intent1.putExtra("id",data1);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent1);
+
+
+//                change_email();
+
             }
         });
 
@@ -252,7 +289,12 @@ public class Profile extends AppCompatActivity {
         con_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                change_phone();
+//                change_phone();
+                Intent intent1 = new Intent(Profile.this, Phone_txt.class);
+                intent1.putExtra("id",data1);
+                intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent1);
+
             }
         });
 
@@ -284,6 +326,7 @@ public class Profile extends AppCompatActivity {
             jsonBody.put("user_id", data1);
 
 
+
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
@@ -301,8 +344,8 @@ public class Profile extends AppCompatActivity {
                             Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
 
                             Intent intent1 = new Intent(Profile.this, Email_OTP.class);
-                            intent1.putExtra("email", email);
-                            intent1.putExtra("user_id", data1);
+                            intent1.putExtra("email", data3);
+                            intent1.putExtra("id", data1);
 //
                             intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent1);
@@ -460,215 +503,9 @@ public class Profile extends AppCompatActivity {
 
     }
 
-    public void change_email() {
 
-        Email_get = email_edit_txt.getText().toString();
 
 
-        String url = "http://nk.inevitabletech.email/public/api/change-email";
-        JSONObject jsonBody = new JSONObject();
-
-
-        try {
-            jsonBody.put("email", Email_get);
-            Toast.makeText(Profile.this, Email_get, Toast.LENGTH_SHORT).show();
-
-
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-
-//                    Log.i("0000000000000",response.toString());
-//                    Toast.makeText(Profile.this, response.toString(), Toast.LENGTH_SHORT).show();
-
-
-                    try {
-                        String Success = response.getString("success");
-                        String msg = response.getString("message");
-
-
-                        if (Success.equals("true")) {
-                            Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
-
-                            Intent intent1 = new Intent(Profile.this, Change_Email_OTP.class);
-                            intent1.putExtra("email", Email_get);
-                            intent1.putExtra("user_id", data1);
-
-                            intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                            startActivity(intent1);
-//                            PreferenceUtils.saveid(data1,Profile.this);
-//                            PreferenceUtils.saveToken(data,Profile.this);
-
-
-                        } else {
-
-
-                            Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
-
-
-                        }
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-
-                    }
-
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-
-                    Charset charset = Charset.defaultCharset();
-                    String str = new String(error.networkResponse.data, charset);
-                    Toast.makeText(Profile.this, str, Toast.LENGTH_SHORT).show();
-
-
-                    try {
-                        JSONObject jsonObject = new JSONObject(str);
-                        JSONObject data = jsonObject.getJSONObject("data");
-                        Toast.makeText(Profile.this, data.toString(), Toast.LENGTH_SHORT).show();
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-
-                }
-            }) {
-
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String, String> params = new HashMap<String, String>();
-                    params.put("Accept", "application/json");
-                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(Profile.this));
-                    return params;
-
-
-                }
-            };
-
-            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
-                    10000,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-            RequestQueue requestQueue = Volley.newRequestQueue(Profile.this);
-            requestQueue.add(jsonObjectRequest);
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-
-    public void change_phone() {
-
-
-        Phone_get = con_edit_txt.getText().toString();
-
-
-        String url = "http://nk.inevitabletech.email/public/api/change-phone";
-        JSONObject jsonBody = new JSONObject();
-
-
-        try {
-            jsonBody.put("phone", Phone_get);
-            Toast.makeText(Profile.this, Phone_get, Toast.LENGTH_SHORT).show();
-
-
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-
-//                    Log.i("0000000000000",response.toString());
-//                    Toast.makeText(Profile.this, response.toString(), Toast.LENGTH_SHORT).show();
-
-
-                    try {
-                        String Success = response.getString("success");
-                        String msg = response.getString("message");
-
-
-                        if (Success.equals("true")) {
-                            Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
-
-                            Intent intent1 = new Intent(Profile.this, Change_Phone.class);
-                            intent1.putExtra("phone", Phone_get);
-                            intent1.putExtra("user_id", id);
-
-                            Toast.makeText(Profile.this, id, Toast.LENGTH_SHORT).show();
-
-                            intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                            startActivity(intent1);
-//                            PreferenceUtils.saveid(data1,Profile.this);
-//                            PreferenceUtils.saveToken(data,Profile.this);
-
-
-                        } else {
-
-
-                            Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
-
-
-                        }
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-
-                    }
-
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-
-                    Charset charset = Charset.defaultCharset();
-                    String str = new String(error.networkResponse.data, charset);
-                    Toast.makeText(Profile.this, str, Toast.LENGTH_SHORT).show();
-
-
-                    try {
-                        JSONObject jsonObject = new JSONObject(str);
-                        JSONObject data = jsonObject.getJSONObject("data");
-                        Toast.makeText(Profile.this, data.toString(), Toast.LENGTH_SHORT).show();
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-
-                }
-            }) {
-
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String, String> params = new HashMap<String, String>();
-                    params.put("Accept", "application/json");
-                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(Profile.this));
-                    return params;
-
-
-                }
-            };
-
-            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
-                    10000,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-
-            RequestQueue requestQueue = Volley.newRequestQueue(Profile.this);
-            requestQueue.add(jsonObjectRequest);
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-    }
 }
 
 //    private void initMainActivityControls()
