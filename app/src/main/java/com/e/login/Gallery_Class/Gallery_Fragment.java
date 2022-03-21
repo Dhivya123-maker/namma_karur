@@ -48,18 +48,13 @@ public class Gallery_Fragment extends Fragment {
     Gallery_Adapter adapter;
 
 
-    List<Gallery_One_Model> galleryOneModelList;
-    Gallery_One_Adapter adapter1;
 
-    List<Gallery_two_Model> galleryTwoModelList;
-    Gallery_two_Adapter adapter2;
 
-    RecyclerView recyclerView,recyclerView1,recyclerView2;
+    RecyclerView recyclerView;
     String data;
-    String id,cat_id,catalog_id,gallery_id,img;
-    JSONArray jsonArray,jsonArray1;
-    TextView txt,txt1,txt2,view1;
-    String text;
+    String gallery_name;
+
+
 
 
     @Override
@@ -70,33 +65,7 @@ public class Gallery_Fragment extends Fragment {
 
 
         recyclerView = root.findViewById(R.id.gallery_two_screen);
-//        recyclerView1 = root.findViewById(R.id.gallery_three_screen);
 
-//        txt = root.findViewById(R.id.category_one_txt);
-//        txt1 = root.findViewById(R.id.view_one_txt);
-
-//        txt2 = root.findViewById(R.id.cat_two);
-//        view1 = root.findViewById(R.id.view_two_txt);
-
-//        txt1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(),View_All_Cat.class);
-//                intent.putExtra("catalog_id", catalog_id);
-//                intent.putExtra("gallery_id","dfg");
-//                startActivity(intent);
-//            }
-//        });
-//
-//       view1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(getActivity(),View_All_Cat.class);
-//                intent.putExtra("catalog_id", catalog_id);
-//                intent.putExtra("gallery_id","photos");
-//                startActivity(intent);
-//            }
-//        });
 
         Intent intent = getActivity().getIntent();
         data = intent.getStringExtra("id");
@@ -121,114 +90,74 @@ public class Gallery_Fragment extends Fragment {
 
                 try {
 
+                    galleryModelList = new ArrayList<>();
 
-                    JSONObject jsonObject = response.getJSONObject("data");
-                    jsonArray = jsonObject.getJSONArray("gvkdfgj");
-//                    jsonArray1 = jsonObject.getJSONArray("photos");
+                    JSONArray jsonArray = response.getJSONArray("data");
 
-//
-//                    for (int i=0;i< jsonArray.length();i++){
-//
-//                        JSONObject jsonObject1 = jsonArray1.getJSONObject(i);
-//
-//                        id = jsonObject1.getString("id");
-//                        cat_id = jsonObject1.getString("category_id");
-//                        catalog_id = jsonObject1.getString("catalog_id");
-//                        gallery_id = jsonObject1.getString("gallery_category");
-//                        img = jsonObject1.getString("image");
-//
-//                        Log.i("lwgnjhiorwhgt",jsonArray.toString());
-//
-//
-//
-//
-//                        galleryModelList = new ArrayList<>();
-//
-//                        Gallery_Model viewmodel = new Gallery_Model();
-//
-//
-////                        viewmodel.setImg(img);
-//                     viewmodel.setTxt(gallery_id);
-//                     viewmodel.setTxt1("view all");
-//
-//
-//                        galleryModelList.add(viewmodel);
-//
-//
-//
-//
-//                   }
-//                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//                    //RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
-////                    recyclerView.setLayoutManager(mLayoutManager);
-//                    adapter =  new Gallery_Adapter(getActivity(),galleryModelList);
-//                    recyclerView.setAdapter(adapter);
-//
-//
-//
-//                    galleryOneModelList = new ArrayList<>();
-//
-//                    Gallery_One_Model viewmodel = new Gallery_One_Model();
-//
-//
-//                        viewmodel.setImg(img);
-//
-//                    galleryOneModelList.add(viewmodel);
-//
-//
-//
-//
-//
-//                recyclerView1.setLayoutManager(new LinearLayoutManager(getActivity()));
-//                //RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getActivity(), 2);
-////                    recyclerView.setLayoutManager(mLayoutManager);
-//                adapter1 =  new Gallery_One_Adapter(getActivity(),galleryOneModelList);
-//                recyclerView1.setAdapter(adapter1);
+                    for (int i=0;i< jsonArray.length();i++){
+
+                        JSONObject jsonObject1 = jsonArray.getJSONObject(i);
 
 
-//                    for (int i=0;i< jsonArray1.length();i++){
-//                        JSONObject jsonObject2 = jsonArray1.getJSONObject(i);
-//                        id = jsonObject2.getString("id");
-//                        cat_id = jsonObject2.getString("category_id");
-//                        catalog_id = jsonObject2.getString("catalog_id");
-//                        gallery_id = jsonObject2.getString("gallery_category");
-//                        img = jsonObject2.getString("image");
-//
-//                        Log.i("id",id);
-//                        Log.i("cat_id",cat_id);
-//                        Log.i("catlog_id",catalog_id);
-//                        Log.i("gall_cat",gallery_id);
-//                        Log.i("img",img);
-//                        Log.i("length", String.valueOf(jsonArray1.length()));
-//
-//
-//                       galleryModelList = new ArrayList<>();
-//
-//                        Gallery_Model viewmodel = new Gallery_Model();
-//
-//
-//                        viewmodel.setImg(img);
-//                        txt2.setText(gallery_id);
-//                        txt1.setText("View all");
-//
-//
-//                        galleryModelList.add(viewmodel);
-//
-//                    }
-//
-//
-//
-//                    RecyclerView.LayoutManager mLayoutManager1 = new GridLayoutManager(getActivity(), 2);
-//                    recyclerView1.setLayoutManager(mLayoutManager1);
-////                    recyclerView1.setLayoutManager(new LinearLayoutManager(getActivity()));
-//                    adapter =  new Gallery_Adapter(getActivity(),galleryModelList);
-//                    recyclerView1.setAdapter(adapter);
+                        gallery_name = jsonObject1.getString("category");
+
+                        JSONArray jsonArray2 = jsonObject1.getJSONArray("images");
 
 
+
+
+
+                        Gallery_Model viewmodel = new Gallery_Model();
+
+
+
+                        viewmodel.setTxt(gallery_name);
+                        viewmodel.setTxt1("view all");
+
+
+
+
+//                        Toast.makeText(getActivity(), jsonArray2.toString(), Toast.LENGTH_SHORT).show();
+//                        Log.i("rdjeijfrie",jsonArray2.toString());
+
+
+                        for (int j=0;j<jsonArray2.length();j++) {
+                            JSONObject jsonObject2 = jsonArray2.getJSONObject(j);
+
+                            String img;
+                            img = jsonObject2.getString("image");
+
+
+
+
+
+                            if (j == 0){
+                                viewmodel.setImg1(img);
+                            }
+
+                            if (j == 1){
+                                viewmodel.setImd2(img);
+                            }
+                            if (j == 2){
+                                viewmodel.setImd3(img);
+                            }
+                            if (j == 3){
+                                viewmodel.setImd4(img);
+                            }
+
+
+                        }
+
+                        galleryModelList.add(viewmodel);
+                   }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
+
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                adapter =  new Gallery_Adapter(getActivity(),galleryModelList);
+                recyclerView.setAdapter(adapter);
 
 
 
@@ -240,14 +169,6 @@ public class Gallery_Fragment extends Fragment {
 
             }
         }){
-            @Override
-            protected Map<String,String> getParams(){
-                Map<String,String> params = new HashMap<String, String>();
-
-
-
-                return params;
-            }
 
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
@@ -255,7 +176,7 @@ public class Gallery_Fragment extends Fragment {
 
                 params.put("Accept","Application/json");
                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
-                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(getActivity()));
+
 
                 return params;
             }

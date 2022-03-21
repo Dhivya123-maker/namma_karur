@@ -36,7 +36,7 @@ public class Gallery_Adapter extends RecyclerView.Adapter<Gallery_Adapter.ViewHo
     @NonNull
     @Override
     public Gallery_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_fourty_one,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_recycle,parent,false);
 
         
         return new Gallery_Adapter.ViewHolder(view);
@@ -48,13 +48,22 @@ public class Gallery_Adapter extends RecyclerView.Adapter<Gallery_Adapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        //holder.img.setImageResource(R.drawable.mahal_one);
-//        Glide.with(context)
-//                .load(galleryModelList.get(position).getImg())
-//                .into(holder.img);
+
+        Glide.with(context)
+                .load(galleryModelList.get(position).getImg1())
+                .into(holder.img1);
+        Glide.with(context)
+                .load(galleryModelList.get(position).getImd2())
+                .into(holder.img2);
+        Glide.with(context)
+                .load(galleryModelList.get(position).getImd3())
+                .into(holder.img3);
+        Glide.with(context)
+                .load(galleryModelList.get(position).getImd4())
+                .into(holder.img4);
 
         holder.txt.setText(galleryModelList.get(position).getTxt());
-        holder.txt1.setText(galleryModelList.get(position).getTxt1());
+
 
 
     }
@@ -73,19 +82,22 @@ public class Gallery_Adapter extends RecyclerView.Adapter<Gallery_Adapter.ViewHo
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView img;
-        TextView txt,txt1;
-        RecyclerView recyclerView;
+        ImageView img1,img2,img3,img4;
+        TextView txt;
+
 
 
         ViewHolder(View itemView) {
             super(itemView);
-            //img = itemView.findViewById(R.id.mahal_image);
+            img1 = itemView.findViewById(R.id.mahal_one_image);
+            img2 = itemView.findViewById(R.id.mahal_two_image);
+            img3 = itemView.findViewById(R.id.mahal_three_image);
+            img4 = itemView.findViewById(R.id.mahal_four_image);
             txt = itemView.findViewById(R.id.categoryy);
-            txt1 = itemView.findViewById(R.id.vieww);
 
 
-//            recyclerView = itemView.findViewById(R.id.gall_screen);
+
+
 
 
 

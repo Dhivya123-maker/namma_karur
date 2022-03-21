@@ -18,10 +18,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -46,6 +48,7 @@ import com.e.login.utils.PreferenceUtils;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,6 +60,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -81,6 +85,8 @@ public class Edit extends AppCompatActivity {
     Bitmap bitmap;
 
     Uri imageuri;
+
+
 
 
     @Override
@@ -146,13 +152,13 @@ public class Edit extends AppCompatActivity {
 
 
 
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                imageBrowse();
-            }
-        });
+//        edit.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                imageBrowse();
+//            }
+//        });
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -273,6 +279,8 @@ public class Edit extends AppCompatActivity {
 
     public  void profile_page() {
 
+
+
         Dob = dob.getText().toString();
         B_gp = b_gp.getText().toString();
         Desc = desc.getText().toString();
@@ -282,120 +290,35 @@ public class Edit extends AppCompatActivity {
         Pos = add5.getText().toString();
         Skills = add7.getText().toString();
 
+        Ins = inst.getText().toString();
+        Deg = deg.getText().toString();
+        Year = yr.getText().toString();
 
 
-        for (int i = 0; i<arrayList.size();i++){
-
-            for (int j = 0; j< 3;j++){
-
-                Ins = inst.getText().toString();
-                Deg = deg.getText().toString();
-                Year = yr.getText().toString();
-
-                arrayList.add(Ins);
-                arrayList.add(Year);
-                arrayList.add(Deg);
 
 
-                Log.i("epjhrfueioyhrt9",arrayList.toString());
 
+        arrayList.add(Ins);
+        arrayList.add(Year);
+        arrayList.add(Deg);
+
+
+
+
+
+        String[][] arr = { { Ins, Year,Deg } };
+
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < 3; j++){
+                Log.i("wesdfghhgf","arr[" + i + "][" + j + "] = " + arr[i][j]);
         }
         }
 
 
 
-        String url = "http://nk.inevitabletech.email/public/api/send-profile-details";
-        JSONObject jsonBody = new JSONObject();
 
+        Log.i("epjhrfueioyhrt9",arrayList.toString());
 
-        try {
-
-            final String education = "[\n" +
-                    " {\n" +
-                    "  \"education\": " + arrayList +
-                    " }\n" +
-                    "]"
-                    ;
-
-
-            try {
-                jsonBody.put("dob", Dob);
-                jsonBody.put("blood_group", B_gp);
-                jsonBody.put("description", Desc);
-//                jsonBody.put("image","Q9Qke1NMU1.png");
-
-
-                for (int i = 0; i < education.length(); i++) {
-                    for (int j = 0; j<education.length();j++){
-                        jsonBody.put("education", education);
-                        Log.i("kjfhggy",education);
-                    }
-
-               }
-
-
-            Log.i("qpowru0qp9eruiop-",jsonBody.toString());
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-
-
-
-
-
-                    try {
-                        String Success = response.getString("success");
-                        String msg = response.getString("message");
-
-
-                        if (Success == "true") {
-
-                            Toast.makeText(Edit.this, msg, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(Edit.this, Profile.class);
-                            startActivity(intent);
-
-                        } else {
-
-
-                            Toast.makeText(Edit.this, msg, Toast.LENGTH_SHORT).show();
-
-
-                        }
-
-
-                    } catch (Exception e) {
-                        e.printStackTrace();
-
-                    }
-
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Charset charset = Charset.defaultCharset();
-                    String str = new String(error.networkResponse.data, charset);
-                    Toast.makeText(Edit.this, str, Toast.LENGTH_SHORT).show();
-                    Log.i("ewohfg9uwrytg9", str);
-
-
-                }
-            }) {
-
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    Map<String, String> params = new HashMap<String, String>();
-                    params.put("Accept", "application/json");
-                    params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(Edit.this));
-
-                    return params;
-                }
-            };
 
             jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
                     10000,
