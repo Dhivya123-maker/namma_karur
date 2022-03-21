@@ -249,15 +249,6 @@ public class Profile extends AppCompatActivity {
         });
 
 
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-                imageUpload();
-
-            }
-        });
 
 
     }
