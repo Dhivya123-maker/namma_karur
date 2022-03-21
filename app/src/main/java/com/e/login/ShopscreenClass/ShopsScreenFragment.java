@@ -201,7 +201,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
             atm_visible.setVisibility(View.GONE);
             visible_lnr.setVisibility(View.VISIBLE);
 
-        }else if(data2.equals("AtmCatalog")){
+        }else if(data2.equals("ATMCatalog")){
             String url = api + "get-atm-catalog-list?atm_category_id="+data3;
             atm_screen(url);
             ac.setText(data);
@@ -498,7 +498,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
         String S_name = model.getText();
 
 
-        if(data2.equals("AtmCatalog")){
+        if(data2.equals("ATMCatalog")){
 //
 //            Uri gmmIntentUri = Uri.parse("geo:10.9601,78.0766");
 //            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);

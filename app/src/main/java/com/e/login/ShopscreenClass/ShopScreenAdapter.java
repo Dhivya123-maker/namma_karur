@@ -83,7 +83,7 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
 //                .load(shopScreenModelList.get(position).getImage())
 //                .into(holder.img);
 
-        if (shopScreenModelList.get(position).getCategory().equals("AtmCatalog")){
+        if (shopScreenModelList.get(position).getCategory().equals("ATMCatalog")){
 
             holder.atm_txt.setText(shopScreenModelList.get(position).getText());
             holder.  atm_desc.setText(shopScreenModelList.get(position).getText_one());
