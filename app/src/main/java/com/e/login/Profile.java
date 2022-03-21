@@ -162,13 +162,6 @@ public class Profile extends AppCompatActivity {
         contact_verify = findViewById(R.id.contact_verify);
 
 
-        exp_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Profile.this, Education_details.class);
-                startActivity(intent);
-            }
-        });
 
         edu_add.setOnClickListener(new View.OnClickListener() {
             @Override
