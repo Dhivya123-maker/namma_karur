@@ -145,7 +145,7 @@ public class ShopClassAdapter extends RecyclerView.Adapter<ShopClassAdapter.View
 
 
         }
-        else if (shopModelList.get(position).getCategory().equals("NgoCatalog")){
+        else if (shopModelList.get(position).getCategory().equals("GovtNgoCatalog")){
 
             holder.linearLayout.setVisibility(View.GONE);
             holder.relativeLayout.setVisibility(View.GONE);
@@ -162,7 +162,7 @@ public class ShopClassAdapter extends RecyclerView.Adapter<ShopClassAdapter.View
 
 
 
-        }else if (shopModelList.get(position).getCategory().equals("AtmCatalog")) {
+        }else if (shopModelList.get(position).getCategory().equals("ATMCatalog")) {
 
             holder.linearLayout.setVisibility(View.GONE);
             holder.relativeLayout.setVisibility(View.VISIBLE);
