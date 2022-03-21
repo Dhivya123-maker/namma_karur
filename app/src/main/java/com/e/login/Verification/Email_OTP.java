@@ -67,7 +67,6 @@ public class Email_OTP extends AppCompatActivity {
 //        user_id = i1.getStringExtra("user_id");
 //        email_get = i1.getStringExtra("email");
 
-        Toast.makeText(Email_OTP.this, data1, Toast.LENGTH_SHORT).show();
 
         mail.setText(data2);
 

@@ -164,7 +164,7 @@ public class Blank_PostFragment extends Fragment {
             String url = api + "get-shop-details?shop_id=" + data3;
             social(url);
             ifsc.setVisibility(View.GONE);
-            verify.setText("Yes");
+
 
 
 
@@ -615,7 +615,7 @@ public class Blank_PostFragment extends Fragment {
                     open_tm.setText(open_time);
                     close_tm.setText(close_time);
                     rate.setText(rating);
-                    // verify.setText(verified);
+                     verify.setText(verified);
                     desc.setText(description);
 //                    phone_num.setText(phone);
                     view_ct.setText(view_count);
@@ -651,7 +651,6 @@ public class Blank_PostFragment extends Fragment {
                 Map<String, String> params = new HashMap<String, String>();
 
                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
-                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(getActivity()));
                 return params;
             }
         };

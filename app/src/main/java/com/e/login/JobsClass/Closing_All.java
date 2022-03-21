@@ -84,7 +84,7 @@ public class Closing_All extends AppCompatActivity {
             @SuppressLint("CheckResult")
             @Override
             public void onResponse(JSONObject response) {
-                Log.i("hgtviubhtdruh6r y",response.toString());
+
 
 
 
@@ -193,7 +193,7 @@ public class Closing_All extends AppCompatActivity {
             @SuppressLint("CheckResult")
             @Override
             public void onResponse(JSONObject response) {
-                Log.i("hgtviubhtdruh6r y",response.toString());
+
 
 
 

@@ -43,7 +43,6 @@ public class Phone_txt extends AppCompatActivity {
 
         id = intent.getStringExtra("id");
 
-        Toast.makeText(Phone_txt.this, id, Toast.LENGTH_SHORT).show();
 
         send = findViewById(R.id.send_phone);
         number = findViewById(R.id.verify_edit1);

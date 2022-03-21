@@ -77,8 +77,6 @@ public class Products_Fragment extends Fragment implements ProductsAdapter.OnIte
         data2 = intent.getStringExtra("list");
         data3 = intent.getStringExtra("id");
 
-        Toast.makeText(getActivity(), data2, Toast.LENGTH_SHORT).show();
-        Toast.makeText(getActivity(), data3, Toast.LENGTH_SHORT).show();
 
 
 

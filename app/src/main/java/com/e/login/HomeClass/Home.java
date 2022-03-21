@@ -119,7 +119,6 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         phone = i.getStringExtra("phone");
         user_id = i.getStringExtra("user_id");
 
-        Toast.makeText(Home.this, data1, Toast.LENGTH_SHORT).show();
 
 
 
@@ -456,7 +455,6 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("Authorization","Bearer "+ PreferenceUtils.getToken(Home.this));
-                params.put("Authorization", "Bearer " + PreferenceUtils.getToken1(Home.this));
 
 
 
@@ -551,7 +549,6 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
 
                 params.put("Accept","application/json");
                 params.put("Authorization", "Bearer " + PreferenceUtils.getToken(Home.this));
-                params.put("Authorization", "Bearer " + PreferenceUtils.getToken1(Home.this));
                 return params;
             }
         };
