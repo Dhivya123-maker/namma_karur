@@ -255,7 +255,6 @@ public class Gallery_Fragment extends Fragment {
 
                 params.put("Accept","Application/json");
                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
-                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(getActivity()));
 
                 return params;
             }

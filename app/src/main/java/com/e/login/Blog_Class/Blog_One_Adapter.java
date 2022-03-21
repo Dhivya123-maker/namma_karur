@@ -49,6 +49,7 @@ public class Blog_One_Adapter extends RecyclerView.Adapter<Blog_One_Adapter.View
     private Context context;
     String Success;
     String msg;
+    String id;
 
     public static ShopClassAdapter.OnItemClickListener mListener;
 
@@ -123,7 +124,7 @@ public class Blog_One_Adapter extends RecyclerView.Adapter<Blog_One_Adapter.View
                 public void onClick(View view) {
                       int position = getAdapterPosition();
                     String link = blogOneModelList.get(position).getLink();
-                    String id = blogOneModelList.get(position).getId();
+                  id= blogOneModelList.get(position).getId();
 
                     Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
                     context.startActivity(browserIntent);
@@ -161,6 +162,7 @@ public class Blog_One_Adapter extends RecyclerView.Adapter<Blog_One_Adapter.View
     }
     public  void v_count(){
         String url = "http://nk.inevitabletech.email/public/api/blog-view-count-increment?blog_id=1";
+
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @SuppressLint("CheckResult")
@@ -217,7 +219,6 @@ public class Blog_One_Adapter extends RecyclerView.Adapter<Blog_One_Adapter.View
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("Accept", "application/json");
                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(context.getApplicationContext()));
-                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(context.getApplicationContext()));
                 return params;
             }
         };
