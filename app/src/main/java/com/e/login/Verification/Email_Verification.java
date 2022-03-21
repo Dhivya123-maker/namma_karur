@@ -46,7 +46,6 @@ public class Email_Verification extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
 
-        Toast.makeText(Email_Verification.this, id, Toast.LENGTH_SHORT).show();
 
 
        send.setOnClickListener(new View.OnClickListener() {
