@@ -11,6 +11,7 @@ import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,7 +55,7 @@ public class OnBoarding extends AppCompatActivity {
     //    if the user clicks the next screen button it wikll go to the current position
     int currentPosition;
 
-    LinearLayout linearLayout;
+    RelativeLayout linearLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -123,6 +123,18 @@
 
         </EditText>
 
+        <TextView
+            android:id="@+id/error1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#E53935"
+            android:layout_below="@+id/user"
+            android:layout_margin="10dp"
+            android:textAlignment="textEnd"
+            android:paddingEnd="40dp"
+            android:visibility="gone"
+            />
+
 
 
 <!--     <ImageView-->
@@ -134,42 +146,54 @@
 <!--        />-->
 
 
-    <EditText
-        android:id="@+id/pass"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/user"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="25dp"
-        android:inputType="textPassword"
-        android:layout_marginEnd="40dp"
-        android:background="@drawable/rounded_borders"
-        android:hint="Password"
-        android:singleLine="true"
-        android:paddingStart="20dp"
-        android:textColor="@color/black"
-        android:textColorHint="#808080"
-        android:textSize="14dp"
-        android:textStyle="bold">
+        <EditText
+            android:id="@+id/pass"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/error1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/rounded_borders"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingStart="20dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="#808080"
+            android:textSize="14dp"
+            android:textStyle="bold">
 
-    </EditText>
+        </EditText>
 
-    <ImageView
-        android:id="@+id/show_pass_btn_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="468dp"
-        android:layout_marginEnd="55dp"
-        android:onClick="ShowHidePass"
-        android:src="@drawable/ic_baseline_visibility_off_24"
-        tools:ignore="OnClick" />
+        <ImageView
+            android:id="@+id/show_pass_btn_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/error1"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="55dp"
+            android:onClick="ShowHidePass"
+            android:src="@drawable/ic_baseline_visibility_off_24"
+            tools:ignore="OnClick" />
+        <TextView
+            android:id="@+id/error2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#E53935"
+            android:layout_below="@+id/pass"
+            android:layout_margin="10dp"
+            android:textAlignment="textEnd"
+            android:paddingEnd="40dp"
+            android:visibility="gone"
+            />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/pass"
+        android:layout_below="@+id/error2"
         android:orientation="vertical">
 
         <TextView
