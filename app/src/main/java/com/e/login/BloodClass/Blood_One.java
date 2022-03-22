@@ -127,8 +127,6 @@ public class Blood_One extends AppCompatActivity {
                 public void onResponse(JSONObject response) {
 
 
-                    Log.i("0000000",response.toString());
-                    Toast.makeText(Blood_One.this, response.toString(), Toast.LENGTH_SHORT).show();
 
                     try {
 

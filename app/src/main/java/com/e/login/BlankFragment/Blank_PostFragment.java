@@ -152,12 +152,6 @@ public class Blank_PostFragment extends Fragment {
         follow_txt = root.findViewById(R.id.follow_txt);
 
 
-//        if(follow_id == null){
-//            follow_txt.setText("Follow");
-//
-//        }else if(follow_id!=null){
-//            follow_txt.setText("Following");
-//        }
 
 
         if (data2.equals("ShopCatalog")) {
@@ -568,22 +562,27 @@ public class Blank_PostFragment extends Fragment {
                     follow_id = followArray.getString("id");
 
 
-
                     view_count = jsonObject.getString("view_count");
 
 
-                    Log.i("wekfiurwehg", followArray.toString());
-                    Log.i("wekfiurwehg", catalog_type);
+                    titlee.setText(title);
+                    addres.setText(address);
+                    open_tm.setText(open_time);
+                    close_tm.setText(close_time);
+                    rate.setText(rating);
+                    verify.setText(verified);
+                    desc.setText(description);
+//                    phone_num.setText(phone);
+                    view_ct.setText(view_count);
 
 
-//                String Success = response.getString("success");
-//                String msg = response.getString("message");
+
 
                     JSONArray res = jsonObject.getJSONArray("comments");
 
-                    blank_comments_modelList = new ArrayList<>();
-                    for (int i = 0; i <=3; i++) {
 
+                    blank_comments_modelList = new ArrayList<>();
+                    for (int i = 0; i<3; i++) {
 
                         JSONObject data = res.getJSONObject(i);
 
@@ -601,24 +600,21 @@ public class Blank_PostFragment extends Fragment {
                         viewmodel.setTxt1(comment);
                         viewmodel.setTxt2(com_rating);
 
+
+
                         blank_comments_modelList.add(viewmodel);
 
                     }
+
+
+
 
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     adapter = new Blank_Comments_Adapter(getContext(), blank_comments_modelList);
                     recyclerView.setAdapter(adapter);
 
 
-                    titlee.setText(title);
-                    addres.setText(address);
-                    open_tm.setText(open_time);
-                    close_tm.setText(close_time);
-                    rate.setText(rating);
-                     verify.setText(verified);
-                    desc.setText(description);
-//                    phone_num.setText(phone);
-                    view_ct.setText(view_count);
+
 
 
                 } catch (JSONException e) {
@@ -853,7 +849,7 @@ public class Blank_PostFragment extends Fragment {
 
 
 
-                        for (int i = 0; i < jsonArray.length(); i++) {
+                        for (int i = 0; i<jsonArray.length(); i++) {
 
 
                             JSONObject data = jsonArray.getJSONObject(i);
@@ -921,57 +917,6 @@ public class Blank_PostFragment extends Fragment {
 
 
     }
-
-//public void identity(){
-//    if(data2.equals("ShopCatalog")){
-//        String url = api + "unfollow?id="+follow_id;
-//        un_follow(url);
-//        follow_txt.setText("Follow");
-//
-//
-//
-//
-//    }else if(data2.equals("ServiceCatalog")) {
-//        String url = api + "unfollow?id="+follow_id;
-//        un_follow(url);
-//        follow_txt.setText("Follow");
-//
-//    } else if(data2.equals("EducationCatalog")){
-//        String url = api + "unfollow?id="+follow_id;
-//        un_follow(url);
-//        follow_txt.setText("Follow");
-//
-//    }else if(data2.equals("TransportCatalog")){
-//        String url = api + "unfollow?id="+follow_id;
-//        un_follow(url);
-//        follow_txt.setText("Follow");
-//
-//    }else if(data2.equals("HospitalCatalog")){
-//        String url = api + "unfollow?id="+follow_id;
-//        un_follow(url);
-//
-//    }else if(data2.equals("EventCatalog")){
-//        String url = api + "unfollow?id="+follow_id;
-//        un_follow(url);
-//        follow_txt.setText("Follow");
-//
-//    }else if(data2.equals("HotelCatalog")){
-//        String url = api + "unfollow?id="+follow_id;
-//        un_follow(url);
-//        follow_txt.setText("Follow");
-//
-//
-//    }else if(data2.equals("BankCatalog")){
-//        String url = api + "unfollow?id="+follow_id;
-//        un_follow(url);
-//        follow_txt.setText("Follow");
-//
-//    }
-//
-//
-//
-//}
-
 
 
 

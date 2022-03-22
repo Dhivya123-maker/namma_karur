@@ -69,25 +69,12 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//
-//        holder.textView.setText(shopScreenModelList.get(position).getText());
-//        holder.textView1.setText(shopScreenModelList.get(position).getText_one());
-//        holder.textView2.setText(shopScreenModelList.get(position).getText_two());
-//        holder.textView3.setText(shopScreenModelList.get(position).getText_three());
-//        holder.textView4.setText(shopScreenModelList.get(position).getText_four());
 
-//
-////        holder.img.setImageResource(R.drawable.ac_one);
-//
-//        Glide.with(context)
-//                .load(shopScreenModelList.get(position).getImage())
-//                .into(holder.img);
 
         if (shopScreenModelList.get(position).getCategory().equals("ATMCatalog")){
 
             holder.atm_txt.setText(shopScreenModelList.get(position).getText());
             holder.  atm_desc.setText(shopScreenModelList.get(position).getText_one());
-//            holder.textView2.setText(shopScreenModelList.get(position).getText_two());
             holder.loc.setText(shopScreenModelList.get(position).getText_three());
 
             Glide.with(context)

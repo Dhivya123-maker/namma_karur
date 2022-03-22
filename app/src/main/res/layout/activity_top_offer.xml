@@ -441,6 +441,7 @@
                                                 app:kswTextExtra="8dp"
                                                 android:letterSpacing="0.01"
                                                 app:kswTextOff="close"
+                                                android:enabled="false"
                                                 app:kswThumbColor="#4c9a2a"
                                                 app:kswBackColor="@color/white"
                                                 app:kswTextOn="open"
