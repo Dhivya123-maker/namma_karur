@@ -499,13 +499,6 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
 
         if(data2.equals("ATMCatalog")){
-//
-//            Uri gmmIntentUri = Uri.parse("geo:10.9601,78.0766");
-//            Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-//            mapIntent.setPackage("com.google.android.apps.maps");
-//            if (mapIntent.resolveActivity(getPackageManager()) != null) {
-//                startActivity(mapIntent);
-//            }
 
 
         }

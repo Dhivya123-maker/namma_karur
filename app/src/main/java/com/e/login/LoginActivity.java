@@ -471,14 +471,14 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
                             Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, Home.class);
                             intent.putExtra("email",eemail);
-                            intent.putExtra("google_id", goo_id);
+//                            intent.putExtra("google_id", goo_id);
                             intent.putExtra("id",id);
-                            intent.putExtra("token",token);
+//                            intent.putExtra("token",token);
 
                             PreferenceUtils.saveid(id,LoginActivity.this);
                             PreferenceUtils.saveToken(token,LoginActivity.this);
-                            PreferenceUtils.saveid1(goo_id,LoginActivity.this);
-                           PreferenceUtils.saveToken1(token,LoginActivity.this);
+//                            PreferenceUtils.saveid1(goo_id,LoginActivity.this);
+//                           PreferenceUtils.saveToken1(token,LoginActivity.this);
 
 
 

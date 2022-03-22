@@ -2,6 +2,7 @@ package com.e.login.Blog_Class;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -34,6 +36,7 @@ import com.e.login.JobsClass.Jobs_two_Adapter;
 import com.e.login.JobsClass.Jobs_two_Model;
 import com.e.login.NewsClass.View_Breaking;
 import com.e.login.R;
+import com.e.login.ShopClass.ShopClassAdapter;
 import com.e.login.ShopscreenClass.Slidershop_Top_Adapter;
 import com.e.login.utils.PreferenceUtils;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
@@ -43,6 +46,7 @@ import com.smarteist.autoimageslider.SliderView;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -262,6 +266,9 @@ public class Blog_Fragment extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
 
+                Charset charset = Charset.defaultCharset();
+                String str = new String(error.networkResponse.data,charset);
+                Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
             }
         }){
             @Override
@@ -300,6 +307,10 @@ public class Blog_Fragment extends Fragment {
 //    public void onItemClick(int position) {
 //        Blog_One_Model model = new Blog_One_Model();
 //        String link = model.getLink();
+//
+//        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+//        startActivity(browserIntent);
+//
 //
 //
 //

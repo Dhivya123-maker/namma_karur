@@ -177,7 +177,6 @@ public class Gallery_Fragment extends Fragment {
                 params.put("Accept","Application/json");
                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
 
-
                 return params;
             }
         };

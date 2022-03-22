@@ -699,7 +699,6 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
                 Map<String,String> params = new HashMap<String, String>();
 
                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
-                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(getActivity()));
               //  params.put("Authorization", "Bearer  " + data);
 
                 return params;
@@ -725,19 +724,19 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
             Intent intent = new Intent(getActivity(), OfferActivity.class);
             intent.putExtra("cat",cat_name);
             startActivity(intent);
-        }else if (cat_name.equals("Newscatalog")){
+        }else if (cat_name.equals("NewsCatalog")){
             Intent intent = new Intent(getActivity(), NewsActivity.class);
             intent.putExtra("cat",cat_name);
             startActivity(intent);
         }else if (cat_name.equals("BloodCatalog")){
             Intent intent = new Intent(getActivity(), Blood_Fragment.class);
             startActivity(intent);
-        }else if (cat_name.equals("KarurblogCatalog")){
+        }else if (cat_name.equals("KarurBlogCatalog")){
                  Intent intent = new Intent(getActivity(), BlogActivity.class);
                  intent.putExtra("cat",cat_name);
                  startActivity(intent);
              }
-             else if (cat_name.equals("JobCatalog")){
+             else if (cat_name.equals("JobsCatalog")){
             Intent intent = new Intent(getActivity(), Jobs.class);
             intent.putExtra("cat",cat_name);
 

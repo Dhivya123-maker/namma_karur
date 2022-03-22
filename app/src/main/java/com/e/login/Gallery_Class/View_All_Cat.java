@@ -90,8 +90,7 @@ public class View_All_Cat extends AppCompatActivity {
             public void onResponse(JSONObject response) {
 
 
-                Log.i("00000001111",response.toString());
-                Toast.makeText(View_All_Cat.this, response.toString(), Toast.LENGTH_SHORT).show();
+
 
                 try {
 

@@ -125,6 +125,8 @@ public class Home_Fragment_Class extends AppCompatActivity {
             viewPagerAdapter.add(new ShopPost(), "Quotes");
             viewPagerAdapter.add(new MoreInfo(), "Videos");
 
+        }else if(data1.equals("ATMCatalog")){
+
         }
 
 
