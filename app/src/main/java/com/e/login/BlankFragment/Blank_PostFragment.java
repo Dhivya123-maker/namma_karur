@@ -148,7 +148,7 @@ public class Blank_PostFragment extends Fragment {
         data2 = intent.getStringExtra("list");
         data3 = intent.getStringExtra("id");
         verify = root.findViewById(R.id.verifyy_txt);
-
+        follow = root.findViewById(R.id.follow_linear);
         follow_txt = root.findViewById(R.id.follow_txt);
 
 
@@ -199,36 +199,36 @@ public class Blank_PostFragment extends Fragment {
 
 
 
-        follow = root.findViewById(R.id.follow_linear);
-
-
-//        if(followArray != null){
-//            follow_txt.setText("Following");
-//
-//
-//        }else {
-//            follow_txt.setText("Follow");
-//        }
 
 
 
+        if(followArray != null){
+            follow_txt.setText("Following");
 
-//        follow.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                if (followArray == null) {
-//                        follow();
-//                }
-//
-//                else if(followArray != null){
-//
-//                      un_follow();
-//
-//                }
-//
-//            }
-//        });
+
+        }else {
+            follow_txt.setText("Follow");
+        }
+
+
+
+
+        follow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (followArray == null) {
+                        follow();
+                }
+
+                else if(followArray != null){
+
+                      un_follow();
+
+                }
+
+            }
+        });
 
 
 
@@ -535,7 +535,7 @@ public class Blank_PostFragment extends Fragment {
 
                     JSONObject jsonObject = response.getJSONObject("data");
 
-//                    followArray = jsonObject.getJSONObject("follow");
+
 
 
 
@@ -554,14 +554,7 @@ public class Blank_PostFragment extends Fragment {
                     website = jsonObject.getString("website");
                     email = jsonObject.getString("email");
                     phone = jsonObject.getString("phone");
-
-//                    catalog_id = followArray.getString("catalog_id");
-//                    catalog_type = followArray.getString("catalog_type");
-//                    follow_id = followArray.getString("id");
-
-
                     view_count = jsonObject.getString("view_count");
-
 
                     titlee.setText(title);
                     addres.setText(address);
@@ -572,6 +565,18 @@ public class Blank_PostFragment extends Fragment {
                     desc.setText(description);
 //                    phone_num.setText(phone);
                     view_ct.setText(view_count);
+
+
+                    followArray = jsonObject.getJSONObject("follow");
+                    catalog_id = followArray.getString("catalog_id");
+                    catalog_type = followArray.getString("catalog_type");
+                    follow_id = followArray.getString("id");
+
+
+
+
+
+
 
 
 
