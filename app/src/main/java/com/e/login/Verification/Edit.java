@@ -12,8 +12,6 @@ import com.e.login.R;
 public class Edit extends AppCompatActivity {
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

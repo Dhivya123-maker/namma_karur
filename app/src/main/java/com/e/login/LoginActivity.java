@@ -79,6 +79,8 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
     String phonee = null;
     String eemail,name,goo_id,goo_token,user_id;
 
+    TextView Error1,Error2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,6 +106,9 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
         userEmail.setVisibility(View.GONE);
         userId = (TextView) findViewById(R.id.userId);
         userId.setVisibility(View.GONE);
+
+        Error1 = findViewById(R.id.error1);
+        Error2 = findViewById(R.id.error2);
 
 
 
@@ -198,6 +203,9 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
 
                 login();
 
+                Error1.setVisibility(View.GONE);
+                Error2.setVisibility(View.GONE);
+
             }
         });
 
@@ -287,14 +295,14 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
 
                             Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, Home.class);
-                            intent.putExtra("id","4");
-                            intent.putExtra("token",token);
+                            intent.putExtra("id", "4");
+                            intent.putExtra("token", token);
 //                            intent.putExtra("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNjY5ZWM2NzE0MDFmYTk2MWUwNzQ5NjMyMTNmODljODkxMzIwODA5N2VhNmMwNTI0N2Y4NWRjZTMxN2Y0MGQ2ZTUyZjc1MzVjNjVhYWMzMGUiLCJpYXQiOjE2NDcwODc1NjAuMDEyNjE2LCJuYmYiOjE2NDcwODc1NjAuMDEyNjIsImV4cCI6MTY3ODYyMzU2MC4wMDc4NjMsInN1YiI6IjEyIiwic2NvcGVzIjpbXX0.k67qYf2_wLc3roJU7vnuxzht64dpaFfcH18TJvYIQQtOBXT1CdF8p5XdetsvG2WZVkpttJo-O3ckFwYfKoh2otjPAYuGNOTk0ORlsJcgN6JOsHOs9sDxJZIthiPZ9lTe4xVBvreNVSfVDI9ciGgb0X2OatQ7_Xq5jdqIKF9dkf-sk6PqzfBIGR1z-25ST-0WikCzm7HIMAStMehAKj-v5xy0RCFytMItY-QwCkHT6Pr56QZeY8z81Ec0N-RGjxRUpLI9gxzADGLpACWhWuBwQiw8X71Ws1ey-VkrrSolsREuyzosm6jirERAmIuTq9UjYrjHCysVo1HGnjH1QI9DOfElicyWc_4ZLUi8z1l6q3m5D8qps_IKnk0pU4StC9jOxp6DRt5LJRQlVHRQTtj6h1ElHlV1B0Xm3YgWTWeMXxQovmif6Xf4684E0k11Amcm5RLb5aCNmZaki1Ctu46hVEB-6Sp4E44ReGaB70UaEtv8V2DYkMhJMHbYn2WIbaZicbiuwsICroipIk72Z7qiJ7THBO40sHvTuO9LW_WxHfhdWUMHCikUX9CWCcY5jyUo4HkOpoylSwqmYX31Ybm_-SK2kSIKNs3RlDHsdbCCs8aTRkWA5uRV_Y7ijUHtqYl1zau5ItET-X-oiJPYtGnWOVbAQ-PU3KOXkDmgIcGX9jE");
 
 //                            PreferenceUtils.saveid("4", LoginActivity.this);
 //                            PreferenceUtils.saveToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNjY5ZWM2NzE0MDFmYTk2MWUwNzQ5NjMyMTNmODljODkxMzIwODA5N2VhNmMwNTI0N2Y4NWRjZTMxN2Y0MGQ2ZTUyZjc1MzVjNjVhYWMzMGUiLCJpYXQiOjE2NDcwODc1NjAuMDEyNjE2LCJuYmYiOjE2NDcwODc1NjAuMDEyNjIsImV4cCI6MTY3ODYyMzU2MC4wMDc4NjMsInN1YiI6IjEyIiwic2NvcGVzIjpbXX0.k67qYf2_wLc3roJU7vnuxzht64dpaFfcH18TJvYIQQtOBXT1CdF8p5XdetsvG2WZVkpttJo-O3ckFwYfKoh2otjPAYuGNOTk0ORlsJcgN6JOsHOs9sDxJZIthiPZ9lTe4xVBvreNVSfVDI9ciGgb0X2OatQ7_Xq5jdqIKF9dkf-sk6PqzfBIGR1z-25ST-0WikCzm7HIMAStMehAKj-v5xy0RCFytMItY-QwCkHT6Pr56QZeY8z81Ec0N-RGjxRUpLI9gxzADGLpACWhWuBwQiw8X71Ws1ey-VkrrSolsREuyzosm6jirERAmIuTq9UjYrjHCysVo1HGnjH1QI9DOfElicyWc_4ZLUi8z1l6q3m5D8qps_IKnk0pU4StC9jOxp6DRt5LJRQlVHRQTtj6h1ElHlV1B0Xm3YgWTWeMXxQovmif6Xf4684E0k11Amcm5RLb5aCNmZaki1Ctu46hVEB-6Sp4E44ReGaB70UaEtv8V2DYkMhJMHbYn2WIbaZicbiuwsICroipIk72Z7qiJ7THBO40sHvTuO9LW_WxHfhdWUMHCikUX9CWCcY5jyUo4HkOpoylSwqmYX31Ybm_-SK2kSIKNs3RlDHsdbCCs8aTRkWA5uRV_Y7ijUHtqYl1zau5ItET-X-oiJPYtGnWOVbAQ-PU3KOXkDmgIcGX9jE",LoginActivity.this);
                             PreferenceUtils.saveid(id, LoginActivity.this);
-                            PreferenceUtils.saveToken(token,LoginActivity.this);
+                            PreferenceUtils.saveToken(token, LoginActivity.this);
 
                             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent);
@@ -307,15 +315,8 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
 //
 //                            String id = user.getString("id");
 
-
-
-
-                        } else {
-
-                            Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
-
-
                         }
+
 
 
                     } catch (Exception e) {
@@ -337,28 +338,42 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
                         JSONObject jsonObject = new JSONObject(str);
                         JSONObject data = jsonObject.getJSONObject("data");
 
-                        if (Email.isEmpty()) {
                             JSONArray jsonArray1 = data.getJSONArray("email");
-                            Toast.makeText(LoginActivity.this, jsonArray1.toString(), Toast.LENGTH_SHORT).show();
-                        }
-
-
-                        else if (Password.isEmpty()) {
-                            JSONArray jsonArray2 = data.getJSONArray("password");
-                            Toast.makeText(LoginActivity.this, jsonArray2.toString(), Toast.LENGTH_SHORT).show();
-
-
-                        }else{
-                            JSONObject data1 = jsonObject.getJSONObject("data");
-                            Toast.makeText(LoginActivity.this, data1.toString(), Toast.LENGTH_SHORT).show();
-                            Log.i("wiegftyiure",data1.toString());
-
-                        }
-
+                            Error1.setText(jsonArray1.getString(0));
+                            Error1.setVisibility(View.VISIBLE);
+//                            email.setError(jsonArray1.getString(0));
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("data");
+
+
+                            JSONArray jsonArray2 = data.getJSONArray("password");
+                            Error2.setText(jsonArray2.getString(0));
+                            Error2.setVisibility(View.VISIBLE);
+//                        password.setError(jsonArray2.getString(0));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("data");
+
+                        String jsonArray1 = data.getString("error");
+//                        email.setError(jsonArray1);
+                        Error1.setText(jsonArray1);
+                        Error1.setVisibility(View.VISIBLE);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
 
 
                 }

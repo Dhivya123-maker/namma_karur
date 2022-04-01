@@ -148,7 +148,7 @@ public class Blank_PostFragment extends Fragment {
         data2 = intent.getStringExtra("list");
         data3 = intent.getStringExtra("id");
         verify = root.findViewById(R.id.verifyy_txt);
-
+        follow = root.findViewById(R.id.follow_linear);
         follow_txt = root.findViewById(R.id.follow_txt);
 
 
@@ -158,9 +158,6 @@ public class Blank_PostFragment extends Fragment {
             String url = api + "get-shop-details?shop_id=" + data3;
             social(url);
             ifsc.setVisibility(View.GONE);
-
-
-
 
         } else if (data2.equals("ServiceCatalog")) {
             String url = api + "get-service-details?service_id=" + data3;
@@ -202,10 +199,16 @@ public class Blank_PostFragment extends Fragment {
 
 
 
-        follow = root.findViewById(R.id.follow_linear);
 
 
 
+        if(followArray != null){
+            follow_txt.setText("Following");
+
+
+        }else {
+            follow_txt.setText("Follow");
+        }
 
 
 
@@ -524,6 +527,7 @@ public class Blank_PostFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
 
+//                Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
 
 //
 
@@ -531,15 +535,9 @@ public class Blank_PostFragment extends Fragment {
 
                     JSONObject jsonObject = response.getJSONObject("data");
 
-                    followArray = jsonObject.getJSONObject("follow");
-
-                    if(jsonObject.getJSONObject("follow") != null){
-                        follow_txt.setText("Following");
 
 
-                    }else {
-                        follow_txt.setText("Follow");
-                    }
+
 
                     id = jsonObject.getString("id");
 //                shop_category_id = jsonObject.getString("shop_category_id");
@@ -556,14 +554,7 @@ public class Blank_PostFragment extends Fragment {
                     website = jsonObject.getString("website");
                     email = jsonObject.getString("email");
                     phone = jsonObject.getString("phone");
-
-                    catalog_id = followArray.getString("catalog_id");
-                    catalog_type = followArray.getString("catalog_type");
-                    follow_id = followArray.getString("id");
-
-
                     view_count = jsonObject.getString("view_count");
-
 
                     titlee.setText(title);
                     addres.setText(address);
@@ -574,6 +565,18 @@ public class Blank_PostFragment extends Fragment {
                     desc.setText(description);
 //                    phone_num.setText(phone);
                     view_ct.setText(view_count);
+
+
+                    followArray = jsonObject.getJSONObject("follow");
+                    catalog_id = followArray.getString("catalog_id");
+                    catalog_type = followArray.getString("catalog_type");
+                    follow_id = followArray.getString("id");
+
+
+
+
+
+
 
 
 
@@ -815,7 +818,6 @@ public class Blank_PostFragment extends Fragment {
                 params.put("Accept", "application/json");
 
                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
-                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(getActivity()));
                 return params;
             }
         };
@@ -899,7 +901,7 @@ public class Blank_PostFragment extends Fragment {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("Accept", "application/json");
                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
-                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(getActivity()));
+
 
                 return params;
             }

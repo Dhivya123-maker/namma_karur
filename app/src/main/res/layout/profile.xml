@@ -72,7 +72,8 @@
                     <ImageView
                         android:id="@+id/profile_img"
                         android:layout_width="80dp"
-                        android:layout_height="80dp" />
+                        android:layout_height="80dp"
+                        android:src="@drawable/profilee"/>
 
 
                     <LinearLayout
@@ -94,7 +95,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
-                            android:text=""
+                            android:text="D.O.B"
                             android:layout_marginTop="5dp"
                             android:textColor="#4c9a2a"
                             android:textStyle="normal" />
@@ -103,7 +104,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="15dp"
-                            android:text=""
+                            android:text="Blood group"
                             android:layout_marginTop="5dp"
                             android:textColor="#4c9a2a"
                             android:textStyle="normal" />

@@ -89,6 +89,8 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
 
     private GoogleSignInOptions gso;
 
+    TextView Error1,Error2,Error3,Error4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +105,10 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
         phone = findViewById(R.id.Phone_number);
         password = findViewById(R.id.signup_pass);
 
-
+        Error1 = findViewById(R.id.error1);
+        Error2 = findViewById(R.id.error2);
+        Error3 = findViewById(R.id.error3);
+        Error4 = findViewById(R.id.error4);
 
 
 
@@ -159,7 +164,12 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
             @Override
             public void onClick(View v) {
 ////
+                Error1.setVisibility(View.GONE);
+                Error2.setVisibility(View.GONE);
+                Error3.setVisibility(View.GONE);
+                Error4.setVisibility(View.GONE);
                 register();
+
 //                Intent intent = new Intent(SignUpActivity.this, VerifyActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
 //                startActivity(intent);
 
@@ -379,61 +389,60 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
                 public void onErrorResponse(VolleyError error) {
 
 
+
+
                     Charset charset = Charset.defaultCharset();
                     String str = new String(error.networkResponse.data,charset);
-//                    Log.i("wkjlgroiwt",str);
+
+
 
                     try {
                         JSONObject jsonObject = new JSONObject(str);
                         JSONObject data = jsonObject.getJSONObject("data");
-                        if (Name.isEmpty()) {
 
-                            JSONArray jsonArray = data.getJSONArray("name");
-                            Toast.makeText(SignUpActivity.this, jsonArray.toString(), Toast.LENGTH_SHORT).show();
-                            Log.i("wkhgiuktrehg",jsonArray.toString());
+                        JSONArray jsonArray1 = data.getJSONArray("name");
+                        Error1.setText(jsonArray1.getString(0));
+                        Error1.setVisibility(View.VISIBLE);
+//                            email.setError(jsonArray1.getString(0));
 
-                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
-                       else if (Email.isEmpty()) {
-                            JSONArray jsonArray1 = data.getJSONArray("email");
-                            Toast.makeText(SignUpActivity.this, jsonArray1.toString(), Toast.LENGTH_SHORT).show();
-                        }
-
-                        else if (Phone.isEmpty() ) {
-                            JSONArray jsonArray3 = data.getJSONArray("phone");
-                            Toast.makeText(SignUpActivity.this, jsonArray3.toString(), Toast.LENGTH_SHORT).show();
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("data");
 
 
-                        }
-                       else if (Password.isEmpty() ) {
-                            JSONArray jsonArray2 = data.getJSONArray("password");
-                            Toast.makeText(SignUpActivity.this, jsonArray2.toString(), Toast.LENGTH_SHORT).show();
+                        JSONArray jsonArray2 = data.getJSONArray("email");
+                        Error2.setText(jsonArray2.getString(0));
+                        Error2.setVisibility(View.VISIBLE);
+//                        password.setError(jsonArray2.getString(0));
 
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
-                        }
-                       else if(!email.getText().toString().trim().matches(emailPattern) ){
-                            JSONArray jsonArray1 = data.getJSONArray("email");
-                            Toast.makeText(SignUpActivity.this, jsonArray1.toString(), Toast.LENGTH_SHORT).show();
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("data");
 
-                        }else if(!phone.getText().toString().trim().matches(MobilePattern) ){
-                            JSONArray jsonArray3 = data.getJSONArray("phone");
-                            Toast.makeText(SignUpActivity.this, jsonArray3.toString(), Toast.LENGTH_SHORT).show();
+                        JSONArray jsonArray2 = data.getJSONArray("phone");
+//                        email.setError(jsonArray1);
+                        Error3.setText(jsonArray2.getString(0));
+                        Error3.setVisibility(View.VISIBLE);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
-                        }else if(!password.getText().toString().trim().matches(pass_pattern) ){
-                            JSONArray jsonArray2 = data.getJSONArray("password");
-                            Toast.makeText(SignUpActivity.this, jsonArray2.toString(), Toast.LENGTH_SHORT).show();
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("data");
 
-                        }
-                       else  {
-                            Toast.makeText(SignUpActivity.this, str, Toast.LENGTH_SHORT).show();
-
-                        }
-
-
-
-
-
-
+                        JSONArray jsonArray2 = data.getJSONArray("password");
+//                        email.setError(jsonArray1);
+                        Error4.setText(jsonArray2.getString(0));
+                        Error4.setVisibility(View.VISIBLE);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -442,10 +451,9 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
 
 
 
+
+
                 }
-
-
-
 
             });
             jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
