@@ -37,6 +37,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.BuildConfig;
 import com.e.login.ContactusActivity;
+import com.e.login.EnquiryFragment;
 import com.e.login.Feedback;
 import com.e.login.LoginActivity;
 import com.e.login.NewsClass.Karur;
@@ -67,15 +68,13 @@ import java.util.Map;
 
 public class Home extends AppCompatActivity implements OnConnectionFailedListener,GoogleApiClient.OnConnectionFailedListener {
 
-    SearchView searchView;
+
     LinearLayout lnr;
     Button logout;
     NavigationView navigationView;
-    FloatingActionButton floatingActionButton;
     String data,data1,data2,data3;
     private long pressedTime;
-    TextView userName, userEmail, userId;
-    String Name, Email, Id;
+
     public static final String TAG = "bottom_sheet";
     private GoogleApiClient googleApiClient;
     private GoogleSignInOptions gso;
@@ -123,8 +122,6 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
 
 
 
-
-
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -160,8 +157,7 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         lnr= findViewById(R.id.touch_drawer);
 
         navigationView = findViewById(R.id.nav_view1);
-//        View headview = navigationView.getHeaderView(0);
-//       profile = headview.findViewById(R.id.head_img);
+
         View hView =  navigationView.inflateHeaderView(R.layout.header);
         profile = (ImageView)hView.findViewById(R.id.head_img);
         namee = (TextView)hView.findViewById(R.id.name_txt);
@@ -178,18 +174,6 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         });
 
 
-
-////
-
-//        linearLayout = (LinearLayout) findViewById(R.id.profile_lnr);
-//        linearLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//
-//            }
-//        });
-////
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new
                 ActionBarDrawerToggle(Home.this,
@@ -199,10 +183,7 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-//
-////
-// navigationView.setCheckedItem(R.id.nav_profile);
-//
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -229,10 +210,7 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
                         break;
 
                     case R.id.nav_JoinwithUs:
-//
-//                        Intent join = new Intent(Home.this, JoinwithUs.class);
-//                       join.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                        startActivity(join);
+
                         break;
 
 
@@ -270,8 +248,7 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         });
 
 
-//        setting home fragments as main fragment as well as default fragments
-      getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout_home,new Fragment_Home()).commit();
+      getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout_homee,new Fragment_Home()).commit();
 
 
     }
@@ -307,37 +284,41 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment selectedFragment = null;
 
-//          #3  to create fragements for each
+
 
             switch  (item.getItemId()){
                 case R.id.nav_home:
                     selectedFragment = new Fragment_Home();
                     lnr.setClickable(true);
+                    lnr.setVisibility(View.VISIBLE);
 
                     break;
                 case R.id.nav_tree:
                     selectedFragment = new InformationFragment();
                     lnr.setClickable(false);
-
+                    lnr.setVisibility(View.GONE);
                     break;
                 case R.id.nav_qr:
                     selectedFragment = new QrCodeFragment();
                     lnr.setClickable(false);
+                    lnr.setVisibility(View.GONE);
                     break;
                 case R.id.nav_profilee:
                     selectedFragment = new Helpline();
                     lnr.setClickable(false);
+                    lnr.setVisibility(View.GONE);
 
                     break;
 
                 case R.id.nav_notifications:
-                  selectedFragment = new Post_Fragment();
+                  selectedFragment = new EnquiryFragment();
                     lnr.setClickable(false);
+                    lnr.setVisibility(View.GONE);
                   break;
             }
 
-//           #4  begin transaction
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout_home,selectedFragment).commit();
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout_homee,selectedFragment).commit();
             return true;
         }
     };
@@ -477,8 +458,6 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
             public void onResponse(JSONObject response) {
 
 
-//                Log.i("0000000",response.toString());
-//                Toast.makeText(Profile.this, response.toString(), Toast.LENGTH_SHORT).show();
                 try {
 
 

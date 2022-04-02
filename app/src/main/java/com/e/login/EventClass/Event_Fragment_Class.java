@@ -14,7 +14,7 @@ import android.widget.ImageView;
 
 import com.e.login.BlankFragment.Blank_Adapter;
 import com.e.login.BlankFragment.Blank_Model;
-import com.e.login.GalleryClass.GalleryActivity;
+
 import com.e.login.Offers.Top_offer_Adapter;
 import com.e.login.R;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
@@ -54,13 +54,7 @@ public class Event_Fragment_Class extends Fragment {
         sliderView.startAutoCycle();
 
         gallery = root.findViewById(R.id.gallery_img);
-        gallery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent shopsIntent = new Intent(getActivity(), GalleryActivity.class);
-                startActivity(shopsIntent);
-            }
-        });
+
 
 
         eventsCommentsModelList= new ArrayList<>();
@@ -89,7 +83,6 @@ public class Event_Fragment_Class extends Fragment {
 
         adapter =  new Event_Comments_Adapter(getContext(),eventsCommentsModelList);
         recyclerView.setAdapter(adapter);
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
 
 

@@ -100,7 +100,7 @@ public class Jobs_two_Adapter extends RecyclerView.Adapter<Jobs_two_Adapter.View
                     view.getContext().startActivity(intent);
                 }
             });
-////
+
         }
 
 

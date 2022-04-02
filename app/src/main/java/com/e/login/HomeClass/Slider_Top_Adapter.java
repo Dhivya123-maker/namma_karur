@@ -1,5 +1,6 @@
 package com.e.login.HomeClass;
 
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,117 +15,70 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.e.login.AmbulanceClass.AmbulanceModel;
 import com.e.login.R;
-import com.smarteist.autoimageslider.SliderViewAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
-//
-//public class Slider_Top_Adapter extends RecyclerView.Adapter<Slider_Top_Adapter.ViewHolder> {
-//
-//
-//    int[] images;
-//    List<Slider_Top_Model> sliderTopModelList;
-//    private Context context;
-//
-//
-//    public Slider_Top_Adapter(Context context, List<Slider_Top_Model> sliderTopModelList) {
-//        this.context = context;
-//        this.sliderTopModelList = sliderTopModelList;
-//    }
-//
-//    public Slider_Top_Adapter(int[] images) {
-//        this.images = images;
-//    }
-//
-//    @NonNull
-//    @Override
-//    public Slider_Top_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.slider_item,parent,false);
-//
-//
-//        return new Slider_Top_Adapter.ViewHolder(view);
-//
-//
-//    }
-//
-//
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull Slider_Top_Adapter.ViewHolder holder, int position) {
-//
-////        holder.img.setImageResource(R.drawable.first_one);
-//        holder.img.setImageResource(images[position]);
-//    }
-//
-//
-//
-//
-//    // total number of rows
-//    @Override
-//    public int getItemCount() {
-//
-//        return images.length;
-//
-//    }
-//
-//
-//    // stores and recycles views as they are scrolled off screen
-//    public class ViewHolder extends RecyclerView.ViewHolder {
-//        ImageView img;
-//
-//        ViewHolder(View itemView) {
-//            super(itemView);
-//            img = itemView.findViewById(R.id.image_view);
-//
-//
-//
-//
-//        }
-//
-//
-//
-//    }}
 
-public class Slider_Top_Adapter extends SliderViewAdapter<Slider_Top_Adapter.Holder>{
+public class Slider_Top_Adapter extends RecyclerView.Adapter<Slider_Top_Adapter.ViewHolder> {
 
-    int[] images;
 
-    public Slider_Top_Adapter(int[] images){
 
-        this.images = images;
+    List<BannerModel> bannerModelList;
+    private Context context;
+
+
+    public Slider_Top_Adapter(Context context, List<BannerModel> bannerModelList) {
+        this.context = context;
+        this.bannerModelList= bannerModelList ;
+    }
+
+    @NonNull
+    @Override
+    public Slider_Top_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.slider_item,parent,false);
+
+
+        return new Slider_Top_Adapter.ViewHolder(view);
+
 
     }
 
     @Override
-    public Holder onCreateViewHolder(ViewGroup parent) {
-
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.slider_item,parent,false);
-        return new Holder(view);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Glide.with(context)
+                .load(bannerModelList.get(position).getImg())
+                .into(holder.img);
     }
 
+
+
+
+    // total number of rows
     @Override
-    public void onBindViewHolder(Holder viewHolder, int position) {
+    public int getItemCount() {
 
-        viewHolder.imageView.setImageResource(images[position]);
+        return bannerModelList.size();
 
     }
 
-    @Override
-    public int getCount() {
-        return images.length;
-    }
 
-    public class Holder extends  SliderViewAdapter.ViewHolder{
+    // stores and recycles views as they are scrolled off screen
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView img;
 
-        ImageView imageView;
-
-        public Holder(View itemView){
+        ViewHolder(View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.image_view);
+            img = itemView.findViewById(R.id.image_view);
+
+
+
+
+
 
         }
+
+
+
     }
 
-}
 
+}

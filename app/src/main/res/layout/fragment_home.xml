@@ -117,16 +117,24 @@
 
 
             </LinearLayout>
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="100dp"
-                android:layout_marginStart="20dp"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/top_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginEnd="20dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/ban" />
+                android:layout_marginEnd="10dp"/>
+
+
+<!--            <ImageView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:layout_marginStart="20dp"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                android:layout_marginEnd="20dp"-->
+<!--                android:scaleType="fitXY"-->
+<!--                android:src="@drawable/ban" />-->
 
 
             <ImageView
@@ -183,53 +191,19 @@
             </RelativeLayout>
 
 
-            <!--            <androidx.appcompat.widget.SearchView-->
-            <!--                android:id="@+id/search_home"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="45dp"-->
-            <!--                android:layout_marginStart="25dp"-->
-            <!--                android:layout_marginTop="20dp"-->
-            <!--                android:layout_marginEnd="25dp"-->
-            <!--                android:background="@drawable/bg"-->
-            <!--                android:backgroundTint="@color/white"-->
-            <!--                android:clickable="true"-->
-            <!--                android:layoutDirection="rtl"-->
-            <!--                app:iconifiedByDefault="false"-->
-            <!--                app:queryBackground="@color/white"-->
-            <!--                app:queryHint="search"-->
-
-
-            <!--                >-->
-
-            <!--            </androidx.appcompat.widget.SearchView>-->
 
         </LinearLayout>
 
-
-        <com.smarteist.autoimageslider.SliderView
-            android:id="@+id/slider_top"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/middle_one"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_below="@+id/grey_lnr"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            app:sliderAnimationDuration="600"
-            app:sliderAutoCycleDirection="back_and_forth"
-            app:sliderAutoCycleEnabled="true"
-            app:sliderIndicatorAnimationDuration="600"
-            app:sliderIndicatorGravity="center_horizontal|bottom"
-            app:sliderIndicatorMargin="15dp"
-            app:sliderIndicatorOrientation="horizontal"
-            app:sliderIndicatorPadding="3dp"
-            app:sliderIndicatorRadius="2dp"
-            app:sliderIndicatorSelectedColor="#5A5A5A"
-            app:sliderIndicatorUnselectedColor="#FFF"
-            app:sliderScrollTimeInSec="2"
-            app:sliderStartAutoCycle="true">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/grey_lnr"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="15dp"
+            android:scaleType="fitXY"
+            android:layout_marginEnd="10dp" />
 
-
-        </com.smarteist.autoimageslider.SliderView>
 
 
         <!--        <com.smarteist.autoimageslider.SliderView-->
@@ -261,7 +235,7 @@
             android:id="@+id/insideMainHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/slider_top"
+            android:layout_below="@id/middle_one"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
@@ -344,33 +318,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <com.smarteist.autoimageslider.SliderView
-                android:id="@+id/slider_bottom1"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/middle_two"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
-                app:sliderAnimationDuration="600"
-                android:layout_below="@+id/category"
-                app:sliderAutoCycleDirection="back_and_forth"
-                app:sliderAutoCycleEnabled="true"
-                app:sliderIndicatorAnimationDuration="600"
-                app:sliderIndicatorGravity="center_horizontal|bottom"
-                app:sliderIndicatorMargin="15dp"
-                app:sliderIndicatorOrientation="horizontal"
-                app:sliderIndicatorPadding="3dp"
-                app:sliderIndicatorRadius="2dp"
-                app:sliderIndicatorSelectedColor="#5A5A5A"
-                app:sliderIndicatorUnselectedColor="#FFF"
-                app:sliderScrollTimeInSec="2"
-                app:sliderStartAutoCycle="true" />
+                android:layout_height="wrap_content"
+                android:layout_below="@id/category"
+                android:scaleType="fitXY"
+                android:layout_marginTop="20dp" />
+
 
             <LinearLayout
                 android:id="@+id/single_banner"
                 android:layout_width="wrap_content"
                 android:layout_height="120dp"
-                android:layout_below="@id/slider_bottom1"
+                android:layout_below="@id/middle_two"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/bg"
@@ -548,65 +509,27 @@
                 </LinearLayout>
 
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/bottom_recycle"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/deal">
+                    android:layout_marginTop="20dp"
+                    android:scaleType="fitXY"
+                    android:layout_marginBottom="10dp"
 
-                </ImageView>
+                />
+
 
 
             </LinearLayout>
 
 
-            <!--            <View-->
-            <!--                android:id="@+id/view2"-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="7dp"-->
-            <!--                android:layout_below="@id/card_view1"-->
-            <!--                android:layout_centerHorizontal="true"-->
-            <!--                android:layout_marginStart="30dp"-->
-            <!--                android:layout_marginEnd="30dp"-->
-            <!--                android:layout_marginBottom="10dp"-->
-            <!--                android:background="@drawable/reverse_corner"-->
-            <!--                android:backgroundTint="#B5D5A7">-->
-
-            <!--            </View>-->
 
         </RelativeLayout>
 
 
     </RelativeLayout>
-<!--    <com.google.android.material.navigation.NavigationView-->
-<!--        android:id="@+id/nav_view"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_gravity="start"-->
-<!--        android:background="#4C9A2A"-->
-<!--        app:itemTextColor="#ffffff"-->
-<!--        app:itemIconTint="#ffffff"-->
-<!--        app:headerLayout="@layout/header"-->
-<!--        app:menu="@menu/main_menu"-->
 
-<!--        >-->
-
-
-<!--        <Button-->
-
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="20dp"-->
-<!--            android:layout_marginTop="600dp"-->
-<!--            android:layout_marginEnd="20dp"-->
-<!--            android:background="@drawable/rounded_borders"-->
-<!--            android:text="Log Out"-->
-<!--            android:textAllCaps="false"-->
-<!--            android:textSize="18dp"-->
-<!--            android:textColor="#4C9A2A" />-->
-
-
-
-<!--    </com.google.android.material.navigation.NavigationView>-->
 
 
 

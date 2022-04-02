@@ -9,8 +9,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +52,12 @@ import com.e.login.MarketListClass.MarketActivity;
 import com.e.login.NewsClass.NewsActivity;
 import com.e.login.NewsClass.News_Fragment;
 import com.e.login.Offers.OfferActivity;
+import com.e.login.Offers.Offer_Adapter;
+import com.e.login.Offers.Offer_Model;
+import com.e.login.Offers.Offer_One_Adapter;
+import com.e.login.Offers.Offer_One_Model;
+import com.e.login.Offers.Offer_two_Adapter;
+import com.e.login.Offers.Offer_two_model;
 import com.e.login.R;
 import com.e.login.Services_Class.Services_Activity;
 import com.e.login.ShopClass.ShopClassAdapter;
@@ -73,17 +81,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
 
 
-public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemClickListener{
+public class Fragment_Home extends Fragment{
 
-    LinearLayout hospital,shop,trans,edu,services,more,shops_icon,bus,jobs,govt,ambulance,news,market,bank,fun,see_more,see_less,extra,extra_one,blood,mall,events,offer,hotels,ngo,drawer,blog;
-    ImageView bell,see_less_image,see_more_image,message;
+    LinearLayout bus;
+    ImageView bell,message;
 
     MyRecyclerViewAdapter adapter;
     List<Recycler_Model> recyclerModelList;
 
-    SliderView sliderView, sliderView1;
+    Slider_Top_Adapter slider_top_adapter;
+    List<BannerModel> bannerModelList;
 
 
     List<Top_rating_model> topRatingModelList;
@@ -100,9 +110,9 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
          };
 
     String data,data1;
-    int length = 0;
 
-    RecyclerView cat_recyclerView;
+
+    RecyclerView cat_recyclerView,top_recycler,middle_one,middle_two,bottom;
     List<CategoryModel> cat;
     CategoryAdapter CAtAdapter;
 
@@ -114,95 +124,53 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
      View root =  inflater.inflate(R.layout.fragment_home, container, false);
-//     DrawerLayout drawerLayout = root.findViewById(R.id.drawer_layout);
-      //  drawer = root.findViewById(R.id.drawerr);
-//
-//        drawer.setOnClickListener(new View.OnClickListener() {
-//         @Override
-//         public void onClick(View view) {
-//             drawerLayout.openDrawer(GravityCompat.START);
-//         }
-//     });
+
 
         Api a = new Api();
         api = a.getBASE_URL();
 
-//        Log.i("qufdryuwgdr",PreferenceUtils.getToken(getActivity()));
+
         Intent intent = getActivity().getIntent();
         data = intent.getStringExtra("token");
         Intent i1 = getActivity().getIntent();
         data1 = i1.getStringExtra("id");
 
         cat_recyclerView =  root.findViewById(R.id.category);
+        top_recycler = root.findViewById(R.id.top_banner);
+        middle_one = root.findViewById(R.id.middle_one);
+        middle_two = root.findViewById(R.id.middle_two);
+        bottom = root.findViewById(R.id.bottom_recycle);
 
         cat = new ArrayList<>();
 
-
-//
-//        Toast.makeText(getContext(), data, Toast.LENGTH_SHORT).show();
-//        Toast.makeText(getContext(), data1, Toast.LENGTH_SHORT).show();
-
-//
         category();
 
+        top_ban();
+        Middle_one();
+        Middle_two();
+        Bottom();
 
 
-        sliderView = root.findViewById(R.id.slider_top);
-        sliderView1 = root.findViewById(R.id.slider_bottom1);
 
-        Slider_Top_Adapter sliderAdapter = new Slider_Top_Adapter(images);
-
-        sliderView.setSliderAdapter(sliderAdapter);
-        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
-        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
-        sliderView.startAutoCycle();
-
-
-        Slider_Bottom_Adapter sliderAdapter1 = new Slider_Bottom_Adapter(images);
-
-        sliderView1.setSliderAdapter(sliderAdapter1);
-        sliderView1.setIndicatorAnimation(IndicatorAnimationType.WORM);
-        sliderView1.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
-        sliderView1.startAutoCycle();
-
-
+//        sliderView = root.findViewById(R.id.slider_top);
+//        sliderView1 = root.findViewById(R.id.slider_bottom1);
 //
-
-
-
-//        extra = root.findViewById(R.id.layoutRow4);
-//     extra_one = root.findViewById(R.id.layoutRow5);
-//     see_more = root.findViewById(R.id.see_more_layout);
-//     see_more_image = root.findViewById(R.id.see_more_image);
-//     see_more_txt = root.findViewById(R.id.see_more_text);
+//        Slider_Top_Adapter sliderAdapter = new Slider_Top_Adapter(images);
 //
-//     see_less = root.findViewById(R.id.see_less_layout);
-//     see_less_image = root.findViewById(R.id.see_less_image);
-//     see_less_txt =  root.findViewById(R.id.see_less_text);
+//        sliderView.setSliderAdapter(sliderAdapter);
+//        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
+//        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
+//        sliderView.startAutoCycle();
+
+
+
+
+
      message = root.findViewById(R.id.message);
 
     bus = root.findViewById(R.id.busLayout);
-//    jobs = root.findViewById(R.id.JobLayout);
-//     ambulance = root.findViewById(R.id.AmbulanceLayout);
-//     news =  root.findViewById(R.id.NewsLayout);
-//     market = root.findViewById(R.id.MarketLayout);
+
      bell = root.findViewById(R.id.bellu);
-//    blood = root.findViewById(R.id.blood_lnr);
-//     //fun = root.findViewById(R.id.FunLayout);
-//     govt = root.findViewById(R.id.govt_lnr);
-//     bank = root.findViewById(R.id.BankLayout);
-//    // mall = root.findViewById(R.id.mall_lnr);
-//     events = root.findViewById(R.id.events_lnr);
-//     offer = root.findViewById(R.id.offer_lnr);
-//     blog = root.findViewById(R.id.Blog_Layout);
-//     more = root.findViewById(R.id.MoreLayout);
-//     services = root.findViewById(R.id.ServicesLayout);
-//     edu = root.findViewById(R.id.eduLayout);
-//     trans = root.findViewById(R.id.TransLayout);
-//     shop = root.findViewById(R.id.ShoppingLayout);
-//     hospital = root.findViewById(R.id.HospitalLayout);
-//     hotels = root.findViewById(R.id.hotel_icons);
-//     ngo = root.findViewById(R.id.ngo_lr);
 
 
 
@@ -306,289 +274,6 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 
 
 
-
-//        see_more.setOnClickListener(new View.OnClickListener() {
-//       @Override
-//       public void onClick(View view) {
-//
-//           extra.setVisibility(View.VISIBLE);
-//           extra_one.setVisibility(View.VISIBLE);
-//           see_less.setVisibility(View.VISIBLE);
-//           see_less_txt.setVisibility(View.VISIBLE);
-//           see_less_image.setVisibility(View.VISIBLE);
-//           see_more_txt.setVisibility(View.GONE);
-//           see_more_image.setVisibility(View.GONE);
-//
-//
-//
-//
-//
-//       }
-//   });
-//
-//        see_less.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//
-//
-//                extra.setVisibility(View.GONE);
-//                extra_one.setVisibility(View.GONE);
-//                see_more_txt.setVisibility(View.VISIBLE);
-//                see_more_image.setVisibility(View.VISIBLE);
-//                see_less_txt.setVisibility(View.GONE);
-//                see_less_image.setVisibility(View.GONE);
-//
-//
-//
-//
-//            }
-//        });
-
-
-
-//        RecyclerView recyclerView =root. findViewById(R.id.rvAnimals);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//
-//
-//        adapter =  new MyRecyclerViewAdapter(getActivity(),home_model );
-//        recyclerView.setAdapter(adapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-////
-//        RecyclerView recyclerView1 =root. findViewById(R.id.rvAnimals1);
-//        recyclerView1.setLayoutManager(new LinearLayoutManager(getActivity()));
-//
-//
-//        adapter =  new MyRecyclerViewAdapter(getActivity(),home_model );
-//        recyclerView1.setAdapter(adapter);
-//        recyclerView1.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-//
-
-//        RecyclerView recyclerView2 =root. findViewById(R.id.rvAnimals2);
-//        recyclerView2.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
-//        recyclerView2.setAdapter(adapterOne);
-//        recyclerView2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-//
-
-
-//
-//        shops_icon = root.findViewById(R.id.shopsIcons_home);
-//        shops_icon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","ShopCatalog");
-//                startActivity(shopsIntent);
-//
-//            }
-//        });
-//
-//     bus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","BusTimeCatalog");
-//                startActivity(shopsIntent);
-//            }
-//        });
-//        jobs.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), Jobs.class);
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-//
-//
-//
-//      govt.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","GovtNgoCatalog");
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-//        ambulance.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","AmbulanceCatalog");
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-//       news.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), NewsActivity.class);
-//                shopsIntent.putExtra("cat","NewsCatalog");
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-//       market.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","MarketCatalog");
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-
-//
-//       blood.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent shopsIntent = new Intent(getActivity(), Blood_Fragment.class);
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-//
-//        blog.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent shopsIntent = new Intent(getActivity(), BlogActivity.class);
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-//
-//        services.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","ServiceCatalog");
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-//        edu.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","EducationCatalog");
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-//        trans.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","TransportCatalog");
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-//
-//        shop.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), Shopping_Activity.class);
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-//        hospital.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","HospitalCatalog");
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-//
-////
-////        fun.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                Intent shopsIntent = new Intent(getActivity(), Fun.class);
-////                startActivity(shopsIntent);
-////            }
-////        });
-//
-//
-//        bank.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","BankCatalog");
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-////       mall.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View v) {
-////                Intent shopsIntent = new Intent(getActivity(), MallClass.class);
-////                startActivity(shopsIntent);
-////            }
-////        });
-//
-//
-//        events.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","EventCatalog");
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-//       offer.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), OfferActivity.class);
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-//        hotels.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","HotelCatalog");
-//                startActivity(shopsIntent);
-//            }
-//        });
-//        ngo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), ShopScreen_Class.class);
-//                shopsIntent.putExtra("cat","GovtNgoCatalog");
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-
-//        bell.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), JobSearchActivity.class);
-//                startActivity(shopsIntent);
-//            }
-//        });
-//
-//        message.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent shopsIntent = new Intent(getActivity(), Chat_Activity.class);
-//                startActivity(shopsIntent);
-//            }
-//        });
-
-
-
-
         return  root;
     }
 
@@ -639,9 +324,6 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
                         model.setCat_name(cat_name);
 
 
-
-
-
                         cat.add(model);
 
 
@@ -659,13 +341,10 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
                     }
                 };
 
-//                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity()) {
-//
-//                };
+
 
                 cat_recyclerView.setLayoutManager(layoutManager);
                 CAtAdapter =  new CategoryAdapter(getActivity(),cat);
-                CAtAdapter.setOnItemClickListener(Fragment_Home.this);
                 cat_recyclerView.setAdapter(CAtAdapter);
 
 
@@ -676,9 +355,107 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 
             }
 
-//
-//
-//        }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+
+
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+
+                params.put("Accept","application/json");
+                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
+
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(jsonObjectRequest);
+
+
+    }
+    public void top_ban(){
+        String url = "http://nk.inevitabletech.email/public/api/display-banner?banner_type=TopBanner&banner_category_id="+data1;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("CheckResult")
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+                    JSONArray jsonArray = response.getJSONArray("data");
+                    bannerModelList = new ArrayList<>();
+
+                 for(int i=0;i< jsonArray.length();i++){
+                   JSONObject jsonObject = jsonArray.getJSONObject(i);
+                   String id = jsonObject.getString("id");
+                   String banner_type_id = jsonObject.getString("banner_type_id");
+                     String banner_type = jsonObject.getString("banner_type");
+                     String banner_category_id = jsonObject.getString("banner_category_id");
+                     String banner_url = jsonObject.getString("banner_url");
+                     String order_no = jsonObject.getString("order_no");
+
+                   String img = jsonObject.getString("image");
+                   String v_count = jsonObject.getString("view_count");
+
+
+
+
+                   BannerModel bannerModel = new BannerModel();
+                   bannerModel.setImg(img);
+
+                   bannerModelList.add(bannerModel);
+
+                 }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                top_recycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+                slider_top_adapter =  new Slider_Top_Adapter(getActivity(),bannerModelList);
+                top_recycler.setAdapter(slider_top_adapter);
+                top_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+
+                final int interval = 3000;
+                Handler handler = new Handler();
+                Runnable runnable = new Runnable() {
+                    int count =0;
+                    @Override
+                    public void run() {
+
+                        if(count< bannerModelList.size()){
+                            top_recycler.scrollToPosition(count++);
+                            handler.postDelayed(this,interval);
+
+                        }
+                        if(count== bannerModelList.size()){
+
+                            count = 0;
+
+                        }
+                    }
+                };
+                handler.postDelayed(runnable,interval);
+
+            }
+
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -699,8 +476,6 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
                 Map<String,String> params = new HashMap<String, String>();
 
                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
-              //  params.put("Authorization", "Bearer  " + data);
-
                 return params;
             }
         };
@@ -711,148 +486,305 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
 
     }
 
-    @Override
-    public void onItemClick(int position) {
+    public void Middle_one(){
+        String url = "http://nk.inevitabletech.email/public/api/display-banner?banner_type=MiddleOneBanner&banner_category_id="+data1;
 
-        CategoryModel model = cat.get(position);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("CheckResult")
+            @Override
+            public void onResponse(JSONObject response) {
 
-        String cat_name = model.getCat_name();
+                try {
+                    JSONArray jsonArray = response.getJSONArray("data");
+                    bannerModelList = new ArrayList<>();
 
+                    for(int i=0;i< jsonArray.length();i++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String id = jsonObject.getString("id");
+                        String banner_type_id = jsonObject.getString("banner_type_id");
+                        String banner_type = jsonObject.getString("banner_type");
+                        String banner_category_id = jsonObject.getString("banner_category_id");
+                        String banner_url = jsonObject.getString("banner_url");
+                        String order_no = jsonObject.getString("order_no");
 
-             if(cat_name.equals("OfferCatalog")){
-
-            Intent intent = new Intent(getActivity(), OfferActivity.class);
-            intent.putExtra("cat",cat_name);
-            startActivity(intent);
-        }else if (cat_name.equals("NewsCatalog")){
-            Intent intent = new Intent(getActivity(), NewsActivity.class);
-            intent.putExtra("cat",cat_name);
-
-            startActivity(intent);
-        }else if (cat_name.equals("BloodCatalog")){
-            Intent intent = new Intent(getActivity(), Blood_Fragment.class);
-            startActivity(intent);
-        }else if (cat_name.equals("KarurBlogCatalog")){
-                 Intent intent = new Intent(getActivity(), BlogActivity.class);
-                 intent.putExtra("cat",cat_name);
-                 startActivity(intent);
-             }
-             else if (cat_name.equals("JobsCatalog")){
-            Intent intent = new Intent(getActivity(), Jobs.class);
-            intent.putExtra("cat",cat_name);
-
-            startActivity(intent);
-        }else {
-                 Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
-                 // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
-                 intent.putExtra("cat", cat_name);
-                 startActivity(intent);
-             }
+                        String img = jsonObject.getString("image");
+                        String v_count = jsonObject.getString("view_count");
 
 
 
 
-//        if(cat_name.equals("OfferCatalog")){
-//
-//            Intent intent = new Intent(getActivity(), OfferActivity.class);
-//            intent.putExtra("cat",cat_name);
-//            startActivity(intent);
-//        }
-//        if (cat_name.equals("NewsCatalog")){
-//            Intent intent = new Intent(getActivity(), NewsActivity.class);
-//            intent.putExtra("cat",cat_name);
-//
-//            startActivity(intent);
-//        }
-//        if (cat_name.equals("BloodCatalog")){
-//            Intent intent = new Intent(getActivity(), Blood_Fragment.class);
-//            startActivity(intent);
-//        }
-//        if (cat_name.equals("KarurBlogCatalog")){
-//            Intent intent = new Intent(getActivity(), BlogActivity.class);
-//            intent.putExtra("cat",cat_name);
-//            startActivity(intent);
-//
-//        }
-//
-//        if (cat_name.equals("JobsCatalog")){
-//            Intent intent = new Intent(getActivity(), Jobs.class);
-//            intent.putExtra("cat",cat_name);
-//
-//            startActivity(intent);
-//        }
-//        if(cat_name.equals("ShopCatalog")){
-//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
-//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
-//            intent.putExtra("cat", cat_name);
-//            startActivity(intent);
-//        }
-//        if(cat_name.equals("ServiceCatalog")){
-//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
-//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
-//            intent.putExtra("cat", cat_name);
-//            startActivity(intent);
-//        }
-//        if(cat_name.equals("EducationCatalog")){
-//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
-//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
-//            intent.putExtra("cat", cat_name);
-//            startActivity(intent);
-//        }
-//        if(cat_name.equals("TransportCatalog")){
-//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
-//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
-//            intent.putExtra("cat", cat_name);
-//            startActivity(intent);
-//        }
-//        if(cat_name.equals("HospitalCatalog")){
-//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
-//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
-//            intent.putExtra("cat", cat_name);
-//            startActivity(intent);
-//        }
-//        if(cat_name.equals("EventCatalog")){
-//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
-//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
-//            intent.putExtra("cat", cat_name);
-//            startActivity(intent);
-//        }
-//        if(cat_name.equals("HotelCatalog")){
-//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
-//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
-//            intent.putExtra("cat", cat_name);
-//            startActivity(intent);
-//        }
-//        if(cat_name.equals("BankCatalog")){
-//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
-//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
-//            intent.putExtra("cat", cat_name);
-//            startActivity(intent);
-//        }
-//        if(cat_name.equals("AmbulanceCatalog")){
-//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
-//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
-//            intent.putExtra("cat", "AmbulanceCatalog");
-//            startActivity(intent);
-//        }
-//        if(cat_name.equals("MarketCatalog")){
-//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
-//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
-//            intent.putExtra("cat", cat_name);
-//            startActivity(intent);
-//        }
-//        if(cat_name.equals("BusTimeCatalog")){
-//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
-//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
-//            intent.putExtra("cat", cat_name);
-//            startActivity(intent);
-//        }
-//        if(cat_name.equals("GovtNgoCatalog")){
-//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
-//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
-//            intent.putExtra("cat", cat_name);
-//            startActivity(intent);
-//        }
+                        BannerModel bannerModel = new BannerModel();
+                        bannerModel.setImg(img);
+
+                        bannerModelList.add(bannerModel);
+
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                middle_one.setLayoutManager(new LinearLayoutManager(getActivity()));
+                slider_top_adapter =  new Slider_Top_Adapter(getActivity(),bannerModelList);
+                middle_one.setAdapter(slider_top_adapter);
+                middle_one.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+
+                final int interval = 3000;
+                Handler handler = new Handler();
+                Runnable runnable = new Runnable() {
+                    int count =0;
+                    @Override
+                    public void run() {
+
+                        if(count< bannerModelList.size()){
+                            middle_one.scrollToPosition(count++);
+                            handler.postDelayed(this,interval);
+
+                        }
+                        if(count== bannerModelList.size()){
+
+                            count = 0;
+
+                        }
+                    }
+                };
+                handler.postDelayed(runnable,interval);
+
+
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+
+
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+
+                params.put("Accept","application/json");
+                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(jsonObjectRequest);
+
+
+    }
+
+    public void Middle_two(){
+        String url = "http://nk.inevitabletech.email/public/api/display-banner?banner_type=MiddleTwoBanner&banner_category_id="+data1;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("CheckResult")
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+                    JSONArray jsonArray = response.getJSONArray("data");
+                    bannerModelList = new ArrayList<>();
+
+                    for(int i=0;i< jsonArray.length();i++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String id = jsonObject.getString("id");
+                        String banner_type_id = jsonObject.getString("banner_type_id");
+                        String banner_type = jsonObject.getString("banner_type");
+                        String banner_category_id = jsonObject.getString("banner_category_id");
+                        String banner_url = jsonObject.getString("banner_url");
+                        String order_no = jsonObject.getString("order_no");
+
+                        String img = jsonObject.getString("image");
+                        String v_count = jsonObject.getString("view_count");
+
+
+
+
+                        BannerModel bannerModel = new BannerModel();
+                        bannerModel.setImg(img);
+
+                        bannerModelList.add(bannerModel);
+
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                middle_two.setLayoutManager(new LinearLayoutManager(getActivity()));
+                slider_top_adapter =  new Slider_Top_Adapter(getActivity(),bannerModelList);
+                middle_two.setAdapter(slider_top_adapter);
+                middle_two.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+
+                final int interval = 3000;
+                Handler handler = new Handler();
+                Runnable runnable = new Runnable() {
+                    int count =0;
+                    @Override
+                    public void run() {
+
+                        if(count< bannerModelList.size()){
+                            middle_two.scrollToPosition(count++);
+                            handler.postDelayed(this,interval);
+
+                        }
+                        if(count== bannerModelList.size()){
+
+                            count = 0;
+
+                        }
+                    }
+                };
+                handler.postDelayed(runnable,interval);
+
+
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+
+
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+
+                params.put("Accept","application/json");
+                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(jsonObjectRequest);
+
+
+    }
+
+    public void Bottom(){
+        String url = "http://nk.inevitabletech.email/public/api/display-banner?banner_type=BottomBanner&banner_category_id="+data1;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("CheckResult")
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+                    JSONArray jsonArray = response.getJSONArray("data");
+                    bannerModelList = new ArrayList<>();
+
+                    for(int i=0;i< jsonArray.length();i++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String id = jsonObject.getString("id");
+                        String banner_type_id = jsonObject.getString("banner_type_id");
+                        String banner_type = jsonObject.getString("banner_type");
+                        String banner_category_id = jsonObject.getString("banner_category_id");
+                        String banner_url = jsonObject.getString("banner_url");
+                        String order_no = jsonObject.getString("order_no");
+
+                        String img = jsonObject.getString("image");
+                        String v_count = jsonObject.getString("view_count");
+
+
+
+
+                        BannerModel bannerModel = new BannerModel();
+                        bannerModel.setImg(img);
+
+                        bannerModelList.add(bannerModel);
+
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                bottom.setLayoutManager(new LinearLayoutManager(getActivity()));
+                slider_top_adapter =  new Slider_Top_Adapter(getActivity(),bannerModelList);
+                bottom.setAdapter(slider_top_adapter);
+                bottom.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+
+                final int interval = 3000;
+                Handler handler = new Handler();
+                Runnable runnable = new Runnable() {
+                    int count =0;
+                    @Override
+                    public void run() {
+
+                        if(count< bannerModelList.size()){
+                            bottom.scrollToPosition(count++);
+                            handler.postDelayed(this,interval);
+
+                        }
+                        if(count== bannerModelList.size()){
+
+                            count = 0;
+
+                        }
+                    }
+                };
+                handler.postDelayed(runnable,interval);
+
+
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+
+
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+
+                params.put("Accept","application/json");
+                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(jsonObjectRequest);
 
 
     }

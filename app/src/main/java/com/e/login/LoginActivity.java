@@ -85,8 +85,6 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
-//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
-//       getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
         signin = findViewById(R.id.signinbutton);
@@ -295,9 +293,8 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
 
                             Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, Home.class);
-                            intent.putExtra("id", "4");
+                            intent.putExtra("id", id);
                             intent.putExtra("token", token);
-//                            intent.putExtra("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNjY5ZWM2NzE0MDFmYTk2MWUwNzQ5NjMyMTNmODljODkxMzIwODA5N2VhNmMwNTI0N2Y4NWRjZTMxN2Y0MGQ2ZTUyZjc1MzVjNjVhYWMzMGUiLCJpYXQiOjE2NDcwODc1NjAuMDEyNjE2LCJuYmYiOjE2NDcwODc1NjAuMDEyNjIsImV4cCI6MTY3ODYyMzU2MC4wMDc4NjMsInN1YiI6IjEyIiwic2NvcGVzIjpbXX0.k67qYf2_wLc3roJU7vnuxzht64dpaFfcH18TJvYIQQtOBXT1CdF8p5XdetsvG2WZVkpttJo-O3ckFwYfKoh2otjPAYuGNOTk0ORlsJcgN6JOsHOs9sDxJZIthiPZ9lTe4xVBvreNVSfVDI9ciGgb0X2OatQ7_Xq5jdqIKF9dkf-sk6PqzfBIGR1z-25ST-0WikCzm7HIMAStMehAKj-v5xy0RCFytMItY-QwCkHT6Pr56QZeY8z81Ec0N-RGjxRUpLI9gxzADGLpACWhWuBwQiw8X71Ws1ey-VkrrSolsREuyzosm6jirERAmIuTq9UjYrjHCysVo1HGnjH1QI9DOfElicyWc_4ZLUi8z1l6q3m5D8qps_IKnk0pU4StC9jOxp6DRt5LJRQlVHRQTtj6h1ElHlV1B0Xm3YgWTWeMXxQovmif6Xf4684E0k11Amcm5RLb5aCNmZaki1Ctu46hVEB-6Sp4E44ReGaB70UaEtv8V2DYkMhJMHbYn2WIbaZicbiuwsICroipIk72Z7qiJ7THBO40sHvTuO9LW_WxHfhdWUMHCikUX9CWCcY5jyUo4HkOpoylSwqmYX31Ybm_-SK2kSIKNs3RlDHsdbCCs8aTRkWA5uRV_Y7ijUHtqYl1zau5ItET-X-oiJPYtGnWOVbAQ-PU3KOXkDmgIcGX9jE");
 
 //                            PreferenceUtils.saveid("4", LoginActivity.this);
 //                            PreferenceUtils.saveToken("eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNjY5ZWM2NzE0MDFmYTk2MWUwNzQ5NjMyMTNmODljODkxMzIwODA5N2VhNmMwNTI0N2Y4NWRjZTMxN2Y0MGQ2ZTUyZjc1MzVjNjVhYWMzMGUiLCJpYXQiOjE2NDcwODc1NjAuMDEyNjE2LCJuYmYiOjE2NDcwODc1NjAuMDEyNjIsImV4cCI6MTY3ODYyMzU2MC4wMDc4NjMsInN1YiI6IjEyIiwic2NvcGVzIjpbXX0.k67qYf2_wLc3roJU7vnuxzht64dpaFfcH18TJvYIQQtOBXT1CdF8p5XdetsvG2WZVkpttJo-O3ckFwYfKoh2otjPAYuGNOTk0ORlsJcgN6JOsHOs9sDxJZIthiPZ9lTe4xVBvreNVSfVDI9ciGgb0X2OatQ7_Xq5jdqIKF9dkf-sk6PqzfBIGR1z-25ST-0WikCzm7HIMAStMehAKj-v5xy0RCFytMItY-QwCkHT6Pr56QZeY8z81Ec0N-RGjxRUpLI9gxzADGLpACWhWuBwQiw8X71Ws1ey-VkrrSolsREuyzosm6jirERAmIuTq9UjYrjHCysVo1HGnjH1QI9DOfElicyWc_4ZLUi8z1l6q3m5D8qps_IKnk0pU4StC9jOxp6DRt5LJRQlVHRQTtj6h1ElHlV1B0Xm3YgWTWeMXxQovmif6Xf4684E0k11Amcm5RLb5aCNmZaki1Ctu46hVEB-6Sp4E44ReGaB70UaEtv8V2DYkMhJMHbYn2WIbaZicbiuwsICroipIk72Z7qiJ7THBO40sHvTuO9LW_WxHfhdWUMHCikUX9CWCcY5jyUo4HkOpoylSwqmYX31Ybm_-SK2kSIKNs3RlDHsdbCCs8aTRkWA5uRV_Y7ijUHtqYl1zau5ItET-X-oiJPYtGnWOVbAQ-PU3KOXkDmgIcGX9jE",LoginActivity.this);
@@ -308,12 +305,6 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
                             startActivity(intent);
 
 
-//                            JSONObject res =  response.getJSONObject("data");
-//
-//                            String token = res.getString("token");
-//                            JSONObject user = res.getJSONObject("user");
-//
-//                            String id = user.getString("id");
 
                         }
 
@@ -341,7 +332,7 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
                             JSONArray jsonArray1 = data.getJSONArray("email");
                             Error1.setText(jsonArray1.getString(0));
                             Error1.setVisibility(View.VISIBLE);
-//                            email.setError(jsonArray1.getString(0));
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -355,7 +346,7 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
                             JSONArray jsonArray2 = data.getJSONArray("password");
                             Error2.setText(jsonArray2.getString(0));
                             Error2.setVisibility(View.VISIBLE);
-//                        password.setError(jsonArray2.getString(0));
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -366,7 +357,7 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
                         JSONObject data = jsonObject.getJSONObject("data");
 
                         String jsonArray1 = data.getString("error");
-//                        email.setError(jsonArray1);
+
                         Error1.setText(jsonArray1);
                         Error1.setVisibility(View.VISIBLE);
                     } catch (JSONException e) {
@@ -441,8 +432,6 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
     public void login_google(){
 
 
-//        Email = account.getEmail();
-//        Id = account.getId();
 
         String url = "http://nk.inevitabletech.email/public/api/login-with-google";
 
@@ -454,14 +443,11 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
 
 
 
-          //  Toast.makeText(LoginActivity.this, jsonBody.toString(), Toast.LENGTH_SHORT).show();
-
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
                 @SuppressLint("CheckResult")
                 @Override
                 public void onResponse(JSONObject response) {
-//                    Log.i("0000000000000", response.toString());
-//                    Toast.makeText(Signup_google.this, response.toString(), Toast.LENGTH_SHORT).show();
+
 
                     try {
 
@@ -541,7 +527,6 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
 
                     headers.put("Accept", "application/json");
                     headers.put("Authorization", "Bearer " + PreferenceUtils.getToken(LoginActivity.this));
-//                    headers.put("Authorization", "Bearer " + PreferenceUtils.getToken1(LoginActivity.this));
                     return headers;
                 }
 

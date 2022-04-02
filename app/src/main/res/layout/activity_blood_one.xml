@@ -79,8 +79,6 @@
 
 
 
-
-
                         <EditText
                             android:id="@+id/edit1"
                             android:layout_width="match_parent"
@@ -96,6 +94,18 @@
                             android:background="@drawable/border_two">
 
                         </EditText>
+                        <TextView
+                            android:id="@+id/error1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E53935"
+                            android:layout_below="@+id/user"
+                            android:layout_margin="10dp"
+                            android:textAlignment="textEnd"
+                            android:paddingEnd="40dp"
+                            android:visibility="gone"
+                            />
+
                         <Spinner
                             android:id="@+id/edit2"
                             android:layout_width="match_parent"
@@ -111,7 +121,17 @@
                             android:background="@drawable/border_two">
 
                         </Spinner>
-
+                        <TextView
+                            android:id="@+id/error2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E53935"
+                            android:layout_below="@+id/user"
+                            android:layout_margin="10dp"
+                            android:textAlignment="textEnd"
+                            android:paddingEnd="40dp"
+                            android:visibility="gone"
+                            />
 
                         <EditText
                             android:id="@+id/edit3"
@@ -128,7 +148,17 @@
                             android:background="@drawable/border_two">
 
                         </EditText>
-
+                        <TextView
+                            android:id="@+id/error3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E53935"
+                            android:layout_below="@+id/user"
+                            android:layout_margin="10dp"
+                            android:textAlignment="textEnd"
+                            android:paddingEnd="40dp"
+                            android:visibility="gone"
+                            />
 
                         <EditText
                             android:id="@+id/edit4"
@@ -147,7 +177,17 @@
 
                         </EditText>
 
-
+                        <TextView
+                            android:id="@+id/error4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E53935"
+                            android:layout_below="@+id/user"
+                            android:layout_margin="10dp"
+                            android:textAlignment="textEnd"
+                            android:paddingEnd="40dp"
+                            android:visibility="gone"
+                            />
                         <EditText
                             android:id="@+id/edit5"
                             android:layout_width="match_parent"
@@ -165,7 +205,17 @@
 
                         </EditText>
 
-
+                        <TextView
+                            android:id="@+id/error5"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E53935"
+                            android:layout_below="@+id/user"
+                            android:layout_margin="10dp"
+                            android:textAlignment="textEnd"
+                            android:paddingEnd="40dp"
+                            android:visibility="gone"
+                            />
                         <EditText
                             android:id="@+id/edit6"
                             android:layout_width="match_parent"
@@ -182,6 +232,17 @@
 
                         </EditText>
 
+                        <TextView
+                            android:id="@+id/error6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E53935"
+                            android:layout_below="@+id/user"
+                            android:layout_margin="10dp"
+                            android:textAlignment="textEnd"
+                            android:paddingEnd="40dp"
+                            android:visibility="gone"
+                            />
                         <EditText
                             android:id="@+id/edit7"
                             android:layout_width="match_parent"
@@ -197,7 +258,17 @@
                             android:background="@drawable/border_two">
 
                         </EditText>
-
+                        <TextView
+                            android:id="@+id/error7"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E53935"
+                            android:layout_below="@+id/user"
+                            android:layout_margin="10dp"
+                            android:textAlignment="textEnd"
+                            android:paddingEnd="40dp"
+                            android:visibility="gone"
+                            />
 
                         <EditText
                             android:id="@+id/edit8"
@@ -215,7 +286,17 @@
                             android:background="@drawable/border_two">
 
                         </EditText>
-
+                        <TextView
+                            android:id="@+id/error8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E53935"
+                            android:layout_below="@+id/user"
+                            android:layout_margin="10dp"
+                            android:textAlignment="textEnd"
+                            android:paddingEnd="40dp"
+                            android:visibility="gone"
+                            />
 
                         <EditText
                             android:id="@+id/edit9"
@@ -233,6 +314,17 @@
                             android:background="@drawable/border_two">
 
                         </EditText>
+                        <TextView
+                            android:id="@+id/error9"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E53935"
+                            android:layout_below="@+id/user"
+                            android:layout_margin="10dp"
+                            android:textAlignment="textEnd"
+                            android:paddingEnd="40dp"
+                            android:visibility="gone"
+                            />
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

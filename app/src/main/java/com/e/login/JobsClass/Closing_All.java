@@ -1,6 +1,8 @@
 package com.e.login.JobsClass;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +22,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.BaseApi.Api;
+import com.e.login.EnquiryFragment;
+import com.e.login.Help_Class.Helpline;
+import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.QrCodeFragment;
 import com.e.login.R;
+import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -73,12 +82,12 @@ public class Closing_All extends AppCompatActivity {
 
         recyclerView =findViewById(R.id.closing_all);
 
-
+        BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_shops);
+        btnNav.setOnNavigationItemSelectedListener(navListener);
 
 
     }
     public void all_close( String url){
-//        String JSON_URL = "http://nk.inevitabletech.email/public/api/view-job-details?job_id="+data;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @SuppressLint("CheckResult")
@@ -150,9 +159,6 @@ public class Closing_All extends AppCompatActivity {
 
             }
 
-//
-//
-//        }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -187,7 +193,7 @@ public class Closing_All extends AppCompatActivity {
     }
 
     public void all_cls( String url){
-//        String JSON_URL = "http://nk.inevitabletech.email/public/api/view-job-details?job_id="+data;
+
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @SuppressLint("CheckResult")
@@ -259,9 +265,7 @@ public class Closing_All extends AppCompatActivity {
 
             }
 
-//
-//
-//        }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -294,4 +298,40 @@ public class Closing_All extends AppCompatActivity {
 
 
     }
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            int id = item.getItemId();
+            Fragment fragment = null;
+
+            switch (id) {
+                case R.id.nav_home:
+                    fragment = new Fragment_Home();
+                    break;
+                case R.id.nav_tree:
+                    fragment = new InformationFragment();
+                    break;
+                case R.id.nav_qr:
+                    fragment = new QrCodeFragment();
+                    break;
+                case R.id.nav_profilee:
+
+                    fragment = new Helpline();
+                    break;
+                case R.id.nav_notifications:
+                    fragment = new EnquiryFragment();
+                    break;
+
+
+            }
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment, fragment).commit();
+
+            return true;
+        }
+    };
+
 }

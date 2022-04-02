@@ -13,12 +13,12 @@
 
     <EditText
 
-        android:id="@+id/ins"
+        android:id="@+id/dobb"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/border_only"
-        android:hint="Institute"
+        android:hint="Date Of Birth"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:inputType="text"
@@ -27,14 +27,12 @@
         android:textColorHint="@color/black"
         android:textSize="14dp" />
 
-    <EditText
-
-        android:id="@+id/deg"
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/border_only"
-        android:hint="Degree"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:inputType="text"
@@ -45,20 +43,7 @@
 
 
 
-    <EditText
-        android:id="@+id/yr"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/border_only"
-        android:hint="Year"
-        android:inputType="text"
-        android:padding="5dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:paddingStart="15dp"
-        android:textColorHint="@color/black"
-        android:textSize="14dp" />
+
 
     <LinearLayout
         android:layout_width="match_parent"

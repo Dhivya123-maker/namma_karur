@@ -1,82 +1,59 @@
 package com.e.login;
 
-import static android.view.View.GONE;
-
-import androidx.appcompat.app.AlertDialog;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.e.login.AmbulanceClass.Ambulance;
-import com.e.login.AmbulanceClass.AmbulanceAdapter;
-import com.e.login.AmbulanceClass.AmbulanceModel;
-import com.e.login.HomeClass.Home;
-import com.e.login.Profile_details.EducationAdapter;
-import com.e.login.Profile_details.Education_Model;
-import com.e.login.Profile_details.Education_details;
-import com.e.login.ShopClass.ShopScreen_Class;
-import com.e.login.Verification.Change_Email_OTP;
-import com.e.login.Verification.Change_Phone;
-import com.e.login.Verification.Edit;
+import com.e.login.Help_Class.Helpline;
+import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.Verification.Email_OTP;
 import com.e.login.Verification.Email_Verification;
 import com.e.login.Verification.Phone_txt;
-import com.e.login.Verification.VerificationActivity;
-import com.e.login.Verification.VerifyActivity;
+import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Profile extends AppCompatActivity {
     Button btn, edit, save, email_verify, contact_verify;
@@ -112,8 +89,6 @@ public class Profile extends AppCompatActivity {
     private Button cancelUserDataButton = null;
     RecyclerView recyclerView ;
 
-//    List<Education_Model> educationModelList;
-//    EducationAdapter adapter;
 
 
     @SuppressLint("WrongThread")
@@ -135,6 +110,8 @@ public class Profile extends AppCompatActivity {
         data3 = intent.getStringExtra("email");
 
 
+        BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_profile);
+        btnNav.setOnNavigationItemSelectedListener(navListener);
 
 
 
@@ -179,12 +156,14 @@ public class Profile extends AppCompatActivity {
         contact_verify = findViewById(R.id.contact_verify);
 
         edit_btn = findViewById(R.id.edit_button);
+
+
         edit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
 
-                PopUpClass popUpClass = new PopUpClass();
+                PopUpClass_one popUpClass = new PopUpClass_one();
                 popUpClass.showPopupWindow(getSupportFragmentManager(),view);
 
             }
@@ -247,7 +226,6 @@ public class Profile extends AppCompatActivity {
                 startActivity(intent1);
 
 
-//                change_email();
 
             }
         });
@@ -313,7 +291,7 @@ public class Profile extends AppCompatActivity {
                             Intent intent1 = new Intent(Profile.this, Email_OTP.class);
                             intent1.putExtra("email", data3);
                             intent1.putExtra("id", data1);
-//
+
                             intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent1);
 
@@ -444,7 +422,7 @@ public class Profile extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Profile.this, "Not", Toast.LENGTH_SHORT).show();
+
 
             }
         }) {
@@ -470,6 +448,42 @@ public class Profile extends AppCompatActivity {
 
 
     }
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            int id = item.getItemId();
+            Fragment fragment = null;
+
+            switch (id) {
+                case R.id.nav_home:
+                    fragment = new Fragment_Home();
+                    break;
+                case R.id.nav_tree:
+                    fragment = new InformationFragment();
+                    break;
+                case R.id.nav_qr:
+                    fragment = new QrCodeFragment();
+                    break;
+                case R.id.nav_profilee:
+
+                    fragment = new Helpline();
+                    break;
+                case R.id.nav_notifications:
+
+                    fragment = new EnquiryFragment();
+                    break;
+
+
+            }
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layoutt, fragment).commit();
+
+            return true;
+        }
+    };
 
     void imageChooser() {
 
@@ -595,6 +609,133 @@ public class Profile extends AppCompatActivity {
 
 
         }
+
+
+
+
+    }
+    public class PopUpClass_one {
+
+
+
+        public void showPopupWindow(FragmentManager supportFragmentManager, final View view) {
+
+
+
+
+            //Create a View object yourself through inflater
+            LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
+            View popupView = inflater.inflate(R.layout.date_popup, null);
+
+            //Specify the length and width through constants
+            int width = LinearLayout.LayoutParams.MATCH_PARENT;
+            int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+
+            //Make Inactive Items Outside Of PopupWindow
+            boolean focusable = true;
+
+            //Create a window with our parameters
+            final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+            //Set the location of the window on the screen
+            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+            //Initialize the elements of our window, install the handler
+
+
+
+
+            //Handler for clicking on the inactive zone of the window
+
+            popupView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+
+                    //Close the window when clicked
+                    popupWindow.dismiss();
+                    return true;
+                }
+            });
+
+            Button cancel = (Button) popupView.findViewById(R.id.cancel);
+            Button save = (Button) popupView.findViewById(R.id.save);
+
+            cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    popupWindow.dismiss();
+                }
+            });
+
+
+            save.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    EditText date =popupView.findViewById(R.id.dobb);
+                    Spinner bl = popupView.findViewById(R.id.spinner);
+
+                    ArrayList<String> sname = new ArrayList<>();
+
+                    sname.add("Blood Group");
+
+                    sname.add("a1_positive");
+                    sname.add("a1_negative");
+                    sname.add("a2_positive");
+                    sname.add("a2_negative");
+                    sname.add("b_positive");
+                    sname.add("b_negative");
+                    sname.add("a1b_positive");
+                    sname.add("a1b_negative");
+                    sname.add("a2b_positive");
+                    sname.add("a2b_negative");
+                    sname.add("ab_positive");
+                    sname.add("ab_negative");
+                    sname.add("o_positive");
+                    sname.add("o_negative");
+                    sname.add("a_positive");
+                    sname.add("a_negative");
+
+
+
+
+                    ArrayAdapter<String> Adapter1 = new ArrayAdapter<String>(Profile.this,
+                            R.layout.text_color1,sname);
+                    Adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    bl.setAdapter(Adapter1);
+
+
+
+                    String Date = date.getText().toString();
+                    String Blood = bl.getSelectedItem().toString();
+
+                    popupWindow.dismiss();
+
+
+
+                    if(Date.equals("")){
+                        dob.setText("D.O.B");
+                    }else{
+                        dob.setText(Date);
+                    }
+
+                    b_gp.setText(Blood);
+
+
+
+
+                }
+            });
+
+
+
+
+
+
+        }
+
+
+
 
     }
 

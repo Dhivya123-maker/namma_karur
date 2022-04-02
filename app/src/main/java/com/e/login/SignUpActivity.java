@@ -417,7 +417,7 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
                         JSONArray jsonArray2 = data.getJSONArray("email");
                         Error2.setText(jsonArray2.getString(0));
                         Error2.setVisibility(View.VISIBLE);
-//                        password.setError(jsonArray2.getString(0));
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -428,7 +428,7 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
                         JSONObject data = jsonObject.getJSONObject("data");
 
                         JSONArray jsonArray2 = data.getJSONArray("phone");
-//                        email.setError(jsonArray1);
+
                         Error3.setText(jsonArray2.getString(0));
                         Error3.setVisibility(View.VISIBLE);
                     } catch (JSONException e) {

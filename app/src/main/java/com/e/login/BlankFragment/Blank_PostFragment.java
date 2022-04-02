@@ -202,16 +202,6 @@ public class Blank_PostFragment extends Fragment {
 
 
 
-        if(followArray != null){
-            follow_txt.setText("Following");
-
-
-        }else {
-            follow_txt.setText("Follow");
-        }
-
-
-
 
         follow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -363,8 +353,7 @@ public class Blank_PostFragment extends Fragment {
                 Intent i = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + ml));
 
                 i.putExtra(Intent.EXTRA_EMAIL, new String[]{ml});
-//                i.putExtra(Intent.EXTRA_SUBJECT, "nk");
-//                i.putExtra(Intent.EXTRA_TEXT   , "nk");
+
                 try {
                     startActivity(Intent.createChooser(i, "Send mail..."));
                 } catch (android.content.ActivityNotFoundException ex) {
@@ -527,9 +516,8 @@ public class Blank_PostFragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
 
-//                Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
 
-//
+
 
                 try {
 
@@ -563,20 +551,8 @@ public class Blank_PostFragment extends Fragment {
                     rate.setText(rating);
                     verify.setText(verified);
                     desc.setText(description);
-//                    phone_num.setText(phone);
+
                     view_ct.setText(view_count);
-
-
-                    followArray = jsonObject.getJSONObject("follow");
-                    catalog_id = followArray.getString("catalog_id");
-                    catalog_type = followArray.getString("catalog_type");
-                    follow_id = followArray.getString("id");
-
-
-
-
-
-
 
 
 
@@ -585,7 +561,7 @@ public class Blank_PostFragment extends Fragment {
 
 
                     blank_comments_modelList = new ArrayList<>();
-                    for (int i = 0; i<3; i++) {
+                    for (int i = 0; i<=3; i++) {
 
                         JSONObject data = res.getJSONObject(i);
 
@@ -615,6 +591,26 @@ public class Blank_PostFragment extends Fragment {
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
                     adapter = new Blank_Comments_Adapter(getContext(), blank_comments_modelList);
                     recyclerView.setAdapter(adapter);
+
+
+
+
+                    followArray = jsonObject.getJSONObject("follow");
+                    if(jsonObject.getJSONObject("follow")!=null){
+                        follow_txt.setText("Following");
+
+                    }else{
+                        follow_txt.setText("Follow");
+                    }
+                    catalog_id = followArray.getString("catalog_id");
+                    catalog_type = followArray.getString("catalog_type");
+                    follow_id = followArray.getString("id");
+
+
+
+
+
+
 
 
 

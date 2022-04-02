@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -40,8 +40,7 @@
                     android:layout_marginTop="80dp"
                     android:text="Breaking News"
                     android:textColor="@color/white"
-                    android:textSize="16dp"
-                  />
+                    android:textSize="16dp" />
 
 
             </LinearLayout>
@@ -110,7 +109,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fragment_layout"
-
+        android:layout_above="@id/bottomNavigationView_shops"
         tools:ignore="MissingConstraints">
 
     </FrameLayout>
@@ -121,10 +120,9 @@
         android:id="@+id/bottomNavigationView_shops"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:itemIconTint="@color/white"
         android:background="#4c9a2a"
-        app:layout_constraintStart_toEndOf="parent"
+      android:layout_alignParentBottom="true"
         app:itemTextColor="@color/white"
         app:menu="@menu/bottom_nav" />
 
@@ -132,7 +130,7 @@
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
 
 
 

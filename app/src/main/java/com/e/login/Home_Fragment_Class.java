@@ -50,12 +50,12 @@ public class Home_Fragment_Class extends AppCompatActivity {
 
         textView = findViewById(R.id.name);
         textView.setText(data);
-
-        BottomNavigationView btnNav = findViewById(R.id.bottomNavigation_frag);
-        btnNav.setOnNavigationItemSelectedListener(navListener);
-
-
 //
+//        BottomNavigationView btnNav = findViewById(R.id.bottomNavigation_frag);
+//        btnNav.setOnNavigationItemSelectedListener(navListener);
+//
+//
+
 //        floatingActionButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -147,18 +147,14 @@ public class Home_Fragment_Class extends AppCompatActivity {
 
                 if (tab.getPosition() == 0) {
 
-//                    floatingActionButton.setVisibility(View.VISIBLE);
                 } else if (tab.getPosition() == 1) {
 
-//                    floatingActionButton.setVisibility(View.GONE);
 
                 } else if (tab.getPosition() == 2) {
 
-//                    floatingActionButton.setVisibility(View.GONE);
 
                 } else if (tab.getPosition() == 3) {
 
-//                    floatingActionButton.setVisibility(View.GONE);
 
                 }
             }
@@ -176,42 +172,42 @@ public class Home_Fragment_Class extends AppCompatActivity {
 
 
     }
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-            int id = item.getItemId();
-            Fragment fragment = null;
-
-            switch (id) {
-                case R.id.nav_home:
-                    fragment = new Fragment_Home();
-
-                    break;
-                case R.id.nav_tree:
-                    fragment = new InformationFragment();
-                    break;
-                case R.id.nav_qr:
-                    fragment = new QrCodeFragment();
-                    break;
-                case R.id.nav_profilee:
-
-                    fragment = new Helpline();
-                    break;
-                case R.id.nav_notifications:
-                    fragment = new Post_Fragment();
-                    break;
-
-
-            }
-
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout1, fragment).commit();
-
-            return true;
-        }
-    };
+//    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+//
+//
+//        @Override
+//        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//            int id = item.getItemId();
+//            Fragment fragment = null;
+//
+//            switch (id) {
+//                case R.id.nav_home:
+//                    fragment = new Fragment_Home();
+//
+//                    break;
+//                case R.id.nav_tree:
+//                    fragment = new InformationFragment();
+//                    break;
+//                case R.id.nav_qr:
+//                    fragment = new QrCodeFragment();
+//                    break;
+//                case R.id.nav_profilee:
+//
+//                    fragment = new Helpline();
+//                    break;
+//                case R.id.nav_notifications:
+//                    fragment = new Post_Fragment();
+//                    break;
+//
+//
+//            }
+//
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout1, fragment).commit();
+//
+//            return true;
+//        }
+//    };
 
 
 

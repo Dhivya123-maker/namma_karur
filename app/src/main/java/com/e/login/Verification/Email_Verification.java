@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -21,6 +22,7 @@ import com.e.login.Profile;
 import com.e.login.R;
 import com.e.login.utils.PreferenceUtils;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,6 +35,7 @@ public class Email_Verification extends AppCompatActivity {
     Button send;
     EditText mail;
     String Mail,id;
+    TextView err;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +48,7 @@ public class Email_Verification extends AppCompatActivity {
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");
+        err = findViewById(R.id.error1);
 
 
 
@@ -77,9 +81,6 @@ public class Email_Verification extends AppCompatActivity {
                 @Override
                 public void onResponse(JSONObject response) {
 
-//                    Log.i("0000000000000",response.toString());
-//                    Toast.makeText(Profile.this, response.toString(), Toast.LENGTH_SHORT).show();
-
 
                     try {
                         String Success = response.getString("success");
@@ -94,9 +95,8 @@ public class Email_Verification extends AppCompatActivity {
                             intent.putExtra("id",id);
                             startActivity(intent);
 
-                            Toast.makeText(Email_Verification.this, id, Toast.LENGTH_SHORT).show();
-//                            PreferenceUtils.saveid(data1,Profile.this);
-//                            PreferenceUtils.saveToken(data,Profile.this);
+
+
 
 
                         } else {
@@ -120,13 +120,15 @@ public class Email_Verification extends AppCompatActivity {
 
                     Charset charset = Charset.defaultCharset();
                     String str = new String(error.networkResponse.data, charset);
-                    Toast.makeText(Email_Verification.this, str, Toast.LENGTH_SHORT).show();
+
 
 
                     try {
                         JSONObject jsonObject = new JSONObject(str);
                         JSONObject data = jsonObject.getJSONObject("data");
-                        Toast.makeText(Email_Verification.this, data.toString(), Toast.LENGTH_SHORT).show();
+                        JSONArray jsonArray = data.getJSONArray("email");
+                        err.setText(jsonArray.getString(0));
+                        err.setVisibility(View.VISIBLE);
 
                     } catch (JSONException e) {
                         e.printStackTrace();

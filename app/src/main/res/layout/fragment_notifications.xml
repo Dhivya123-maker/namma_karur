@@ -15,7 +15,7 @@
      <RelativeLayout
         android:id="@+id/brandAndItsLocation"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         android:layout_marginEnd="0dp"
 
         android:background="@drawable/profile_empty"
@@ -39,16 +39,6 @@
         </LinearLayout>
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-           android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
-            android:text="Enquiry"
-            android:textColor="@color/white"
-            android:textSize="18dp"
-            android:textStyle="bold" />
 
     </RelativeLayout>
     <RelativeLayout
@@ -56,124 +46,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bground"
-        android:backgroundTint="#4C9A2A"
+        android:backgroundTint="@color/white"
         android:layout_below="@+id/brandAndItsLocation">
 
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white">
 
-
-            <LinearLayout
-                android:id="@+id/ProfileDetails"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:orientation="vertical">
-
-                <EditText
-
-
-                    android:id="@+id/Name"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="35dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/border"
-
-
-                    android:hint="Name"
-
-
-                    android:inputType="text"
-                    android:padding="5dp"
-                    android:paddingStart="15dp"
-                    android:paddingLeft="10dp"
-                    android:textColorHint="#4c9a2a"
-                    android:textSize="14dp" />
-
-                <EditText
-                    android:id="@+id/contact"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/border"
-                    android:drawableBottom="#4c9a2a"
-                    android:hint="Contact Number"
-                    android:inputType="number"
-                    android:padding="5dp"
-                    android:paddingStart="15dp"
-                    android:textColorHint="#4c9a2a"
-                    android:textSize="14dp" />
-
-                <EditText
-                    android:id="@+id/emaill"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/border"
-                    android:drawableBottom="#4c9a2a"
-                    android:hint="Email"
-                    android:inputType="textEmailAddress"
-                    android:padding="5dp"
-                    android:paddingStart="15dp"
-                    android:textColorHint="#4c9a2a"
-                    android:textSize="14dp" />
-
-                <EditText
-                    android:id="@+id/desc"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/border"
-                    android:hint="Detailed description of your enquiry"
-                    android:inputType="text"
-
-                    android:paddingStart="15dp"
-                    android:paddingBottom="90dp"
-                    android:textColorHint="#4c9a2a"
-                    android:textSize="14dp" />
-
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_gravity="center"
-
-
-                    android:layout_marginStart="110dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="110dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/bg"
-                    android:backgroundTint="#4c9a2a"
-                    android:gravity="center"
-                    android:text="Submit"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white" />
-
-
-            </LinearLayout>
-
-
-
-        </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chat feature is comming soon"
+                    android:textColor="#4c9a2a"
+                    android:textSize="18dp"
+                    android:layout_centerInParent="true"
+                    android:textStyle="bold" />
 
 
 
 
 
-        <!--    bottom-->
+
+
 
 
 

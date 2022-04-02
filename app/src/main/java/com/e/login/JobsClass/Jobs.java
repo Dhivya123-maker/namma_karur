@@ -77,7 +77,7 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
                 intent1.putExtra("cat1","closing_jobs");
                 startActivity(intent1);
 
-//                close_view();
+
 
             }
         });

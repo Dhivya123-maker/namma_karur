@@ -1,6 +1,8 @@
 package com.e.login.NewsClass;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +22,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.BaseApi.Api;
+import com.e.login.EnquiryFragment;
+import com.e.login.Help_Class.Helpline;
+import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.QrCodeFragment;
 import com.e.login.R;
+import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -71,17 +80,16 @@ public class View_Breaking extends AppCompatActivity {
             news.setText("Breaking News");
 
         }
-//       else  if(data.equals("All_news")){
-//            String url = api+"get-all-news?news_id=2";
-//            view_news(url);
-//            news.setText("All News");
-//        }
+
+        BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_shops);
+        btnNav.setOnNavigationItemSelectedListener(navListener);
+
 
     }
 
     public void view_news(String url){
 
-//        String JSON_URL = "http://nk.inevitabletech.email/public/api/get-all-news?"+data;
+
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @SuppressLint("CheckResult")
@@ -89,8 +97,6 @@ public class View_Breaking extends AppCompatActivity {
             public void onResponse(JSONObject response) {
 
 
-//                Log.i("00000001111",response.toString());
-//                Toast.makeText(View_Breaking.this, response.toString(), Toast.LENGTH_SHORT).show();
 
                 try {
 
@@ -154,9 +160,6 @@ public class View_Breaking extends AppCompatActivity {
 
             }
 
-//
-//
-//        }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -185,4 +188,41 @@ public class View_Breaking extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
 
     }
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            int id = item.getItemId();
+            Fragment fragment = null;
+
+            switch (id) {
+                case R.id.nav_home:
+                    fragment = new Fragment_Home();
+                    break;
+                case R.id.nav_tree:
+                    fragment = new InformationFragment();
+                    break;
+                case R.id.nav_qr:
+                    fragment = new QrCodeFragment();
+                    break;
+                case R.id.nav_profilee:
+
+                    fragment = new Helpline();
+                    break;
+                case R.id.nav_notifications:
+
+                    fragment = new EnquiryFragment();
+                    break;
+
+
+            }
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, fragment).commit();
+
+            return true;
+        }
+    };
+
 }

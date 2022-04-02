@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,7 +32,6 @@ import com.e.login.HelperClass.ViewPagerAdapter;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.Home_Fragment_Class;
-import com.e.login.Post_Fragment;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
 import com.e.login.info_Class.InformationFragment;
@@ -114,7 +112,6 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
         Intent intent = getIntent();
     data = intent.getStringExtra("name");
-//     data1 = intent.getStringExtra("id");
      data2 = intent.getStringExtra("list");
         data3 = intent.getStringExtra("id");
 
@@ -262,7 +259,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
                     fragment = new Helpline();
                     break;
                 case R.id.nav_notifications:
-                   fragment = new Post_Fragment();
+                   fragment = new EnquiryFragment();
                     break;
 
 
@@ -407,8 +404,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
                         JSONObject jsonObject = res.getJSONObject(i);
 
 
-//                        Toast.makeText(ShopsScreenFragment.this, jsonObject.toString(), Toast.LENGTH_SHORT).show();
-//                        Log.i("jbfhusduycfhb",jsonObject.toString());
+
 
                         id = jsonObject.getString("id");
                         image = jsonObject.getString("image");
