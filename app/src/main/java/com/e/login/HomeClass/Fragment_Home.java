@@ -727,6 +727,7 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
         }else if (cat_name.equals("NewsCatalog")){
             Intent intent = new Intent(getActivity(), NewsActivity.class);
             intent.putExtra("cat",cat_name);
+
             startActivity(intent);
         }else if (cat_name.equals("BloodCatalog")){
             Intent intent = new Intent(getActivity(), Blood_Fragment.class);
@@ -741,14 +742,117 @@ public class Fragment_Home extends Fragment implements CategoryAdapter.OnItemCli
             intent.putExtra("cat",cat_name);
 
             startActivity(intent);
-        }
+        }else {
+                 Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
+                 // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
+                 intent.putExtra("cat", cat_name);
+                 startActivity(intent);
+             }
 
-        else {
-            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
-           // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
-            intent.putExtra("cat", cat_name);
-            startActivity(intent);
-        }
+
+
+
+//        if(cat_name.equals("OfferCatalog")){
+//
+//            Intent intent = new Intent(getActivity(), OfferActivity.class);
+//            intent.putExtra("cat",cat_name);
+//            startActivity(intent);
+//        }
+//        if (cat_name.equals("NewsCatalog")){
+//            Intent intent = new Intent(getActivity(), NewsActivity.class);
+//            intent.putExtra("cat",cat_name);
+//
+//            startActivity(intent);
+//        }
+//        if (cat_name.equals("BloodCatalog")){
+//            Intent intent = new Intent(getActivity(), Blood_Fragment.class);
+//            startActivity(intent);
+//        }
+//        if (cat_name.equals("KarurBlogCatalog")){
+//            Intent intent = new Intent(getActivity(), BlogActivity.class);
+//            intent.putExtra("cat",cat_name);
+//            startActivity(intent);
+//
+//        }
+//
+//        if (cat_name.equals("JobsCatalog")){
+//            Intent intent = new Intent(getActivity(), Jobs.class);
+//            intent.putExtra("cat",cat_name);
+//
+//            startActivity(intent);
+//        }
+//        if(cat_name.equals("ShopCatalog")){
+//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
+//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
+//            intent.putExtra("cat", cat_name);
+//            startActivity(intent);
+//        }
+//        if(cat_name.equals("ServiceCatalog")){
+//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
+//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
+//            intent.putExtra("cat", cat_name);
+//            startActivity(intent);
+//        }
+//        if(cat_name.equals("EducationCatalog")){
+//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
+//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
+//            intent.putExtra("cat", cat_name);
+//            startActivity(intent);
+//        }
+//        if(cat_name.equals("TransportCatalog")){
+//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
+//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
+//            intent.putExtra("cat", cat_name);
+//            startActivity(intent);
+//        }
+//        if(cat_name.equals("HospitalCatalog")){
+//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
+//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
+//            intent.putExtra("cat", cat_name);
+//            startActivity(intent);
+//        }
+//        if(cat_name.equals("EventCatalog")){
+//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
+//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
+//            intent.putExtra("cat", cat_name);
+//            startActivity(intent);
+//        }
+//        if(cat_name.equals("HotelCatalog")){
+//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
+//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
+//            intent.putExtra("cat", cat_name);
+//            startActivity(intent);
+//        }
+//        if(cat_name.equals("BankCatalog")){
+//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
+//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
+//            intent.putExtra("cat", cat_name);
+//            startActivity(intent);
+//        }
+//        if(cat_name.equals("AmbulanceCatalog")){
+//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
+//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
+//            intent.putExtra("cat", "AmbulanceCatalog");
+//            startActivity(intent);
+//        }
+//        if(cat_name.equals("MarketCatalog")){
+//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
+//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
+//            intent.putExtra("cat", cat_name);
+//            startActivity(intent);
+//        }
+//        if(cat_name.equals("BusTimeCatalog")){
+//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
+//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
+//            intent.putExtra("cat", cat_name);
+//            startActivity(intent);
+//        }
+//        if(cat_name.equals("GovtNgoCatalog")){
+//            Intent intent = new Intent(getActivity(), ShopScreen_Class.class);
+//            // Toast.makeText(getActivity(), "Please verify your email", Toast.LENGTH_SHORT).show();
+//            intent.putExtra("cat", cat_name);
+//            startActivity(intent);
+//        }
 
 
     }

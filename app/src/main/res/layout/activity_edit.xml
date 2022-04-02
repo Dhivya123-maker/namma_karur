@@ -66,36 +66,34 @@
                         android:id="@+id/ProfileDetails"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginEnd="20dp"
-                     >
+                        android:orientation="vertical">
 
 
-                       <LinearLayout
+                        <LinearLayout
                             android:layout_width="120dp"
                             android:layout_height="100dp"
-                           android:layout_gravity="center"
-                           android:gravity="center">
+                            android:layout_gravity="center"
+                            android:gravity="center">
 
 
-                            <de.hdodenhof.circleimageview.CircleImageView
-                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                                 android:id="@+id/profile_image"
                                 android:layout_width="70dp"
                                 android:layout_height="70dp"
+                                android:src="@drawable/ic_baseline_person_24"
                                 app:civ_border_color="#4c9a2a"
                                 app:civ_border_width="2dp"
-                                android:src="@drawable/ic_baseline_person_24"
-                                />
-<!--                            <ImageView-->
-<!--                                android:id="@+id/profile_img1"-->
-<!--                                android:layout_width="40dp"-->
-<!--                                android:layout_height="40dp"-->
-<!--                                android:layout_gravity="center"-->
-<!--                                android:layout_marginStart="20dp"-->
-<!--                                android:src="@drawable/ic_baseline_person_24" />-->
+                                tools:ignore="MissingClass" />
+                            <!--                            <ImageView-->
+                            <!--                                android:id="@+id/profile_img1"-->
+                            <!--                                android:layout_width="40dp"-->
+                            <!--                                android:layout_height="40dp"-->
+                            <!--                                android:layout_gravity="center"-->
+                            <!--                                android:layout_marginStart="20dp"-->
+                            <!--                                android:src="@drawable/ic_baseline_person_24" />-->
 
                             <RelativeLayout
                                 android:layout_width="wrap_content"
@@ -119,359 +117,350 @@
 
                         <EditText
 
-                            android:id="@+id/p_details1"
+                            android:id="@+id/db"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
+                            android:layout_marginTop="20dp"
                             android:background="@drawable/border_only"
                             android:hint="Date of birth"
                             android:inputType="text"
                             android:padding="5dp"
-                            android:layout_marginTop="20dp"
                             android:paddingStart="15dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
-
-                        <EditText
-
-                            android:id="@+id/p_details2"
+                        <Spinner
+                            android:id="@+id/blood"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
-                            android:background="@drawable/border_only"
-                            android:hint="Blood group"
                             android:layout_marginTop="15dp"
-                            android:inputType="text"
-                            android:padding="5dp"
-                            android:paddingStart="15dp"
-                            android:textColorHint="@color/black"
-                            android:textSize="14dp" />
+                            android:hint="Blood Group"
+                            android:singleLine="true"
+                            android:textColorHint="#656565"
+                            android:textSize="14dp"
+                            android:padding="10dp"
+                            android:background="@drawable/border_two">
+
+                        </Spinner>
 
 
                         <EditText
-
-                            android:id="@+id/p_details3"
+                            android:id="@+id/des"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
+                            android:layout_marginTop="15dp"
                             android:background="@drawable/border_only"
                             android:hint="description"
                             android:inputType="text"
-                            android:layout_marginTop="15dp"
                             android:padding="5dp"
                             android:paddingStart="15dp"
                             android:textColorHint="@color/black"
                             android:textSize="14dp" />
 
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                           >
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="end"
-                                android:orientation="horizontal"
-
-                                >
-
-                                <ImageView
-                                    android:id="@+id/add"
-                                    android:layout_width="22dp"
-                                    android:layout_height="22dp"
-                                    android:layout_marginTop="20dp"
-                                    android:layout_marginEnd="30dp"
-                                    android:src="@drawable/ad" />
-
-                                <ImageView
-                                    android:id="@+id/editt"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginTop="20dp"
-                                    android:src="@drawable/edits" />
-
-                            </LinearLayout>
-
-
-                            <TextView
-
-                                android:id="@+id/p_details4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginTop="15dp"
-                                android:hint="Education"
-                                android:inputType="text"
-                                android:textColorHint="@color/black"
-                                android:textSize="14dp"
-                                android:textStyle="bold" />
-                        </RelativeLayout>
-
-<!--                        <LinearLayout-->
-<!--                            android:id="@+id/linn"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginTop="15dp"-->
-<!--                            android:orientation="vertical">-->
-
-
-
-<!--                        <EditText-->
-<!--                            android:id="@+id/inst1"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="40dp"-->
-<!--                            android:background="@drawable/border_only"-->
-<!--                            android:hint="Institute"-->
-<!--                            android:inputType="text"-->
-<!--                            android:padding="5dp"-->
-<!--                            android:paddingStart="15dp"-->
-<!--                            android:textColorHint="@color/black"-->
-<!--                            android:textSize="14dp" />-->
-
-
-
-<!--                        <EditText-->
-
-<!--                            android:id="@+id/p_details5"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="40dp"-->
-<!--                            android:layout_marginTop="15dp"-->
-<!--                            android:background="@drawable/border_only"-->
-<!--                            android:hint="degree"-->
-<!--                            android:inputType="text"-->
-<!--                            android:padding="5dp"-->
-<!--                            android:paddingStart="15dp"-->
-<!--                            android:textColorHint="@color/black"-->
-<!--                            android:textSize="14dp" />-->
-
-<!--&lt;!&ndash;                        </RelativeLayout>&ndash;&gt;-->
-
-<!--                            <EditText-->
-<!--                                android:id="@+id/year"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="40dp"-->
-<!--                                android:layout_marginTop="15dp"-->
-<!--                                android:background="@drawable/border_only"-->
-<!--                                android:hint="academic year"-->
-<!--                                android:inputType="text"-->
-<!--                                android:padding="5dp"-->
-<!--                                android:paddingStart="15dp"-->
-<!--                                android:textColorHint="@color/black"-->
-<!--                                android:textSize="14dp" />-->
-<!--                        </LinearLayout>-->
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                          >
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="end"
-                                android:orientation="horizontal"
-
-                                >
-
-                                <ImageView
-
-                                    android:id="@+id/add_exp"
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
-                                    android:layout_marginTop="20dp"
-                                    android:layout_marginEnd="10dp"
-                                    android:src="@drawable/ad" />
-
-                                <ImageView
-                                    android:id="@+id/minus_exp"
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
-                                    android:layout_marginTop="20dp"
-                                    android:src="@drawable/min" />
-
-                            </LinearLayout>
-
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginTop="15dp"
-                                android:hint="Experience"
-                                android:inputType="text"
-                                android:textColorHint="@color/black"
-                                android:textSize="14dp"
-                                android:textStyle="bold" />
-                        </RelativeLayout>
-<!--                    <LinearLayout-->
-<!--                        android:id="@+id/linn1"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="15dp"-->
-<!--                        android:orientation="vertical">-->
-
-<!--                        <EditText-->
-<!--                            android:id="@+id/add4"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="40dp"-->
-<!--                            android:layout_marginTop="15dp"-->
-<!--                            android:background="@drawable/border_only"-->
-<!--                            android:hint="company"-->
-<!--                            android:inputType="text"-->
-<!--                            android:padding="5dp"-->
-<!--                            android:paddingStart="15dp"-->
-<!--                            android:textColorHint="@color/black"-->
-<!--                            android:textSize="14dp" />-->
-
-
-
-
-<!--                        <EditText-->
-
-<!--                            android:id="@+id/p_details8"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="40dp"-->
-<!--                            android:layout_marginTop="15dp"-->
-<!--                            android:background="@drawable/border_only"-->
-<!--                            android:hint="experience"-->
-<!--                            android:inputType="text"-->
-<!--                            android:padding="5dp"-->
-<!--                            android:paddingStart="15dp"-->
-<!--                            android:textColorHint="@color/black"-->
-<!--                            android:textSize="14dp" />-->
-<!--&lt;!&ndash;                        </RelativeLayout>&ndash;&gt;-->
-
-
-<!--                        <EditText-->
-<!--                            android:id="@+id/add5"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="40dp"-->
-<!--                            android:layout_marginTop="15dp"-->
-<!--                            android:background="@drawable/border_only"-->
-<!--                            android:hint="position"-->
-<!--                            android:inputType="text"-->
-<!--                            android:padding="5dp"-->
-<!--                            android:paddingStart="15dp"-->
-<!--                            android:textColorHint="@color/black"-->
-<!--                            android:textSize="14dp" />-->
-<!--                    </LinearLayout>-->
 <!--                        <RelativeLayout-->
 <!--                            android:layout_width="wrap_content"-->
 <!--                            android:layout_height="wrap_content">-->
 
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:orientation="horizontal"-->
-<!--                            android:gravity="end"-->
-<!--                            android:layout_marginEnd="30dp"-->
-<!--                            >-->
-
-<!--                            <ImageView-->
-<!--                                android:id="@+id/add_pos"-->
-<!--                                android:layout_width="18dp"-->
-<!--                                android:layout_height="18dp"-->
-<!--                                android:layout_marginTop="30dp"-->
-<!--                                android:src="@drawable/add"/>-->
-<!--                            <ImageView-->
-<!--                                android:id="@+id/minus_pos"-->
-<!--                                android:layout_width="15dp"-->
-<!--                                android:layout_height="15dp"-->
-<!--                                android:layout_marginTop="33dp"-->
-<!--                                android:src="@drawable/minus"/>-->
-
-<!--                        </LinearLayout>-->
-
-<!--                            <EditText-->
-
-<!--                                android:id="@+id/p_details9"-->
+<!--                            <LinearLayout-->
 <!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="50dp"-->
-<!--                                android:layout_marginStart="20dp"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="end"-->
+<!--                                android:orientation="horizontal"-->
+
+<!--                                >-->
+
+<!--                                <ImageView-->
+<!--                                    android:id="@+id/add"-->
+<!--                                    android:layout_width="22dp"-->
+<!--                                    android:layout_height="22dp"-->
+<!--                                    android:layout_marginTop="20dp"-->
+<!--                                    android:layout_marginEnd="30dp"-->
+<!--                                    android:src="@drawable/ad" />-->
+
+<!--                                <ImageView-->
+<!--                                    android:id="@+id/editt"-->
+<!--                                    android:layout_width="20dp"-->
+<!--                                    android:layout_height="20dp"-->
+<!--                                    android:layout_marginTop="20dp"-->
+<!--                                    android:src="@drawable/edits" />-->
+
+<!--                            </LinearLayout>-->
+
+
+<!--                            <TextView-->
+
+<!--                                android:id="@+id/p_details4"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="5dp"-->
 <!--                                android:layout_marginTop="15dp"-->
-<!--                                android:layout_marginEnd="20dp"-->
-<!--                                android:background="@drawable/border_only"-->
-<!--                                android:hint="Position"-->
+<!--                                android:hint="Education"-->
 <!--                                android:inputType="text"-->
-<!--                                android:padding="5dp"-->
-<!--                                android:paddingStart="15dp"-->
-<!--                                android:paddingLeft="10dp"-->
 <!--                                android:textColorHint="@color/black"-->
-<!--                                android:textSize="14dp" />-->
+<!--                                android:textSize="14dp"-->
+<!--                                android:textStyle="bold" />-->
 <!--                        </RelativeLayout>-->
-<!--                        <EditText-->
-<!--                            android:id="@+id/add6"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="50dp"-->
-<!--                            android:layout_marginStart="20dp"-->
-<!--                            android:layout_marginTop="15dp"-->
-<!--                            android:layout_marginEnd="20dp"-->
-<!--                            android:background="@drawable/border_only"-->
-<!--                            android:hint="Add your position"-->
-<!--                            android:inputType="text"-->
-<!--                            android:padding="5dp"-->
-<!--                            android:paddingStart="15dp"-->
-<!--                            android:paddingLeft="10dp"-->
-<!--                            android:textColorHint="@color/black"-->
-<!--                            android:textSize="14dp" />-->
-                        <RelativeLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                         >
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="end"
-                                android:orientation="horizontal">
-
-                                <ImageView
-                                    android:id="@+id/add_skill"
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
-                                    android:layout_marginTop="20dp"
-                                    android:layout_marginEnd="10dp"
-                                    android:src="@drawable/ad" />
-
-                                <ImageView
-                                    android:id="@+id/minus_skill"
-                                    android:layout_width="18dp"
-                                    android:layout_height="18dp"
-                                    android:layout_marginTop="20dp"
-                                    android:src="@drawable/min" />
-
-                            </LinearLayout>
+                        <!--                        <LinearLayout-->
+                        <!--                            android:id="@+id/linn"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_marginTop="15dp"-->
+                        <!--                            android:orientation="vertical">-->
 
 
-                            <TextView
+                        <!--                        <EditText-->
+                        <!--                            android:id="@+id/inst1"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="40dp"-->
+                        <!--                            android:background="@drawable/border_only"-->
+                        <!--                            android:hint="Institute"-->
+                        <!--                            android:inputType="text"-->
+                        <!--                            android:padding="5dp"-->
+                        <!--                            android:paddingStart="15dp"-->
+                        <!--                            android:textColorHint="@color/black"-->
+                        <!--                            android:textSize="14dp" />-->
 
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginTop="15dp"
-                                android:hint="Skills"
-                                android:inputType="text"
-                                android:textColorHint="@color/black"
-                                android:textSize="14dp"
-                                android:textStyle="bold" />
-                        </RelativeLayout>
-<!--                    <LinearLayout-->
-<!--                        android:id="@+id/linn2"-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="15dp"-->
-<!--                        android:orientation="vertical">-->
 
-<!--                        <EditText-->
-<!--                            android:id="@+id/add7"-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="40dp"-->
-<!--                            android:layout_marginTop="15dp"-->
-<!--                            android:background="@drawable/border_only"-->
-<!--                            android:hint="skills"-->
-<!--                            android:inputType="text"-->
-<!--                            android:padding="5dp"-->
-<!--                            android:paddingStart="15dp"-->
-<!--                            android:textColorHint="@color/black"-->
-<!--                            android:textSize="14dp" />-->
-<!--                    </LinearLayout>-->
+                        <!--                        <EditText-->
+
+                        <!--                            android:id="@+id/p_details5"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="40dp"-->
+                        <!--                            android:layout_marginTop="15dp"-->
+                        <!--                            android:background="@drawable/border_only"-->
+                        <!--                            android:hint="degree"-->
+                        <!--                            android:inputType="text"-->
+                        <!--                            android:padding="5dp"-->
+                        <!--                            android:paddingStart="15dp"-->
+                        <!--                            android:textColorHint="@color/black"-->
+                        <!--                            android:textSize="14dp" />-->
+
+                        <!--&lt;!&ndash;                        </RelativeLayout>&ndash;&gt;-->
+
+                        <!--                            <EditText-->
+                        <!--                                android:id="@+id/year"-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="40dp"-->
+                        <!--                                android:layout_marginTop="15dp"-->
+                        <!--                                android:background="@drawable/border_only"-->
+                        <!--                                android:hint="academic year"-->
+                        <!--                                android:inputType="text"-->
+                        <!--                                android:padding="5dp"-->
+                        <!--                                android:paddingStart="15dp"-->
+                        <!--                                android:textColorHint="@color/black"-->
+                        <!--                                android:textSize="14dp" />-->
+                        <!--                        </LinearLayout>-->
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content">-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="end"-->
+<!--                                android:orientation="horizontal"-->
+
+<!--                                >-->
+
+<!--                                <ImageView-->
+
+<!--                                    android:id="@+id/add_exp"-->
+<!--                                    android:layout_width="18dp"-->
+<!--                                    android:layout_height="18dp"-->
+<!--                                    android:layout_marginTop="20dp"-->
+<!--                                    android:layout_marginEnd="10dp"-->
+<!--                                    android:src="@drawable/ad" />-->
+
+<!--                                <ImageView-->
+<!--                                    android:id="@+id/minus_exp"-->
+<!--                                    android:layout_width="18dp"-->
+<!--                                    android:layout_height="18dp"-->
+<!--                                    android:layout_marginTop="20dp"-->
+<!--                                    android:src="@drawable/min" />-->
+
+<!--                            </LinearLayout>-->
+
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="5dp"-->
+<!--                                android:layout_marginTop="15dp"-->
+<!--                                android:hint="Experience"-->
+<!--                                android:inputType="text"-->
+<!--                                android:textColorHint="@color/black"-->
+<!--                                android:textSize="14dp"-->
+<!--                                android:textStyle="bold" />-->
+<!--                        </RelativeLayout>-->
+                        <!--                    <LinearLayout-->
+                        <!--                        android:id="@+id/linn1"-->
+                        <!--                        android:layout_width="match_parent"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:layout_marginTop="15dp"-->
+                        <!--                        android:orientation="vertical">-->
+
+                        <!--                        <EditText-->
+                        <!--                            android:id="@+id/add4"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="40dp"-->
+                        <!--                            android:layout_marginTop="15dp"-->
+                        <!--                            android:background="@drawable/border_only"-->
+                        <!--                            android:hint="company"-->
+                        <!--                            android:inputType="text"-->
+                        <!--                            android:padding="5dp"-->
+                        <!--                            android:paddingStart="15dp"-->
+                        <!--                            android:textColorHint="@color/black"-->
+                        <!--                            android:textSize="14dp" />-->
+
+
+                        <!--                        <EditText-->
+
+                        <!--                            android:id="@+id/p_details8"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="40dp"-->
+                        <!--                            android:layout_marginTop="15dp"-->
+                        <!--                            android:background="@drawable/border_only"-->
+                        <!--                            android:hint="experience"-->
+                        <!--                            android:inputType="text"-->
+                        <!--                            android:padding="5dp"-->
+                        <!--                            android:paddingStart="15dp"-->
+                        <!--                            android:textColorHint="@color/black"-->
+                        <!--                            android:textSize="14dp" />-->
+                        <!--&lt;!&ndash;                        </RelativeLayout>&ndash;&gt;-->
+
+
+                        <!--                        <EditText-->
+                        <!--                            android:id="@+id/add5"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="40dp"-->
+                        <!--                            android:layout_marginTop="15dp"-->
+                        <!--                            android:background="@drawable/border_only"-->
+                        <!--                            android:hint="position"-->
+                        <!--                            android:inputType="text"-->
+                        <!--                            android:padding="5dp"-->
+                        <!--                            android:paddingStart="15dp"-->
+                        <!--                            android:textColorHint="@color/black"-->
+                        <!--                            android:textSize="14dp" />-->
+                        <!--                    </LinearLayout>-->
+                        <!--                        <RelativeLayout-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content">-->
+
+                        <!--                        <LinearLayout-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:orientation="horizontal"-->
+                        <!--                            android:gravity="end"-->
+                        <!--                            android:layout_marginEnd="30dp"-->
+                        <!--                            >-->
+
+                        <!--                            <ImageView-->
+                        <!--                                android:id="@+id/add_pos"-->
+                        <!--                                android:layout_width="18dp"-->
+                        <!--                                android:layout_height="18dp"-->
+                        <!--                                android:layout_marginTop="30dp"-->
+                        <!--                                android:src="@drawable/add"/>-->
+                        <!--                            <ImageView-->
+                        <!--                                android:id="@+id/minus_pos"-->
+                        <!--                                android:layout_width="15dp"-->
+                        <!--                                android:layout_height="15dp"-->
+                        <!--                                android:layout_marginTop="33dp"-->
+                        <!--                                android:src="@drawable/minus"/>-->
+
+                        <!--                        </LinearLayout>-->
+
+                        <!--                            <EditText-->
+
+                        <!--                                android:id="@+id/p_details9"-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="50dp"-->
+                        <!--                                android:layout_marginStart="20dp"-->
+                        <!--                                android:layout_marginTop="15dp"-->
+                        <!--                                android:layout_marginEnd="20dp"-->
+                        <!--                                android:background="@drawable/border_only"-->
+                        <!--                                android:hint="Position"-->
+                        <!--                                android:inputType="text"-->
+                        <!--                                android:padding="5dp"-->
+                        <!--                                android:paddingStart="15dp"-->
+                        <!--                                android:paddingLeft="10dp"-->
+                        <!--                                android:textColorHint="@color/black"-->
+                        <!--                                android:textSize="14dp" />-->
+                        <!--                        </RelativeLayout>-->
+                        <!--                        <EditText-->
+                        <!--                            android:id="@+id/add6"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="50dp"-->
+                        <!--                            android:layout_marginStart="20dp"-->
+                        <!--                            android:layout_marginTop="15dp"-->
+                        <!--                            android:layout_marginEnd="20dp"-->
+                        <!--                            android:background="@drawable/border_only"-->
+                        <!--                            android:hint="Add your position"-->
+                        <!--                            android:inputType="text"-->
+                        <!--                            android:padding="5dp"-->
+                        <!--                            android:paddingStart="15dp"-->
+                        <!--                            android:paddingLeft="10dp"-->
+                        <!--                            android:textColorHint="@color/black"-->
+                        <!--                            android:textSize="14dp" />-->
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content">-->
+
+<!--                            <LinearLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="end"-->
+<!--                                android:orientation="horizontal">-->
+
+<!--                                <ImageView-->
+<!--                                    android:id="@+id/add_skill"-->
+<!--                                    android:layout_width="18dp"-->
+<!--                                    android:layout_height="18dp"-->
+<!--                                    android:layout_marginTop="20dp"-->
+<!--                                    android:layout_marginEnd="10dp"-->
+<!--                                    android:src="@drawable/ad" />-->
+
+<!--                                <ImageView-->
+<!--                                    android:id="@+id/minus_skill"-->
+<!--                                    android:layout_width="18dp"-->
+<!--                                    android:layout_height="18dp"-->
+<!--                                    android:layout_marginTop="20dp"-->
+<!--                                    android:src="@drawable/min" />-->
+
+<!--                            </LinearLayout>-->
+
+
+<!--                            <TextView-->
+
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginStart="5dp"-->
+<!--                                android:layout_marginTop="15dp"-->
+<!--                                android:hint="Skills"-->
+<!--                                android:inputType="text"-->
+<!--                                android:textColorHint="@color/black"-->
+<!--                                android:textSize="14dp"-->
+<!--                                android:textStyle="bold" />-->
+<!--                        </RelativeLayout>-->
+                        <!--                    <LinearLayout-->
+                        <!--                        android:id="@+id/linn2"-->
+                        <!--                        android:layout_width="match_parent"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:layout_marginTop="15dp"-->
+                        <!--                        android:orientation="vertical">-->
+
+                        <!--                        <EditText-->
+                        <!--                            android:id="@+id/add7"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="40dp"-->
+                        <!--                            android:layout_marginTop="15dp"-->
+                        <!--                            android:background="@drawable/border_only"-->
+                        <!--                            android:hint="skills"-->
+                        <!--                            android:inputType="text"-->
+                        <!--                            android:padding="5dp"-->
+                        <!--                            android:paddingStart="15dp"-->
+                        <!--                            android:textColorHint="@color/black"-->
+                        <!--                            android:textSize="14dp" />-->
+                        <!--                    </LinearLayout>-->
 
                         <Button
                             android:id="@+id/submit_profile"

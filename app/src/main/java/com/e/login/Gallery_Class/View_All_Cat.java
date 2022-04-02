@@ -41,8 +41,8 @@ public class View_All_Cat extends AppCompatActivity {
     String api = null;
     String category_id,catalog_id,gallery_cat,img;
     RecyclerView recyclerView;
-    List<Quotes_Catalog_Model> quotesCatalogModelList;
-    Quotes_Catalog_Adapter adapter;
+    List<Gallery_One_Model> galleryOneModelList;
+    Gallery_One_Adapter adapter1;
     TextView txt;
 
     @Override
@@ -52,7 +52,8 @@ public class View_All_Cat extends AppCompatActivity {
 
         Intent intent = getIntent();
         data = intent.getStringExtra("catalog_id");
-        data1 = intent.getStringExtra("gallery_id");
+        data1 = intent.getStringExtra("category_id");
+        String name = intent.getStringExtra("name");
 
 
         Api a = new Api();
@@ -62,18 +63,10 @@ public class View_All_Cat extends AppCompatActivity {
         recyclerView = findViewById(R.id.view_cat_recycle);
         txt = findViewById(R.id.v_txt);
 
-        if (data1.equals("dfg")) {
-            String url = api + "get-event-gallery-view-full?gallery_category=" + data1 + "&catalog_id=" + data;
+            String url = api + "get-event-gallery-view-full?gallery_category_id=" + data1 + "&catalog_id=" + data;
             gallery_full(url);
-            txt.setText(data1);
+            txt.setText(name);
 
-
-        }else if(data1.equals("photos")){
-            String url = api + "get-event-gallery-view-full?gallery_category=" +data1 + "&catalog_id=" + data;
-            gallery_full(url);
-            txt.setText(data1);
-
-        }
 
 
 //        String url = "http://nk.inevitabletech.email/public/api/get-event-gallery-view-full?gallery_category="+data1+"&catalog_id="+data;
@@ -118,22 +111,20 @@ public class View_All_Cat extends AppCompatActivity {
 
 
 
-                            quotesCatalogModelList = new ArrayList<>();
+                            galleryOneModelList = new ArrayList<>();
 
-                            Quotes_Catalog_Model viewmodel = new Quotes_Catalog_Model();
+                            Gallery_One_Model viewmodel = new Gallery_One_Model();
 
 
                             viewmodel.setImg(img);
-                            viewmodel.setCatalog_id(catalog_id);
-                            viewmodel.setGallery_cat(gallery_cat);
 
-                            quotesCatalogModelList.add(viewmodel);
+                            galleryOneModelList.add(viewmodel);
 
                         }
                         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(View_All_Cat.this, 2);
                         recyclerView.setLayoutManager(mLayoutManager);
-                        adapter =  new Quotes_Catalog_Adapter(View_All_Cat.this,quotesCatalogModelList);
-                        recyclerView.setAdapter(adapter);
+                        adapter1 =  new Gallery_One_Adapter(View_All_Cat.this,galleryOneModelList);
+                        recyclerView.setAdapter(adapter1);
 
 
 

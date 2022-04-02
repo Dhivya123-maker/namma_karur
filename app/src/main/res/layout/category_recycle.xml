@@ -56,19 +56,19 @@
         <ImageView
             android:id="@+id/mahal_one_image"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="140dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
             android:layout_marginEnd="10dp"
             />
         <ImageView
             android:id="@+id/mahal_two_image"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="140dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="30dp"
             android:layout_weight="1"
             />
 
@@ -83,19 +83,19 @@
         <ImageView
             android:id="@+id/mahal_three_image"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="140dp"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
             android:layout_marginEnd="10dp"
             />
         <ImageView
             android:id="@+id/mahal_four_image"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="140dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginEnd="30dp"
             android:layout_weight="1"
             />
 
