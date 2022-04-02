@@ -8,17 +8,21 @@ public class Gallery_Model {
     String imd2;
     String imd3;
     String imd4;
+    String catalog_id;
+    String category_id;
 
     public Gallery_Model(){}
 
 
-    public Gallery_Model(String txt1, String img1, String txt, String imd2, String imd3, String imd4) {
+    public Gallery_Model(String txt1, String img1, String txt, String imd2, String imd3, String imd4,String category_id,String catalog_id ) {
         this.txt1 = txt1;
         this.img1 = img1;
         this.txt = txt;
         this.imd2 = imd2;
         this.imd3 = imd3;
         this.imd4 = imd4;
+        this.catalog_id = catalog_id;
+        this.category_id =category_id;
     }
 
     public String getTxt1() {
@@ -67,5 +71,21 @@ public class Gallery_Model {
 
     public void setImd4(String imd4) {
         this.imd4 = imd4;
+    }
+
+    public String getCatalog_id() {
+        return catalog_id;
+    }
+
+    public void setCatalog_id(String catalog_id) {
+        this.catalog_id = catalog_id;
+    }
+
+    public String getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(String category_id) {
+        this.category_id = category_id;
     }
 }

@@ -83,7 +83,7 @@ public class Gallery_Adapter extends RecyclerView.Adapter<Gallery_Adapter.ViewHo
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img1,img2,img3,img4;
-        TextView txt;
+        TextView txt,view_all;
 
 
 
@@ -94,8 +94,26 @@ public class Gallery_Adapter extends RecyclerView.Adapter<Gallery_Adapter.ViewHo
             img3 = itemView.findViewById(R.id.mahal_three_image);
             img4 = itemView.findViewById(R.id.mahal_four_image);
             txt = itemView.findViewById(R.id.categoryy);
+            view_all = itemView.findViewById(R.id.view_all);
 
 
+
+            view_all.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    int position = getAdapterPosition();
+                    String catalog_id = galleryModelList.get(position).getCatalog_id();
+                    String category_id = galleryModelList.get(position).getCategory_id();
+                    String name = galleryModelList.get(position).getTxt();
+
+                    Intent i = new Intent(view.getContext(),View_All_Cat.class);
+                    i.putExtra("catalog_id",catalog_id);
+                    i.putExtra("category_id",category_id);
+                    i.putExtra("name",name);
+                    view.getContext().startActivity(i);
+                }
+            });
 
 
 

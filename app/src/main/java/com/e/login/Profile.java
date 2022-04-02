@@ -4,6 +4,7 @@ import static android.view.View.GONE;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,7 +21,9 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
@@ -30,6 +33,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -76,17 +80,20 @@ import java.util.Set;
 
 public class Profile extends AppCompatActivity {
     Button btn, edit, save, email_verify, contact_verify;
-    String data, data1, data2, goo_id;
+    String data, data1, data2, goo_id,dobb;
     TextView user_name, emailtxt, contacttxt,b_gp,dob;
     LinearLayout skill;
-    ImageView profile, email_edit, con_edit, edu_add, skill_add;
-    String OTP1,OTP2,OTP3,OTP4;
+    ImageView profile, email_edit, con_edit, edu_add, skill_add,choose_img;
+
     Context mContext;
+    int SELECT_PICTURE = 1;
+    Popup_Adapter adapter;
+
 
     String data3;
     View view, view1, view2, view3;
     String id, email, phone, namee, email_verifyy, phone_verifyy, image;
-    Button savee, save1;
+    Button edit_btn;
     String Email_get, Phone_get;
 
     private ImageView exp_add = null;
@@ -103,12 +110,11 @@ public class Profile extends AppCompatActivity {
     private Button saveUserDataButton = null;
     // Click this button to cancel edit user data.
     private Button cancelUserDataButton = null;
-    private RecyclerView recyclerView = null;
+    RecyclerView recyclerView ;
 
-    List<Education_Model> educationModelList;
-    EducationAdapter adapter;
+//    List<Education_Model> educationModelList;
+//    EducationAdapter adapter;
 
-    EditText otp1,otp2,otp3,otp4;
 
     @SuppressLint("WrongThread")
     @Override
@@ -130,10 +136,20 @@ public class Profile extends AppCompatActivity {
 
 
 
-//        initMainActivityControls();
+
+
+
+        choose_img = findViewById(R.id.img_choose);
+        choose_img.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                imageChooser();
+            }
+        });
+
         get_profile();
 
-        recyclerView = findViewById(R.id.recycler);
+
 
         view = findViewById(R.id.first_view);
         view2 = findViewById(R.id.third_view);
@@ -147,9 +163,10 @@ public class Profile extends AppCompatActivity {
         edu_add = findViewById(R.id.edu_add);
         exp_add = findViewById(R.id.exp_add);
         skill_add = findViewById(R.id.skill_add);
-
         dob = findViewById(R.id.dob);
         b_gp = findViewById(R.id.blood_gp);
+
+
 
 
         profile = findViewById(R.id.profile_img);
@@ -161,6 +178,17 @@ public class Profile extends AppCompatActivity {
         email_verify = findViewById(R.id.email_verify);
         contact_verify = findViewById(R.id.contact_verify);
 
+        edit_btn = findViewById(R.id.edit_button);
+        edit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                PopUpClass popUpClass = new PopUpClass();
+                popUpClass.showPopupWindow(getSupportFragmentManager(),view);
+
+            }
+        });
 
 
         edu_add.setOnClickListener(new View.OnClickListener() {
@@ -168,72 +196,18 @@ public class Profile extends AppCompatActivity {
             public void onClick(View view) {
 
 
-//                Dialog dialog=new Dialog(Profile.this,R.style.MyDialogTheme);
-//                dialog.show();
 
 
-//                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Profile.this);
-//                // Set title, icon, can not cancel properties.
-//                alertDialogBuilder.setTitle("Education Details");
-//                alertDialogBuilder.setCancelable(false);
-//                // Init popup dialog view and it's ui controls.
-//                initPopupViewControls();
-//                // Set the inflated layout view object to the AlertDialog builder.
-//                alertDialogBuilder.setView(popupInputDialogView);
-//                // Create AlertDialog and show.
-//                final AlertDialog alertDialog = alertDialogBuilder.create();
-//                alertDialog.show();
-//                // When user click the save user data button in the popup dialog.
-//                saveUserDataButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        // Get user data from popup dialog editeext.
-//                        String userName = userNameEditText.getText().toString();
-//                        String password = passwordEditText.getText().toString();
-//                        String email = emailEditText.getText().toString();
-//                        // Create data for the listview.
-//                        String[] titleArr = { "Institute", "Degree", "Year"};
-//                        String[] dataArr = {userName, password, email};
-////                        ArrayList<Map<String,Object>> itemDataList = new ArrayList<Map<String,Object>>();;
-////                        int titleLen = titleArr.length;
-////
-////                        for(int i =0; i < titleLen; i++) {
-////                            Map<String,Object> listItemMap = new HashMap<String,Object>();
-////                            listItemMap.put("title", titleArr[i]);
-////                            listItemMap.put("data", dataArr[i]);
-////                            itemDataList.add(listItemMap);
-////                        }
-//
-//                        educationModelList = new ArrayList<>();
-//                        int titlelen = titleArr.length;
-//                        for(int i =0; i < titlelen; i++) {
-//                           Education_Model listItemMap = new Education_Model();
-//                            listItemMap.setIns(dataArr[i]);
-//                            listItemMap.setYear(dataArr[i]);
-//                            listItemMap.setDeg(dataArr[i]);
-//
-//                            educationModelList.add(listItemMap);
-//                        }
-//
-////
-//                        recyclerView.setLayoutManager(new LinearLayoutManager(Profile.this));
-//
-//                        adapter =  new EducationAdapter(Profile.this,educationModelList);
-//                        recyclerView.setAdapter(adapter);
-//
-////                        EducationAdapter simpleAdapter = new EducationAdapter(Profile.this,educationModelList,itemDataList,android.R.layout.simple_list_item_2,
-////                                new String[]{"title","data"},new int[]{android.R.id.text1,android.R.id.text2});
-////                        recyclerView.setAdapter(simpleAdapter);
-//                        alertDialog.cancel();
-//                    }
-//                });
-//                cancelUserDataButton.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        alertDialog.cancel();
-//                    }
-//                });
+                PopUpClass popUpClass = new PopUpClass();
+//                popUpClass.showPopupWindow(view);
+                popUpClass.showPopupWindow(getSupportFragmentManager(),view);
+
+
+
+
             }
+
+
         });
 
 
@@ -365,13 +339,14 @@ public class Profile extends AppCompatActivity {
 
                     Charset charset = Charset.defaultCharset();
                     String str = new String(error.networkResponse.data, charset);
-                    Toast.makeText(Profile.this, str, Toast.LENGTH_SHORT).show();
 
 
                     try {
                         JSONObject jsonObject = new JSONObject(str);
                         JSONObject data = jsonObject.getJSONObject("data");
-                        Toast.makeText(Profile.this, data.toString(), Toast.LENGTH_SHORT).show();
+
+                        String err = data.getString("error");
+                        Toast.makeText(Profile.this, err, Toast.LENGTH_SHORT).show();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -445,7 +420,7 @@ public class Profile extends AppCompatActivity {
                         contact_verify.setText(phone_verifyy);
 
 
-                        profile.setImageURI(Uri.parse(image));
+//                        profile.setImageURI(Uri.parse(image));
 
 
                     } else {
@@ -496,8 +471,160 @@ public class Profile extends AppCompatActivity {
 
     }
 
+    void imageChooser() {
+
+        // create an instance of the
+        // intent of the type image
+        Intent i = new Intent();
+        i.setType("image/*");
+        i.setAction(Intent.ACTION_GET_CONTENT);
+
+        // pass the constant to compare it
+        // with the returned requestCode
+        startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
+    }
+
+    // this function is triggered when user
+    // selects the image from the imageChooser
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK) {
+
+            // compare the resultCode with the
+            // SELECT_PICTURE constant
+            if (requestCode == SELECT_PICTURE) {
+                // Get the url of the image from data
+                Uri selectedImageUri = data.getData();
+                if (null != selectedImageUri) {
+                    // update the preview image in the layout
+                    profile.setImageURI(selectedImageUri);
+                }
+            }
+        }
+    }
+
+    public class PopUpClass {
 
 
+
+        public void showPopupWindow(FragmentManager supportFragmentManager, final View view) {
+
+
+
+
+            //Create a View object yourself through inflater
+            LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
+            View popupView = inflater.inflate(R.layout.popup_screen, null);
+
+            //Specify the length and width through constants
+            int width = LinearLayout.LayoutParams.MATCH_PARENT;
+            int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+
+            //Make Inactive Items Outside Of PopupWindow
+            boolean focusable = true;
+
+            //Create a window with our parameters
+            final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+            //Set the location of the window on the screen
+            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+            //Initialize the elements of our window, install the handler
+
+
+
+
+            //Handler for clicking on the inactive zone of the window
+
+            popupView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+
+                    //Close the window when clicked
+                    popupWindow.dismiss();
+                    return true;
+                }
+            });
+
+            Button cancel = (Button) popupView.findViewById(R.id.cancel);
+            Button save = (Button) popupView.findViewById(R.id.save);
+
+            cancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    popupWindow.dismiss();
+                }
+            });
+
+
+            save.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    EditText ins = popupView.findViewById(R.id.ins);
+                    EditText deg = popupView.findViewById(R.id.deg);
+                    EditText year = popupView.findViewById(R.id.yr);
+
+                    String Ins = ins.getText().toString();
+                    String Deg = deg.getText().toString();
+                    String Year = year.getText().toString();
+
+                    popupWindow.dismiss();
+
+
+
+                    ArrayList<String> data = new ArrayList<>();
+                    data.add(Ins);
+                    data.add(Deg);
+                    data.add(Year);
+
+
+                    recyclerView = findViewById(R.id.recycler);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(Profile.this));
+                    adapter = new Popup_Adapter(Profile.this,data);
+                    recyclerView.setAdapter(adapter);
+
+
+                }
+            });
+
+
+
+
+
+
+        }
+
+    }
+
+
+
+//    public void onButtonShowPopupWindowClick(View view) {
+//        LayoutInflater inflater = (LayoutInflater)
+//                getSystemService(LAYOUT_INFLATER_SERVICE);
+//        View popupView = inflater.inflate(R.layout.popup_screen, null);
+//
+//        // create the popup window
+////        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+////        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+////        boolean focusable = true; // lets taps outside the popup also dismiss it
+//        final PopupWindow popupWindow = new PopupWindow(popupView);
+//
+//        // show the popup window
+//        // which view you pass in doesn't matter, it is only used for the window tolken
+//        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+//
+//        // dismiss the popup window when touched
+//        popupView.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                popupWindow.dismiss();
+//                return true;
+//            }
+//        });
+//
+//    }
 
 }
 

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#f5f5f5"
+    android:elevation="5dp"
+    android:orientation="vertical"
+    >
+
+    <EditText
+
+        android:id="@+id/ins"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border_only"
+        android:hint="Institute"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:inputType="text"
+        android:padding="5dp"
+        android:paddingStart="15dp"
+        android:textColorHint="@color/black"
+        android:textSize="14dp" />
+
+    <EditText
+
+        android:id="@+id/deg"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border_only"
+        android:hint="Degree"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:inputType="text"
+        android:padding="5dp"
+        android:paddingStart="15dp"
+        android:textColorHint="@color/black"
+        android:textSize="14dp" />
+
+
+
+    <EditText
+        android:id="@+id/yr"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border_only"
+        android:hint="Year"
+        android:inputType="text"
+        android:padding="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingStart="15dp"
+        android:textColorHint="@color/black"
+        android:textSize="14dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:weightSum="2"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:layout_marginEnd="5dp"
+            android:textSize="16dp"
+            android:backgroundTint="#4c9a2a"
+            android:background="@drawable/border_only"/>
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:text="Save"
+            android:layout_marginStart="5dp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="16dp"
+            android:backgroundTint="#4c9a2a"
+            android:background="@drawable/border_only"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+

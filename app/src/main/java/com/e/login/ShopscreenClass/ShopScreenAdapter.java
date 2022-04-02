@@ -179,12 +179,17 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (mListener1 != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            mListener1.onItemClick(position);
-                        }
+                    int position = getAdapterPosition();
+                    if (shopScreenModelList.get(position).getCategory().equals("ATMCatalog")){
 
+                    }else {
+                        if (mListener1 != null) {
+
+                            if (position != RecyclerView.NO_POSITION) {
+                                mListener1.onItemClick(position);
+                            }
+
+                        }
                     }
 
                 }

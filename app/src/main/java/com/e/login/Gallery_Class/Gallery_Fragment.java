@@ -125,7 +125,12 @@ public class Gallery_Fragment extends Fragment {
                             JSONObject jsonObject2 = jsonArray2.getJSONObject(j);
 
                             String img;
+                            String category_id;
+                            String catalog_id;
+
                             img = jsonObject2.getString("image");
+                            category_id = jsonObject2.getString("category_id");
+                            catalog_id = jsonObject2.getString("catalog_id");
 
 
 
@@ -133,16 +138,24 @@ public class Gallery_Fragment extends Fragment {
 
                             if (j == 0){
                                 viewmodel.setImg1(img);
+                                viewmodel.setCategory_id(category_id);
+                                viewmodel.setCatalog_id(catalog_id);
                             }
 
                             if (j == 1){
                                 viewmodel.setImd2(img);
+                                viewmodel.setCategory_id(category_id);
+                                viewmodel.setCatalog_id(catalog_id);
                             }
                             if (j == 2){
                                 viewmodel.setImd3(img);
+                                viewmodel.setCategory_id(category_id);
+                                viewmodel.setCatalog_id(catalog_id);
                             }
                             if (j == 3){
                                 viewmodel.setImd4(img);
+                                viewmodel.setCategory_id(category_id);
+                                viewmodel.setCatalog_id(catalog_id);
                             }
 
 

@@ -71,7 +71,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
     String name = null;
     String image = null;
     String view_count = null;
-    String data1,data2,data3;
+    String data1,data2,data3 = null;
     String api;
     TextView shop_name,bustime;
     RecyclerView recyclerView;
@@ -109,69 +109,71 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
        Intent intent = getIntent();
        data3 = intent.getStringExtra("cat");
 
+//        Toast.makeText(getApplicationContext(), data3, Toast.LENGTH_SHORT).show();
+
 
 
         if (data3.equals("ShopCatalog")){
            String url = api+"get-shop-category-list";
-           shop(url);
+           shop(url,data3);
            shop_name.setText("Shops");
        }else if (data3.equals("ServiceCatalog"))
         {
             String url = api+"get-service-category-list";
-            shop(url);
+            shop(url,data3);
             shop_name.setText("Services");
         }else if (data3.equals("MarketCatalog"))
        {
            String url = api+"get-market-category-list";
-           market(url);
+           market(url,data3);
            shop_name.setText("Market");
        }else if (data3.equals("EducationCatalog"))
        {
            String url = api+"get-education-category-list";
-           shop(url);
+           shop(url,data3);
            shop_name.setText("Education");
        }else if (data3.equals("TransportCatalog"))
        {
            String url = api+"get-transport-category-list";
-           shop(url);
+           shop(url,data3);
            shop_name.setText("Transports");
        }else if (data3.equals("HospitalCatalog"))
        {
            String url = api+"get-hospital-category-list";
-           shop(url);
+           shop(url,data3);
            shop_name.setText("Hospital");
        }else if (data3.equals("EventCatalog"))
         {
             String url = api+"get-event-category-list";
-            shop(url);
+            shop(url,data3);
             shop_name.setText("Hall");
         }else if (data3.equals("AmbulanceCatalog")) {
             String url = api + "get-Ambulance-list";
-            ambulance(url);
+            ambulance(url,data3);
 
             shop_name.setText("Ambulance");
         }else  if (data3.equals("HotelCatalog")){
             String url = api + "get-hotel-category-list";
-            shop(url);
+            shop(url,data3);
             shop_name.setText("Hotels");
 
         }else  if (data3.equals("BankCatalog")){
             String url = api + "get-bank-category-list";
-            shop(url);
+            shop(url,data3);
             shop_name.setText("Banks");
 
         }else if (data3.equals("BusTimeCatalog")){
             String url = api + "get-bus-time-category-list";
-            bustime(url);
+            bustime(url,data3);
             shop_name.setText("Bus Time");
             bustime.setVisibility(View.VISIBLE);
         }else if (data3.equals("GovtNgoCatalog")){
             String url = api + "get-ngo-govt-category-list";
-            ngo(url);
+            ngo(url,data3);
             shop_name.setText("Govt/NGO");
         }else if (data3.equals("ATMCatalog")){
             String url = api + "get-atm-category-list";
-            atm(url);
+            atm(url,data3);
             shop_name.setText("ATM");
         }
 
@@ -238,7 +240,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
 
 
-public void shop(String url) {
+public void shop(String url,String cat) {
 
 
 
@@ -278,7 +280,7 @@ public void shop(String url) {
                     model.setText_one(view_count+" views");
                     model.setId(id);
 
-                    model.setCategory(data3);
+                    model.setCategory(cat);
 
 
 
@@ -341,7 +343,7 @@ public void shop(String url) {
 
 }
 
-    private void ambulance(String url) {
+    private void ambulance(String url,String cat) {
 
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -377,7 +379,7 @@ public void shop(String url) {
 
                         ShopModel model = new ShopModel();
 
-                        model.setCategory(data3);
+                        model.setCategory("AmbulanceCatalog");
 
                         model.setAdes(ades);
                         model.setAimg(aimg);
@@ -447,7 +449,7 @@ public void shop(String url) {
 
 
     }
-    private void market(String url) {
+    private void market(String url,String cat) {
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @SuppressLint("CheckResult")
@@ -481,7 +483,7 @@ public void shop(String url) {
 
                         ShopModel model = new ShopModel();
 
-                        model.setCategory(data3);
+                        model.setCategory(cat);
 
                         model.setMid(mid);
                         model.setMimg(mimg);
@@ -547,7 +549,7 @@ public void shop(String url) {
 
 
     }
-    private void bustime(String url) {
+    private void bustime(String url,String cat) {
 
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
@@ -586,7 +588,7 @@ public void shop(String url) {
                         model.setBdes(bdes);
                         model.setBid(bid);
 
-                        model.setCategory(data3);
+                        model.setCategory(cat);
 
 
 
@@ -641,7 +643,7 @@ public void shop(String url) {
 
     }
 
-    private void ngo(String url) {
+    private void ngo(String url,String cat) {
 
 
 
@@ -683,7 +685,7 @@ public void shop(String url) {
                         model.setNname(nname);
 
 
-                        model.setCategory(data3);
+                        model.setCategory(cat);
 
                         shop_model.add(model);
 
@@ -737,7 +739,7 @@ public void shop(String url) {
 
 
 
-    private void atm(String url) {
+    private void atm(String url,String cat) {
 
 
 
@@ -778,7 +780,7 @@ public void shop(String url) {
 //                        model.setText_one(view_count+" views");
                         model.setId(id);
 
-                        model.setCategory(data3);
+                        model.setCategory(cat);
 
 
 
@@ -894,15 +896,14 @@ public void shop(String url) {
         String m_id = model.getMid();
         String b_id =  model.getBid();
         String n_id = model.getNid();
+        String cat = model.getCategory();
+
+//        Toast.makeText(getApplicationContext(), cat, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), data3, Toast.LENGTH_SHORT).show();
 
 
 
-        if (data3.equals("AmbulanceCatalog")){
-
-
-
-        }
-       if (data3.equals("MarketCatalog"))
+        if (data3.equals("MarketCatalog"))
         {
             Intent intent = new Intent(ShopScreen_Class.this, MarketActivity.class);
             intent.putExtra("id",m_id);
@@ -919,14 +920,20 @@ public void shop(String url) {
             startActivity(intent);
 
         }
-        else {
+        else
+//        (data3.equals("ShopCatalog") || data3.equals("ServiceCatalog") ||data3.equals("EducationCatalog") ||data3.equals("TransportCatalog")
+//                ||data3.equals("HospitalCatalog") ||data3.equals("EventCatalog") ||data3.equals("HotelCatalog")  ||data3.equals("BankCatalog"))
+        {
             Intent intent = new Intent(ShopScreen_Class.this, ShopsScreenFragment.class);
-            intent.putExtra("list", data3);
+            intent.putExtra("list", cat);
             intent.putExtra("id", S_id);
             intent.putExtra("name", S_name);
 
             startActivity(intent);
         }
+
+
+
 
     }
 

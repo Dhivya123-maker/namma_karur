@@ -69,11 +69,35 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <ImageView
+<!--                    <ImageView-->
+<!--                        android:id="@+id/profile_img"-->
+<!--                        android:layout_width="80dp"-->
+<!--                        android:layout_height="80dp"-->
+<!--                        android:src="@drawable/profilee"/>-->
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profile_img"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:src="@drawable/profilee"/>
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/ic_baseline_person_24"
+                        app:civ_border_color="#4c9a2a"
+                        app:civ_border_width="2dp"
+                        tools:ignore="MissingClass" />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+
+                        >
+
+                        <ImageView
+                            android:id="@+id/img_choose"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_marginTop="50dp"
+                            android:src="@drawable/galleryy"
+
+                            />
+                    </RelativeLayout>
 
 
                     <LinearLayout
@@ -458,6 +482,7 @@
                         android:textSize="14dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
+
 
 
                 <androidx.recyclerview.widget.RecyclerView

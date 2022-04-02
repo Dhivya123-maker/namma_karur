@@ -281,20 +281,25 @@ public class ShopClassAdapter extends RecyclerView.Adapter<ShopClassAdapter.View
             });
 
 
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-
-                    if (mListener != null) {
                         int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            mListener.onItemClick(position);
+                        String cat = shopModelList.get(position).getCategory();
+                        if (cat == ("AmbulanceCatalog")) {
+
+                        }else {
+
+                            if (mListener != null) {
+                                if (position != RecyclerView.NO_POSITION) {
+                                    mListener.onItemClick(position);
+                                }
+                            }
                         }
                     }
-                }
-            });
+                });
+
 
         }
 

@@ -11,11 +11,14 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -27,20 +30,25 @@ import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
+import com.e.login.SignUpActivity;
 import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Blood_One extends AppCompatActivity {
 
     Button submit;
-    EditText patient, blood, problem, need, units, hospital, address, num, alternate_num;
+    EditText patient, problem, need, units, hospital, address, num, alternate_num;
+    Spinner blood;
     String data, data1;
     String Patient, Blood, Problem, Need, Units, Hospital, Address, Num, Alternate_num;
 
@@ -70,8 +78,36 @@ public class Blood_One extends AppCompatActivity {
         num = findViewById(R.id.edit8);
         alternate_num = findViewById(R.id.edit9);
 
-
         submit = findViewById(R.id.sub_btn);
+
+        ArrayList sname = new ArrayList();
+
+
+        sname.add("Blood Group");
+
+        sname.add("a1_positive");
+        sname.add("a1_negative");
+        sname.add("a2_positive");
+        sname.add("a2_negative");
+        sname.add("b_positive");
+        sname.add("b_negative");
+        sname.add("a1b_positive");
+        sname.add("a1b_negative");
+        sname.add("a2b_positive");
+        sname.add("a2b_negative");
+        sname.add("ab_positive");
+        sname.add("ab_negative");
+        sname.add("o_positive");
+        sname.add("o_negative");
+        sname.add("a_positive");
+        sname.add("a_negative");
+
+
+
+        ArrayAdapter<String> Adapter1 = new ArrayAdapter<String>(Blood_One.this,
+                R.layout.text_color1,sname);
+        Adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        blood.setAdapter(Adapter1);
 
 
 
@@ -93,7 +129,7 @@ public class Blood_One extends AppCompatActivity {
     public void blood(){
 
         Patient = patient.getText().toString();
-        Blood = blood.getText().toString();
+        Blood = blood.getSelectedItem().toString();
         Problem = problem.getText().toString();
         Need = need.getText().toString();
         Units = units.getText().toString();
@@ -168,16 +204,30 @@ public class Blood_One extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
 
+                    try {
+                        Charset charset = Charset.defaultCharset();
+                        String str = new String(error.networkResponse.data,charset);
+
+
+
+                        JSONObject jsonObject = new JSONObject(str);
+
+//                        Toast.makeText(Blood_One.this, error.networkResponse.data.toString(), Toast.LENGTH_SHORT).show();
+                        Log.i("wdsd",jsonObject.toString());
+//                        JSONObject data = jsonObject.getJSONObject("data");
+//
+//                        JSONArray jsonArray1 = data.getJSONArray("name");
+
+//                            email.setError(jsonArray1.getString(0));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+
                 }
             }){
-                @Override
-                protected Map<String,String> getParams(){
-                    Map<String,String> params = new HashMap<String, String>();
-
-
-
-                    return params;
-                }
 
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
@@ -188,8 +238,16 @@ public class Blood_One extends AppCompatActivity {
                 }
             };
 
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    10000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
             RequestQueue requestQueue = Volley.newRequestQueue(Blood_One.this);
             requestQueue.add(jsonObjectRequest);
+
+
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
