@@ -85,7 +85,6 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
 
     String goo_token,goo_id,u_name,phone,user_id;
     String image;
-    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

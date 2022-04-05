@@ -48,7 +48,7 @@ public class Blank_Adapter extends RecyclerView.Adapter<Blank_Adapter.ViewHolder
         holder.txt2.setText(blankModelList.get(position).getTxt2());
 
         holder.img.setImageResource(R.drawable.girl_white);
-      //  holder.img1.setImageResource(R.drawable.five_starr);
+
     }
 
 

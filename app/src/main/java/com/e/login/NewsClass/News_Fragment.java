@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,16 +26,20 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.BaseApi.Api;
 import com.e.login.BusTimeClass.Bus_TimeActivity;
+import com.e.login.HomeClass.BannerModel;
+import com.e.login.HomeClass.Slider_Top_Adapter;
 import com.e.login.Mall.Slider_mall_Adapter;
 import com.e.login.R;
 import com.e.login.ShopClass.ShopClassAdapter;
 import com.e.login.ShopClass.ShopScreen_Class;
+import com.e.login.ShopscreenClass.ShopsScreenFragment;
 import com.e.login.utils.PreferenceUtils;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -49,6 +54,7 @@ public class News_Fragment extends Fragment implements NewsoneAdapter.OnItemClic
     List<News_Breaking_Model> newsBreakingModelList;
     List<NewsModel> newsModelList;
     SliderView sliderView;
+    RecyclerView recyclerView;
 
     List<NewsOneModel> newsOneModelList;
     NewsoneAdapter adapter2;
@@ -61,9 +67,12 @@ public class News_Fragment extends Fragment implements NewsoneAdapter.OnItemClic
     JSONArray latest;
     JSONArray breaking;
     JSONArray all ;
-    String api,data= null;
+    String api,data;
     TextView view,view_latest,view_breaking,late;
     String id,img,title,view_count = null;
+    List<BannerModel> bannerModelList;
+    Slider_Top_Adapter slider_top_adapter;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,6 +84,12 @@ public class News_Fragment extends Fragment implements NewsoneAdapter.OnItemClic
 //        Api a = new Api();
 //        api = a.getBASE_URL();
         late = root.findViewById(R.id.late);
+        recyclerView = root.findViewById(R.id.top_banneer);
+        Intent intent = getActivity().getIntent();
+        data = intent.getStringExtra("id");
+
+        Ban();
+
 
         view_breaking = root.findViewById(R.id.breaking_vview);
         view_breaking.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +100,7 @@ public class News_Fragment extends Fragment implements NewsoneAdapter.OnItemClic
                 startActivity(intent1);
             }
         });
-//
+
 
         view_latest = root.findViewById(R.id.latest_view);
         view_latest.setOnClickListener(new View.OnClickListener() {
@@ -97,25 +112,8 @@ public class News_Fragment extends Fragment implements NewsoneAdapter.OnItemClic
             }
         });
 
-//        view.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent1 = new Intent(getActivity(),View_Breaking.class);
-//                intent1.putExtra("cat1","All_news");
-//                startActivity(intent1);
 
-//
-////                all_view();
-//            }
-//        });
 
-        sliderView = root.findViewById(R.id.slide_slide);
-        Slider_mall_Adapter sliderAdapter = new Slider_mall_Adapter(images);
-
-        sliderView.setSliderAdapter(sliderAdapter);
-        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
-        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
-        sliderView.startAutoCycle();
 
 
         RecyclerView recyclerView= root.findViewById(R.id.rv);
@@ -264,14 +262,6 @@ public class News_Fragment extends Fragment implements NewsoneAdapter.OnItemClic
                         adapter2 =  new NewsoneAdapter(getContext(),newsOneModelList);
                         recyclerView2.setAdapter(adapter2);
 
-//
-
-//
-//                    }else{
-//                        Log.i("1234",msg);
-//                        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
-//                    }
-
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -303,7 +293,7 @@ public class News_Fragment extends Fragment implements NewsoneAdapter.OnItemClic
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String, String>();
-               // params.put("Accept", "application/json");
+                params.put("Accept", "application/json");
                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
                 return params;
             }
@@ -466,6 +456,107 @@ public class News_Fragment extends Fragment implements NewsoneAdapter.OnItemClic
 //    }
 
 
+    public void Ban(){
+
+        String url = "http://nk.inevitabletech.email/public/api/display-banner?banner_type=JobBanner&banner_category_id="+data;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("CheckResult")
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+                    bannerModelList = new ArrayList<>();
+                    JSONArray jsonArray = response.getJSONArray("data");
+
+
+                    for(int i=0;i< jsonArray.length();i++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String id = jsonObject.getString("id");
+                        String banner_type_id = jsonObject.getString("banner_type_id");
+                        String banner_type = jsonObject.getString("banner_type");
+                        String banner_category_id = jsonObject.getString("banner_category_id");
+                        String banner_url = jsonObject.getString("banner_url");
+                        String order_no = jsonObject.getString("order_no");
+
+                        String img = jsonObject.getString("image");
+                        String v_count = jsonObject.getString("view_count");
+
+
+
+
+                        BannerModel bannerModel = new BannerModel();
+                        bannerModel.setImg(img);
+
+                        bannerModelList.add(bannerModel);
+
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                slider_top_adapter =  new Slider_Top_Adapter(getActivity(),bannerModelList);
+                recyclerView.setAdapter(slider_top_adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+
+                final int interval = 3000;
+                Handler handler = new Handler();
+                Runnable runnable = new Runnable() {
+                    int count =0;
+                    @Override
+                    public void run() {
+
+                        if(count< bannerModelList.size()){
+                            recyclerView.scrollToPosition(count++);
+                            handler.postDelayed(this,interval);
+
+                        }
+                        if(count== bannerModelList.size()){
+
+                            count = 0;
+
+                        }
+                    }
+                };
+                handler.postDelayed(runnable,interval);
+
+
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+
+
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Accept","application/json");
+                params.put("Authorization", "Bearer "+PreferenceUtils.getToken(getActivity()));
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(jsonObjectRequest);
+
+
+    }
     @Override
     public void onItemClick(int position) {
 //        Intent intent1 = new Intent(getActivity(),All_news.class);

@@ -234,7 +234,7 @@ public class Profile extends AppCompatActivity {
         con_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                change_phone();
+
                 Intent intent1 = new Intent(Profile.this, Phone_txt.class);
                 intent1.putExtra("id",data1);
                 intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -276,8 +276,7 @@ public class Profile extends AppCompatActivity {
                 @Override
                 public void onResponse(JSONObject response) {
 
-//                    Log.i("0000000000000",response.toString());
-//                    Toast.makeText(Profile.this, response.toString(), Toast.LENGTH_SHORT).show();
+
 
 
                     try {

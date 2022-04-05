@@ -52,7 +52,7 @@ public class Products_Fragment extends Fragment implements ProductsAdapter.OnIte
 
     List<ProductsModel> productsModelList;
     ProductsAdapter adapter;
-    String data1,data2,data3,data4,data5,api,id,name,image,product_title,desc,course_title;
+    String data1,data2,data3,api,id,name,image,product_title,desc,course_title;
     RecyclerView recyclerView;
 
 
@@ -72,8 +72,7 @@ public class Products_Fragment extends Fragment implements ProductsAdapter.OnIte
         Intent intent = getActivity().getIntent();
 
         data1 = intent.getStringExtra("name");
-//        data4 = intent.getStringExtra("list");
-//        data5 = intent.getStringExtra("id");
+
         data2 = intent.getStringExtra("list");
         data3 = intent.getStringExtra("id");
 
@@ -174,9 +173,7 @@ public class Products_Fragment extends Fragment implements ProductsAdapter.OnIte
 
             }
 
-//
-//
-//        }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {

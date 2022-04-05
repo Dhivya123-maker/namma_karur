@@ -48,8 +48,6 @@ public class Gallery_Fragment extends Fragment {
     Gallery_Adapter adapter;
 
 
-
-
     RecyclerView recyclerView;
     String data;
     String gallery_name;

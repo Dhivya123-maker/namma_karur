@@ -629,7 +629,7 @@ public class Blank_PostFragment extends Fragment {
                 Charset charset = Charset.defaultCharset();
                 String str = new String(error.networkResponse.data, charset);
                 Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
-                Log.i("dsfigyrsuitr", str);
+
 
             }
         }) {
@@ -751,9 +751,6 @@ public class Blank_PostFragment extends Fragment {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
-//                Log.i("sdkjbhftguirye",response.toString());
-//                Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
 
 
 

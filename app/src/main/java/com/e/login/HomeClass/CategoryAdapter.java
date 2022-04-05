@@ -98,6 +98,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                 public void onClick(View view) {
                     int position = getAdapterPosition();
                     String category = cat.get(position).getCat_name();
+                    String id = cat.get(position).getId();
 
                     if (category.equals("OfferCatalog")) {
 
@@ -107,6 +108,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                     } else if (category.equals("NewsCatalog")) {
                         Intent intent = new Intent( view.getContext(), NewsActivity.class);
                         intent.putExtra("cat", category);
+                        intent.putExtra("id", id);
 
                         view.getContext().startActivity(intent);
                     } else if (category.equals("BloodCatalog")) {
@@ -115,10 +117,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                     } else if (category.equals("KarurBlogCatalog")) {
                         Intent intent = new Intent( view.getContext(), BlogActivity.class);
                         intent.putExtra("cat", category);
+                        intent.putExtra("id", id);
                         view.getContext().startActivity(intent);
                     } else if (category.equals("JobsCatalog")) {
                         Intent intent = new Intent(view.getContext(), Jobs.class);
                         intent.putExtra("cat", category);
+                        intent.putExtra("id", id);
 
                         view.getContext().startActivity(intent);
                     } else if (category.equals("ShoppingCatalog")){

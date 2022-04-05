@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -32,6 +33,7 @@ public class Phone_txt extends AppCompatActivity {
     Button send;
     EditText number;
     String Num,user_id,id;
+    TextView err;
 
 
     @Override
@@ -46,6 +48,7 @@ public class Phone_txt extends AppCompatActivity {
 
         send = findViewById(R.id.send_phone);
         number = findViewById(R.id.verify_edit1);
+        err = findViewById(R.id.error1);
 
         send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,8 +76,7 @@ public class Phone_txt extends AppCompatActivity {
                 @Override
                 public void onResponse(JSONObject response) {
 
-//                    Log.i("0000000000000",response.toString());
-//                    Toast.makeText(Profile.this, response.toString(), Toast.LENGTH_SHORT).show();
+
 
 
                     try {
@@ -88,7 +90,7 @@ public class Phone_txt extends AppCompatActivity {
                             intent.putExtra("phone",Num);
                             intent.putExtra("id", id);
 
-                            Toast.makeText(Phone_txt.this, id, Toast.LENGTH_SHORT).show();
+
                             startActivity(intent);
 
                         } else {
@@ -118,7 +120,10 @@ public class Phone_txt extends AppCompatActivity {
                     try {
                         JSONObject jsonObject = new JSONObject(str);
                         JSONObject data = jsonObject.getJSONObject("data");
-                        Toast.makeText(Phone_txt.this, data.toString(), Toast.LENGTH_SHORT).show();
+                        String mistake = data.getString("message");
+                        err.setText(mistake);
+                        err.setVisibility(View.VISIBLE);
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();

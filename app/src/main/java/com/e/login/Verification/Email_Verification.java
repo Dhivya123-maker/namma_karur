@@ -44,7 +44,7 @@ public class Email_Verification extends AppCompatActivity {
 
         send = findViewById(R.id.send_mail);
         mail = findViewById(R.id.address);
-//        Mail = mail.getText().toString();
+
 
         Intent intent = getIntent();
         id = intent.getStringExtra("id");

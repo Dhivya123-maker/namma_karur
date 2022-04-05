@@ -133,8 +133,6 @@ public class Email_OTP extends AppCompatActivity {
 
 
 
-
-
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL, jsonBody, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,14 +26,18 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
+import com.e.login.HomeClass.BannerModel;
 import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.HomeClass.Slider_Top_Adapter;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
+import com.e.login.ShopscreenClass.ShopsScreenFragment;
 import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -53,6 +58,9 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
     String data,data1;
     TextView closing_view,all_view;
     String id,name,image,j_name,c_name,vacancy,address,end_date,category_id;
+    RecyclerView jobs_banner;
+    List<BannerModel> bannerModelList;
+    Slider_Top_Adapter slider_top_adapter;
 
     RecyclerView recyclerView,all_recycle;
     @Override
@@ -67,8 +75,9 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
         btnNav.setOnNavigationItemSelectedListener(navListener);
 
 
+        jobs_banner = findViewById(R.id.jobs_banner);
 
-
+        Ban();
         closing_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,6 +105,7 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
 
         Intent intent = getIntent();
         data = intent.getStringExtra("cat");
+        data1 = intent.getStringExtra("id");
 
          recyclerView =findViewById(R.id.category_job_screen);
 
@@ -345,6 +355,109 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
             return true;
         }
     };
+
+    public void Ban(){
+
+        String url = "http://nk.inevitabletech.email/public/api/display-banner?banner_type=JobBanner&banner_category_id="+data1;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("CheckResult")
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+                    bannerModelList = new ArrayList<>();
+                    JSONArray jsonArray = response.getJSONArray("data");
+
+
+                    for(int i=0;i< jsonArray.length();i++){
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        String id = jsonObject.getString("id");
+                        String banner_type_id = jsonObject.getString("banner_type_id");
+                        String banner_type = jsonObject.getString("banner_type");
+                        String banner_category_id = jsonObject.getString("banner_category_id");
+                        String banner_url = jsonObject.getString("banner_url");
+                        String order_no = jsonObject.getString("order_no");
+
+                        String img = jsonObject.getString("image");
+                        String v_count = jsonObject.getString("view_count");
+
+
+
+
+                        BannerModel bannerModel = new BannerModel();
+                        bannerModel.setImg(img);
+
+                        bannerModelList.add(bannerModel);
+
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                jobs_banner.setLayoutManager(new LinearLayoutManager(Jobs.this));
+                slider_top_adapter =  new Slider_Top_Adapter(Jobs.this,bannerModelList);
+                jobs_banner.setAdapter(slider_top_adapter);
+                jobs_banner.setLayoutManager(new LinearLayoutManager(Jobs.this, LinearLayoutManager.HORIZONTAL, false));
+
+
+                final int interval = 3000;
+                Handler handler = new Handler();
+                Runnable runnable = new Runnable() {
+                    int count =0;
+                    @Override
+                    public void run() {
+
+                        if(count< bannerModelList.size()){
+                            jobs_banner.scrollToPosition(count++);
+                            handler.postDelayed(this,interval);
+
+                        }
+                        if(count== bannerModelList.size()){
+
+                            count = 0;
+
+                        }
+                    }
+                };
+                handler.postDelayed(runnable,interval);
+
+
+            }
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+
+
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+                params.put("Accept","application/json");
+                params.put("Authorization", "Bearer "+PreferenceUtils.getToken(Jobs.this));
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(Jobs.this);
+        requestQueue.add(jsonObjectRequest);
+
+
+    }
+
 
     @Override
     public void onItemClick(int position) {

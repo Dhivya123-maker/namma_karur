@@ -14,28 +14,14 @@
     android:orientation="vertical">
 
 
-
-    <com.smarteist.autoimageslider.SliderView
-        android:id="@+id/slider_blog"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/shop_banner"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_below="@+id/grey_lnr"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="10dp"
-        app:sliderAnimationDuration="600"
-        app:sliderAutoCycleDirection="back_and_forth"
-        app:sliderAutoCycleEnabled="true"
-        app:sliderIndicatorAnimationDuration="600"
-        app:sliderIndicatorGravity="center_horizontal|bottom"
-        app:sliderIndicatorMargin="15dp"
-        app:sliderIndicatorOrientation="horizontal"
-        app:sliderIndicatorPadding="3dp"
-        app:sliderIndicatorRadius="2dp"
-        app:sliderIndicatorSelectedColor="#5A5A5A"
-        app:sliderIndicatorUnselectedColor="#FFF"
-        app:sliderScrollTimeInSec="2"
-        app:sliderStartAutoCycle="true" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:scaleType="fitXY"
+        android:layout_marginEnd="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"

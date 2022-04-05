@@ -152,15 +152,6 @@ public class Fragment_Home extends Fragment{
 
 
 
-//        sliderView = root.findViewById(R.id.slider_top);
-//        sliderView1 = root.findViewById(R.id.slider_bottom1);
-//
-//        Slider_Top_Adapter sliderAdapter = new Slider_Top_Adapter(images);
-//
-//        sliderView.setSliderAdapter(sliderAdapter);
-//        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
-//        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
-//        sliderView.startAutoCycle();
 
 
 
@@ -258,7 +249,7 @@ public class Fragment_Home extends Fragment{
         viewmodel.setTxt3("4.6");
 
 
-            reviewsModelList.add(viewmodel);
+        reviewsModelList.add(viewmodel);
 
         }
 
@@ -376,7 +367,7 @@ public class Fragment_Home extends Fragment{
                 Map<String,String> params = new HashMap<String, String>();
 
                 params.put("Accept","application/json");
-                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
+                params.put("Authorization", "Bearer "+PreferenceUtils.getToken(getActivity()));
 
                 return params;
             }

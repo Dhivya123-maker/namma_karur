@@ -164,7 +164,6 @@ public class Ambulance extends AppCompatActivity {
                 Map<String,String> params = new HashMap<String, String>();
 
                 params.put("Authorization", "Bearer " + PreferenceUtils.getToken(Ambulance.this));
-                params.put("Authorization", "Bearer " + PreferenceUtils.getToken1(Ambulance.this));
                 return params;
             }
         };

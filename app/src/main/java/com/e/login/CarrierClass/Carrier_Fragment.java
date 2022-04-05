@@ -38,7 +38,7 @@ public class Carrier_Fragment extends Fragment {
 
     List<Shop_Carrier_model> shopCarrierModelList;
     Shop_Carrier_Adapter adapter;
-    String data,data1,id,shop_id,product_title,image,rate,description,sub_image1,sub_image2,sub_image3,sub_image4;
+    String data,data1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

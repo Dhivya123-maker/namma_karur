@@ -36,10 +36,7 @@ import java.util.Map;
 
 public class Carrier_Activity extends AppCompatActivity {
 
-//    private CarrierViewPagerAdapter viewPagerAdapter;
-//    private ViewPager viewPage;
-//    private TabLayout carrier_tablayout;
-//
+
 
     List<Shop_Carrier_model> shopCarrierModelList;
     Shop_Carrier_Adapter adapter;
