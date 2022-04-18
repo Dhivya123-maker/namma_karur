@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,15 +41,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.nio.charset.Charset;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Add extends AppCompatActivity {
-    EditText j_name,comp_name,gender,address,no_vacancy,qualify,exp,age,salary,skills,about,start,end;
+    EditText j_name,comp_name,gender,address,no_vacancy,qualify,exp,age,salary,skills,about;
     String J_name,Comp_name,Gender,Address,No_vacancy,Qualify,Exp,Age,Salary,Skills,About,Start,End;
     Button btn;
     String data,data1,category_id;
-    TextView J_err,Co_err,G_err,A_err,No_err,Q_err,Ex_err,Age_err,S_err,Sk_err,About_er,Star_er,En_err;
+    Calendar calendar;
+    DatePickerDialog dd;
+    TextView J_err,Co_err,G_err,A_err,No_err,Q_err,Ex_err,Age_err,S_err,Sk_err,About_er,Star_er,En_err,start,end;
 
 
     @Override
@@ -94,6 +99,54 @@ public class Add extends AppCompatActivity {
         start = findViewById(R.id.NameDetails12);
         end = findViewById(R.id.NameDetails13);
 
+        start.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onClick(View view) {
+                calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
+
+                dd = new DatePickerDialog(Add.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
+
+                        start.setText(mYear+"/"+ (mMonth+1) + "/" + mDay);
+
+
+                    }
+                },day,month,year);
+
+                dd.show();
+
+            }
+        });
+
+        end.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onClick(View view) {
+                calendar = Calendar.getInstance();
+                int day = calendar.get(Calendar.DAY_OF_MONTH);
+                int month = calendar.get(Calendar.MONTH);
+                int year = calendar.get(Calendar.YEAR);
+
+                dd = new DatePickerDialog(Add.this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
+
+                        end.setText(mYear+"-"+ (mMonth+1) + "-" + mDay);
+
+
+                    }
+                },day,month,year);
+
+                dd.show();
+
+            }
+        });
+
         btn = findViewById(R.id.submit);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +180,7 @@ public class Add extends AppCompatActivity {
 
 
         JSONObject jsonBody = new JSONObject();
+
         try {
             jsonBody.put("job_name",J_name);
             jsonBody.put("company_name",Comp_name );
@@ -139,7 +193,7 @@ public class Add extends AppCompatActivity {
             jsonBody.put("experience", Exp );
             jsonBody.put("age_limit",Age);
             jsonBody.put("salary",Salary);
-            jsonBody.put("skills","[1,2]");
+            jsonBody.put("skills",Skills);
 //            jsonBody.put("skills[1]",Skills);
             jsonBody.put("apply_start_date",Start);
             jsonBody.put("apply_end_date",End);
@@ -459,22 +513,6 @@ public class Add extends AppCompatActivity {
                 @Override
                 protected Map<String,String> getParams(){
                     Map<String,String> params = new HashMap<String, String>();
-
-//                        params.put("job_name",J_name);
-//                        params.put("company_name", Comp_name );
-//                        params.put("gender",Gender);
-//                        params.put("address",Address);
-//                        params.put("no_of_vacancy",No_vacancy);
-//                       // params.put("qualification[0]",Qualify);
-//                        params.put("experience", Exp );
-//                        params.put("age_limit",Age);
-//                        params.put("salary",Salary);
-//                        //params.put("skills[0]",Skills);
-//                        params.put("apply_start_date",Start);
-//                        params.put("apply_end_date",End);
-//                        params.put("about_company",About);
-//                        Toast.makeText(Add.this, params.toString(), Toast.LENGTH_SHORT).show();
-//                        Log.i("kgjwf9iw3tgy97uoe",params.toString());
 
 
                     return params;

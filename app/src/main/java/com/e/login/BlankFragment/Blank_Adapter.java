@@ -59,7 +59,7 @@ public class Blank_Adapter extends RecyclerView.Adapter<Blank_Adapter.ViewHolder
     @Override
     public int getItemCount() {
 
-        return 4;
+        return blankModelList.size();
 
     }
 

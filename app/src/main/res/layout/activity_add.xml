@@ -395,38 +395,39 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:weightSum="2"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
                             android:orientation="horizontal">
 
-                            <EditText
+                            <TextView
 
                                 android:id="@+id/NameDetails12"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="50dp"
-                                android:layout_marginStart="20dp"
                                 android:layout_marginTop="15dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_weight="1"
                                 android:background="@drawable/border_only"
-                                android:hint="Apply Start Date"
-                                android:inputType="number"
+                                android:gravity="center"
                                 android:padding="5dp"
-                                android:paddingStart="15dp"
-                                android:paddingEnd="37dp"
-                                android:textColorHint="@color/black"
+                                android:text="Apply Start date"
+                                android:textColor="@color/black"
                                 android:textSize="14dp" />
 
-                            <EditText
+                            <TextView
 
                                 android:id="@+id/NameDetails13"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="50dp"
-                                android:layout_marginStart="20dp"
                                 android:layout_marginTop="15dp"
+                                android:layout_marginStart="5dp"
                                 android:background="@drawable/border_only"
-                                android:hint="Apply End Date"
-                                android:inputType="number"
                                 android:padding="5dp"
-                                android:paddingStart="15dp"
-                                android:paddingEnd="37dp"
-                                android:textColorHint="@color/black"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:text="Apply End date"
+                                android:textColor="@color/black"
                                 android:textSize="14dp" />
 
 
@@ -441,6 +442,7 @@
                             android:layout_margin="10dp"
                             android:textAlignment="textEnd"
                             android:paddingEnd="40dp"
+                            android:visibility="gone"
 
                             />
                         <TextView
@@ -452,6 +454,7 @@
                             android:layout_weight="1"
                             android:textAlignment="textEnd"
                             android:paddingEnd="40dp"
+                            android:visibility="gone"
 
                             />
 

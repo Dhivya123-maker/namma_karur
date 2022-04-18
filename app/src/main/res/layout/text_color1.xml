@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:textColor="#656565"
     android:paddingTop="5dp"
+    android:text=""
     android:textColorHint="@color/black"
     android:id="@+id/text_color"
     android:textSize="14dp"

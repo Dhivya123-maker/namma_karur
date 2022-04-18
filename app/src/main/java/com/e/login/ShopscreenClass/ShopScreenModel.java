@@ -11,6 +11,20 @@ public class ShopScreenModel {
     private  String text_three;
     private String id;
 
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+
+    public ShopScreenModel(String distance) {
+        this.distance = distance;
+    }
+
+    private String distance;
+
     public String getLoc() {
         return loc;
     }

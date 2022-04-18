@@ -27,23 +27,18 @@
         android:textColorHint="@color/black"
         android:textSize="14dp" />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/border_only"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:inputType="text"
-        android:padding="5dp"
-        android:paddingStart="15dp"
-        android:textColorHint="@color/black"
-        android:textSize="14dp" />
+     <Spinner
+    android:id="@+id/edit2"
+    android:layout_width="match_parent"
+    android:layout_height="45dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginEnd="20dp"
+    android:textSize="14dp"
+         android:spinnerMode="dropdown"
+    android:background="@drawable/border_two">
 
-
-
-
+</Spinner>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,6 +41,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.Profile_details.EducationAdapter;
+import com.e.login.Profile_details.Education_Model;
 import com.e.login.Verification.Email_OTP;
 import com.e.login.Verification.Email_Verification;
 import com.e.login.Verification.Phone_txt;
@@ -53,6 +56,7 @@ import org.json.JSONObject;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Profile extends AppCompatActivity {
@@ -61,10 +65,14 @@ public class Profile extends AppCompatActivity {
     TextView user_name, emailtxt, contacttxt,b_gp,dob;
     LinearLayout skill;
     ImageView profile, email_edit, con_edit, edu_add, skill_add,choose_img;
-
+    Spinner bl;
     Context mContext;
     int SELECT_PICTURE = 1;
     Popup_Adapter adapter;
+    EducationAdapter educationAdapter;
+   List<Education_Model> education_model;
+    ArrayAdapter<String> arrayAdapter;
+
 
 
     String data3;
@@ -91,6 +99,7 @@ public class Profile extends AppCompatActivity {
 
 
 
+
     @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +117,7 @@ public class Profile extends AppCompatActivity {
         data1 = intent.getStringExtra("id");
         data2 = intent.getStringExtra("user_name");
         data3 = intent.getStringExtra("email");
+
 
 
         BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_profile);
@@ -163,8 +173,8 @@ public class Profile extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                PopUpClass_one popUpClass = new PopUpClass_one();
-                popUpClass.showPopupWindow(getSupportFragmentManager(),view);
+                PopUpClass_one popUpClass1 = new PopUpClass_one();
+                popUpClass1.showPopupWindow(getSupportFragmentManager(),view);
 
             }
         });
@@ -572,6 +582,8 @@ public class Profile extends AppCompatActivity {
 
 
             save.setOnClickListener(new View.OnClickListener() {
+
+
                 @Override
                 public void onClick(View view) {
 
@@ -585,18 +597,22 @@ public class Profile extends AppCompatActivity {
 
                     popupWindow.dismiss();
 
+                    education_model = new ArrayList<>();
 
+                    Education_Model model  = new Education_Model();
 
-                    ArrayList<String> data = new ArrayList<>();
-                    data.add(Ins);
-                    data.add(Deg);
-                    data.add(Year);
+                       model.setIns(Ins);
+                       model.setDeg(Deg);
+                       model.setYear(Year);
+
+                       education_model.add(model);
+
 
 
                     recyclerView = findViewById(R.id.recycler);
                     recyclerView.setLayoutManager(new LinearLayoutManager(Profile.this));
-                    adapter = new Popup_Adapter(Profile.this,data);
-                    recyclerView.setAdapter(adapter);
+                    educationAdapter = new EducationAdapter(Profile.this,education_model);
+                    recyclerView.setAdapter(educationAdapter);
 
 
                 }
@@ -642,8 +658,6 @@ public class Profile extends AppCompatActivity {
             //Initialize the elements of our window, install the handler
 
 
-
-
             //Handler for clicking on the inactive zone of the window
 
             popupView.setOnTouchListener(new View.OnTouchListener() {
@@ -672,12 +686,12 @@ public class Profile extends AppCompatActivity {
                 public void onClick(View view) {
 
                     EditText date =popupView.findViewById(R.id.dobb);
-                    Spinner bl = popupView.findViewById(R.id.spinner);
+                    bl =popupView.findViewById(R.id.edit2);
 
+                  bl = new Spinner(Profile.this, Spinner.MODE_DROPDOWN);
                     ArrayList<String> sname = new ArrayList<>();
 
                     sname.add("Blood Group");
-
                     sname.add("a1_positive");
                     sname.add("a1_negative");
                     sname.add("a2_positive");
@@ -697,11 +711,10 @@ public class Profile extends AppCompatActivity {
 
 
 
-
-                    ArrayAdapter<String> Adapter1 = new ArrayAdapter<String>(Profile.this,
+                    arrayAdapter = new ArrayAdapter<String>(Profile.this,
                             R.layout.text_color1,sname);
-                    Adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    bl.setAdapter(Adapter1);
+                    arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    bl.setAdapter(arrayAdapter);
 
 
 

@@ -115,9 +115,6 @@
             android:name=".EducationClass.Education_One_Activity"
             android:exported="false" />
         <activity
-            android:name=".EducationClass.EducationActivity"
-            android:exported="false" />
-        <activity
             android:name=".Services_Class.Service_Fragment"
             android:exported="false" />
         <activity

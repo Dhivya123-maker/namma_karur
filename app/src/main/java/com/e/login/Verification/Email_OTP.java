@@ -164,8 +164,8 @@ public class Email_OTP extends AppCompatActivity {
 
                             startActivity(intent);
 
-                            PreferenceUtils.saveid(data1,Email_OTP.this);
-                            PreferenceUtils.saveToken(data,Email_OTP.this);
+//                            PreferenceUtils.saveid(data1,Email_OTP.this);
+//                            PreferenceUtils.saveToken(data,Email_OTP.this);
 
 
                         }

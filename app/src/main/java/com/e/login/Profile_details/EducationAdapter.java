@@ -29,17 +29,18 @@ public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.View
     private Context context;
 
 
-    public EducationAdapter(Context context, List<Education_Model> educationModelList, ArrayList<Map<String, Object>> itemDataList) {
+
+
+    public EducationAdapter(Profile context, List<Education_Model> educationModelList) {
         this.context = context;
         this.educationModelList = educationModelList;
     }
 
 
-
     @NonNull
     @Override
     public EducationAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.popup_input_dialog,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.popup,parent,false);
 
 
         return new EducationAdapter.ViewHolder(view);
@@ -49,9 +50,10 @@ public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textView.setText(educationModelList.get(position).getIns());
-        holder.textView1.setText(educationModelList.get(position).getDeg());
-        holder.textView2.setText(educationModelList.get(position).getYear());
+
+        holder.ins.setText(educationModelList.get(position).getIns());
+        holder.deg.setText(educationModelList.get(position).getDeg());
+        holder.year.setText(educationModelList.get(position).getYear());
 
     }
 
@@ -71,16 +73,15 @@ public class EducationAdapter extends RecyclerView.Adapter<EducationAdapter.View
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        EditText textView, textView1,textView2;
-
+        TextView ins,deg,year;
 
         ViewHolder(View itemView) {
             super(itemView);
 
+            ins = itemView.findViewById(R.id.inss);
+            deg = itemView.findViewById(R.id.degg);
+            year = itemView.findViewById(R.id.yrr);
 
-            textView = itemView.findViewById(R.id.Institute);
-            textView1 = itemView.findViewById(R.id.Degree);
-            textView2 = itemView.findViewById(R.id.year);
 
 
 

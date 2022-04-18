@@ -363,6 +363,7 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
     public  void logout(){
 
         String JSON_URL = "http://nk.inevitabletech.email/public/api/logout";
+//        String JSON_URL = "http://eagle.spksystems.in/public/api/logout";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, JSON_URL, null, new Response.Listener<JSONObject>() {
             @SuppressLint("CheckResult")

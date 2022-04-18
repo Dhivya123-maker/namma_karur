@@ -1,9 +1,12 @@
 package com.e.login.ShopClass;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Looper;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +16,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,6 +42,10 @@ import com.e.login.Search_screen_class;
 import com.e.login.ShopscreenClass.ShopsScreenFragment;
 import com.e.login.SmallBusClass.SmallBusActivity;
 import com.e.login.utils.PreferenceUtils;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
@@ -70,8 +79,8 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
     String nimage=null;
     String nid = null;
     String bid= null;
-    private static final int REQUEST_CALL = 1 ;
     Dialog dialog;
+
 
 
     @Override
@@ -934,6 +943,7 @@ public void shop(String url,String cat) {
 //        dialog.show();
 //
 //        }
+
 
 }
 

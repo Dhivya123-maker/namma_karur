@@ -51,7 +51,6 @@ public class Email_Verification extends AppCompatActivity {
         err = findViewById(R.id.error1);
 
 
-
        send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

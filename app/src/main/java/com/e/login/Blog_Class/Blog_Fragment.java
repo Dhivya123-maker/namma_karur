@@ -297,7 +297,6 @@ public class Blog_Fragment extends Fragment {
 
 
 
-
         return  root;
     }
     public void Ban(){

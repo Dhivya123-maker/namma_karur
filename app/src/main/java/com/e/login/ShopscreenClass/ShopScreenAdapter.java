@@ -77,6 +77,7 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
             holder.  atm_desc.setText(shopScreenModelList.get(position).getText_one());
             holder.loc.setText(shopScreenModelList.get(position).getText_three());
 
+
             Glide.with(context)
                     .load(shopScreenModelList.get(position).getImage())
                     .into(holder.img1);
@@ -94,6 +95,7 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
             holder.textView2.setText(shopScreenModelList.get(position).getText_two());
             holder.textView3.setText(shopScreenModelList.get(position).getText_three());
             holder.textView4.setText(shopScreenModelList.get(position).getText_four());
+            holder.dis.setText(shopScreenModelList.get(position).getDistance());
 
             holder.lnr.setVisibility(View.VISIBLE);
             holder.atm_lnr.setVisibility(View.GONE);
@@ -123,7 +125,7 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img,img1,img2,img3,atm_img;
         LinearLayout lnr,atm_lnr,filter;
-        TextView textView, textView1,textView2,textView3,textView4,atm_txt,atm_desc,atm_rat,loc;
+        TextView textView, textView1,textView2,textView3,textView4,atm_txt,atm_desc,atm_rat,loc,dis;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -148,6 +150,7 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
             atm_txt = itemView.findViewById(R.id.atm_name);
             atm_desc = itemView.findViewById(R.id.atm_address);
             img1 = itemView.findViewById(R.id.atm_img);
+            dis=  itemView.findViewById(R.id.distance);
 //            atm_rat = itemView.findViewById(R.id.atm_rate);
 
 

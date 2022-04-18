@@ -114,20 +114,10 @@ public class Phone_txt extends AppCompatActivity {
 
                     Charset charset = Charset.defaultCharset();
                     String str = new String(error.networkResponse.data, charset);
-                    Toast.makeText(Phone_txt.this, str, Toast.LENGTH_SHORT).show();
+                    err.setText("Unauthenticated");
 
 
-                    try {
-                        JSONObject jsonObject = new JSONObject(str);
-                        JSONObject data = jsonObject.getJSONObject("data");
-                        String mistake = data.getString("message");
-                        err.setText(mistake);
-                        err.setVisibility(View.VISIBLE);
 
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
 
 
                 }

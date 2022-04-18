@@ -34,7 +34,7 @@ public class BlogActivity extends AppCompatActivity {
         // add the fragments
         viewPagerAdapter.add(new Blog_Fragment(), "Home");
         viewPagerAdapter.add(new QuotesFragment(), "Quotes");
-        viewPagerAdapter.add(new Karur(), "Videos");
+        viewPagerAdapter.add(new Videos(), "Videos");
 
 
         // Set the adapter

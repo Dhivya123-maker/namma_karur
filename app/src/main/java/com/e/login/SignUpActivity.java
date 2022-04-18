@@ -251,10 +251,9 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+
         if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
+
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
@@ -268,17 +267,17 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
             Toast.makeText(SignUpActivity.this, "Signup successfull", Toast.LENGTH_SHORT).show();
 
 
-            // Signed in successfully, show authenticated UI.
+
             Intent intent = new Intent(SignUpActivity.this,Signup_google.class);
 
             startActivity(intent);
-//            startActivity(new Intent(SignUpActivity.this,Signup_google.class));
+
 
         } catch (ApiException e) {
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-            Log.w("Google Sign In Error", "signInResult:failed code=" + e.getStatusCode());
-            Toast.makeText(SignUpActivity.this, "Failed", Toast.LENGTH_LONG).show();
+
+
+//            Log.w("Google Sign In Error", "signInResult:failed code=" + e.getStatusCode());
+//            Toast.makeText(SignUpActivity.this, "Failed", Toast.LENGTH_LONG).show();
         }
 
 
@@ -387,8 +386,6 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-
-
 
 
                     Charset charset = Charset.defaultCharset();

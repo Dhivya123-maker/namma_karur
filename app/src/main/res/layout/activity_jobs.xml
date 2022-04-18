@@ -276,21 +276,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:adjustViewBounds="true"
-
                             android:scaleType="centerCrop"
+                            android:layout_marginBottom="10dp"
                             />
 
-
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:layout_marginStart="50dp"
-                            android:layout_marginEnd="50dp"
-                            android:layout_marginTop="35dp"
-                            android:layout_marginBottom="140dp"
-                          >
 
 
 
@@ -302,9 +291,12 @@
                                 android:backgroundTint="#4c9a2a"
                                 android:textColor="@color/white"
                                 android:textAllCaps="false"
+                                android:layout_marginStart="70dp"
+                                android:layout_marginEnd="70dp"
+                                android:layout_marginTop="50dp"
+                                android:layout_marginBottom="120dp"
                                 android:letterSpacing="0.01"
                                 android:text="Post a job"/>
-                        </LinearLayout>
 
                     </LinearLayout>
 

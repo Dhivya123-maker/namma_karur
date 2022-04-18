@@ -35,6 +35,7 @@ import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.internal.OnConnectionFailedListener;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,7 +58,7 @@ public class Signup_google extends AppCompatActivity implements OnConnectionFail
     String token = null;
     String phonee = null;
     String email,name,goo_id;
-    String tok,idd;
+    TextView err;
 
 
     @Override
@@ -73,6 +74,7 @@ public class Signup_google extends AppCompatActivity implements OnConnectionFail
         userId.setVisibility(View.GONE);
 
         mobile = findViewById(R.id.mobile_edit);
+        err = findViewById(R.id.error);
 
 
 
@@ -183,7 +185,6 @@ public class Signup_google extends AppCompatActivity implements OnConnectionFail
 
 
 
-            //Toast.makeText(Signup_google.this, jsonBody.toString(), Toast.LENGTH_SHORT).show();
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
                 @SuppressLint("CheckResult")
@@ -245,7 +246,20 @@ public class Signup_google extends AppCompatActivity implements OnConnectionFail
                 public void onErrorResponse(VolleyError error) {
                     Charset charset = Charset.defaultCharset();
                     String str = new String(error.networkResponse.data, charset);
-                    Log.i("wkjlgroiwt", str);
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                        JSONArray jsonArray = jsonObject1.getJSONArray("phone");
+                        err.setText(jsonArray.getString(0));
+                        err.setVisibility(View.VISIBLE);
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
 
 
                 }
