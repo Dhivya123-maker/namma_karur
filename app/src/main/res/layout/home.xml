@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeClass.Home"
+    android:background="#4c9a2a"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
 
@@ -19,141 +20,142 @@
 
 
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view1"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
-        tools:ignore="MissingConstraints"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/main_menu"
-        android:background="#4c9a2a">
-
-
-
-
-        <Button
-            android:id="@+id/logout"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:text="logout"
-            android:textAllCaps="false"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="600dp"
-            android:background="@drawable/rounded_borders"
-            android:textColor="#4c9a2a"
-            android:layout_marginEnd="15dp"
-            >
-
-        </Button>
-
-
-
-
-    </com.google.android.material.navigation.NavigationView>
-
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-
-
-
-                <LinearLayout
-                    android:id="@+id/touch_drawer"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/bg"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/menu">
-
-                    </ImageView>
-
-
-                </LinearLayout>
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:orientation="vertical">-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/name"-->
-<!--            android:text="name"-->
-<!--            android:textSize="12dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            />-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/email"-->
-<!--            android:textSize="12dp"-->
-<!--            android:text="email"-->
-<!--            android:layout_gravity="center"-->
-<!--            />-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/userId"-->
-<!--            android:textSize="12dp"-->
-<!--            android:text="id"-->
-<!--            android:layout_gravity="center"-->
-<!--            />-->
-<!--        </LinearLayout>-->
-
-
-
-    </RelativeLayout>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-
-        <FrameLayout
-            android:id="@+id/fragment_layout_homee"
-            android:layout_width="match_parent"
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view1"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_above="@+id/bottomNavigation"
-            tools:ignore="MissingConstraints">
-
-
-        </FrameLayout>
-
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigation"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="bottom"
-            android:background="#4c9a2a"
-            android:fitsSystemWindows="true"
+            android:layout_gravity="start"
             app:itemIconTint="@color/white"
             app:itemTextColor="@color/white"
-            app:labelVisibilityMode="selected"
-            app:menu="@menu/bottom_nav">
+            tools:ignore="MissingConstraints"
+            android:fitsSystemWindows="true"
+            app:menu="@menu/main_menu"
+            android:background="#4c9a2a">
 
 
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:text="logout"
+                android:textAllCaps="false"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="600dp"
+                android:background="@drawable/rounded_borders"
+                android:textColor="#4c9a2a"
+                android:layout_marginEnd="15dp"
+                >
+
+            </Button>
 
 
 
-    </RelativeLayout>
+
+        </com.google.android.material.navigation.NavigationView>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+            <LinearLayout
+                android:id="@+id/touch_drawer"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/menu">
+
+                </ImageView>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/name"
+                    android:text="name"
+                    android:textSize="12dp"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/email"
+                    android:textSize="12dp"
+                    android:text="email"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/userId"
+                    android:textSize="12dp"
+                    android:text="id"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <FrameLayout
+                android:id="@+id/fragment_layout_home"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/bottomNavigation"
+                tools:ignore="MissingConstraints">
+
+
+            </FrameLayout>
+
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:background="#4c9a2a"
+                android:fitsSystemWindows="true"
+                app:itemIconTint="@color/white"
+                app:itemTextColor="@color/white"
+                app:labelVisibilityMode="selected"
+                app:menu="@menu/bottom_nav">
+
+
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+
+        </RelativeLayout>
     </androidx.drawerlayout.widget.DrawerLayout>
 
 </LinearLayout>

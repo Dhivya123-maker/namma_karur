@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.BaseApi.Api;
+import com.e.login.ChatFeature;
 import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
@@ -34,12 +36,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class OfferActivity extends AppCompatActivity {
+public class OfferActivity extends AppCompatActivity{
 
     List<Offer_Model> offerModelList;
     Offer_Adapter adapter;
@@ -54,7 +58,7 @@ public class OfferActivity extends AppCompatActivity {
 
 
     String t_id = null, t_name = null, t_image = null, t_des = null;
-    String c_id = null, c_name = null, c_image = null, c_des = null;
+    String c_id = null, c_name = null, c_image = null, c_des = null,c_start,c_end;
     String o_id = null, o_name = null, o_image = null, o_des = null;
 
     RecyclerView recyclerView,recyclerView1,recyclerView2;
@@ -168,15 +172,34 @@ public class OfferActivity extends AppCompatActivity {
                         c_name = jsonObject.getString("title");
                         c_image = jsonObject.getString("image");
                         c_des = jsonObject.getString("description");
-
+                        c_start = jsonObject.getString("start_date");
+                        c_end = jsonObject.getString("end_date");
 
 
                         Offer_One_Model viewmodel = new Offer_One_Model();
 
 
+                        new CountDownTimer(50000, 1000) {
+                            public void onTick(long millisUntilFinished) {
+                                // Used for formatting digit to be in 2 digits only
+                                NumberFormat f = new DecimalFormat("00");
+                                long hour = (millisUntilFinished / 3600000) % 24;
+                                long min = (millisUntilFinished / 60000) % 60;
+                                long sec = (millisUntilFinished / 1000) % 60;
+                                viewmodel.setTxt(f.format(hour) + "  :  " +   f.format(min) + "  :  " +   f.format(sec));
+//                                viewmodel.setTxt(c_end);
+                            }
+
+                            // When the task is over it will print 00:00:00 there
+                            public void onFinish() {
+                                viewmodel.setTxt("00 : 00 : 00");
+                            }
+                        }.start();
+
+
 
                         viewmodel.setImg(c_image);
-                        viewmodel.setTxt("00  :  00  :  00");
+//                        viewmodel.setTxt(c_end);
                         viewmodel.setTxt1(" Hrs     Min     sec");
                         viewmodel.setId(c_id);
 
@@ -199,6 +222,7 @@ public class OfferActivity extends AppCompatActivity {
                         o_des = jsonObject.getString("description");
 
                         Offer_two_model viewmodel = new Offer_two_model();
+
 
 
 
@@ -227,6 +251,8 @@ public class OfferActivity extends AppCompatActivity {
 
 
 
+
+
                 recyclerView1.setLayoutManager(new LinearLayoutManager(OfferActivity.this));
 
                 adapter1 =  new Offer_One_Adapter(OfferActivity.this,offerOneModelList);
@@ -251,9 +277,6 @@ public class OfferActivity extends AppCompatActivity {
 
             }
 
-//
-//
-//        }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -308,7 +331,7 @@ public class OfferActivity extends AppCompatActivity {
                     fragment = new Helpline();
                     break;
                 case R.id.nav_notifications:
-                    fragment = new EnquiryFragment();
+                    fragment = new ChatFeature();
                     break;
 
 
@@ -319,7 +342,6 @@ public class OfferActivity extends AppCompatActivity {
             return true;
         }
     };
-
 
 
 

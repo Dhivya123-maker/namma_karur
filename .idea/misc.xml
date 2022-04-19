@@ -452,10 +452,10 @@
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_ambulance.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_ambulance_call.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_bank_fragment_class.xml" value="0.35520833333333335" />
-        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_blog_fragment.xml" value="0.25" />
-        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_blood_fragment.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_blog_fragment.xml" value="0.22" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_blood_fragment.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_blood_one.xml" value="0.35520833333333335" />
-        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_carrier.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_carrier.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_change_email_otp.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_change_password.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_change_phone.xml" value="0.35520833333333335" />
@@ -467,21 +467,24 @@
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_education_details.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_email_otp.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_email_verification.xml" value="0.35520833333333335" />
-        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_event_hotel.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_event_home_fragment.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_event_hotel.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_feedback.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_forget_otp.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_forget_password.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_gallery.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_government.xml" value="0.35520833333333335" />
-        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_home_fragment_class.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_home_fragment_class.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_job_search.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_job_search_two.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_jobs.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_joinwith_us.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_mobile_verification.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_more.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_new.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_news.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_ngoactivity.xml" value="0.35520833333333335" />
-        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_offer.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_offer.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_password.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_phone_txt.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_quotes.xml" value="0.3411458333333333" />
@@ -501,13 +504,14 @@
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_view_breaking.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/activity_view_more_jobs.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/ambulance_call_recycle.xml" value="0.33" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/banner.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/blood_recycle.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/category.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/category_recycle.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/closing_all_recycle.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/date_popup.xml" value="0.35520833333333335" />
-        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_blank__post.xml" value="0.33" />
-        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_blog_.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_blank__post.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_blog_.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_carrier_.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_chat.xml" value="0.3411458333333333" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_education_carrier.xml" value="0.35520833333333335" />
@@ -517,13 +521,14 @@
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_information.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_job_.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_karur.xml" value="0.35520833333333335" />
-        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_message.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_message.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_news_.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_notifications.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_o_r_code.xml" value="0.25" />
-        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_post_.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_post.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_post_.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_products_.xml" value="0.35520833333333335" />
-        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_profile.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_quotes.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_serach_screen.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/fragment_shop_post.xml" value="0.35520833333333335" />
@@ -564,14 +569,15 @@
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recycler_row_two.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recycler_seventy_four.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recycler_sixty_five.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recycler_sixty_four.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recycler_sixty_seven.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recycler_sixty_three.xml" value="0.35520833333333335" />
-        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recycler_thirty.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recycler_thirty.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recycler_thirty_eight.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recycler_thirty_five.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recycler_thirty_ninee.xml" value="0.33" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recycler_twenty_eight.xml" value="0.35520833333333335" />
-        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recycler_twenty_nine.xml" value="0.35520833333333335" />
+        <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recycler_twenty_nine.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/recyclerview_row.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/search_two.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/Documents/Namma-Karur-App/app/src/main/res/layout/shops_screen_fragment.xml" value="0.22" />

@@ -1,12 +1,9 @@
 package com.e.login.ShopClass;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Looper;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,8 +13,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,9 +26,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.BaseApi.Api;
 import com.e.login.GovtClass.GovtActivity;
+import com.e.login.ChatFeature;
 import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.info_Class.InformationFragment;
-import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.MarketListClass.MarketActivity;
 import com.e.login.QrCodeFragment;
@@ -42,10 +37,6 @@ import com.e.login.Search_screen_class;
 import com.e.login.ShopscreenClass.ShopsScreenFragment;
 import com.e.login.SmallBusClass.SmallBusActivity;
 import com.e.login.utils.PreferenceUtils;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
@@ -79,14 +70,16 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
     String nimage=null;
     String nid = null;
     String bid= null;
+    private static final int REQUEST_CALL = 1 ;
     Dialog dialog;
 
 
 
+    ArrayList<String> ImgUrl= new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.fragment_shop_screen__main);
 
 
@@ -101,43 +94,43 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
         api = a.getBASE_URL();
 
 
-       Intent intent = getIntent();
-       data3 = intent.getStringExtra("cat");
+        Intent intent = getIntent();
+        data3 = intent.getStringExtra("cat");
 
-
+//        Toast.makeText(getApplicationContext(), data3, Toast.LENGTH_SHORT).show();
 
 
 
         if (data3.equals("ShopCatalog")){
-           String url = api+"get-shop-category-list";
-           shop(url,data3);
-           shop_name.setText("Shops");
-       }else if (data3.equals("ServiceCatalog"))
+            String url = api+"get-shop-category-list";
+            shop(url,data3);
+            shop_name.setText("Shops");
+        }else if (data3.equals("ServiceCatalog"))
         {
             String url = api+"get-service-category-list";
             shop(url,data3);
             shop_name.setText("Services");
         }else if (data3.equals("MarketCatalog"))
-       {
-           String url = api+"get-market-category-list";
-           market(url,data3);
-           shop_name.setText("Market");
-       }else if (data3.equals("EducationCatalog"))
-       {
-           String url = api+"get-education-category-list";
-           shop(url,data3);
-           shop_name.setText("Education");
-       }else if (data3.equals("TransportCatalog"))
-       {
-           String url = api+"get-transport-category-list";
-           shop(url,data3);
-           shop_name.setText("Transports");
-       }else if (data3.equals("HospitalCatalog"))
-       {
-           String url = api+"get-hospital-category-list";
-           shop(url,data3);
-           shop_name.setText("Hospital");
-       }else if (data3.equals("EventCatalog"))
+        {
+            String url = api+"get-market-category-list";
+            market(url,data3);
+            shop_name.setText("Market");
+        }else if (data3.equals("EducationCatalog"))
+        {
+            String url = api+"get-education-category-list";
+            shop(url,data3);
+            shop_name.setText("Education");
+        }else if (data3.equals("TransportCatalog"))
+        {
+            String url = api+"get-transport-category-list";
+            shop(url,data3);
+            shop_name.setText("Transports");
+        }else if (data3.equals("HospitalCatalog"))
+        {
+            String url = api+"get-hospital-category-list";
+            shop(url,data3);
+            shop_name.setText("Hospital");
+        }else if (data3.equals("EventCatalog"))
         {
             String url = api+"get-event-category-list";
             shop(url,data3);
@@ -174,8 +167,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
 
 
-
-            BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_shops11);
+        BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_shops11);
         btnNav.setOnNavigationItemSelectedListener(navListener);
 
         search = findViewById(R.id.searching1);
@@ -199,6 +191,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
 
+        @SuppressLint("NonConstantResourceId")
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -210,18 +203,16 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
                     fragment = new Fragment_Home();
                     break;
                 case R.id.nav_tree:
-                 fragment = new InformationFragment();
+                    fragment = new InformationFragment();
                     break;
                 case R.id.nav_qr:
                     fragment = new QrCodeFragment();
                     break;
                 case R.id.nav_profilee:
-
                     fragment = new Helpline();
                     break;
                 case R.id.nav_notifications:
-
-                   fragment = new EnquiryFragment();
+                    fragment = new ChatFeature();
                     break;
 
 
@@ -237,77 +228,77 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
 
 
-public void shop(String url,String cat) {
+    public void shop(String url,String cat) {
 
 
 
-    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-        @SuppressLint("CheckResult")
-        @Override
-        public void onResponse(JSONObject response) {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("CheckResult")
+            @Override
+            public void onResponse(JSONObject response) {
 
 
 
-            try {
-                JSONArray res = response.getJSONArray("data");
+                try {
+                    JSONArray res = response.getJSONArray("data");
 
-                shop_model = new ArrayList<>();
-
-
-                for (int i=0;i<res.length();i++){
+                    shop_model = new ArrayList<>();
 
 
-                    JSONObject jsonObject = res.getJSONObject(i);
+                    for (int i=0;i<res.length();i++){
 
 
-
-                    id = jsonObject.getString("id");
-                    name = jsonObject.getString("name");
-                    image = jsonObject.getString("image");
-                    view_count = jsonObject.getString("view_count") ;
+                        JSONObject jsonObject = res.getJSONObject(i);
 
 
 
-
-
-                    ShopModel model = new ShopModel();
-
-                    model.setImage(image);
-                    model.setText(name);
-                    model.setText_one(view_count+" views");
-                    model.setId(id);
-
-                    model.setCategory(cat);
+                        id = jsonObject.getString("id");
+                        name = jsonObject.getString("name");
+                        image = jsonObject.getString("image");
+                        view_count = jsonObject.getString("view_count") ;
 
 
 
 
 
-                    shop_model.add(model);
+                        ShopModel model = new ShopModel();
+
+                        model.setImage(image);
+                        model.setText(name);
+                        model.setText_one(view_count+" views");
+                        model.setId(id);
+
+                        model.setCategory(cat);
 
 
+
+
+
+                        shop_model.add(model);
+
+
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
-            } catch (JSONException e) {
-                e.printStackTrace();
+
+                recyclerView.setLayoutManager(new LinearLayoutManager(ShopScreen_Class.this));
+                adapter =  new ShopClassAdapter(ShopScreen_Class.this,shop_model);
+                adapter.setOnItemClickListener(ShopScreen_Class.this);
+                recyclerView.setAdapter(adapter);
+
+
+
+
+
+
+
             }
 
 
-            recyclerView.setLayoutManager(new LinearLayoutManager(ShopScreen_Class.this));
-            adapter =  new ShopClassAdapter(ShopScreen_Class.this,shop_model);
-            adapter.setOnItemClickListener(ShopScreen_Class.this);
-            recyclerView.setAdapter(adapter);
-
-
-
-
-
-
-
-        }
-
-
-    }, new Response.ErrorListener() {
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
@@ -334,7 +325,7 @@ public void shop(String url,String cat) {
         RequestQueue requestQueue = Volley.newRequestQueue(ShopScreen_Class.this);
         requestQueue.add(jsonObjectRequest);
 
-}
+    }
 
     private void ambulance(String url,String cat) {
 
@@ -367,6 +358,7 @@ public void shop(String url,String cat) {
                         primary = jsonObject.getString("primary_number");
 
                         asec = jsonObject.getString("secondary_number");
+
 
 
                         ShopModel model = new ShopModel();
@@ -406,6 +398,7 @@ public void shop(String url,String cat) {
 
 
             }
+
 
         }, new Response.ErrorListener() {
             @Override
@@ -504,6 +497,7 @@ public void shop(String url,String cat) {
 
             }
 
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -601,6 +595,7 @@ public void shop(String url,String cat) {
 
             }
 
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -647,6 +642,7 @@ public void shop(String url,String cat) {
 
 
                         JSONObject jsonObject = res.getJSONObject(i);
+
 
 
                         nid = jsonObject.getString("id");
@@ -745,6 +741,9 @@ public void shop(String url,String cat) {
                         image = jsonObject.getString("image");
 
 
+//                        view_count = jsonObject.getString("view_count") ;
+//
+
 
 
 
@@ -802,7 +801,7 @@ public void shop(String url,String cat) {
                 Map<String,String> params = new HashMap<String, String>();
 
                 params.put("Authorization", "Bearer  " +PreferenceUtils.getToken(ShopScreen_Class.this));
-                                return params;
+                return params;
             }
         };
 
@@ -864,16 +863,17 @@ public void shop(String url,String cat) {
     @Override
     public void onItemClick(int position) {
 
-          ShopModel model = shop_model.get(position);
+        ShopModel model = shop_model.get(position);
 
-          String S_id = model.getId();
+        String S_id = model.getId();
         String S_name = model.getText();
         String m_id = model.getMid();
         String b_id =  model.getBid();
         String n_id = model.getNid();
         String cat = model.getCategory();
 
-
+//        Toast.makeText(getApplicationContext(), cat, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(), data3, Toast.LENGTH_SHORT).show();
 
 
 
@@ -894,7 +894,10 @@ public void shop(String url,String cat) {
             startActivity(intent);
 
         }
+
         else
+//        (data3.equals("ShopCatalog") || data3.equals("ServiceCatalog") ||data3.equals("EducationCatalog") ||data3.equals("TransportCatalog")
+//                ||data3.equals("HospitalCatalog") ||data3.equals("EventCatalog") ||data3.equals("HotelCatalog")  ||data3.equals("BankCatalog"))
         {
             Intent intent = new Intent(ShopScreen_Class.this, ShopsScreenFragment.class);
             intent.putExtra("list", cat);
@@ -943,7 +946,6 @@ public void shop(String url,String cat) {
 //        dialog.show();
 //
 //        }
-
 
 }
 

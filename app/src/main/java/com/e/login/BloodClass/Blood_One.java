@@ -15,7 +15,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -26,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.e.login.ChatFeature;
 import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
@@ -52,7 +52,6 @@ public class Blood_One extends AppCompatActivity {
     Spinner blood;
     String data, data1;
     String Patient, Blood, Problem, Need, Units, Hospital, Address, Num, Alternate_num;
-    TextView P_err,B_err,Pro_err,Need_er,Units_er,Hos_err,Ad_err,Num_err,Alt_err;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,19 +63,11 @@ public class Blood_One extends AppCompatActivity {
 
         Intent intent = getIntent();
         data = intent.getStringExtra("cat");
-
+        //  Toast.makeText(Blood_One.this, data, Toast.LENGTH_SHORT).show();
+//        data1 = intent.getStringExtra("id");
         BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_blood1);
         btnNav.setOnNavigationItemSelectedListener(navListener);
 
-        P_err = findViewById(R.id.error1);
-        B_err = findViewById(R.id.error2);
-        Pro_err = findViewById(R.id.error3);
-        Need_er = findViewById(R.id.error4);
-        Units_er = findViewById(R.id.error5);
-        Hos_err = findViewById(R.id.error6);
-        Ad_err = findViewById(R.id.error7);
-        Num_err = findViewById(R.id.error8);
-        Alt_err = findViewById(R.id.error9);
 
         patient = findViewById(R.id.edit1);
         blood = findViewById(R.id.edit2);
@@ -137,7 +128,6 @@ public class Blood_One extends AppCompatActivity {
 
 
     public void blood(){
-
 
         Patient = patient.getText().toString();
         Blood = blood.getSelectedItem().toString();
@@ -208,233 +198,32 @@ public class Blood_One extends AppCompatActivity {
 
                 }
 
+
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Charset charset = Charset.defaultCharset();
-                    String str = new String(error.networkResponse.data,charset);
-
-
-                    if(Patient.isEmpty()){
-
 
                     try {
+                        Charset charset = Charset.defaultCharset();
+                        String str = new String(error.networkResponse.data,charset);
+
+
 
                         JSONObject jsonObject = new JSONObject(str);
-                        JSONObject jsonObject1 = jsonObject.getJSONObject("errors");
-                        JSONArray jsonArray = jsonObject1.getJSONArray("patient_name");
-                        P_err.setText(jsonArray.getString(0));
-                        P_err.setVisibility(View.VISIBLE);
-                        B_err.setVisibility(View.GONE);
-                        Pro_err.setVisibility(View.GONE);
-                        Need_er.setVisibility(View.GONE);
-                        Units_er.setVisibility(View.GONE);
-                        Hos_err.setVisibility(View.GONE);
-                        Ad_err.setVisibility(View.GONE);
-                        Num_err.setVisibility(View.GONE);
-                        Alt_err.setVisibility(View.GONE);
 
+//                        Toast.makeText(Blood_One.this, error.networkResponse.data.toString(), Toast.LENGTH_SHORT).show();
+                        Log.i("wdsd",jsonObject.toString());
+//                        JSONObject data = jsonObject.getJSONObject("data");
+//
+//                        JSONArray jsonArray1 = data.getJSONArray("name");
 
-
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    }
-
-                    else if(Problem.isEmpty()){
-
-                    try {
-
-                        JSONObject jsonObject = new JSONObject(str);
-                        JSONObject jsonObject1 = jsonObject.getJSONObject("errors");
-                        JSONArray jsonArray = jsonObject1.getJSONArray("problem");
-                        Pro_err.setText(jsonArray.getString(0));
-                        Pro_err.setVisibility(View.VISIBLE);
-                        P_err.setVisibility(View.GONE);
-                        B_err.setVisibility(View.GONE);
-                        Need_er.setVisibility(View.GONE);
-                        Units_er.setVisibility(View.GONE);
-                        Hos_err.setVisibility(View.GONE);
-                        Ad_err.setVisibility(View.GONE);
-                        Num_err.setVisibility(View.GONE);
-                        Alt_err.setVisibility(View.GONE);
-
+//                            email.setError(jsonArray1.getString(0));
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
-                    }
-                    else if(Need.isEmpty()){
 
-                    try {
-
-                        JSONObject jsonObject = new JSONObject(str);
-                        JSONObject jsonObject1 = jsonObject.getJSONObject("errors");
-                        JSONArray jsonArray = jsonObject1.getJSONArray("needed_within");
-                        Need_er.setText(jsonArray.getString(0));
-                        Need_er.setVisibility(View.VISIBLE);
-                        Pro_err.setVisibility(View.GONE);
-                        P_err.setVisibility(View.GONE);
-                        B_err.setVisibility(View.GONE);
-                        Units_er.setVisibility(View.GONE);
-                        Hos_err.setVisibility(View.GONE);
-                        Ad_err.setVisibility(View.GONE);
-                        Num_err.setVisibility(View.GONE);
-                        Alt_err.setVisibility(View.GONE);
-
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    }
-                    else if(Units.isEmpty()){
-
-                    try {
-
-                        JSONObject jsonObject = new JSONObject(str);
-                        JSONObject jsonObject1 = jsonObject.getJSONObject("errors");
-                        JSONArray jsonArray = jsonObject1.getJSONArray("no_of_units");
-                        Units_er.setText(jsonArray.getString(0));
-                        Units_er.setVisibility(View.VISIBLE);
-                        Pro_err.setVisibility(View.GONE);
-                        P_err.setVisibility(View.GONE);
-                        B_err.setVisibility(View.GONE);
-                        Need_er.setVisibility(View.GONE);
-                        Hos_err.setVisibility(View.GONE);
-                        Ad_err.setVisibility(View.GONE);
-                        Num_err.setVisibility(View.GONE);
-                        Alt_err.setVisibility(View.GONE);
-
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    }
-                    else if (Hospital.isEmpty()){
-
-
-                    try {
-
-                        JSONObject jsonObject = new JSONObject(str);
-                        JSONObject jsonObject1 = jsonObject.getJSONObject("errors");
-                        JSONArray jsonArray = jsonObject1.getJSONArray("hospital");
-                        Hos_err.setText(jsonArray.getString(0));
-                        Hos_err.setVisibility(View.VISIBLE);
-                        Pro_err.setVisibility(View.GONE);
-                        P_err.setVisibility(View.GONE);
-                        B_err.setVisibility(View.GONE);
-                        Need_er.setVisibility(View.GONE);
-                        Units_er.setVisibility(View.GONE);
-                        Ad_err.setVisibility(View.GONE);
-                        Num_err.setVisibility(View.GONE);
-                        Alt_err.setVisibility(View.GONE);
-
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    }
-                    else if(Address.isEmpty()){
-
-                    try {
-
-                        JSONObject jsonObject = new JSONObject(str);
-                        JSONObject jsonObject1 = jsonObject.getJSONObject("errors");
-                        JSONArray jsonArray = jsonObject1.getJSONArray("address");
-                        Ad_err.setText(jsonArray.getString(0));
-                        Ad_err.setVisibility(View.VISIBLE);
-                        Pro_err.setVisibility(View.GONE);
-                        P_err.setVisibility(View.GONE);
-                        B_err.setVisibility(View.GONE);
-                        Need_er.setVisibility(View.GONE);
-                        Units_er.setVisibility(View.GONE);
-                        Hos_err.setVisibility(View.GONE);
-                        Num_err.setVisibility(View.GONE);
-                        Alt_err.setVisibility(View.GONE);
-
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    }
-                    else if (Num.isEmpty() || Num.length()<10){
-
-                    try {
-
-                        JSONObject jsonObject = new JSONObject(str);
-                        JSONObject jsonObject1 = jsonObject.getJSONObject("errors");
-                        JSONArray jsonArray = jsonObject1.getJSONArray("primary_contact");
-                        Num_err.setText(jsonArray.getString(0));
-                        Num_err.setVisibility(View.VISIBLE);
-                        Pro_err.setVisibility(View.GONE);
-                        P_err.setVisibility(View.GONE);
-                        B_err.setVisibility(View.GONE);
-                        Need_er.setVisibility(View.GONE);
-                        Units_er.setVisibility(View.GONE);
-                        Hos_err.setVisibility(View.GONE);
-                        Ad_err.setVisibility(View.GONE);
-                        Alt_err.setVisibility(View.GONE);
-
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    }
-                    else if(Alternate_num.isEmpty()|| Alternate_num.length()<10){
-
-                    try {
-
-                        JSONObject jsonObject = new JSONObject(str);
-                        JSONObject jsonObject1 = jsonObject.getJSONObject("errors");
-                        JSONArray jsonArray = jsonObject1.getJSONArray("secondary_contact");
-                        Alt_err.setText(jsonArray.getString(0));
-                        Alt_err.setVisibility(View.VISIBLE);
-                        Pro_err.setVisibility(View.GONE);
-                        P_err.setVisibility(View.GONE);
-                        B_err.setVisibility(View.GONE);
-                        Need_er.setVisibility(View.GONE);
-                        Units_er.setVisibility(View.GONE);
-                        Hos_err.setVisibility(View.GONE);
-                        Ad_err.setVisibility(View.GONE);
-                        Num_err.setVisibility(View.GONE);
-
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                    }
-                    else{
-
-                        try {
-
-                            JSONObject jsonObject = new JSONObject(str);
-                            JSONObject jsonObject1 = jsonObject.getJSONObject("errors");
-                            JSONArray jsonArray = jsonObject1.getJSONArray("blood_group");
-                            B_err.setText(jsonArray.getString(0));
-                            B_err.setVisibility(View.VISIBLE);
-                            P_err.setVisibility(View.GONE);
-                            Pro_err.setVisibility(View.GONE);
-                            Need_er.setVisibility(View.GONE);
-                            Units_er.setVisibility(View.GONE);
-                            Hos_err.setVisibility(View.GONE);
-                            Ad_err.setVisibility(View.GONE);
-                            Num_err.setVisibility(View.GONE);
-                            Alt_err.setVisibility(View.GONE);
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
 
                 }
             }){
@@ -443,7 +232,6 @@ public class Blood_One extends AppCompatActivity {
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String,String> params = new HashMap<String, String>();
 
-                    params.put("Accept","application/json");
                     params.put("Authorization", "Bearer " + PreferenceUtils.getToken(Blood_One.this));
                     return params;
                 }
@@ -489,7 +277,7 @@ public class Blood_One extends AppCompatActivity {
                     fragment = new Helpline();
                     break;
                 case R.id.nav_notifications:
-                    fragment = new EnquiryFragment();
+                    fragment = new ChatFeature();
                     break;
 
 

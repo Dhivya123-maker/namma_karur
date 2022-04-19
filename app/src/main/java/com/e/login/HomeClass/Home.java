@@ -14,7 +14,6 @@ import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +27,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -37,12 +35,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.BuildConfig;
 import com.e.login.ContactusActivity;
-import com.e.login.EnquiryFragment;
 import com.e.login.Feedback;
-import com.e.login.LoginActivity;
-import com.e.login.NewsClass.Karur;
-import com.e.login.Post_Fragment;
-import com.e.login.Verification.Edit;
+import com.e.login.ChatFeature;
 import com.e.login.info_Class.InformationFragment;
 import com.e.login.Profile;
 import com.e.login.Help_Class.Helpline;
@@ -59,22 +53,22 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Home extends AppCompatActivity implements OnConnectionFailedListener,GoogleApiClient.OnConnectionFailedListener {
 
-
+    SearchView searchView;
     LinearLayout lnr;
     Button logout;
     NavigationView navigationView;
+    FloatingActionButton floatingActionButton;
     String data,data1,data2,data3;
     private long pressedTime;
-
+    TextView userName, userEmail, userId;
+    String Name, Email, Id;
     public static final String TAG = "bottom_sheet";
     private GoogleApiClient googleApiClient;
     private GoogleSignInOptions gso;
@@ -85,6 +79,7 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
 
     String goo_token,goo_id,u_name,phone,user_id;
     String image;
+    BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,7 +94,7 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
             @Override
             public void onClick(View view) {
 
-                    logout();
+                logout();
 
 
             }
@@ -109,13 +104,15 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         Intent i = getIntent();
         data = i.getStringExtra("token");
         data1 = i.getStringExtra("id");
-       data2 = i.getStringExtra("user_name");
+        data2 = i.getStringExtra("user_name");
         data3 = i.getStringExtra("email");
         goo_token = i.getStringExtra("goo_token");
         goo_id = i.getStringExtra("goo_id");
         u_name = i.getStringExtra("name");
         phone = i.getStringExtra("phone");
         user_id = i.getStringExtra("user_id");
+
+
 
 
 
@@ -147,7 +144,7 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
 
         imag();
 
-      BottomNavigationView btnNav= findViewById(R.id.bottomNavigation);
+        BottomNavigationView btnNav= findViewById(R.id.bottomNavigation);
 
 
         btnNav.setOnNavigationItemSelectedListener(navListener);
@@ -156,7 +153,8 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         lnr= findViewById(R.id.touch_drawer);
 
         navigationView = findViewById(R.id.nav_view1);
-
+//        View headview = navigationView.getHeaderView(0);
+//       profile = headview.findViewById(R.id.head_img);
         View hView =  navigationView.inflateHeaderView(R.layout.header);
         profile = (ImageView)hView.findViewById(R.id.head_img);
         namee = (TextView)hView.findViewById(R.id.name_txt);
@@ -173,6 +171,18 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         });
 
 
+
+////
+
+//        linearLayout = (LinearLayout) findViewById(R.id.profile_lnr);
+//        linearLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//
+//            }
+//        });
+////
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new
                 ActionBarDrawerToggle(Home.this,
@@ -182,7 +192,10 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-
+//
+////
+// navigationView.setCheckedItem(R.id.nav_profile);
+//
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -209,7 +222,10 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
                         break;
 
                     case R.id.nav_JoinwithUs:
-
+//
+//                        Intent join = new Intent(Home.this, JoinwithUs.class);
+//                       join.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                        startActivity(join);
                         break;
 
 
@@ -229,8 +245,8 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
 
                     case R.id.nav_Share_app:
 
-                      Clicked();
-                      break;
+                        Clicked();
+                        break;
                     case R.id.nav_RateUs:
 
                         launch();
@@ -247,12 +263,13 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         });
 
 
-      getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout_homee,new Fragment_Home()).commit();
+//        setting home fragments as main fragment as well as default fragments
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout_home,new Fragment_Home()).commit();
 
 
     }
 
-  public  void Clicked()
+    public  void Clicked()
     {
 
         Intent sendIntent = new Intent();
@@ -284,43 +301,39 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
             Fragment selectedFragment = null;
 
 
-
             switch  (item.getItemId()){
                 case R.id.nav_home:
                     selectedFragment = new Fragment_Home();
                     lnr.setClickable(true);
-                    lnr.setVisibility(View.VISIBLE);
 
                     break;
                 case R.id.nav_tree:
                     selectedFragment = new InformationFragment();
                     lnr.setClickable(false);
-                    lnr.setVisibility(View.GONE);
+
                     break;
                 case R.id.nav_qr:
                     selectedFragment = new QrCodeFragment();
                     lnr.setClickable(false);
-                    lnr.setVisibility(View.GONE);
                     break;
                 case R.id.nav_profilee:
                     selectedFragment = new Helpline();
                     lnr.setClickable(false);
-                    lnr.setVisibility(View.GONE);
 
                     break;
 
                 case R.id.nav_notifications:
-                  selectedFragment = new EnquiryFragment();
+                    selectedFragment = new ChatFeature();
                     lnr.setClickable(false);
-                    lnr.setVisibility(View.GONE);
-                  break;
+                    break;
             }
 
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout_homee,selectedFragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout_home,selectedFragment).commit();
             return true;
         }
     };
+
 //    private void clickEvents() {
 //
 //        floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -342,8 +355,8 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
                     .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                           Home.super.onBackPressed();
-                          finishAffinity();
+                            Home.super.onBackPressed();
+                            finishAffinity();
                         }
                     }).create().show();
 
@@ -363,7 +376,6 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
     public  void logout(){
 
         String JSON_URL = "http://nk.inevitabletech.email/public/api/logout";
-//        String JSON_URL = "http://eagle.spksystems.in/public/api/logout";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, JSON_URL, null, new Response.Listener<JSONObject>() {
             @SuppressLint("CheckResult")
@@ -458,6 +470,8 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
             public void onResponse(JSONObject response) {
 
 
+//                Log.i("0000000",response.toString());
+//                Toast.makeText(Profile.this, response.toString(), Toast.LENGTH_SHORT).show();
                 try {
 
 
@@ -535,7 +549,7 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         RequestQueue requestQueue = Volley.newRequestQueue(Home.this);
         requestQueue.add(jsonObjectRequest);
 
-}
+    }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {

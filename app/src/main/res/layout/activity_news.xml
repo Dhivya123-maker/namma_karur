@@ -119,27 +119,27 @@
 
 
 
-                    <com.google.android.material.appbar.AppBarLayout
-                        android:id="@+id/app"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/fragment_layout"
-
-                        >
-
-                        <com.google.android.material.tabs.TabLayout
-                            android:id="@+id/tabb_layout"
+                        <com.google.android.material.appbar.AppBarLayout
+                            android:id="@+id/app"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            app:tabMaxWidth="0dp"
-                            app:tabBackground="@color/white"
-                            app:tabGravity="fill"
-                            app:tabIndicatorColor="#4C9A2A"
-                            app:tabMode="scrollable"
-                            app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-                            app:tabTextColor="#4C9A2A" />
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/fragment_layout"
 
-                    </com.google.android.material.appbar.AppBarLayout>
+                            >
+
+                            <com.google.android.material.tabs.TabLayout
+                                android:id="@+id/tabb_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:tabMaxWidth="0dp"
+                                app:tabBackground="@color/white"
+                                app:tabGravity="fill"
+                                app:tabIndicatorColor="#4C9A2A"
+                                app:tabMode="scrollable"
+                                app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+                                app:tabTextColor="#4C9A2A" />
+
+                        </com.google.android.material.appbar.AppBarLayout>
 
 
                         <androidx.viewpager.widget.ViewPager
@@ -150,19 +150,29 @@
                             app:layout_anchorGravity="center"
                             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+                            <FrameLayout
+                                android:id="@+id/fragment_news"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                tools:ignore="MissingConstraints">
+
+
+                            </FrameLayout>
 
 
                         </androidx.viewpager.widget.ViewPager>
 
-
-                        <FrameLayout
-                            android:id="@+id/fragment_news"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            tools:ignore="MissingConstraints">
-
-
-                        </FrameLayout>
+                        <!--                        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+                        <!--                            android:id="@+id/bottomNavigationView_news"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="70dp"-->
+                        <!--                            android:layout_alignParentBottom="true"-->
+                        <!--                            android:background="#4c9a2a"-->
+                        <!--                            app:itemIconTint="@color/white"-->
+                        <!--                            app:itemTextColor="@color/white"-->
+                        <!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+                        <!--                            app:layout_constraintStart_toEndOf="parent"-->
+                        <!--                            app:menu="@menu/bottom_nav" />-->
 
                     </RelativeLayout>
 

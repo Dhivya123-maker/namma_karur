@@ -50,12 +50,12 @@ public class Home_Fragment_Class extends AppCompatActivity {
 
         textView = findViewById(R.id.name);
         textView.setText(data);
-//
+
 //        BottomNavigationView btnNav = findViewById(R.id.bottomNavigation_frag);
 //        btnNav.setOnNavigationItemSelectedListener(navListener);
-//
-//
 
+
+//
 //        floatingActionButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -147,14 +147,18 @@ public class Home_Fragment_Class extends AppCompatActivity {
 
                 if (tab.getPosition() == 0) {
 
+//                    floatingActionButton.setVisibility(View.VISIBLE);
                 } else if (tab.getPosition() == 1) {
 
+//                    floatingActionButton.setVisibility(View.GONE);
 
                 } else if (tab.getPosition() == 2) {
 
+//                    floatingActionButton.setVisibility(View.GONE);
 
                 } else if (tab.getPosition() == 3) {
 
+//                    floatingActionButton.setVisibility(View.GONE);
 
                 }
             }
