@@ -24,7 +24,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.e.login.BaseApi.Api;
-import com.e.login.EducationClass.EducationAdapter;
+
 import com.e.login.R;
 import com.e.login.utils.PreferenceUtils;
 

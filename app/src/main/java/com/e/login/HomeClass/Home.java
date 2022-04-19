@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,7 +53,9 @@ import com.google.android.gms.common.api.internal.OnConnectionFailedListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -88,6 +91,19 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
+
+        FirebaseMessaging messaging =  FirebaseMessaging.getInstance();
+        messaging.getToken().addOnSuccessListener(s -> {
+            Log.d("Device ID:",s);
+
+
+
+        });
+
+
+
+//        String token = FirebaseInstanceId.getInstance().getToken();
+//        Log.i("Device ID: ",token);
 
         logout = findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {

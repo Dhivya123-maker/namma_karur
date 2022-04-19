@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import com.e.login.AmbulanceClass.Ambulance;
+
 import com.e.login.AmbulanceClass.AmbulanceAdapter;
 import com.e.login.AmbulanceClass.AmbulanceModel;
 import com.e.login.R;

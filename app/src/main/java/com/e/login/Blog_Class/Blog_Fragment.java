@@ -24,7 +24,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.e.login.AmbulanceClass.Ambulance;
+
 import com.e.login.AmbulanceClass.AmbulanceAdapter;
 import com.e.login.AmbulanceClass.AmbulanceModel;
 import com.e.login.FoodClass.FoodAdapter;
@@ -106,7 +106,7 @@ public class Blog_Fragment extends Fragment  {
             }
         });
 
-        sliderView = root. findViewById(R.id.slider_blog);
+
         Slidershop_Top_Adapter sliderAdapter = new Slidershop_Top_Adapter(images);
 
         sliderView.setSliderAdapter(sliderAdapter);

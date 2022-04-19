@@ -47,6 +47,7 @@ import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.internal.OnConnectionFailedListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -80,6 +81,7 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
     String eemail,name,goo_id,goo_token,user_id;
 
     TextView Error1,Error2;
+    String d_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +111,13 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
         Error2 = findViewById(R.id.error2);
 
 
+        FirebaseMessaging messaging =  FirebaseMessaging.getInstance();
+        messaging.getToken().addOnSuccessListener(s -> {
+            Log.d("Device ID:",s);
 
+            d_id = s;
+
+        });
 
 
         signin_google.setOnClickListener(new View.OnClickListener() {
@@ -261,10 +269,13 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
         JSONObject jsonBody = new JSONObject();
 
 
-        try {
+
+
+            try {
 
             jsonBody.put("email", Email);
             jsonBody.put("password", Password);
+            jsonBody.put("device_id", d_id);
 
 
 

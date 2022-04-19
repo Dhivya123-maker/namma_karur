@@ -34,7 +34,7 @@ import com.e.login.Blog_Class.Blog_Fragment;
 import com.e.login.BloodClass.Blood_Fragment;
 import com.e.login.BloodClass.Blood_One;
 import com.e.login.BusTimeClass.Bus_TimeActivity;
-import com.e.login.EducationClass.EducationActivity;
+
 import com.e.login.EventClass.EventActivity;
 import com.e.login.GovtClass.Government_Activity;
 import com.e.login.GovtClass.GovtActivity;
