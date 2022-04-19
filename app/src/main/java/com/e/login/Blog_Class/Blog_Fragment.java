@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,8 +29,6 @@ import com.e.login.AmbulanceClass.AmbulanceAdapter;
 import com.e.login.AmbulanceClass.AmbulanceModel;
 import com.e.login.FoodClass.FoodAdapter;
 import com.e.login.FoodClass.FoodModel;
-import com.e.login.HomeClass.BannerModel;
-import com.e.login.HomeClass.Slider_Top_Adapter;
 import com.e.login.JobsClass.Jobs;
 import com.e.login.JobsClass.Jobs_Adapter;
 import com.e.login.JobsClass.Jobs_Model;
@@ -47,7 +44,6 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.nio.charset.Charset;
@@ -57,7 +53,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class Blog_Fragment extends Fragment {
+public class Blog_Fragment extends Fragment  {
 
     SliderView sliderView;
     int[] images = {R.drawable.first_one,
@@ -78,13 +74,11 @@ public class Blog_Fragment extends Fragment {
 
     List<Blog_three_Model> blog_three_modelList;
     Blog_three_Adapter adapter3;
-    RecyclerView recyclerView,recyclerView1,recyclerView2,banner;
+    RecyclerView recyclerView,recyclerView1,recyclerView2;
     String id,image,desc,link;
     String data;
     Button view1,view2;
-    List<BannerModel> bannerModelList;
-    Slider_Top_Adapter slider_top_adapter;
-    String Id;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,10 +87,6 @@ public class Blog_Fragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_blog_, container, false);
 
 
-
-        Ban();
-
-        banner = root.findViewById(R.id.shop_banner);
         view1 = root.findViewById(R.id.view1);
         view2 = root.findViewById(R.id.view2);
         view1.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +106,13 @@ public class Blog_Fragment extends Fragment {
             }
         });
 
+        sliderView = root. findViewById(R.id.slider_blog);
+        Slidershop_Top_Adapter sliderAdapter = new Slidershop_Top_Adapter(images);
+
+        sliderView.setSliderAdapter(sliderAdapter);
+        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
+        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
+        sliderView.startAutoCycle();
 
 
 
@@ -125,7 +122,6 @@ public class Blog_Fragment extends Fragment {
 
         Intent intent = getActivity().getIntent();
         data = intent.getStringExtra("cat");
-        Id = intent.getStringExtra("id");
 
 
         String JSON_URL = "http://nk.inevitabletech.email/public/api/get-blog-home-page";
@@ -143,8 +139,6 @@ public class Blog_Fragment extends Fragment {
                 blogTwoModelList = new ArrayList<>();
 
                 try {
-
-
 
                     JSONObject jsonObject = response.getJSONObject("data");
                     JSONArray jsonArray = jsonObject.getJSONArray("trending");
@@ -250,6 +244,7 @@ public class Blog_Fragment extends Fragment {
                     recyclerView2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
 
+
                 } catch (Exception e) {
                     e.printStackTrace();
 
@@ -297,123 +292,11 @@ public class Blog_Fragment extends Fragment {
 
 
 
+
         return  root;
     }
-    public void Ban(){
-
-        String url = "http://nk.inevitabletech.email/public/api/display-banner?banner_type=JobBanner&banner_category_id="+Id;
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-            @SuppressLint("CheckResult")
-            @Override
-            public void onResponse(JSONObject response) {
-
-                try {
-                    bannerModelList = new ArrayList<>();
-                    JSONArray jsonArray = response.getJSONArray("data");
-
-
-                    for(int i=0;i< jsonArray.length();i++){
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
-                        String id = jsonObject.getString("id");
-                        String banner_type_id = jsonObject.getString("banner_type_id");
-                        String banner_type = jsonObject.getString("banner_type");
-                        String banner_category_id = jsonObject.getString("banner_category_id");
-                        String banner_url = jsonObject.getString("banner_url");
-                        String order_no = jsonObject.getString("order_no");
-
-                        String img = jsonObject.getString("image");
-                        String v_count = jsonObject.getString("view_count");
 
 
 
 
-                        BannerModel bannerModel = new BannerModel();
-                        bannerModel.setImg(img);
-
-                        bannerModelList.add(bannerModel);
-
-                    }
-
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-                banner.setLayoutManager(new LinearLayoutManager(getActivity()));
-                slider_top_adapter =  new Slider_Top_Adapter(getActivity(),bannerModelList);
-                banner.setAdapter(slider_top_adapter);
-                banner.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-
-
-                final int interval = 3000;
-                Handler handler = new Handler();
-                Runnable runnable = new Runnable() {
-                    int count =0;
-                    @Override
-                    public void run() {
-
-                        if(count< bannerModelList.size()){
-                            banner.scrollToPosition(count++);
-                            handler.postDelayed(this,interval);
-
-                        }
-                        if(count== bannerModelList.size()){
-
-                            count = 0;
-
-                        }
-                    }
-                };
-                handler.postDelayed(runnable,interval);
-
-
-            }
-
-
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-
-            }
-        }){
-            @Override
-            protected Map<String,String> getParams(){
-                Map<String,String> params = new HashMap<String, String>();
-
-
-
-                return params;
-            }
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String,String> params = new HashMap<String, String>();
-                params.put("Accept","application/json");
-                params.put("Authorization", "Bearer "+PreferenceUtils.getToken(getActivity()));
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
-        requestQueue.add(jsonObjectRequest);
-
-
-    }
-
-//    @Override
-//    public void onItemClick(int position) {
-//        Blog_One_Model model = new Blog_One_Model();
-//        String link = model.getLink();
-//
-//        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-//        startActivity(browserIntent);
-//
-//
-//
-//
-//
-//
-//
-//    }
 }

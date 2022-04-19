@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.e.login.EducationClass.Education_one_Adapter;
 import com.e.login.R;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class Blog_two_Adapter extends RecyclerView.Adapter<Blog_two_Adapter.View
 
     List<Blog_two_Model> blogTwoModelList;
     private Context context;
+
 
 
     public Blog_two_Adapter(Context context, List<Blog_two_Model> blogTwoModelList) {
@@ -85,8 +87,9 @@ public class Blog_two_Adapter extends RecyclerView.Adapter<Blog_two_Adapter.View
                     int position = getAdapterPosition();
                     String link = blogTwoModelList.get(position).getLink();
 
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://"+link));
                     context.startActivity(browserIntent);
+
 
                 }
             });

@@ -8,16 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -30,7 +23,7 @@ import com.android.volley.toolbox.Volley;
 import com.e.login.AmbulanceClass.Ambulance;
 import com.e.login.AmbulanceClass.AmbulanceAdapter;
 import com.e.login.AmbulanceClass.AmbulanceModel;
-import com.e.login.EnquiryFragment;
+import com.e.login.ChatFeature;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.QrCodeFragment;
@@ -54,7 +47,6 @@ public class Quotes_Catalog extends AppCompatActivity {
     RecyclerView recyclerView;
     String id,img;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,55 +55,10 @@ public class Quotes_Catalog extends AppCompatActivity {
         BottomNavigationView btnNav = findViewById(R.id.bottomNavigation);
         btnNav.setOnNavigationItemSelectedListener(navListener);
 
-        d_img();
+
 
         recyclerView = findViewById(R.id.quotes_catalog_recycle);
 
-
-
-
-
-    }
-
-    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-            int id = item.getItemId();
-            Fragment fragment = null;
-
-            switch (id) {
-                case R.id.nav_home:
-                    fragment = new Fragment_Home();
-                    break;
-                case R.id.nav_tree:
-                    fragment = new InformationFragment();
-                    break;
-                case R.id.nav_qr:
-                    fragment = new QrCodeFragment();
-                    break;
-                case R.id.nav_profilee:
-
-                    fragment = new Helpline();
-                    break;
-                case R.id.nav_notifications:
-
-                    fragment = new EnquiryFragment();
-                    break;
-
-
-            }
-
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout_home, fragment).commit();
-
-            return true;
-        }
-    };
-
-
-    public  void d_img(){
         String JSON_URL = "http://nk.inevitabletech.email/public/api/get-quote-catalog-list?quote_category_id=1";
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, JSON_URL, null, new Response.Listener<JSONObject>() {
@@ -131,6 +78,7 @@ public class Quotes_Catalog extends AppCompatActivity {
 
 
                     if(Success.equals("true")){
+
 
                         quotesCatalogModelList = new ArrayList<>();
 
@@ -183,6 +131,7 @@ public class Quotes_Catalog extends AppCompatActivity {
 
             }
 
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -210,5 +159,41 @@ public class Quotes_Catalog extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(Quotes_Catalog.this);
         requestQueue.add(jsonObjectRequest);
 
+
     }
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            int id = item.getItemId();
+            Fragment fragment = null;
+
+            switch (id) {
+                case R.id.nav_home:
+                    fragment = new Fragment_Home();
+                    break;
+                case R.id.nav_tree:
+                    fragment = new InformationFragment();
+                    break;
+                case R.id.nav_qr:
+                    fragment = new QrCodeFragment();
+                    break;
+                case R.id.nav_profilee:
+
+                    fragment = new Helpline();
+                    break;
+                case R.id.nav_notifications:
+                    fragment = new ChatFeature();
+                    break;
+
+
+            }
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout_home, fragment).commit();
+
+            return true;
+        }
+    };
 }

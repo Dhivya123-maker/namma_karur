@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.e.login.ChatFeature;
 import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
@@ -49,7 +50,7 @@ public class Blood_Fragment extends AppCompatActivity {
     String name,mail,img;
     String id,p_name,problem,blood_grp,needed,units,hos,address,primary,secondary;
     TextView txt1,txt2,txt3,txt4,txt5,txt6,txt7,txt8,txt9;
-    String data1,data2,data3,data4,data5,data6,data7,data8,data9;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ public class Blood_Fragment extends AppCompatActivity {
 
         Intent intent = getIntent();
         data = intent.getStringExtra("cat");
-//        Toast.makeText(Blood_Fragment.this, data, Toast.LENGTH_SHORT).show();
+
 
         recyclerView = findViewById(R.id.blood_screen);
 
@@ -90,11 +91,6 @@ public class Blood_Fragment extends AppCompatActivity {
             public void onResponse(JSONObject response) {
 
 
-//                Log.i("0000000",response.toString());
-//                Toast.makeText(Blood_Fragment.this, response.toString(), Toast.LENGTH_SHORT).show();
-//
-//
-
 
                 try {
                     JSONArray res = response.getJSONArray("data");
@@ -104,8 +100,7 @@ public class Blood_Fragment extends AppCompatActivity {
 
                     for (int i=0;i<res.length();i++){
 
-//                        Toast.makeText(Blood_Fragment.this, response.toString(), Toast.LENGTH_SHORT).show();
-//                        Log.i("jbfhusduycfhb",response.toString());
+
 
                         JSONObject jsonObject = res.getJSONObject(i);
                         id = jsonObject.getString("id");
@@ -222,7 +217,7 @@ public class Blood_Fragment extends AppCompatActivity {
                     fragment = new Helpline();
                     break;
                 case R.id.nav_notifications:
-                    fragment = new EnquiryFragment();
+                    fragment = new ChatFeature();
                     break;
 
 

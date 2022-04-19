@@ -94,6 +94,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="center"
+                            android:orientation="vertical"
                             android:layout_gravity="center">
 
 
@@ -112,6 +113,17 @@
                                 >
 
                             </RatingBar>
+                            <TextView
+                                android:id="@+id/rate_err"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="#E53935"
+                                android:layout_margin="10dp"
+                                android:textAlignment="textEnd"
+                                android:paddingEnd="40dp"
+                                android:visibility="gone"
+                                />
+
                         </LinearLayout>
                         <TextView
                             android:layout_width="wrap_content"
@@ -140,7 +152,16 @@
                             android:textColorHint="#949494"
                             android:textSize="14dp" />
 
-
+                        <TextView
+                            android:id="@+id/feedback_err"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E53935"
+                            android:layout_margin="10dp"
+                            android:textAlignment="textEnd"
+                            android:paddingEnd="40dp"
+                            android:visibility="gone"
+                            />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -200,9 +221,18 @@
 
 
 
-
                         </LinearLayout>
 
+                        <TextView
+                            android:id="@+id/rec_err"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#E53935"
+                            android:layout_margin="10dp"
+                            android:textAlignment="textEnd"
+                            android:paddingEnd="40dp"
+                            android:visibility="gone"
+                            />
 
                                                 <Button
                                                     android:id="@+id/sub_rev"
