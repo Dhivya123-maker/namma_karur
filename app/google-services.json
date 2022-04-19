@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "904422408193",
+    "project_id": "nkpushnotification",
+    "storage_bucket": "nkpushnotification.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:904422408193:android:9d0a199c73ba7739b64000",
+        "android_client_info": {
+          "package_name": "com.e.login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "904422408193-qagjo9o37ha2cn83h2lf6neas56o98i1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ0HkYH2mTtQDQthjB2FRQausdsLA0VqI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "904422408193-qagjo9o37ha2cn83h2lf6neas56o98i1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
