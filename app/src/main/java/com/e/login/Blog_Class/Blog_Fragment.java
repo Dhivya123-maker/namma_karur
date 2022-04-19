@@ -53,7 +53,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class Blog_Fragment extends Fragment {
+public class Blog_Fragment extends Fragment  {
 
     SliderView sliderView;
     int[] images = {R.drawable.first_one,
@@ -139,8 +139,6 @@ public class Blog_Fragment extends Fragment {
                 blogTwoModelList = new ArrayList<>();
 
                 try {
-
-
 
                     JSONObject jsonObject = response.getJSONObject("data");
                     JSONArray jsonArray = jsonObject.getJSONArray("trending");
@@ -245,9 +243,6 @@ public class Blog_Fragment extends Fragment {
                     recyclerView2.setAdapter(adapter2);
                     recyclerView2.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
-//
-//
-//
 
 
                 } catch (Exception e) {
@@ -259,9 +254,7 @@ public class Blog_Fragment extends Fragment {
 
             }
 
-//
-//
-//        }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -303,19 +296,7 @@ public class Blog_Fragment extends Fragment {
         return  root;
     }
 
-//    @Override
-//    public void onItemClick(int position) {
-//        Blog_One_Model model = new Blog_One_Model();
-//        String link = model.getLink();
-//
-//        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-//        startActivity(browserIntent);
-//
-//
-//
-//
-//
-//
-//
-//    }
+
+
+
 }

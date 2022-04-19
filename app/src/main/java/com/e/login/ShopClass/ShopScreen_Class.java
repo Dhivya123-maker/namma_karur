@@ -1,28 +1,18 @@
 package com.e.login.ShopClass;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,10 +26,9 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.BaseApi.Api;
 import com.e.login.GovtClass.GovtActivity;
+import com.e.login.ChatFeature;
 import com.e.login.HomeClass.Fragment_Home;
-import com.e.login.Post_Fragment;
 import com.e.login.info_Class.InformationFragment;
-import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.MarketListClass.MarketActivity;
 import com.e.login.QrCodeFragment;
@@ -49,7 +38,6 @@ import com.e.login.ShopscreenClass.ShopsScreenFragment;
 import com.e.login.SmallBusClass.SmallBusActivity;
 import com.e.login.utils.PreferenceUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -203,6 +191,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
 
+        @SuppressLint("NonConstantResourceId")
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -220,11 +209,10 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
                     fragment = new QrCodeFragment();
                     break;
                 case R.id.nav_profilee:
-
                     fragment = new Helpline();
                     break;
                 case R.id.nav_notifications:
-                   fragment = new Post_Fragment();
+                    fragment = new ChatFeature();
                     break;
 
 
@@ -309,9 +297,7 @@ public void shop(String url,String cat) {
 
         }
 
-//
-//
-//        }
+
     }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -332,8 +318,6 @@ public void shop(String url,String cat) {
                 Map<String,String> params = new HashMap<String, String>();
 
                 params.put("Authorization", "Bearer  " +PreferenceUtils.getToken(ShopScreen_Class.this));
-//                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken1(ShopScreen_Class.this));               // params.put("Authorization","Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTM5N2QxNTAyOGZjZmFjYWVmNjg4MGI0M2Q2OWE0MjU0NjFhMjQwMDQ2ZDc2MDQ1MDk0ZWIxZDk2NDNhZTk4YmE3YTkwMGZhODQwZDIzZGMiLCJpYXQiOjE2NDQ2NjIwNDUuNjk5MTE4LCJuYmYiOjE2NDQ2NjIwNDUuNjk5MTIyLCJleHAiOjE2NzYxOTgwNDUuNjk2MDgxLCJzdWIiOiIxNiIsInNjb3BlcyI6W119.kCe6D4wazRjA5cmETRJhsbKiD6BKhyY_ENT8Ve9QluNjdix7PJI-3HK82fdOAD_A0KYtDhHtCqQlWEEVYT9E6MAueMvPTJ06LQyK5o8C_iUS1n_dWPS04bb1N5R_pIIRdS3wz20JuobRBkAXxTcYM74bnfMmKEVxcmyhwoFdlnDctm3aNEN7NI-2dFVrviYUIbN8L2y3bbZy8zlijMBs7vh77sSVVFMkLgJCiMaKxF-hTyS-wrRz-2ClGqRdQYMQK9y6zlw_-47I9arebNWxukZUGc4-cgJUSedJ7GNuJVBux4PclLns-z6hXIQjCr_C8icbMUmAU7GOWHTnpc1fA-lR-1OQfLFBcwksRWmEFB_O60PVjQzw3L1uh_rW-DsNJs_y1BADJ8RpwMfA9-dVcL7Df-EdnrMP-E1ZgI62_QfuMcc6jM1-LWXzmUHitb8sUSFLqX6OfUGpM2sQ6jtPF3bVR5H9P4Idck3RFfNa1OGikyoldYGFaMOKs-C5fgW2t4YtVFnKJ3ROC9Pg-7ipguu4uCAxUmqsOWDlTAfQglKWZuNsSq_4eKDbq2eq6oDtlFDgO8e5XeYk6bwIQFTcf5RZlcHbMz135zLYu4872r2nsCLrzgeyb5-aveqzS9I5rWufpAz3TkejDzUbb9yItuo0LjbppHY8cw3r4Vz837U");
-                           // params.put("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOWUzNWRjYjg2ZjdjZGUwZTFmOTA5ZmM5YWQwMDdjZGI3ZTE1MzZkNjBhMTEyOTE2ZmQwYmQ0NjE5NzA5ZGYyNTQ3ZDQ5MTFkYzFiNmZkZDUiLCJpYXQiOjE2NDQyMjc1NzYuOTM5ODYyLCJuYmYiOjE2NDQyMjc1NzYuOTM5ODY3LCJleHAiOjE2NzU3NjM1NzYuOTMzMDM2LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.ggB8UvdkfGXmcnlz3KMShC00i-IEhJhq9UwYEq4Oagb73MxNm2WvllC_STJe2wD3FOZnpiYVul_crgERXcxh7C2LHK3UKLmsRSQfxSHHUs1nACk-KFalrcx-llruus8JYwTIjbWccyPWTljJI28aKlBApgfqivUEX0FveiE_LiJQpqSmpiMyojNSlJgN-ofZQc4vuHLdWUtNs-uTRjVpPyz9xw1zEVsPoy3EyVIZ321wlG9ZHGBzUTihuOEHpg0qsCOz_6dJOhQ4CQltWBrg6SJn0_QJ7qBaiMAITQbou2ebemuh945uapuqUCXJVbdFzsMTU2B-JOYoq2G2FrTdaxs_vxCO4ZENoPKFM1Vv-T1HPNnLeAv3Nsuhil5ou-2-uCHsn0tWsPn4zknlwIOulJNs8FbFDcmOG7Hqb8CwlZ-ihp5garS5QPcZxNvC5Qcay6Vijmq93snrR5rgPlq_hW-VFyOm7ZJKkv7uLIfJR529U310wP88Dv68FoOpmlpauO3iuyXt8qwhd_TIwbQM_EanLgz5jWsqtcSsTeMvVpdM8SL-tl_G2b-wjViP4vKqvgiSExZquMahW5yYUdTRN1vtlZ5U0jiQwGMAhKNs45AGgfHcXw68hAigKUQ_qbV7IAIwlun0T1fDvnbfU7tBeTRuX1yJVISTC0k-k4_H8lM");
                 return params;
             }
         };
@@ -375,7 +359,7 @@ public void shop(String url,String cat) {
 
                         asec = jsonObject.getString("secondary_number");
 
-//                        makePhoneCall();
+
 
                         ShopModel model = new ShopModel();
 
@@ -405,7 +389,6 @@ public void shop(String url,String cat) {
 
                 recyclerView.setLayoutManager(new LinearLayoutManager(ShopScreen_Class.this));
                 adapter =  new ShopClassAdapter(ShopScreen_Class.this,shop_model);
-               // adapter.setOnItemClickListener(ShopScreen_Class.this);
                 recyclerView.setAdapter(adapter);
 
 
@@ -416,9 +399,7 @@ public void shop(String url,String cat) {
 
             }
 
-//
-//
-//        }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -439,7 +420,6 @@ public void shop(String url,String cat) {
                 Map<String,String> params = new HashMap<String, String>();
 
                 params.put("Authorization", "Bearer  " +PreferenceUtils.getToken(ShopScreen_Class.this));
-                // params.put("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOWUzNWRjYjg2ZjdjZGUwZTFmOTA5ZmM5YWQwMDdjZGI3ZTE1MzZkNjBhMTEyOTE2ZmQwYmQ0NjE5NzA5ZGYyNTQ3ZDQ5MTFkYzFiNmZkZDUiLCJpYXQiOjE2NDQyMjc1NzYuOTM5ODYyLCJuYmYiOjE2NDQyMjc1NzYuOTM5ODY3LCJleHAiOjE2NzU3NjM1NzYuOTMzMDM2LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.ggB8UvdkfGXmcnlz3KMShC00i-IEhJhq9UwYEq4Oagb73MxNm2WvllC_STJe2wD3FOZnpiYVul_crgERXcxh7C2LHK3UKLmsRSQfxSHHUs1nACk-KFalrcx-llruus8JYwTIjbWccyPWTljJI28aKlBApgfqivUEX0FveiE_LiJQpqSmpiMyojNSlJgN-ofZQc4vuHLdWUtNs-uTRjVpPyz9xw1zEVsPoy3EyVIZ321wlG9ZHGBzUTihuOEHpg0qsCOz_6dJOhQ4CQltWBrg6SJn0_QJ7qBaiMAITQbou2ebemuh945uapuqUCXJVbdFzsMTU2B-JOYoq2G2FrTdaxs_vxCO4ZENoPKFM1Vv-T1HPNnLeAv3Nsuhil5ou-2-uCHsn0tWsPn4zknlwIOulJNs8FbFDcmOG7Hqb8CwlZ-ihp5garS5QPcZxNvC5Qcay6Vijmq93snrR5rgPlq_hW-VFyOm7ZJKkv7uLIfJR529U310wP88Dv68FoOpmlpauO3iuyXt8qwhd_TIwbQM_EanLgz5jWsqtcSsTeMvVpdM8SL-tl_G2b-wjViP4vKqvgiSExZquMahW5yYUdTRN1vtlZ5U0jiQwGMAhKNs45AGgfHcXw68hAigKUQ_qbV7IAIwlun0T1fDvnbfU7tBeTRuX1yJVISTC0k-k4_H8lM");
                 return params;
             }
         };
@@ -517,9 +497,7 @@ public void shop(String url,String cat) {
 
             }
 
-//
-//
-//        }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -617,9 +595,7 @@ public void shop(String url,String cat) {
 
             }
 
-//
-//
-//        }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -667,9 +643,7 @@ public void shop(String url,String cat) {
 
                         JSONObject jsonObject = res.getJSONObject(i);
 
-//
-//                        Toast.makeText(ShopScreen_Class.this, response.toString(), Toast.LENGTH_SHORT).show();
-//                        Log.i("jbfhusduycfhb",response.toString());
+
 
                         nid = jsonObject.getString("id");
                         nimage = jsonObject.getString("logo");
@@ -920,6 +894,7 @@ public void shop(String url,String cat) {
             startActivity(intent);
 
         }
+
         else
 //        (data3.equals("ShopCatalog") || data3.equals("ServiceCatalog") ||data3.equals("EducationCatalog") ||data3.equals("TransportCatalog")
 //                ||data3.equals("HospitalCatalog") ||data3.equals("EventCatalog") ||data3.equals("HotelCatalog")  ||data3.equals("BankCatalog"))

@@ -5,8 +5,9 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -28,12 +29,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.BaseApi.Api;
-import com.e.login.EnquiryFragment;
 import com.e.login.HelperClass.ViewPagerAdapter;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.Home_Fragment_Class;
-import com.e.login.Post_Fragment;
+import com.e.login.ChatFeature;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
 import com.e.login.info_Class.InformationFragment;
@@ -59,6 +59,8 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
     private ViewPagerAdapter viewPagerAdapter;
     List<ShopScreenModel> shop_screen_model;
     ShopScreenAdapter adapter;
+    List<Banner_model> banner_modelList;
+    Banner_Adapter adapter1;
     LinearLayout filter,location,gone,atm_visible,visible_lnr;
     SliderView sliderView;
     public static final String TAG = "bottom_sheet";
@@ -70,6 +72,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
             R.drawable.first_one,
     };
     String id = null;
+    String banner_type,banner_type_id,banner_cat_id,banner_url,banner_img,view_count;
     String logo = null;
     String title = null;
     String address = null;
@@ -85,6 +88,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
     RecyclerView recyclerView;
     private DatePickerDialog datePickerDialog;
     private Button dateButton,dateButton1;
+    RecyclerView banner;
 
 
     Context  context;
@@ -102,9 +106,10 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
         filter = findViewById(R.id.filter_lnr);
         atm_visible = findViewById(R.id.atm_visivle_lnr);
         visible_lnr = findViewById(R.id.visible_linear);
-        sliderView = findViewById(R.id.slider_slider);
+
 
        recyclerView =findViewById(R.id.shop_screen_fragment);
+       banner = findViewById(R.id.banner_recycle);
 
 
         ac = findViewById(R.id.ac_shops1);
@@ -173,9 +178,6 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
             String url = api + "get-event-catalog-list?event_category_id="+data3;
             shop_screen(url);
             ac.setText(data);
-            sliderView.setVisibility(View.GONE);
-            atm_visible.setVisibility(View.GONE);
-            visible_lnr.setVisibility(View.VISIBLE);
 
             initDatePicker();
             dateButton = findViewById(R.id.fromdatepicker);
@@ -213,6 +215,81 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
         }
 
 
+
+
+        if(data2.equals("ShopCatalog")){
+            String url = api + "display-banner?banner_type=ShopBanner&banner_category_id="+data3;
+            ban(url);
+            gone.setVisibility(View.GONE);
+            atm_visible.setVisibility(View.GONE);
+            visible_lnr.setVisibility(View.VISIBLE);
+
+
+        }else if(data2.equals("ServiceCatalog")) {
+            String url = api + "display-banner?banner_type=ServiceBanner&banner_category_id="+data3;
+            ban(url);
+            gone.setVisibility(View.GONE);
+            atm_visible.setVisibility(View.GONE);
+            visible_lnr.setVisibility(View.VISIBLE);
+
+
+
+
+
+        } else if(data2.equals("EducationCatalog")){
+            String url = api + "display-banner?banner_type=EducationBanner&banner_category_id="+data3;
+            ban(url);
+            gone.setVisibility(View.GONE);
+            atm_visible.setVisibility(View.GONE);
+            visible_lnr.setVisibility(View.VISIBLE);
+
+
+
+        }else if(data2.equals("TransportCatalog")){
+            String url = api + "display-banner?banner_type=TransportBanner&banner_category_id="+data3;
+            ban(url);
+            gone.setVisibility(View.GONE);
+            atm_visible.setVisibility(View.GONE);
+            visible_lnr.setVisibility(View.VISIBLE);
+
+
+        }else if(data2.equals("HospitalCatalog")){
+            String url = api + "display-banner?banner_type=HospitalBanner&banner_category_id="+data3;
+            ban(url);
+            gone.setVisibility(View.GONE);
+            atm_visible.setVisibility(View.GONE);
+            visible_lnr.setVisibility(View.VISIBLE);
+
+
+        }else if(data2.equals("EventCatalog")){
+            String url = api + "display-banner?banner_type=EventBanner&banner_category_id="+data3;
+            ban(url);
+            gone.setVisibility(View.GONE);
+            atm_visible.setVisibility(View.GONE);
+            visible_lnr.setVisibility(View.VISIBLE);
+
+
+
+        }else if(data2.equals("HotelCatalog")){
+            String url = api + "display-banner?banner_type=HotelBanner&banner_category_id="+data3;
+            ban(url);
+            gone.setVisibility(View.GONE);
+            atm_visible.setVisibility(View.GONE);
+            visible_lnr.setVisibility(View.VISIBLE);
+
+
+
+        }else if(data2.equals("BankCatalog")){
+            String url = api + "display-banner?banner_type=BankBanner&banner_category_id="+data3;
+            ban(url);
+            gone.setVisibility(View.GONE);
+            atm_visible.setVisibility(View.GONE);
+            visible_lnr.setVisibility(View.VISIBLE);
+
+
+        }
+
+
         filter = findViewById(R.id.filter);
 //        filter.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -227,13 +304,6 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
         BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_shops1);
         btnNav.setOnNavigationItemSelectedListener(navListener);
 
-
-        Slidershop_Top_Adapter sliderAdapter = new Slidershop_Top_Adapter(images);
-
-        sliderView.setSliderAdapter(sliderAdapter);
-        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
-        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
-        sliderView.startAutoCycle();
 
 
 
@@ -262,7 +332,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
                     fragment = new Helpline();
                     break;
                 case R.id.nav_notifications:
-                   fragment = new Post_Fragment();
+                   fragment = new ChatFeature();
                     break;
 
 
@@ -288,7 +358,6 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
 
 
-//
 
                 try {
                     JSONArray res = response.getJSONArray("data");
@@ -302,8 +371,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
                         JSONObject jsonObject = res.getJSONObject(i);
 
 
-//                        Toast.makeText(ShopsScreenFragment.this, jsonObject.toString(), Toast.LENGTH_SHORT).show();
-//                        Log.i("jbfhusduycfhb",jsonObject.toString());
+
 
                         id = jsonObject.getString("id");
                         logo = jsonObject.getString("logo");
@@ -488,6 +556,115 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
 
     }
+
+    public  void ban(String url){
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @SuppressLint("CheckResult")
+            @Override
+            public void onResponse(JSONObject response) {
+
+
+
+
+                try {
+                    JSONArray res = response.getJSONArray("data");
+                    banner_modelList = new ArrayList<>();
+
+                    for (int i=0;i<res.length();i++){
+
+
+                        JSONObject jsonObject = res.getJSONObject(i);
+
+                        id = jsonObject.getString("id");
+                        banner_type = jsonObject.getString("banner_type");
+                        banner_type_id = jsonObject.getString("banner_type_id");
+                        banner_cat_id = jsonObject.getString("banner_category_id");
+                        banner_img = jsonObject.getString("image");
+                        view_count = jsonObject.getString("view_count");
+
+
+
+
+                        Banner_model viewmodel = new Banner_model();
+
+                        viewmodel.setImage(banner_img);
+
+                        banner_modelList.add(viewmodel);
+
+
+                        adapter1 =  new Banner_Adapter(ShopsScreenFragment.this,banner_modelList);
+                        banner.setAdapter(adapter1);
+                        banner.setLayoutManager(new LinearLayoutManager(ShopsScreenFragment.this, LinearLayoutManager.HORIZONTAL, false));
+
+
+
+                        final  int interval_time = 3000;
+                        Handler handler = new Handler();
+                        Runnable runnable = new Runnable() {
+                            int count =0;
+                            @Override
+                            public void run() {
+                                if(count<banner_modelList.size()){
+                                    banner.scrollToPosition(count++);
+                                    handler.postDelayed(this,interval_time);
+                                    if(count == banner_modelList.size()){
+                                        count =0;
+                                    }
+
+                                }
+
+                            }
+                        };
+                        handler.postDelayed(runnable,interval_time);
+
+
+
+
+                    }
+
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+
+            }
+
+
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }){
+            @Override
+            protected Map<String,String> getParams(){
+                Map<String,String> params = new HashMap<String, String>();
+
+
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String, String>();
+
+                params.put("Accept","application/json");
+                params.put("Authorization", "Bearer  " +PreferenceUtils.getToken(ShopsScreenFragment.this));
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(ShopsScreenFragment.this);
+        requestQueue.add(jsonObjectRequest);
+
+    }
+
 
     @Override
     public void onItemClick(int position) {

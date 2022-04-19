@@ -73,7 +73,6 @@
                 android:id="@+id/viewpager_home"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@+id/bottomNavigation_frag"
                 android:layout_below="@+id/appbar"
                 app:layout_anchorGravity="center"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
@@ -89,37 +88,24 @@
             </androidx.viewpager.widget.ViewPager>
 
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomNavigation_frag"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom"
-                android:background="#4c9a2a"
-                app:itemIconTint="@color/white"
-                app:itemTextColor="@color/white"
-                app:menu="@menu/bottom_nav">
+<!--            <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--                android:id="@+id/bottomNavigation_frag"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="70dp"-->
+<!--                android:layout_alignParentBottom="true"-->
+<!--                android:layout_gravity="bottom"-->
+<!--                android:background="#4c9a2a"-->
+<!--                app:itemIconTint="@color/white"-->
+<!--                app:itemTextColor="@color/white"-->
+<!--                app:menu="@menu/bottom_nav">-->
 
-            </com.google.android.material.bottomnavigation.BottomNavigationView>
+<!--            </com.google.android.material.bottomnavigation.BottomNavigationView>-->
 
 
 
 
         </RelativeLayout>
     </RelativeLayout>
-
-
-
-
-
-
-        <!--      >-->
-
-
-
-
-
-
 
 
 

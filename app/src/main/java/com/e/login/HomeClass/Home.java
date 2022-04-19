@@ -14,7 +14,6 @@ import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +27,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -38,10 +36,7 @@ import com.android.volley.toolbox.Volley;
 import com.e.login.BuildConfig;
 import com.e.login.ContactusActivity;
 import com.e.login.Feedback;
-import com.e.login.LoginActivity;
-import com.e.login.NewsClass.Karur;
-import com.e.login.Post_Fragment;
-import com.e.login.Verification.Edit;
+import com.e.login.ChatFeature;
 import com.e.login.info_Class.InformationFragment;
 import com.e.login.Profile;
 import com.e.login.Help_Class.Helpline;
@@ -58,10 +53,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -307,7 +300,6 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment selectedFragment = null;
 
-//          #3  to create fragements for each
 
             switch  (item.getItemId()){
                 case R.id.nav_home:
@@ -331,16 +323,17 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
                     break;
 
                 case R.id.nav_notifications:
-                  selectedFragment = new Post_Fragment();
+                  selectedFragment = new ChatFeature();
                     lnr.setClickable(false);
                   break;
             }
 
-//           #4  begin transaction
+
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout_home,selectedFragment).commit();
             return true;
         }
     };
+
 //    private void clickEvents() {
 //
 //        floatingActionButton.setOnClickListener(new View.OnClickListener() {

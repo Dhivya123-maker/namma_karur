@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -28,6 +29,7 @@ import com.android.volley.toolbox.Volley;
 import com.e.login.Verification.Email_OTP;
 import com.e.login.utils.PreferenceUtils;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -45,6 +47,7 @@ public class Feedback extends AppCompatActivity {
     EditText comments;
     String Comments;
     Button submit;
+    TextView feedback,rec,rate_err;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,9 @@ public class Feedback extends AppCompatActivity {
 
 
         submit = findViewById(R.id.sub_rev);
+        feedback = findViewById(R.id.feedback_err);
+        rec = findViewById(R.id.rec_err);
+        rate_err = findViewById(R.id.rate_err);
 
 
         rt = (RatingBar) findViewById(R.id.ratingBar);
@@ -98,7 +104,7 @@ public class Feedback extends AppCompatActivity {
                 if (selectedRadioButtonId != -1) {
                     selectedRbText = radioButton.getText().toString();
 
-                    Comments = comments.getText().toString();
+
 
                     String url = "http://nk.inevitabletech.email/public/api/namma-karur-feedback";
                     JSONObject jsonBody = new JSONObject();
@@ -109,16 +115,12 @@ public class Feedback extends AppCompatActivity {
                         jsonBody.put("recommendation",selectedRbText);
 
                         Log.i("kiejqghriuwegtyr",jsonBody.toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+
 
                         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
                             @Override
                             public void onResponse(JSONObject response) {
-//
-//                                Log.i("0000000000000", response.toString());
-//                                Toast.makeText(Feedback.this, response.toString(), Toast.LENGTH_SHORT).show();
+
 
 
                                 try {
@@ -128,6 +130,10 @@ public class Feedback extends AppCompatActivity {
 
                                     if (Success.equals("true")) {
                                         Toast.makeText(Feedback.this, msg, Toast.LENGTH_SHORT).show();
+                                        rate_err.setVisibility(View.GONE);
+                                        feedback.setVisibility(View.GONE);
+                                        rec.setVisibility(View.GONE);
+
 
 
 
@@ -152,9 +158,37 @@ public class Feedback extends AppCompatActivity {
 
                                 Charset charset = Charset.defaultCharset();
                                 String str = new String(error.networkResponse.data, charset);
-                                Toast.makeText(Feedback.this, str, Toast.LENGTH_SHORT).show();
+
+//
+//                                try {
+//                                    JSONObject jsonObject = new JSONObject(str);
+//                                    JSONObject jsonObject1 = jsonObject.getJSONObject("errors");
+//                                    if(Comments.isEmpty()){
+//                                        JSONArray jsonArray = jsonObject1.getJSONArray("comment");
+//                                        feedback.setText(jsonArray.getString(0));
+//                                        feedback.setVisibility(View.VISIBLE);
+//                                        rec.setVisibility(View.GONE);
+//
+//                                    }
+
+//                                    else if(selectedRbText.isEmpty()){
+//                                        JSONArray jsonArray1 = jsonObject1.getJSONArray("recommendation");
+//                                        rec.setText(jsonArray1.getString(0));
+//                                        rec.setVisibility(View.VISIBLE);
+
+//                                    }
+//
+//                                 else{
+//                                        JSONArray jsonArray2 = jsonObject1.getJSONArray("rating");
+//                                        rate_err.setText(jsonArray2.getString(0));
+//                                        rate_err.setVisibility(View.VISIBLE);
+//
+//                                    }
 
 
+//                                } catch (JSONException e) {
+//                                    e.printStackTrace();
+//                                }
 
 
                             }
@@ -165,7 +199,6 @@ public class Feedback extends AppCompatActivity {
                                 Map<String, String> params = new HashMap<String, String>();
                                 params.put("Accept", "application/json");
                                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(Feedback.this));
-                                params.put("Authorization", "Bearer  " + PreferenceUtils.getToken1(Feedback.this));
                                 return params;
 
 
@@ -179,31 +212,47 @@ public class Feedback extends AppCompatActivity {
 
                         RequestQueue requestQueue = Volley.newRequestQueue(Feedback.this);
                         requestQueue.add(jsonObjectRequest);
-
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
 
                 }else{
+                    Comments = comments.getText().toString();
+                     if(rt.getRating()==0){
+                        rate_err.setText("The rating field is required.");
+                        rate_err.setVisibility(View.VISIBLE);
+                        feedback.setVisibility(View.GONE);
+                        rec.setVisibility(View.GONE);
+                    }
+                   else if(Comments.isEmpty()){
+                        feedback.setText("The comment field is required.");
+                        feedback.setVisibility(View.VISIBLE);
+                        rec.setVisibility(View.GONE);
+                        rate_err.setVisibility(View.GONE);
+                    }
+
+
+                   else {
+                        rec.setText("The recommendation field is required.");
+                        rec.setVisibility(View.VISIBLE);
+                        rate_err.setVisibility(View.GONE);
+                        feedback.setVisibility(View.GONE);
+                    }
+
+
+
 
 
                 }
             }
         });
 
-        //selectedRbText = radioButton.getText().toString();
-//        if (selectedRadioButtonId != -1) {
-//            selectedRbText = radioButton.getText().toString();
-
-//        }
-//        else{
-//
-//        }
-
-        }
-
-        public  void feedback(){
 
 
         }
+
+
 
 
 }

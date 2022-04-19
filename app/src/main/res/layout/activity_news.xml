@@ -148,7 +148,6 @@
                             android:layout_height="950dp"
                             android:layout_below="@+id/app"
                             app:layout_anchorGravity="center"
-                            android:layout_above="@+id/bottomNavigationView_news"
                             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
                             <FrameLayout
@@ -163,17 +162,17 @@
 
                         </androidx.viewpager.widget.ViewPager>
 
-                        <com.google.android.material.bottomnavigation.BottomNavigationView
-                            android:id="@+id/bottomNavigationView_news"
-                            android:layout_width="match_parent"
-                            android:layout_height="70dp"
-                            android:layout_alignParentBottom="true"
-                            android:background="#4c9a2a"
-                            app:itemIconTint="@color/white"
-                            app:itemTextColor="@color/white"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="parent"
-                            app:menu="@menu/bottom_nav" />
+<!--                        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--                            android:id="@+id/bottomNavigationView_news"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="70dp"-->
+<!--                            android:layout_alignParentBottom="true"-->
+<!--                            android:background="#4c9a2a"-->
+<!--                            app:itemIconTint="@color/white"-->
+<!--                            app:itemTextColor="@color/white"-->
+<!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                            app:layout_constraintStart_toEndOf="parent"-->
+<!--                            app:menu="@menu/bottom_nav" />-->
 
                     </RelativeLayout>
 

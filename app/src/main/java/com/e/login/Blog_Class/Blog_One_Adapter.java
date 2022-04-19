@@ -126,7 +126,7 @@ public class Blog_One_Adapter extends RecyclerView.Adapter<Blog_One_Adapter.View
                     String link = blogOneModelList.get(position).getLink();
                   id= blogOneModelList.get(position).getId();
 
-                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://"+link));
                     context.startActivity(browserIntent);
 
                    v_count();
@@ -178,7 +178,7 @@ public class Blog_One_Adapter extends RecyclerView.Adapter<Blog_One_Adapter.View
                      Success = response.getString("success");
                      msg = response.getString("messgae");
 
-                     JSONObject jsonObject = response.getJSONObject("data");
+
 
                     if(Success.equals("true")){
 
@@ -196,9 +196,6 @@ public class Blog_One_Adapter extends RecyclerView.Adapter<Blog_One_Adapter.View
 
             }
 
-//
-//
-//        }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {

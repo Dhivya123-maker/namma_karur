@@ -25,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.e.login.ChatFeature;
 import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
@@ -138,7 +139,7 @@ public class Blood_One extends AppCompatActivity {
         Num = num.getText().toString();
         Alternate_num = alternate_num.getText().toString();
 
-//        String JSON_URL = "http://nk.inevitabletech.email/public/api/blood-request-register";
+
         String JSON_URL = "http://nk.inevitabletech.email/public/api/blood-request-register";
 
         JSONObject jsonBody = new JSONObject();
@@ -186,7 +187,7 @@ public class Blood_One extends AppCompatActivity {
                             Log.i("1234",msg);
                             Toast.makeText(Blood_One.this, msg, Toast.LENGTH_SHORT).show();
                         }
-//
+
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -197,9 +198,7 @@ public class Blood_One extends AppCompatActivity {
 
                 }
 
-//
-//
-//        }
+
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
@@ -278,7 +277,7 @@ public class Blood_One extends AppCompatActivity {
                     fragment = new Helpline();
                     break;
                 case R.id.nav_notifications:
-                    fragment = new EnquiryFragment();
+                    fragment = new ChatFeature();
                     break;
 
 

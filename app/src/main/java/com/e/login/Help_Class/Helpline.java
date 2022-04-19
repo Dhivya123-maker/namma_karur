@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -60,6 +61,8 @@ public class Helpline extends Fragment {
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
         recyclerView =root.findViewById(R.id.helpline);
+
+
 
 
         Intent intent = getActivity().getIntent();
