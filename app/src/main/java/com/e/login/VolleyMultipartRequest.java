@@ -18,6 +18,8 @@ import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 public class VolleyMultipartRequest extends Request<NetworkResponse> {
+
+
     private final String twoHyphens = "--";
     private final String lineEnd = "\r\n";
     private final String boundary = "apiclient-" + System.currentTimeMillis();
@@ -26,19 +28,9 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
     private Response.ErrorListener mErrorListener;
     private Map<String, String> mHeaders;
 
-    public VolleyMultipartRequest(String url, Map<String, String> headers,
-                                  Response.Listener<NetworkResponse> listener,
-                                  Response.ErrorListener errorListener) {
-        super(Method.POST, url, errorListener);
-        this.mListener = listener;
-        this.mErrorListener = errorListener;
-        this.mHeaders = headers;
-    }
-
-
 
     public VolleyMultipartRequest(int method, String url,
-                                  JSONObject jsonObject, Response.Listener<NetworkResponse> listener,
+                                  Response.Listener<NetworkResponse> listener,
                                   Response.ErrorListener errorListener) {
         super(method, url, errorListener);
         this.mListener = listener;
@@ -83,7 +75,12 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
         return null;
     }
 
-
+    /**
+     * Custom method handle data payload.
+     *
+     * @return Map data part label with data byte
+     * @throws AuthFailureError
+     */
     protected Map<String, DataPart> getByteData() throws AuthFailureError {
         return null;
     }
@@ -109,7 +106,14 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
         mErrorListener.onErrorResponse(error);
     }
 
-
+    /**
+     * Parse string map into data output stream by key and value.
+     *
+     * @param dataOutputStream data output stream handle string parsing
+     * @param params           string inputs collection
+     * @param encoding         encode the inputs, default UTF-8
+     * @throws IOException
+     */
     private void textParse(DataOutputStream dataOutputStream, Map<String, String> params, String encoding) throws IOException {
         try {
             for (Map.Entry<String, String> entry : params.entrySet()) {
@@ -120,23 +124,42 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
         }
     }
 
-
+    /**
+     * Parse data into data output stream.
+     *
+     * @param dataOutputStream data output stream handle file attachment
+     * @param data             loop through data
+     * @throws IOException
+     */
     private void dataParse(DataOutputStream dataOutputStream, Map<String, DataPart> data) throws IOException {
         for (Map.Entry<String, DataPart> entry : data.entrySet()) {
             buildDataPart(dataOutputStream, entry.getValue(), entry.getKey());
         }
     }
 
-
+    /**
+     * Write string data into header and data output stream.
+     *
+     * @param dataOutputStream data output stream handle string parsing
+     * @param parameterName    name of input
+     * @param parameterValue   value of input
+     * @throws IOException
+     */
     private void buildTextPart(DataOutputStream dataOutputStream, String parameterName, String parameterValue) throws IOException {
         dataOutputStream.writeBytes(twoHyphens + boundary + lineEnd);
         dataOutputStream.writeBytes("Content-Disposition: form-data; name=\"" + parameterName + "\"" + lineEnd);
-        //dataOutputStream.writeBytes("Content-Type: text/plain; charset=UTF-8" + lineEnd);
         dataOutputStream.writeBytes(lineEnd);
         dataOutputStream.writeBytes(parameterValue + lineEnd);
     }
 
-
+    /**
+     * Write data file into header and data output stream.
+     *
+     * @param dataOutputStream data output stream handle data parsing
+     * @param dataFile         data byte as DataPart from collection
+     * @param inputName        name of data input
+     * @throws IOException
+     */
     private void buildDataPart(DataOutputStream dataOutputStream, DataPart dataFile, String inputName) throws IOException {
         dataOutputStream.writeBytes(twoHyphens + boundary + lineEnd);
         dataOutputStream.writeBytes("Content-Disposition: form-data; name=\"" +
@@ -165,55 +188,30 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
         dataOutputStream.writeBytes(lineEnd);
     }
 
-    public class DataPart {
+    class DataPart {
         private String fileName;
         private byte[] content;
         private String type;
 
-
         public DataPart() {
         }
 
-
-        public DataPart(String name, byte[] data) {
+        DataPart(String name, byte[] data) {
             fileName = name;
             content = data;
         }
 
-
-        public DataPart(String name, byte[] data, String mimeType) {
-            fileName = name;
-            content = data;
-            type = mimeType;
-        }
-
-
-        public String getFileName() {
+        String getFileName() {
             return fileName;
         }
 
-
-        public void setFileName(String fileName) {
-            this.fileName = fileName;
-        }
-
-
-        public byte[] getContent() {
+        byte[] getContent() {
             return content;
         }
 
-        public void setContent(byte[] content) {
-            this.content = content;
-        }
-
-
-        public String getType() {
+        String getType() {
             return type;
         }
 
-
-        public void setType(String type) {
-            this.type = type;
-        }
     }
 }

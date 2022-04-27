@@ -1,6 +1,7 @@
 package com.e.login.Offers;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -38,6 +41,10 @@ import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -64,6 +71,7 @@ public class OfferActivity extends AppCompatActivity{
     RecyclerView recyclerView,recyclerView1,recyclerView2;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,7 +125,25 @@ public class OfferActivity extends AppCompatActivity{
         offers();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void offers() {
+
+        LocalDateTime myDateObj = LocalDateTime.now();
+        System.out.println("Before formatting: " + myDateObj);
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        String formattedDate = myDateObj.format(myFormatObj);
+        System.out.println("After formatting: " + formattedDate);
+
+
+
+        String stringDate = "2022-04-27T10:21:00.000000Z";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        OffsetDateTime odt = OffsetDateTime.parse ( "2022-04-27T10:21:00.000000Z" , DateTimeFormatter.ofPattern ( "yyyy-MM-dd HH:mm:ss.SSSX" ) ) ;
+
+        LocalDateTime today = LocalDateTime.parse("2022-04-27T10:21:00.000000Z");
+        System.out.println("today"+odt);
 
 
         String url = api + "offer-home-page";

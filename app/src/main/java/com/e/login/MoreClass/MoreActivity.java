@@ -48,13 +48,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MoreActivity extends AppCompatActivity {
+public class MoreActivity extends AppCompatActivity implements CategoryAdapter_more.OnItemClickListener{
     String api;
     String data,data1;
     RecyclerView recyclerView;
     List<CategoryModel> cat;
     CategoryAdapter_more CAtAdapter;
-    String cat_name = null,name = null, image = null,id = null;
+    String cat_name = null,name = null, image = null,id = null,URL = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,7 +137,7 @@ public class MoreActivity extends AppCompatActivity {
                     JSONArray res = response.getJSONArray("data");
 
 
-                    for (int i=0;i<res.length();i++){
+                    for (int i=20;i<res.length();i++){
 
 
                         JSONObject jsonObject = res.getJSONObject(i);
@@ -146,6 +146,7 @@ public class MoreActivity extends AppCompatActivity {
                         name = jsonObject.getString("name");
                         image = jsonObject.getString("logo");
                         cat_name = jsonObject.getString("category_name");
+                        URL = jsonObject.getString("url");
 
 
                         CategoryModel model = new CategoryModel();
@@ -154,6 +155,7 @@ public class MoreActivity extends AppCompatActivity {
                         model.setName(name);
                         model.setId(id);
                         model.setCat_name(cat_name);
+                        model.setUrl(URL);
 
                         cat.add(model);
 
@@ -178,6 +180,7 @@ public class MoreActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(layoutManager);
                     CAtAdapter =  new CategoryAdapter_more(MoreActivity.this,cat);
                     recyclerView.setAdapter(CAtAdapter);
+                    CAtAdapter.setOnItemClickListener(MoreActivity.this);
 
 
 
@@ -219,5 +222,16 @@ public class MoreActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemClick(int position) {
 
+        CategoryModel model = cat.get(position);
+
+        String url = model.getUrl();
+
+        Intent i = new Intent(MoreActivity.this,Shopping_Activity.class);
+        i.putExtra("url",url);
+        startActivity(i);
+
+    }
 }

@@ -14,7 +14,7 @@
 
         <LinearLayout
             android:id="@+id/shopsIcons_home"
-            android:layout_width="54dp"
+            android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/rounded_borders"

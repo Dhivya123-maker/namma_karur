@@ -114,6 +114,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
                     int position = getAdapterPosition();
                     String category = cat.get(position).getCat_name();
+                    String url = cat.get(position).getUrl();
                     if(category.equals("OfferCatalog")){
 
                         Intent intent = new Intent(view.getContext(), OfferActivity.class);
@@ -140,6 +141,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
                     }  else if(category.equals("ShoppingCatalog")){
                         Intent intent = new Intent(view.getContext(), Shopping_Activity.class);
+                        intent.putExtra("url",url);
                         view.getContext().startActivity(intent);
 
                     }

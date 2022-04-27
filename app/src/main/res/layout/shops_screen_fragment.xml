@@ -94,7 +94,7 @@
 
 
                             <LinearLayout
-                                android:id="@+id/location"
+                                android:id="@+id/filter"
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
                                 android:layout_gravity="center"
@@ -112,7 +112,7 @@
 
 
                             <LinearLayout
-                                android:id="@+id/filter_lnr"
+                                android:id="@+id/location"
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
                                 android:layout_gravity="center"

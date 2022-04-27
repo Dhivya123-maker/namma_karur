@@ -3,7 +3,9 @@ package com.e.login.Offers;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,10 +37,17 @@ import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class Offer_One_Adapter extends RecyclerView.Adapter<Offer_One_Adapter.ViewHolder> {
 
@@ -72,6 +82,7 @@ public class Offer_One_Adapter extends RecyclerView.Adapter<Offer_One_Adapter.Vi
         this.offerOneModelList= offerOneModelList;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @NonNull
     @Override
     public Offer_One_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -107,13 +118,64 @@ public class Offer_One_Adapter extends RecyclerView.Adapter<Offer_One_Adapter.Vi
         ImageView img;
         TextView txt,txt1;
 
+        @RequiresApi(api = Build.VERSION_CODES.O)
         ViewHolder(View itemView) {
             super(itemView);
             img = itemView.findViewById(R.id.close_offer_img);
             txt = itemView.findViewById(R.id.timer_txt);
             txt1 = itemView.findViewById(R.id.hrs_txt);
+            try {
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
+            LocalDateTime now = LocalDateTime.now();
 
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH);
+            Date firstDate = null;
+
+                firstDate = sdf.parse("2022-04-27T10:21:00.000000Z");
+
+                Date firstDate2 = null;
+
+                firstDate2 = sdf.parse("2022-04-27T12:21:00.000000Z");
+
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            Date date = new Date();
+
+                Log.i("fdf", String.valueOf(java.time.Clock.systemUTC().instant()));
+
+            long diff =  firstDate.getTime() - firstDate2.getTime();
+
+            TimeUnit time = TimeUnit.DAYS;
+            long diffrence = time.convert(diff, TimeUnit.MILLISECONDS);
+            System.out.println("The difference in days is : "+diffrence);
+
+//            int time = now.getSecond();
+
+//            Log.i("fdf", String.valueOf(diff));
+
+            new CountDownTimer(diff, 1000) {
+                @SuppressLint("SetTextI18n")
+                public void onTick(long millisUntilFinished) {
+
+                    NumberFormat f = new DecimalFormat("00");
+                    long hour = (millisUntilFinished / 3600000) % 24;
+                    long min = (millisUntilFinished / 60000) % 60;
+                    long sec = (millisUntilFinished / 1000) % 60;
+                    txt.setText(f.format(hour) + "  :  " +   f.format(min) + "  :  " +   f.format(sec));
+//                                viewmodel.setTxt(c_end);
+                }
+
+                // When the task is over it will print 00:00:00 there
+                public void onFinish() {
+                    txt.setText("00 : 00 : 00");
+                }
+            }.start();
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+//
 //            Api a = new Api();
 //            api = a.getBASE_URL();
 //
@@ -155,6 +217,7 @@ public class Offer_One_Adapter extends RecyclerView.Adapter<Offer_One_Adapter.Vi
 //                            c_start = jsonObject.getString("start_date");
 //                            c_end = jsonObject.getString("end_date");
 //
+//                            Log.i("dsds",c_end);
 //
 //                            Offer_One_Model viewmodel = new Offer_One_Model();
 //
@@ -236,7 +299,7 @@ public class Offer_One_Adapter extends RecyclerView.Adapter<Offer_One_Adapter.Vi
 //
 //            RequestQueue requestQueue = Volley.newRequestQueue(context.getApplicationContext());
 //            requestQueue.add(jsonObjectRequest);
-//
+
 
 
 

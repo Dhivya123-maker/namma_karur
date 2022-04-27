@@ -107,13 +107,6 @@ public class Blog_Fragment extends Fragment  {
         });
 
 
-        Slidershop_Top_Adapter sliderAdapter = new Slidershop_Top_Adapter(images);
-
-        sliderView.setSliderAdapter(sliderAdapter);
-        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
-        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
-        sliderView.startAutoCycle();
-
 
 
       recyclerView = root.findViewById(R.id.blog_recycler);

@@ -120,7 +120,7 @@ public class Fragment_Home extends Fragment {
         Api a = new Api();
         api = a.getBASE_URL();
 
-//        Log.i("qufdryuwgdr",PreferenceUtils.getToken(getActivity()));
+        Log.i("qufdryuwgdr",PreferenceUtils.getToken(getActivity()));
         Intent intent = getActivity().getIntent();
         data = intent.getStringExtra("token");
         Intent i1 = getActivity().getIntent();
@@ -346,7 +346,7 @@ public class Fragment_Home extends Fragment {
 
 
 
-                    for (int i=0;i<res.length();i++){
+                    for (int i=0;i<20;i++){
 
 
                         JSONObject jsonObject = res.getJSONObject(i);
@@ -357,6 +357,7 @@ public class Fragment_Home extends Fragment {
                         name = jsonObject.getString("name");
                         image = jsonObject.getString("logo");
                         cat_name = jsonObject.getString("category_name");
+                        String url = jsonObject.getString("url");
 
 
 
@@ -365,6 +366,7 @@ public class Fragment_Home extends Fragment {
                         model.setImg(image);
                         model.setName(name);
                         model.setId(id);
+                        model.setUrl(url);
 
                         model.setCat_name(cat_name);
 

@@ -1,22 +1,36 @@
 package com.e.login.ShopscreenClass;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,10 +48,25 @@ import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.Home_Fragment_Class;
 import com.e.login.ChatFeature;
+import com.e.login.MainActivity;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
 import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResult;
+import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -61,7 +90,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
     ShopScreenAdapter adapter;
     List<Banner_model> banner_modelList;
     Banner_Adapter adapter1;
-    LinearLayout filter,location,gone,atm_visible,visible_lnr;
+    LinearLayout filter,gone,atm_visible,visible_lnr;
     SliderView sliderView;
     public static final String TAG = "bottom_sheet";
 
@@ -90,8 +119,32 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
     private Button dateButton,dateButton1;
     RecyclerView banner;
 
+    LinearLayout location;
+
+    LocationManager locationManager;
+    String latitude, longitude;
+
+    private static final int REQUEST_LOCATION = 1;
 
     Context  context;
+
+    FusedLocationProviderClient mFusedLocationClient;
+
+
+    String latitudeTextView, longitTextView;
+    private static final int REQUEST_CALL = 1 ;
+
+    protected static final int REQUEST_CHECK_SETTINGS = 0x2;
+    private GoogleApiClient googleApiClient;
+
+    int PERMISSION_ID = 44;
+
+    Status status;
+
+    String locat;
+
+
+
 
 
     @Override
@@ -102,8 +155,9 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
 
 
+
         gone = findViewById(R.id.gone_lnr);
-        filter = findViewById(R.id.filter_lnr);
+        location = findViewById(R.id.location);
         atm_visible = findViewById(R.id.atm_visivle_lnr);
         visible_lnr = findViewById(R.id.visible_linear);
 
@@ -290,16 +344,24 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
         }
 
 
-        filter = findViewById(R.id.filter);
-//        filter.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                Intent intent1 = new Intent(ShopsScreenFragment.this, Home_Fragment_Class.class);
-////
-////
-////                startActivity(intent1);
-//            }
-//        });
+
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                googleApiClient = getAPIClientInstance();
+                if (googleApiClient != null) {
+                    googleApiClient.connect();
+                    requestGPSSettings();
+                }
+                ActivityCompat.requestPermissions( ShopsScreenFragment.this,
+                        new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
+//                mFusedLocationClient = LocationServices.getFusedLocationProviderClient(ShopsScreenFragment.this);
+
+                // method to get the location
+                getLastLocation();
+            }
+        });
 
         BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_shops1);
         btnNav.setOnNavigationItemSelectedListener(navListener);
@@ -764,5 +826,181 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
     {
         datePickerDialog.show();
     }
+
+
+
+    @SuppressLint("MissingPermission")
+    private void getLastLocation() {
+        // check if permissions are given
+        if (checkPermissions()) {
+
+            // check if location is enabled
+            if (isLocationEnabled()) {
+
+                // getting last
+                // location from
+                // FusedLocationClient
+                // object
+//                mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Location> task) {
+//                        Location location = task.getResult();
+//                        if (location == null) {
+                            requestNewLocationData();
+//                        } else {
+////                            latitudeTextView.setText(location.getLatitude() + "");
+////                            longitTextView.setText(location.getLongitude() + "");
+//                        }
+//                    }
+//                });
+            } else {
+                //Toast.makeText(this, "Please turn on" + " your location...", Toast.LENGTH_LONG).show();
+//                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+//                startActivity(intent);
+            }
+        } else {
+            // if permissions aren't available,
+            // request for permissions
+            requestPermissions();
+        }
+    }
+
+    @SuppressLint("MissingPermission")
+    private void requestNewLocationData() {
+
+        // Initializing LocationRequest
+        // object with appropriate methods
+        LocationRequest mLocationRequest = new LocationRequest();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(5);
+        mLocationRequest.setFastestInterval(0);
+        mLocationRequest.setNumUpdates(1);
+
+        // setting LocationRequest
+        // on FusedLocationClient
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
+    }
+
+    private LocationCallback mLocationCallback = new LocationCallback() {
+
+        @Override
+        public void onLocationResult(LocationResult locationResult) {
+            Location mLastLocation = locationResult.getLastLocation();
+            latitudeTextView = (mLastLocation.getLatitude()+"");
+            longitTextView = (mLastLocation.getLongitude()+"");
+
+            Log.i("fdsdfswf",mLastLocation.getLatitude()+""+"   "+longitTextView);
+        }
+    };
+
+    // method to check for permissions
+    private boolean checkPermissions() {
+        return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+
+        // If we want background location
+        // on Android 10.0 and higher,
+        // use:
+        // ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED
+    }
+
+    // method to request for permissions
+    private void requestPermissions() {
+        ActivityCompat.requestPermissions(this, new String[]{
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_ID);
+    }
+
+    // method to check
+    // if location is enabled
+    private boolean isLocationEnabled() {
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+    }
+
+    // If everything is alright then
+    @Override
+    public void
+    onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == PERMISSION_ID) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getLastLocation();
+            }else if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_DENIED){
+//                Intent intent = new Intent(ShopsScreenFragment.this,home.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//                startActivity(intent);
+
+
+
+                Toast.makeText(ShopsScreenFragment.this, "Please turn on your location", Toast.LENGTH_LONG).show();
+            }
+        }
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (checkPermissions()) {
+            getLastLocation();
+        }
+    }
+
+
+
+
+
+
+    private GoogleApiClient getAPIClientInstance() {
+        GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(LocationServices.API).build();
+        return mGoogleApiClient;
+    }
+
+    private void requestGPSSettings() {
+        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setPriority(LocationRequest.PRIORITY_BALANCED_POWER_ACCURACY);
+        locationRequest.setInterval(2000);
+        locationRequest.setFastestInterval(500);
+        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder().addLocationRequest(locationRequest);
+        builder.setAlwaysShow(true);
+        PendingResult<LocationSettingsResult> result = LocationServices.SettingsApi.checkLocationSettings(googleApiClient, builder.build());
+        result.setResultCallback(new ResultCallback<LocationSettingsResult>() {
+            @Override
+            public void onResult(LocationSettingsResult result) {
+                status = result.getStatus();
+                // Toast.makeText(Emergency.this,status.getStatusCode() , Toast.LENGTH_SHORT).show();
+                Log.i("srgfergdhgd", String.valueOf(status.getStatusCode()));
+                locat = String.valueOf(status.getStatusCode());
+                switch (status.getStatusCode()) {
+                    case LocationSettingsStatusCodes.SUCCESS:
+//                        Log.i("", "All location settings are satisfied.");
+                        //   Toast.makeText(getApplication(), "GPS is already enable", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
+
+                        try {
+
+                            status.startResolutionForResult(ShopsScreenFragment.this, REQUEST_CHECK_SETTINGS);
+                        } catch (IntentSender.SendIntentException e) {
+                            Log.e("Applicationsett", e.toString());
+
+                        }
+                        break;
+                    case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
+                        Log.i("", "Location settings are inadequate, and cannot be fixed here. Dialog " + "not created.");
+                        Toast.makeText(getApplication(), "Location settings are inadequate, and cannot be fixed here", Toast.LENGTH_SHORT).show();
+                        break;
+
+
+                }
+            }
+        });
+    }
+
 
 }

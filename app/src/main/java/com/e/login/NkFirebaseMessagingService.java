@@ -62,9 +62,12 @@ public class NkFirebaseMessagingService extends FirebaseMessagingService {
             String message = remoteMessage.getNotification().getBody();
             String image = null;
             image= remoteMessage.getData().get("image");
+
+
             String click_action = "null";
             click_action= remoteMessage.getNotification().getClickAction();
             if (image != null){
+
                 bitmap = getBitmapfromUrl(image);
             }
 

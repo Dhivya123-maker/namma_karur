@@ -39,6 +39,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.e.login.BlankFragment.Blank_Comments_Adapter;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.Profile_details.EducationAdapter;
@@ -50,6 +51,7 @@ import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -61,27 +63,33 @@ import java.util.Map;
 
 public class Profile extends AppCompatActivity {
     Button btn, edit, save, email_verify, contact_verify;
-    String data, data1, data2, goo_id,dobb;
-    TextView user_name, emailtxt, contacttxt,b_gp,dob;
+    String data, data1, data2, goo_id, dobb;
+    TextView user_name, emailtxt, contacttxt;
     LinearLayout skill;
-    ImageView profile, email_edit, con_edit, edu_add, skill_add,choose_img;
+    ImageView  email_edit, con_edit;
     Spinner bl;
     Context mContext;
     int SELECT_PICTURE = 1;
     Popup_Adapter adapter;
     EducationAdapter educationAdapter;
-   List<Education_Model> education_model;
+    List<Education_Model> education_model;
     ArrayAdapter<String> arrayAdapter;
 
+    RecyclerView education_recycler,experience_recycler,skill_recycler;
+
+    ProfileAdapter profileAdapter;
+
+    List<ProfileModel> profileModelList1;
+    List<ProfileModel> profileModelList2;
+    List<ProfileModel> profileModelList3;
 
 
     String data3;
-    View view, view1, view2, view3;
+
     String id, email, phone, namee, email_verifyy, phone_verifyy, image;
-    Button edit_btn;
+
     String Email_get, Phone_get;
 
-    private ImageView exp_add = null;
     private ListView userDataListView = null;
     // Below edittext and button are all exist in the popup dialog view.
     private View popupInputDialogView = null;
@@ -95,8 +103,6 @@ public class Profile extends AppCompatActivity {
     private Button saveUserDataButton = null;
     // Click this button to cancel edit user data.
     private Button cancelUserDataButton = null;
-    RecyclerView recyclerView ;
-
 
 
 
@@ -111,13 +117,11 @@ public class Profile extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
 
 
-
         Intent intent = getIntent();
         data = intent.getStringExtra("token");
         data1 = intent.getStringExtra("id");
         data2 = intent.getStringExtra("user_name");
         data3 = intent.getStringExtra("email");
-
 
 
         BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_profile);
@@ -126,85 +130,47 @@ public class Profile extends AppCompatActivity {
 
 
 
-        choose_img = findViewById(R.id.img_choose);
-        choose_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                imageChooser();
-            }
-        });
-
         get_profile();
 
 
 
-        view = findViewById(R.id.first_view);
-        view2 = findViewById(R.id.third_view);
-        view3 = findViewById(R.id.fourth_view);
         user_name = findViewById(R.id.user_name);
 
 
         btn = findViewById(R.id.change_btn);
 
 
-        edu_add = findViewById(R.id.edu_add);
-        exp_add = findViewById(R.id.exp_add);
-        skill_add = findViewById(R.id.skill_add);
-        dob = findViewById(R.id.dob);
-        b_gp = findViewById(R.id.blood_gp);
 
 
 
 
-        profile = findViewById(R.id.profile_img);
-        email_edit = findViewById(R.id.gmail_edit);
-        con_edit = findViewById(R.id.contact_edit);
+        email_edit = findViewById(R.id.edit_email);
+        con_edit = findViewById(R.id.edit_phone);
 
-        emailtxt = findViewById(R.id.emailtxt);
-        contacttxt = findViewById(R.id.contacttxt);
+        emailtxt = findViewById(R.id.email_text);
+        contacttxt = findViewById(R.id.phone_text);
         email_verify = findViewById(R.id.email_verify);
         contact_verify = findViewById(R.id.contact_verify);
 
-        edit_btn = findViewById(R.id.edit_button);
+        education_recycler = findViewById(R.id.education_recyclerview);
+        experience_recycler = findViewById(R.id.experience_recyclerview);
+        skill_recycler = findViewById(R.id.skill_recyclerview);
 
 
-        edit_btn.setOnClickListener(new View.OnClickListener() {
+        edit = findViewById(R.id.edit_btn);
+
+
+        edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-
-                PopUpClass_one popUpClass1 = new PopUpClass_one();
-                popUpClass1.showPopupWindow(getSupportFragmentManager(),view);
-
+                Intent intent = new Intent(Profile.this, EditProfile.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
             }
         });
 
 
-        edu_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-
-
-
-                PopUpClass popUpClass = new PopUpClass();
-//                popUpClass.showPopupWindow(view);
-                popUpClass.showPopupWindow(getSupportFragmentManager(),view);
-
-
-
-
-            }
-
-
-        });
-
-
-
-
-
-
-        emailtxt.setText(data3);
 
         email_verify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -231,30 +197,19 @@ public class Profile extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent1 = new Intent(Profile.this, Email_Verification.class);
-                intent1.putExtra("id",data1);
+                intent1.putExtra("id", data1);
                 intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent1);
-
 
 
             }
         });
 
 
-        con_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent1 = new Intent(Profile.this, Phone_txt.class);
-                intent1.putExtra("id",data1);
-                intent1.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent1);
-
-            }
-        });
 
 
-        edit = findViewById(R.id.edit_button);
+
+
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -281,12 +236,9 @@ public class Profile extends AppCompatActivity {
             jsonBody.put("user_id", data1);
 
 
-
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-
-
 
 
                     try {
@@ -381,6 +333,17 @@ public class Profile extends AppCompatActivity {
 
                 try {
 
+                    profileModelList1 = new ArrayList<>();
+                    profileModelList2 = new ArrayList<>();
+                    profileModelList3 = new ArrayList<>();
+
+                    String year ;
+                    String institute ;
+                    String degree ;
+                    String company ;
+                    String experience_data;
+                    String position ;
+                    String skills_data;
 
                     String Success = response.getString("success");
                     String msg = response.getString("message");
@@ -394,6 +357,15 @@ public class Profile extends AppCompatActivity {
                     email_verifyy = jsonObject.getString("email_verification_status");
                     phone_verifyy = jsonObject.getString("phone_verification_status");
                     image = jsonObject.getString("image");
+                    JSONObject profile_details = jsonObject.getJSONObject("profile_details");
+
+                    String dob = profile_details.getString("dob");
+                    String blood = profile_details.getString("blood_group");
+                    JSONArray education = profile_details.getJSONArray("education");
+                    JSONArray experience =profile_details.getJSONArray("experience");
+                    JSONArray skills =profile_details.getJSONArray("skills");
+
+
 
 
                     if (Success.equals("true")) {
@@ -407,13 +379,99 @@ public class Profile extends AppCompatActivity {
                         contact_verify.setText(phone_verifyy);
 
 
+                        for (int i = 0; i<education.length();i++){
+
+                            JSONObject edu = education.getJSONObject(i);
+
+                            year = edu.getString("year");
+                            institute = edu.getString("institute");
+                            degree = edu.getString("degree");
+
+                        }
+
+                        for (int i = 0; i<education.length();i++){
+
+                            JSONObject edu = education.getJSONObject(i);
+
+                            year = edu.getString("year");
+                            institute = edu.getString("institute");
+                            degree = edu.getString("degree");
+
+                            ProfileModel profileModel = new ProfileModel();
+
+                            profileModel.setYear(year);
+                            profileModel.setInstitute(institute);
+                            profileModel.setDegree(degree);
+                            profileModel.setType("edu");
+
+                            profileModelList1.add(profileModel);
+
+                            Log.i("fsdfsf",institute);
+                        }
+
+                        education_recycler.setLayoutManager(new LinearLayoutManager(Profile.this));
+                        profileAdapter = new ProfileAdapter(Profile.this, profileModelList1);
+                        education_recycler.setAdapter(profileAdapter);
+
+                        for (int i = 0; i<experience.length();i++){
+
+                            JSONObject edu = experience.getJSONObject(i);
+
+                            company = edu.getString("company");
+                            experience_data = edu.getString("experience");
+                            position = edu.getString("position");
+
+                            ProfileModel profileModel = new ProfileModel();
+
+                            profileModel.setCompany("Company : "+company);
+                            profileModel.setExperience_data("Experience : "+experience_data);
+                            profileModel.setPosition("Position : "+position);
+                            profileModel.setType("exp");
+
+                            profileModelList2.add(profileModel);
+
+                            Log.i("fsdfsf",company);
+
+                        }
+
+                        experience_recycler.setLayoutManager(new LinearLayoutManager(Profile.this));
+                        profileAdapter = new ProfileAdapter(Profile.this, profileModelList2);
+                        experience_recycler.setAdapter(profileAdapter);
+
+                        for (int i = 0; i<skills.length();i++){
+
+                            skills_data= skills.getString(i);
+
+
+                            ProfileModel profileModel = new ProfileModel();
+
+                            profileModel.setSkills_data(skills_data);
+                            profileModel.setType("ski");
+
+                            profileModelList3.add(profileModel);
+
+                            Log.i("fsdfsf",skills_data);
+                        }
+
+                        skill_recycler.setLayoutManager(new LinearLayoutManager(Profile.this));
+                        profileAdapter = new ProfileAdapter(Profile.this, profileModelList3);
+                        skill_recycler.setAdapter(profileAdapter);
+
+
 //                        profile.setImageURI(Uri.parse(image));
 
 
+
                     } else {
-                        Log.i("1234", msg);
+
                         Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
                     }
+
+
+
+
+
+
 
 
                 } catch (Exception e) {
@@ -425,9 +483,6 @@ public class Profile extends AppCompatActivity {
 
             }
 
-//
-//
-//        }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -457,6 +512,7 @@ public class Profile extends AppCompatActivity {
 
 
     }
+
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
 
@@ -494,365 +550,8 @@ public class Profile extends AppCompatActivity {
         }
     };
 
-    void imageChooser() {
-
-        // create an instance of the
-        // intent of the type image
-        Intent i = new Intent();
-        i.setType("image/*");
-        i.setAction(Intent.ACTION_GET_CONTENT);
-
-        // pass the constant to compare it
-        // with the returned requestCode
-        startActivityForResult(Intent.createChooser(i, "Select Picture"), SELECT_PICTURE);
-    }
-
-    // this function is triggered when user
-    // selects the image from the imageChooser
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (resultCode == RESULT_OK) {
-
-            // compare the resultCode with the
-            // SELECT_PICTURE constant
-            if (requestCode == SELECT_PICTURE) {
-                // Get the url of the image from data
-                Uri selectedImageUri = data.getData();
-                if (null != selectedImageUri) {
-                    // update the preview image in the layout
-                    profile.setImageURI(selectedImageUri);
-                }
-            }
-        }
-    }
-
-    public class PopUpClass {
-
-
-
-        public void showPopupWindow(FragmentManager supportFragmentManager, final View view) {
-
-
-
-
-            //Create a View object yourself through inflater
-            LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
-            View popupView = inflater.inflate(R.layout.popup_screen, null);
-
-            //Specify the length and width through constants
-            int width = LinearLayout.LayoutParams.MATCH_PARENT;
-            int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-
-            //Make Inactive Items Outside Of PopupWindow
-            boolean focusable = true;
-
-            //Create a window with our parameters
-            final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-            //Set the location of the window on the screen
-            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-
-            //Initialize the elements of our window, install the handler
-
-
-
-
-            //Handler for clicking on the inactive zone of the window
-
-            popupView.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-
-                    //Close the window when clicked
-                    popupWindow.dismiss();
-                    return true;
-                }
-            });
-
-            Button cancel = (Button) popupView.findViewById(R.id.cancel);
-            Button save = (Button) popupView.findViewById(R.id.save);
-
-            cancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    popupWindow.dismiss();
-                }
-            });
-
-
-            save.setOnClickListener(new View.OnClickListener() {
-
-
-                @Override
-                public void onClick(View view) {
-
-                    EditText ins = popupView.findViewById(R.id.ins);
-                    EditText deg = popupView.findViewById(R.id.deg);
-                    EditText year = popupView.findViewById(R.id.yr);
-
-                    String Ins = ins.getText().toString();
-                    String Deg = deg.getText().toString();
-                    String Year = year.getText().toString();
-
-                    popupWindow.dismiss();
-
-                    education_model = new ArrayList<>();
-
-                    Education_Model model  = new Education_Model();
-
-                       model.setIns(Ins);
-                       model.setDeg(Deg);
-                       model.setYear(Year);
-
-                       education_model.add(model);
-
-
-
-                    recyclerView = findViewById(R.id.recycler);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(Profile.this));
-                    educationAdapter = new EducationAdapter(Profile.this,education_model);
-                    recyclerView.setAdapter(educationAdapter);
-
-
-                }
-            });
-
-
-
-
-
-
-        }
-
-
-
-
-    }
-    public class PopUpClass_one {
-
-
-
-        public void showPopupWindow(FragmentManager supportFragmentManager, final View view) {
-
-
-
-
-            //Create a View object yourself through inflater
-            LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
-            View popupView = inflater.inflate(R.layout.date_popup, null);
-
-            //Specify the length and width through constants
-            int width = LinearLayout.LayoutParams.MATCH_PARENT;
-            int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-
-            //Make Inactive Items Outside Of PopupWindow
-            boolean focusable = true;
-
-            //Create a window with our parameters
-            final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-            //Set the location of the window on the screen
-            popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-
-            //Initialize the elements of our window, install the handler
-
-
-            //Handler for clicking on the inactive zone of the window
-
-            popupView.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-
-                    //Close the window when clicked
-                    popupWindow.dismiss();
-                    return true;
-                }
-            });
-
-            Button cancel = (Button) popupView.findViewById(R.id.cancel);
-            Button save = (Button) popupView.findViewById(R.id.save);
-
-            cancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    popupWindow.dismiss();
-                }
-            });
-
-
-            save.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    EditText date =popupView.findViewById(R.id.dobb);
-                    bl =popupView.findViewById(R.id.edit2);
-
-                  bl = new Spinner(Profile.this, Spinner.MODE_DROPDOWN);
-                    ArrayList<String> sname = new ArrayList<>();
-
-                    sname.add("Blood Group");
-                    sname.add("a1_positive");
-                    sname.add("a1_negative");
-                    sname.add("a2_positive");
-                    sname.add("a2_negative");
-                    sname.add("b_positive");
-                    sname.add("b_negative");
-                    sname.add("a1b_positive");
-                    sname.add("a1b_negative");
-                    sname.add("a2b_positive");
-                    sname.add("a2b_negative");
-                    sname.add("ab_positive");
-                    sname.add("ab_negative");
-                    sname.add("o_positive");
-                    sname.add("o_negative");
-                    sname.add("a_positive");
-                    sname.add("a_negative");
-
-
-
-                    arrayAdapter = new ArrayAdapter<String>(Profile.this,
-                            R.layout.text_color1,sname);
-                    arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    bl.setAdapter(arrayAdapter);
-
-
-
-                    String Date = date.getText().toString();
-                    String Blood = bl.getSelectedItem().toString();
-
-                    popupWindow.dismiss();
-
-
-
-                    if(Date.equals("")){
-                        dob.setText("D.O.B");
-                    }else{
-                        dob.setText(Date);
-                    }
-
-                    b_gp.setText(Blood);
-
-
-
-
-                }
-            });
-
-
-
-
-
-
-        }
-
-
-
-
-    }
-
-
-
-//    public void onButtonShowPopupWindowClick(View view) {
-//        LayoutInflater inflater = (LayoutInflater)
-//                getSystemService(LAYOUT_INFLATER_SERVICE);
-//        View popupView = inflater.inflate(R.layout.popup_screen, null);
-//
-//        // create the popup window
-////        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-////        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-////        boolean focusable = true; // lets taps outside the popup also dismiss it
-//        final PopupWindow popupWindow = new PopupWindow(popupView);
-//
-//        // show the popup window
-//        // which view you pass in doesn't matter, it is only used for the window tolken
-//        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-//
-//        // dismiss the popup window when touched
-//        popupView.setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                popupWindow.dismiss();
-//                return true;
-//            }
-//        });
-//
-//    }
 
 }
 
-//    private void initMainActivityControls()
-//    {
-//        if(edu_add == null)
-//        {
-//            edu_add = (ImageView) findViewById(R.id.edu_add);
-//        }
-//        if(recyclerView == null)
-//        {
-//            recyclerView = (RecyclerView) findViewById(R.id.recycler);
-//        }
-//    }
-//    /* Initialize popup dialog view and ui controls in the popup dialog. */
-//    private void initPopupViewControls()
-//    {
-//        // Get layout inflater object.
-//        LayoutInflater layoutInflater = LayoutInflater.from(Profile.this);
-//        // Inflate the popup dialog from a layout xml file.
-//        popupInputDialogView = layoutInflater.inflate(R.layout.popup_input_dialog, null);
-//        // Get user input edittext and button ui controls in the popup dialog.
-//        userNameEditText = (EditText) popupInputDialogView.findViewById(R.id.Institute);
-//        passwordEditText = (EditText) popupInputDialogView.findViewById(R.id.Degree);
-//        emailEditText = (EditText) popupInputDialogView.findViewById(R.id.year);
-//
-//        saveUserDataButton = popupInputDialogView.findViewById(R.id.button_save_user_data);
-//        cancelUserDataButton = popupInputDialogView.findViewById(R.id.button_cancel_user_data);
-//        // Display values from the main activity list view in user input edittext.
-//        initEditTextUserDataInPopupDialog();
-//    }
-//    /* Get current user data from listview and set them in the popup dialog edittext controls. */
-//    private void initEditTextUserDataInPopupDialog()
-//    {
-//        List<String> userDataList = getExistUserDataInListView(recyclerView);
-//        if(userDataList.size() == 3)
-//        {
-//            String userName = userDataList.get(0);
-//            String password = userDataList.get(1);
-//            String email = userDataList.get(2);
-//            if(userNameEditText != null)
-//            {
-//                userNameEditText.setText(userName);
-//            }
-//            if(passwordEditText != null)
-//            {
-//                passwordEditText.setText(password);
-//            }
-//            if(emailEditText != null)
-//            {
-//                emailEditText.setText(email);
-//            }
-//        }
-//    }
-//    /* If user data exist in the listview then retrieve them to a string list. */
-//    private List<String> getExistUserDataInListView(RecyclerView listView)
-//    {
-//        List<String> ret = new ArrayList<String>();
-//        if(listView != null)
-//        {
-//            EducationAdapter listAdapter = (EducationAdapter) listView.getAdapter();
-//            if(listAdapter != null) {
-//                int itemCount = listAdapter.getCount();
-//                for (int i = 0; i < itemCount; i++) {
-//                    Object itemObject = listAdapter.getItem(i);
-//                    HashMap<String, String> itemMap = (HashMap<String, String>)itemObject;
-//                    Set<String> keySet = itemMap.keySet();
-//                    Iterator<String> iterator = keySet.iterator();
-//                    String key = iterator.next();
-//                    String value = itemMap.get(key);
-//                    ret.add(value);
-//                }
-//            }
-//        }
-//        return ret;
-//    }
 
-//            }
+

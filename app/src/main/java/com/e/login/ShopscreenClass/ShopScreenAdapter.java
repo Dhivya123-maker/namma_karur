@@ -137,7 +137,7 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
 
             lnr = itemView.findViewById(R.id.ac_onee);
             atm_lnr = itemView.findViewById(R.id.atm_lnr);
-            filter = itemView.findViewById(R.id.filter_lnr);
+
 
             textView = itemView.findViewById(R.id.sr_txt_one);
             textView1 = itemView.findViewById(R.id.sr_txt_two);

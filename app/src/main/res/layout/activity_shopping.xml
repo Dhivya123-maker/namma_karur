@@ -7,13 +7,9 @@
     tools:context=".Shopping_Activity">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Comming Soon !"
-        android:layout_centerInParent="true"
-        android:textColor="#4c9a2a"
-        android:textStyle="bold"
-        android:textSize="20dp"/>
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

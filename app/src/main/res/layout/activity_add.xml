@@ -237,21 +237,54 @@
                             android:paddingEnd="40dp"
                             android:visibility="gone"
                             />
-                        <EditText
 
-                            android:id="@+id/NameDetails6"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+
+                        >
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Qualification"
+                            android:textSize="15sp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginStart="25dp"
+                            android:textColor="@color/black"/>
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginEnd="20dp"
-                            android:background="@drawable/border_only"
-                            android:hint="Qualification"
-                            android:inputType="text"
-                            android:padding="5dp"
-                            android:paddingStart="15dp"
-                            android:textColorHint="@color/black"
-                            android:textSize="14dp" />
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            >
+                            <Button
+                                android:id="@+id/qualification_button_add"
+                                android:background="@drawable/bg"
+                                android:layout_width="60dp"
+                                android:layout_height="25dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginEnd="25dp"
+                                android:backgroundTint="@color/purple_500"
+                                android:text="Add"
+                                android:textColor="@color/white"
+                                android:textAllCaps="false"
+                                android:textSize="15dp"
+                                android:drawableRight="@drawable/ic_baseline_add_24"
+                                >
+
+                            </Button>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/qualification_layout_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"></LinearLayout>
+
+
 
                         <TextView
                             android:id="@+id/error6"
@@ -339,22 +372,53 @@
                             android:paddingEnd="40dp"
                             android:visibility="gone"
                             />
-
-                        <EditText
-
-                            android:id="@+id/NameDetails10"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="50dp"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginEnd="20dp"
-                            android:background="@drawable/border_only"
-                            android:hint="Skills"
-                            android:inputType="text"
-                            android:padding="5dp"
-                            android:paddingStart="15dp"
-                            android:textColorHint="@color/black"
-                            android:textSize="14dp" />
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+
+                            >
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Skills"
+                                android:textSize="15sp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginStart="25dp"
+                                android:textColor="@color/black"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="end"
+                                >
+                                <Button
+                                    android:id="@+id/skill_button_add"
+                                    android:background="@drawable/bg"
+                                    android:layout_width="60dp"
+                                    android:layout_height="25dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginEnd="25dp"
+                                    android:backgroundTint="@color/purple_500"
+                                    android:text="Add"
+                                    android:textColor="@color/white"
+                                    android:textAllCaps="false"
+                                    android:textSize="15dp"
+                                    android:drawableRight="@drawable/ic_baseline_add_24"
+                                    >
+
+                                </Button>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/skill_layout_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"></LinearLayout>
+
                         <TextView
                             android:id="@+id/error10"
                             android:layout_width="match_parent"

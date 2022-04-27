@@ -3,31 +3,64 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable-v24/ic_close.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/bend_corner.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/bg_one.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/bggg.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/bground.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/border.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/border_light.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/border_one.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/border_only.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/border_only_bend.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/border_two.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/call_corners.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/calls.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/draw.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/empty.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/eye.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/hexa.xml" value="0.265" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/drawable/image_round.xml" value="0.265" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/activity_add.xml" value="0.225" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/activity_blood_fragment.xml" value="0.2722222222222222" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/activity_blood_one.xml" value="0.3359375" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/activity_change_password.xml" value="0.3359375" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/activity_edit.xml" value="0.3359375" />
-        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/activity_edit_profile.xml" value="0.3359375" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/activity_edit_profile.xml" value="0.33" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/activity_jobs.xml" value="0.35625" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/activity_more.xml" value="0.35625" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/activity_offer.xml" value="0.35625" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/activity_shopping.xml" value="0.35625" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/activity_signup_google.xml" value="0.3359375" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/activity_view_all_cat.xml" value="0.3359375" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/category.xml" value="0.35625" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/category_recycle.xml" value="0.3359375" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/choose_image.xml" value="0.35625" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/custom_layout.xml" value="0.3359375" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/education_layout.xml" value="0.33958333333333335" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/experience_layout.xml" value="0.33958333333333335" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/fragment_blank__post.xml" value="0.3359375" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/fragment_gallery_.xml" value="0.3359375" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/fragment_home.xml" value="0.35625" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/fragment_videos.xml" value="0.35625" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/home.xml" value="0.35625" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/job_qulification_layout.xml" value="0.35625" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/job_skill_layout.xml" value="0.35625" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/login_activity.xml" value="0.3359375" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/onboarding_screen.xml" value="0.3359375" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/popup.xml" value="0.25" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/popup_screen.xml" value="0.22" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/profile.xml" value="0.3359375" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/profile_recyclerview.xml" value="0.35625" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/quotes_catalog_recycle.xml" value="0.3359375" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/recycler_fourty_one.xml" value="0.3359375" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/recycler_fourty_two.xml" value="0.3359375" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/recycler_row_four.xml" value="0.28703703703703703" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/shops_screen_fragment.xml" value="0.3359375" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/signup_activity.xml" value="0.3359375" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/skill_layout.xml" value="0.33958333333333335" />
         <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/text_color1.xml" value="0.3359375" />
+        <entry key="..\:/Namma-Karur-App/app/src/main/res/layout/text_color2.xml" value="0.33958333333333335" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/activity_all_news.xml" value="0.35520833333333335" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/activity_offer.xml" value="0.22" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/aaa/namma karur/app/src/main/res/layout/activity_shop_screen_class.xml" value="0.35520833333333335" />

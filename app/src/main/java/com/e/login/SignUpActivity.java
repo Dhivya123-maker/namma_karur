@@ -52,6 +52,7 @@ import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.internal.OnConnectionFailedListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -80,6 +81,8 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
     String phonee = null;
     String goo_token = null;
     String goo_id = null;
+
+    String d_id = null;
 
 
 
@@ -110,6 +113,14 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
         Error3 = findViewById(R.id.error3);
         Error4 = findViewById(R.id.error4);
 
+
+        FirebaseMessaging messaging =  FirebaseMessaging.getInstance();
+        messaging.getToken().addOnSuccessListener(s -> {
+            Log.d("Device ID:",s);
+
+            d_id = s;
+
+        });
 
 
         signupback.setOnClickListener(new View.OnClickListener() {
@@ -327,6 +338,7 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
             jsonBody.put("email", Email);
             jsonBody.put("password", Password);
             jsonBody.put("phone", Phone);
+            jsonBody.put("device_id", d_id);
 
             JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, URL, jsonBody, new Response.Listener<JSONObject>() {
                 @Override

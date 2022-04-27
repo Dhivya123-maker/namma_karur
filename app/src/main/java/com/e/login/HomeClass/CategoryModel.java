@@ -6,6 +6,7 @@ public class CategoryModel {
     String name;
     String id;
     String cat_name;
+    String url;
 
     public  CategoryModel(){}
 
@@ -17,11 +18,12 @@ public class CategoryModel {
         this.cat_name = cat_name;
     }
 
-    public CategoryModel(String img, String name, String id, String cat_name) {
+    public CategoryModel(String img, String name, String id, String cat_name,String url) {
         this.img = img;
         this.name = name;
         this.id = id;
         this.cat_name = cat_name;
+        this.url = url;
     }
 
     public String getId() {
@@ -46,5 +48,13 @@ public class CategoryModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

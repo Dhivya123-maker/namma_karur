@@ -341,6 +341,7 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
                         JSONObject jsonObject = new JSONObject(str);
                         JSONObject data = jsonObject.getJSONObject("data");
 
+                        Log.i("fjfifeofsdf",data.toString());
                             JSONArray jsonArray1 = data.getJSONArray("email");
                             Error1.setText(jsonArray1.getString(0));
                             Error1.setVisibility(View.VISIBLE);
