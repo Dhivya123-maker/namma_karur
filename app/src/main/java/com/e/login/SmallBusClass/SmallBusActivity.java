@@ -59,24 +59,7 @@ public class SmallBusActivity extends AppCompatActivity {
         Intent i = getIntent();
         b_id = i.getStringExtra("b_id");
         small_bus();
-////
-//        for (int i = 0; i < 3; i++) {
-//
-//            SmallBusModel viewmodel = new SmallBusModel();
-//
-//
-//
-//            viewmodel.setImage("1");
-//            viewmodel.setText("S1 - Morning");
-//
-//            smallBusModelList.add(viewmodel);
-//
-//        }
-//
-//        recyclerView.setLayoutManager(new LinearLayoutManager(SmallBusActivity.this));
-//
-//        adapter =  new SmallBusAdapter(SmallBusActivity.this,smallBusModelList);
-//        recyclerView.setAdapter(adapter);
+
 
     }
     public void small_bus(){
@@ -92,7 +75,6 @@ public class SmallBusActivity extends AppCompatActivity {
 
 
 
-//
 
                 try {
                     JSONArray res = response.getJSONArray("data");
@@ -105,9 +87,6 @@ public class SmallBusActivity extends AppCompatActivity {
 
                         JSONObject jsonObject = res.getJSONObject(i);
 
-//
-//                        Toast.makeText(SmallBusActivity.this, jsonObject.toString(), Toast.LENGTH_SHORT).show();
-//                        Log.i("jbfhusduycfhb",jsonObject.toString());
 
                         id = jsonObject.getString("id");
                         image = jsonObject.getString("image");

@@ -23,8 +23,6 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-//        BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_news);
-//        btnNav.setOnNavigationItemSelectedListener(navListener);
 
 
         // setting up the adapter

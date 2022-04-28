@@ -58,12 +58,7 @@ public class News_Fragment extends Fragment implements NewsoneAdapter.OnItemClic
 
     List<NewsOneModel> newsOneModelList;
     NewsoneAdapter adapter2;
-    int[] images = {R.drawable.first_one,
-            R.drawable.banner,
-            R.drawable.bank_banner,
-            R.drawable.banner,
-            R.drawable.first_one,
-    };
+
     JSONArray latest;
     JSONArray breaking;
     JSONArray all ;
@@ -81,8 +76,6 @@ public class News_Fragment extends Fragment implements NewsoneAdapter.OnItemClic
        View root = inflater.inflate(R.layout.fragment_news_, container, false);
 
 
-//        Api a = new Api();
-//        api = a.getBASE_URL();
         late = root.findViewById(R.id.late);
         recyclerView = root.findViewById(R.id.top_banneer);
         Intent intent = getActivity().getIntent();

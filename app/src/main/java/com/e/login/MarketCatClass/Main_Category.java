@@ -73,43 +73,6 @@ public class Main_Category extends AppCompatActivity {
 
 
         market();
-//        filter = findViewById(R.id.market_filter);
-//        filter.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                com.e.login.fragment_dialog.BottomSheetFragment_filter fragment = new BottomSheetFragment_filter();
-//                fragment.show(getSupportFragmentManager(), TAG);
-//            }
-//        });
-
-//
-//        marketClassModelList = new ArrayList<>();
-//
-//        RecyclerView recyclerView =findViewById(R.id.market_cat_screen);
-//
-//
-//        for (int i = 0; i < 4; i++) {
-//
-//            MarketClassModel viewmodel = new MarketClassModel();
-//
-//
-//
-//            viewmodel.setImage("1");
-//            viewmodel.setText("Vegetables");
-//
-//            viewmodel.setText_one("867 views");
-//            viewmodel.setImg1("2");
-//
-//
-//          marketClassModelList.add(viewmodel);
-//
-//        }
-//
-//        recyclerView.setLayoutManager(new LinearLayoutManager(Main_Category.this));
-//
-//        adapter =  new MarketClassAdapter(Main_Category.this,marketClassModelList);
-//        recyclerView.setAdapter(adapter);
-
 
     }
     public void market(){
@@ -146,13 +109,12 @@ public class Main_Category extends AppCompatActivity {
                             JSONObject jsonObject = array.getJSONObject(i);
 
                             name = jsonObject.getString("name");
-                            //des = jsonObject.getString("view_count");
+                            view_count = jsonObject.getString("view_count");
                             img = jsonObject.getString("logo");
                             id = jsonObject.getString("id");
 
-                            view_count = "20";
-//                            Log.i("juioyfgiwuuihyoihoijsoi",name.toString());
-//                            Toast.makeText(Main_Category.this, img.toString(), Toast.LENGTH_SHORT).show();
+//                            view_count = "20";
+
 
                             MarketClassModel viewmodel = new MarketClassModel();
 
@@ -189,9 +151,7 @@ public class Main_Category extends AppCompatActivity {
 
             }
 
-//
-//
-//        }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {

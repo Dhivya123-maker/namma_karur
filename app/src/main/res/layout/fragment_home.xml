@@ -11,11 +11,11 @@
     android:orientation="vertical"
     tools:context=".HomeClass.Home"
     >
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawerr_layout_home"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:openDrawer="start">
+<!--    <androidx.drawerlayout.widget.DrawerLayout-->
+<!--        android:id="@+id/drawerr_layout_home"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        tools:openDrawer="start">-->
 
         <ScrollView
             android:layout_width="match_parent"
@@ -130,14 +130,7 @@
 
                         </androidx.recyclerview.widget.RecyclerView>
 
-                        <!--            <ImageView-->
-                        <!--                android:layout_width="wrap_content"-->
-                        <!--                android:layout_height="100dp"-->
-                        <!--                android:layout_marginStart="20dp"-->
-                        <!--                android:layout_marginTop="15dp"-->
-                        <!--                android:layout_marginEnd="20dp"-->
-                        <!--                android:scaleType="fitXY"-->
-                        <!--                android:src="@drawable/ban" />-->
+
 
 
                         <ImageView
@@ -194,25 +187,6 @@
                         </RelativeLayout>
 
 
-                        <!--            <androidx.appcompat.widget.SearchView-->
-                        <!--                android:id="@+id/search_home"-->
-                        <!--                android:layout_width="match_parent"-->
-                        <!--                android:layout_height="45dp"-->
-                        <!--                android:layout_marginStart="25dp"-->
-                        <!--                android:layout_marginTop="20dp"-->
-                        <!--                android:layout_marginEnd="25dp"-->
-                        <!--                android:background="@drawable/bg"-->
-                        <!--                android:backgroundTint="@color/white"-->
-                        <!--                android:clickable="true"-->
-                        <!--                android:layoutDirection="rtl"-->
-                        <!--                app:iconifiedByDefault="false"-->
-                        <!--                app:queryBackground="@color/white"-->
-                        <!--                app:queryHint="search"-->
-
-
-                        <!--                >-->
-
-                        <!--            </androidx.appcompat.widget.SearchView>-->
 
                     </LinearLayout>
 
@@ -231,31 +205,6 @@
 
 
 
-                    <!--        <com.smarteist.autoimageslider.SliderView-->
-                    <!--            android:id="@+id/slider_top"-->
-                    <!--            android:layout_width="match_parent"-->
-                    <!--            android:layout_height="150dp"-->
-                    <!--            android:layout_below="@id/grey_lnr"-->
-                    <!--            android:layout_centerInParent="true"-->
-                    <!--            android:layout_marginStart="10dp"-->
-                    <!--            android:layout_marginTop="20dp"-->
-                    <!--            android:layout_marginEnd="10dp"-->
-                    <!--            android:layout_marginBottom="10dp"-->
-                    <!--            android:background="@drawable/silder"-->
-                    <!--            app:sliderAnimationDuration="600"-->
-                    <!--            app:sliderAutoCycleDirection="back_and_forth"-->
-                    <!--            app:sliderIndicatorAnimationDuration="600"-->
-                    <!--            app:sliderIndicatorEnabled="true"-->
-                    <!--            app:sliderIndicatorGravity="center_horizontal|bottom"-->
-                    <!--            app:sliderIndicatorMargin="15dp"-->
-                    <!--            app:sliderIndicatorOrientation="horizontal"-->
-                    <!--            app:sliderIndicatorPadding="3dp"-->
-                    <!--            app:sliderIndicatorRadius="2dp"-->
-                    <!--            app:sliderIndicatorSelectedColor="@color/purple_700"-->
-                    <!--            app:sliderIndicatorUnselectedColor="#808080"-->
-                    <!--            app:sliderScrollTimeInSec="1" />-->
-
-
                     <RelativeLayout
                         android:id="@+id/insideMainHome"
                         android:layout_width="match_parent"
@@ -272,71 +221,6 @@
 
 
 
-
-                        <!--            <LinearLayout-->
-                        <!--                android:id="@+id/see_less_layout"-->
-                        <!--                android:layout_width="match_parent"-->
-                        <!--                android:layout_height="wrap_content"-->
-                        <!--                android:layout_below="@id/layoutRow4"-->
-                        <!--                android:gravity="center"-->
-
-                        <!--                android:orientation="vertical"-->
-                        <!--                android:layout_marginTop="10dp">-->
-
-                        <!--                <ImageView-->
-                        <!--                    android:id="@+id/see_less_image"-->
-                        <!--                    android:layout_width="30dp"-->
-                        <!--                    android:layout_height="30dp"-->
-                        <!--                    android:layout_gravity="center"-->
-                        <!--                    android:src="@drawable/ic_baseline_keyboard_arrow_down_24">-->
-
-                        <!--                </ImageView>-->
-
-                        <!--                <TextView-->
-                        <!--                    android:id="@+id/see_less_text"-->
-                        <!--                    android:layout_width="wrap_content"-->
-                        <!--                    android:layout_height="wrap_content"-->
-                        <!--                    android:text="See Less"-->
-                        <!--                    android:layout_gravity="center"-->
-                        <!--                    android:textColor="#4c9a2a">-->
-
-                        <!--                </TextView>-->
-
-                        <!--            </LinearLayout>-->
-
-                        <!--            <ImageView-->
-                        <!--                android:id="@+id/card_view1"-->
-                        <!--                android:layout_width="wrap_content"-->
-                        <!--                android:layout_height="150dp"-->
-                        <!--                android:layout_below="@id/see_more_layout"-->
-                        <!--                android:layout_marginTop="20dp"-->
-                        <!--                android:src="@drawable/seo">-->
-
-                        <!--            </ImageView>-->
-
-                        <!--            <com.smarteist.autoimageslider.SliderView-->
-                        <!--                android:id="@+id/slider_bottom1"-->
-                        <!--                android:layout_width="match_parent"-->
-                        <!--                android:layout_height="150dp"-->
-                        <!--                android:layout_below="@id/see_more_layout"-->
-                        <!--                android:layout_centerInParent="true"-->
-                        <!--                android:layout_marginStart="10dp"-->
-                        <!--                android:layout_marginTop="20dp"-->
-                        <!--                android:layout_marginEnd="10dp"-->
-                        <!--                android:layout_marginBottom="10dp"-->
-                        <!--                android:background="@drawable/silder"-->
-                        <!--                app:sliderAnimationDuration="600"-->
-                        <!--                app:sliderAutoCycleDirection="back_and_forth"-->
-                        <!--                app:sliderIndicatorAnimationDuration="600"-->
-                        <!--                app:sliderIndicatorEnabled="true"-->
-                        <!--                app:sliderIndicatorGravity="center_horizontal|bottom"-->
-                        <!--                app:sliderIndicatorMargin="15dp"-->
-                        <!--                app:sliderIndicatorOrientation="horizontal"-->
-                        <!--                app:sliderIndicatorPadding="3dp"-->
-                        <!--                app:sliderIndicatorRadius="2dp"-->
-                        <!--                app:sliderIndicatorSelectedColor="@color/purple_700"-->
-                        <!--                app:sliderIndicatorUnselectedColor="#808080"-->
-                        <!--                app:sliderScrollTimeInSec="1" />-->
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/category"
@@ -604,7 +488,7 @@
 
             </RelativeLayout>
         </ScrollView>
-    </androidx.drawerlayout.widget.DrawerLayout>
+
 </LinearLayout>
 
 

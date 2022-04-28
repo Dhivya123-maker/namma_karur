@@ -29,6 +29,8 @@ import com.e.login.ChatFeature;
 import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.HomeClass.Home;
+import com.e.login.JobsClass.Jobs;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
 import com.e.login.SignUpActivity;
@@ -63,8 +65,8 @@ public class Blood_One extends AppCompatActivity {
 
         Intent intent = getIntent();
         data = intent.getStringExtra("cat");
-        //  Toast.makeText(Blood_One.this, data, Toast.LENGTH_SHORT).show();
-//        data1 = intent.getStringExtra("id");
+
+
         BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_blood1);
         btnNav.setOnNavigationItemSelectedListener(navListener);
 
@@ -264,8 +266,8 @@ public class Blood_One extends AppCompatActivity {
 
             switch (id) {
                 case R.id.nav_home:
-                    fragment = new Fragment_Home();
-                    break;
+                    Intent intent = new Intent(Blood_One.this, Home.class);
+                    startActivity(intent);
                 case R.id.nav_tree:
                     fragment = new InformationFragment();
                     break;

@@ -28,6 +28,8 @@ import com.e.login.BaseApi.Api;
 import com.e.login.GovtClass.GovtActivity;
 import com.e.login.ChatFeature;
 import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.HomeClass.Home;
+import com.e.login.Profile;
 import com.e.login.info_Class.InformationFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.MarketListClass.MarketActivity;
@@ -97,7 +99,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
         Intent intent = getIntent();
         data3 = intent.getStringExtra("cat");
 
-//        Toast.makeText(getApplicationContext(), data3, Toast.LENGTH_SHORT).show();
+
 
 
 
@@ -200,8 +202,8 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
             switch (id) {
                 case R.id.nav_home:
-                    fragment = new Fragment_Home();
-                    break;
+                    Intent in=new Intent(ShopScreen_Class.this, Home.class);
+                    startActivity(in);
                 case R.id.nav_tree:
                     fragment = new InformationFragment();
                     break;
@@ -288,10 +290,6 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
                 adapter =  new ShopClassAdapter(ShopScreen_Class.this,shop_model);
                 adapter.setOnItemClickListener(ShopScreen_Class.this);
                 recyclerView.setAdapter(adapter);
-
-
-
-
 
 
 
@@ -396,7 +394,6 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
 
 
-
             }
 
 
@@ -491,10 +488,6 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
 
 
-
-
-
-
             }
 
 
@@ -570,8 +563,6 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
 
 
-
-
                         shop_model.add(model);
 
 
@@ -586,11 +577,6 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
                 adapter =  new ShopClassAdapter(ShopScreen_Class.this,shop_model);
                 adapter.setOnItemClickListener(ShopScreen_Class.this);
                 recyclerView.setAdapter(adapter);
-
-
-
-
-
 
 
             }
@@ -742,10 +728,6 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
 
 //                        view_count = jsonObject.getString("view_count") ;
-//
-
-
-
 
                         ShopModel model = new ShopModel();
 
@@ -774,6 +756,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
                 adapter =  new ShopClassAdapter(ShopScreen_Class.this,shop_model);
                 adapter.setOnItemClickListener(ShopScreen_Class.this);
                 recyclerView.setAdapter(adapter);
+
 
 
 
@@ -872,9 +855,6 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
         String n_id = model.getNid();
         String cat = model.getCategory();
 
-//        Toast.makeText(getApplicationContext(), cat, Toast.LENGTH_SHORT).show();
-//        Toast.makeText(getApplicationContext(), data3, Toast.LENGTH_SHORT).show();
-
 
 
         if (data3.equals("MarketCatalog"))
@@ -896,8 +876,6 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
         }
 
         else
-//        (data3.equals("ShopCatalog") || data3.equals("ServiceCatalog") ||data3.equals("EducationCatalog") ||data3.equals("TransportCatalog")
-//                ||data3.equals("HospitalCatalog") ||data3.equals("EventCatalog") ||data3.equals("HotelCatalog")  ||data3.equals("BankCatalog"))
         {
             Intent intent = new Intent(ShopScreen_Class.this, ShopsScreenFragment.class);
             intent.putExtra("list", cat);
@@ -912,40 +890,7 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
     }
 
-//        public  void dialog(){
-//        dialog.setContentView(R.layout.ambulance_call_recycle);
-//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//
-//        TextView txt = dialog.findViewById(R.id.primary_con_txt);
-//        TextView txt1 = dialog.findViewById(R.id.sec_con_txt);
-//        ImageView img = dialog.findViewById(R.id.primary_con_img);
-//        ImageView img1 = dialog.findViewById(R.id.sec_img);
-//            Button btn = dialog.findViewById(R.id.cancel_buttonn);
-//
-//
-//        img.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                makePhoneCall();
-//            }
-//        });
-//            img1.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    makePhoneCall_one();
-//                }
-//            });
-//            btn.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//
-//                    dialog.cancel();
-//                }
-//            });
-//        dialog.show();
-//
-//        }
+
 
 }
 

@@ -26,6 +26,8 @@ import com.e.login.BaseApi.Api;
 import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.HomeClass.Home;
+import com.e.login.JobsClass.Jobs;
 import com.e.login.NewsClass.NewsOneModel;
 
 
@@ -93,8 +95,6 @@ public class View_Blog extends AppCompatActivity {
             public void onResponse(JSONObject response) {
 
 
-//                Log.i("00000001111",response.toString());
-//                Toast.makeText(View_Breaking.this, response.toString(), Toast.LENGTH_SHORT).show();
 
                 try {
 
@@ -157,9 +157,7 @@ public class View_Blog extends AppCompatActivity {
 
             }
 
-//
-//
-//        }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -200,8 +198,8 @@ public class View_Blog extends AppCompatActivity {
 
             switch (id) {
                 case R.id.nav_home:
-                    fragment = new Fragment_Home();
-                    break;
+                    Intent intent = new Intent(View_Blog.this, Home.class);
+                    startActivity(intent);
                 case R.id.nav_tree:
                     fragment = new InformationFragment();
                     break;

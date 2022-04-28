@@ -29,6 +29,8 @@ import com.e.login.ChatFeature;
 import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.HomeClass.Home;
+import com.e.login.Profile;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
 import com.e.login.info_Class.InformationFragment;
@@ -128,22 +130,22 @@ public class OfferActivity extends AppCompatActivity{
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void offers() {
 
-        LocalDateTime myDateObj = LocalDateTime.now();
-        System.out.println("Before formatting: " + myDateObj);
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-
-        String formattedDate = myDateObj.format(myFormatObj);
-        System.out.println("After formatting: " + formattedDate);
-
-
-
-        String stringDate = "2022-04-27T10:21:00.000000Z";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-
-        OffsetDateTime odt = OffsetDateTime.parse ( "2022-04-27T10:21:00.000000Z" , DateTimeFormatter.ofPattern ( "yyyy-MM-dd HH:mm:ss.SSSX" ) ) ;
-
-        LocalDateTime today = LocalDateTime.parse("2022-04-27T10:21:00.000000Z");
-        System.out.println("today"+odt);
+//        LocalDateTime myDateObj = LocalDateTime.now();
+//        System.out.println("Before formatting: " + myDateObj);
+//        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+//
+//        String formattedDate = myDateObj.format(myFormatObj);
+//        System.out.println("After formatting: " + formattedDate);
+//
+//
+//
+//        String stringDate = "2022-04-27T10:21:00.000000Z";
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+//
+//        OffsetDateTime odt = OffsetDateTime.parse ( "2022-04-27T10:21:00.000000Z" , DateTimeFormatter.ofPattern ( "yyyy-MM-dd HH:mm:ss.SSSX" ) ) ;
+//
+//        LocalDateTime today = LocalDateTime.parse("2022-04-27T10:21:00.000000Z");
+//        System.out.println("today"+odt);
 
 
         String url = api + "offer-home-page";
@@ -344,8 +346,8 @@ public class OfferActivity extends AppCompatActivity{
 
             switch (id) {
                 case R.id.nav_home:
-                    fragment = new Fragment_Home();
-                    break;
+                    Intent in=new Intent(OfferActivity.this, Home.class);
+                    startActivity(in);
                 case R.id.nav_tree:
                     fragment = new InformationFragment();
                     break;

@@ -102,9 +102,6 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
 
 
 
-//        String token = FirebaseInstanceId.getInstance().getToken();
-//        Log.i("Device ID: ",token);
-
         logout = findViewById(R.id.logout);
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

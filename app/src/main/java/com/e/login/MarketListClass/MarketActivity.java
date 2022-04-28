@@ -1,6 +1,8 @@
 package com.e.login.MarketListClass;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -22,12 +25,20 @@ import com.android.volley.toolbox.Volley;
 import com.e.login.BusTimeClass.BusTimeAdapter;
 import com.e.login.BusTimeClass.BusTimeModel;
 import com.e.login.BusTimeClass.Bus_TimeActivity;
+import com.e.login.ChatFeature;
+import com.e.login.Help_Class.Helpline;
+import com.e.login.HomeClass.Home;
 import com.e.login.MarketCatClass.Main_Category;
 import com.e.login.MarketCatClass.MarketClassAdapter;
 import com.e.login.MarketCatClass.MarketClassModel;
+import com.e.login.QrCodeFragment;
 import com.e.login.R;
+import com.e.login.ShopClass.ShopScreen_Class;
+import com.e.login.ShopscreenClass.ShopsScreenFragment;
 import com.e.login.fragment_dialog.BottomSheetFragment_filter;
+import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -52,21 +63,14 @@ public class MarketActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
-//
-//        filter = findViewById(R.id.market_list_filter);
-//        filter.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                com.e.login.fragment_dialog.BottomSheetFragment_filter fragment = new BottomSheetFragment_filter();
-//                fragment.show(getSupportFragmentManager(), TAG);
-//            }
-//        });
+
         Intent intent = getIntent();
 
         id = intent.getStringExtra("id");
 
 
-
+        BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_shops);
+        btnNav.setOnNavigationItemSelectedListener(navListener);
 
         recyclerView =findViewById(R.id.market_veg_screen);
 
@@ -132,6 +136,14 @@ public class MarketActivity extends AppCompatActivity {
 
                         adapter =  new MarketListAdapter(MarketActivity.this,marketListModelList);
                         recyclerView.setAdapter(adapter);
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MarketActivity.this) {
+                            @Override
+                            public boolean canScrollVertically() {
+                                return false;
+                            }
+                        };
+                        recyclerView.setLayoutManager(linearLayoutManager);
+
 
 
                     }else{
@@ -150,7 +162,6 @@ public class MarketActivity extends AppCompatActivity {
             }
 
 
-//        }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -171,5 +182,41 @@ public class MarketActivity extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
     }
 
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+
+        @SuppressLint("NonConstantResourceId")
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            int id = item.getItemId();
+            Fragment fragment = null;
+
+            switch (id) {
+                case R.id.nav_home:
+                    Intent in=new Intent(MarketActivity.this, Home.class);
+                    startActivity(in);
+                case R.id.nav_tree:
+                    fragment = new InformationFragment();
+                    break;
+                case R.id.nav_qr:
+                    fragment = new QrCodeFragment();
+                    break;
+                case R.id.nav_profilee:
+                    fragment = new Helpline();
+                    break;
+                case R.id.nav_notifications:
+                    fragment = new ChatFeature();
+                    break;
+
+
+            }
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, fragment).commit();
+
+            return true;
+        }
+    };
 
 }

@@ -23,6 +23,7 @@ import com.e.login.BaseApi.Api;
 import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.HomeClass.Home;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
 import com.e.login.info_Class.InformationFragment;
@@ -91,7 +92,7 @@ public class View_MoreJobs extends AppCompatActivity {
 
 
 
-                    for (int i = 0; i < jsonArray.length(); i++) {
+                    for (int i = 3; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject((i));
 
                         id = jsonObject.getString("id");
@@ -130,9 +131,7 @@ public class View_MoreJobs extends AppCompatActivity {
 
             }
 
-//
-//
-//        }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -173,8 +172,8 @@ public class View_MoreJobs extends AppCompatActivity {
 
             switch (id) {
                 case R.id.nav_home:
-                    fragment = new Fragment_Home();
-                    break;
+                    Intent intent = new Intent(View_MoreJobs.this, Home.class);
+                    startActivity(intent);
                 case R.id.nav_tree:
                     fragment = new InformationFragment();
                     break;

@@ -141,39 +141,11 @@ public class Fragment_Home extends Fragment {
 
 
 
-//        extra = root.findViewById(R.id.layoutRow4);
-//     extra_one = root.findViewById(R.id.layoutRow5);
-//     see_more = root.findViewById(R.id.see_more_layout);
-//     see_more_image = root.findViewById(R.id.see_more_image);
-//     see_more_txt = root.findViewById(R.id.see_more_text);
-//
-//     see_less = root.findViewById(R.id.see_less_layout);
-//     see_less_image = root.findViewById(R.id.see_less_image);
-//     see_less_txt =  root.findViewById(R.id.see_less_text);
      message = root.findViewById(R.id.message);
 
     bus = root.findViewById(R.id.busLayout);
-//    jobs = root.findViewById(R.id.JobLayout);
-//     ambulance = root.findViewById(R.id.AmbulanceLayout);
-//     news =  root.findViewById(R.id.NewsLayout);
-//     market = root.findViewById(R.id.MarketLayout);
+
      bell = root.findViewById(R.id.bellu);
-//    blood = root.findViewById(R.id.blood_lnr);
-//     //fun = root.findViewById(R.id.FunLayout);
-//     govt = root.findViewById(R.id.govt_lnr);
-//     bank = root.findViewById(R.id.BankLayout);
-//    // mall = root.findViewById(R.id.mall_lnr);
-//     events = root.findViewById(R.id.events_lnr);
-//     offer = root.findViewById(R.id.offer_lnr);
-//     blog = root.findViewById(R.id.Blog_Layout);
-//     more = root.findViewById(R.id.MoreLayout);
-//     services = root.findViewById(R.id.ServicesLayout);
-//     edu = root.findViewById(R.id.eduLayout);
-//     trans = root.findViewById(R.id.TransLayout);
-//     shop = root.findViewById(R.id.ShoppingLayout);
-//     hospital = root.findViewById(R.id.HospitalLayout);
-//     hotels = root.findViewById(R.id.hotel_icons);
-//     ngo = root.findViewById(R.id.ngo_lr);
 
         top_ban();
         Middle_ban();
@@ -271,52 +243,6 @@ public class Fragment_Home extends Fragment {
         adapter7 =  new ReviewsAdapter(getContext(),reviewsModelList);
         recyclerView7.setAdapter(adapter7);
         recyclerView7.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-
-
-
-
-
-
-
-
-//        see_more.setOnClickListener(new View.OnClickListener() {
-//       @Override
-//       public void onClick(View view) {
-//
-//           extra.setVisibility(View.VISIBLE);
-//           extra_one.setVisibility(View.VISIBLE);
-//           see_less.setVisibility(View.VISIBLE);
-//           see_less_txt.setVisibility(View.VISIBLE);
-//           see_less_image.setVisibility(View.VISIBLE);
-//           see_more_txt.setVisibility(View.GONE);
-//           see_more_image.setVisibility(View.GONE);
-//
-//
-//
-//
-//
-//       }
-//   });
-//
-//        see_less.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//
-//
-//                extra.setVisibility(View.GONE);
-//                extra_one.setVisibility(View.GONE);
-//                see_more_txt.setVisibility(View.VISIBLE);
-//                see_more_image.setVisibility(View.VISIBLE);
-//                see_less_txt.setVisibility(View.GONE);
-//                see_less_image.setVisibility(View.GONE);
-//
-//
-//
-//
-//            }
-//        });
-
 
 
 

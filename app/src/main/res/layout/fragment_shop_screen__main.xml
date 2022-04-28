@@ -5,8 +5,6 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:Context = ".Home"
-    android:fitsSystemWindows="true"
-    android:id="@+id/ProfileParent"
     android:background="@color/white">
 
     <RelativeLayout
@@ -85,13 +83,7 @@
 
 
         </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/bg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/bground"
-        android:backgroundTint="#4C9A2A"
-        android:layout_below="@+id/brandAndItsLocation">
+
 
 
         <LinearLayout
@@ -99,51 +91,51 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-
-            android:layout_marginTop="0dp"
-
-            android:background="@drawable/mpty">
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-
-
-            <LinearLayout
+            android:background="@drawable/mpty"
+            android:layout_below="@+id/brandAndItsLocation"
+            >
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:background="@drawable/bground"
+                android:backgroundTint="@color/white"
+
+             >
 
 
-                <TextView
-                    android:id="@+id/bus_txt_one"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginStart="20dp"
-                    android:text="முக்கிய அறிவுப்பு"
-                    android:textSize="16dp"
-                    android:visibility="gone"
-                    android:textColor="@color/black">
-
-                </TextView>
-
-
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/shop_screen"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    android:layout_marginTop="10dp"
-                    android:scaleType="centerCrop"
-                    />
+                    android:orientation="vertical">
 
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/bus_txt_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:text="முக்கிய அறிவுப்பு"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:visibility="gone">
 
-            </ScrollView>
+                    </TextView>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/shop_screen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="80dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop" />
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
 
 
 
@@ -159,7 +151,6 @@
         <!--    bottom-->
 
 
-    </RelativeLayout>
     </RelativeLayout>
 
 

@@ -21,9 +21,6 @@ public class BlogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog_fragment);
 
-//        BottomNavigationView btnNav = findViewById(R.id.bottomNavigation_blog);
-//        btnNav.setOnNavigationItemSelectedListener(navListener);
-
 
         viewPager = findViewById(R.id.viewpager_blog);
 

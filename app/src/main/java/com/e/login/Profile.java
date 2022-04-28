@@ -42,6 +42,7 @@ import com.android.volley.toolbox.Volley;
 import com.e.login.BlankFragment.Blank_Comments_Adapter;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.HomeClass.Home;
 import com.e.login.Profile_details.EducationAdapter;
 import com.e.login.Profile_details.Education_Model;
 import com.e.login.Verification.Email_OTP;
@@ -330,9 +331,10 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
 
+                Log.i("00000000",response.toString());
 
                 try {
-
+                    try {
                     profileModelList1 = new ArrayList<>();
                     profileModelList2 = new ArrayList<>();
                     profileModelList3 = new ArrayList<>();
@@ -361,15 +363,6 @@ public class Profile extends AppCompatActivity {
 
                     String dob = profile_details.getString("dob");
                     String blood = profile_details.getString("blood_group");
-                    JSONArray education = profile_details.getJSONArray("education");
-                    JSONArray experience =profile_details.getJSONArray("experience");
-                    JSONArray skills =profile_details.getJSONArray("skills");
-
-
-
-
-                    if (Success.equals("true")) {
-                        Log.i("123", msg);
 
 
                         emailtxt.setText(email);
@@ -377,6 +370,18 @@ public class Profile extends AppCompatActivity {
                         user_name.setText(namee);
                         email_verify.setText(email_verifyy);
                         contact_verify.setText(phone_verifyy);
+
+
+                    JSONArray education = profile_details.getJSONArray("education");
+                    JSONArray experience =profile_details.getJSONArray("experience");
+                    JSONArray skills =profile_details.getJSONArray("skills");
+
+
+
+
+
+
+
 
 
                         for (int i = 0; i<education.length();i++){
@@ -458,19 +463,13 @@ public class Profile extends AppCompatActivity {
                         skill_recycler.setAdapter(profileAdapter);
 
 
-//                        profile.setImageURI(Uri.parse(image));
 
 
 
-                    } else {
 
-                        Toast.makeText(Profile.this, msg, Toast.LENGTH_SHORT).show();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-
-
-
-
-
 
 
 
@@ -522,10 +521,15 @@ public class Profile extends AppCompatActivity {
             int id = item.getItemId();
             Fragment fragment = null;
 
+
             switch (id) {
                 case R.id.nav_home:
-                    fragment = new Fragment_Home();
-                    break;
+//                    fragment = new Fragment_Home();
+                    Intent in=new Intent(Profile.this, Home.class);
+                    startActivity(in);
+                    return  true;
+
+//                    break;
                 case R.id.nav_tree:
                     fragment = new InformationFragment();
                     break;
@@ -544,7 +548,7 @@ public class Profile extends AppCompatActivity {
 
             }
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layoutt, fragment).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, fragment).commit();
 
             return true;
         }

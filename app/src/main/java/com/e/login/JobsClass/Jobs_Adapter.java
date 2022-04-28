@@ -1,23 +1,17 @@
 package com.e.login.JobsClass;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.e.login.GovtClass.GovtModel;
-import com.e.login.GovtClass.NGOActivity;
-import com.e.login.HospitalClass.HospitalAdapter;
 import com.e.login.R;
-import com.e.login.ViewActivity;
 
 import java.util.List;
 
@@ -63,7 +57,7 @@ public class Jobs_Adapter extends RecyclerView.Adapter<Jobs_Adapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textView.setText(jobsModelList.get(position).getTxt());
 
-//        holder.img.setImageResource(R.drawable.india);
+
         Glide.with(context)
                 .load(jobsModelList.get(position).getImg())
                 .into(holder.img);
@@ -86,25 +80,16 @@ public class Jobs_Adapter extends RecyclerView.Adapter<Jobs_Adapter.ViewHolder> 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
-        LinearLayout lnr;
         TextView textView;
 
         ViewHolder(View itemView) {
             super(itemView);
 
             img = itemView.findViewById(R.id.india);
-            lnr = itemView.findViewById(R.id.more_linear);
+
 
             textView = itemView.findViewById(R.id.india_txt);
 
-            lnr.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(view.getContext(),View_MoreJobs.class);
-                    view.getContext().startActivity(intent);
-
-                }
-            });
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

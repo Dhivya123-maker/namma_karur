@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.e.login.R;
-import com.e.login.ViewActivity;
 
 import java.util.List;
 
@@ -56,7 +55,6 @@ public class Jobs_two_Adapter extends RecyclerView.Adapter<Jobs_two_Adapter.View
                 .into(holder.img);
 
 
-//        holder.img.setImageResource(R.drawable.ambulance);
     }
 
 

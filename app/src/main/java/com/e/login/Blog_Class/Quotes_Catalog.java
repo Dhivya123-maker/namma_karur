@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -26,6 +27,8 @@ import com.e.login.AmbulanceClass.AmbulanceModel;
 import com.e.login.ChatFeature;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.HomeClass.Home;
+import com.e.login.JobsClass.Jobs;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
 import com.e.login.info_Class.InformationFragment;
@@ -172,8 +175,8 @@ public class Quotes_Catalog extends AppCompatActivity {
 
             switch (id) {
                 case R.id.nav_home:
-                    fragment = new Fragment_Home();
-                    break;
+                    Intent intent = new Intent(Quotes_Catalog.this, Home.class);
+                    startActivity(intent);
                 case R.id.nav_tree:
                     fragment = new InformationFragment();
                     break;

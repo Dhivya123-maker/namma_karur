@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.BannerModel;
 import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.HomeClass.Home;
 import com.e.login.HomeClass.Slider_Top_Adapter;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
@@ -61,6 +63,7 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
     RecyclerView jobs_banner;
     List<BannerModel> bannerModelList;
     Slider_Top_Adapter slider_top_adapter;
+    LinearLayout lnr;
 
     RecyclerView recyclerView,all_recycle;
     @Override
@@ -70,6 +73,17 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
 
         closing_view = findViewById(R.id.closing_view);
         all_view = findViewById(R.id.all_view);
+
+        lnr = findViewById(R.id.more_linear);
+
+        lnr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(),View_MoreJobs.class);
+                view.getContext().startActivity(intent);
+
+            }
+        });
 
         BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_jobs);
         btnNav.setOnNavigationItemSelectedListener(navListener);
@@ -136,7 +150,7 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
 
 
 
-                    for (int i = 0; i < jsonArray.length(); i++) {
+                    for (int i = 0; i < 3; i++) {
                         JSONObject jsonObject1 = jsonArray.getJSONObject((i));
 
                         id = jsonObject1.getString("id");
@@ -144,7 +158,7 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
                         image = jsonObject1.getString("image");
 
 
-                        Log.i("1243w7153871",id);
+                        Log.i("1243w7153871",jsonObject1.toString());
 
 
 
@@ -267,9 +281,6 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
 
             }
 
-//
-//
-//        }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -331,8 +342,8 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
 
             switch (id) {
                 case R.id.nav_home:
-                    fragment = new Fragment_Home();
-                    break;
+                    Intent intent = new Intent(Jobs.this, Home.class);
+                    startActivity(intent);
                 case R.id.nav_tree:
                     fragment = new InformationFragment();
                     break;

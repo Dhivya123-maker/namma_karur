@@ -24,6 +24,8 @@ import com.android.volley.toolbox.Volley;
 import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.HomeClass.Home;
+import com.e.login.JobsClass.Jobs;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
 import com.e.login.info_Class.InformationFragment;
@@ -54,7 +56,7 @@ public class All_news extends AppCompatActivity {
 
         Intent intent = getIntent();
         String get_id = intent.getStringExtra("id");
-//        Toast.makeText(All_news.this, get_id, Toast.LENGTH_SHORT).show();
+
 
 
         BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_shops);
@@ -166,8 +168,8 @@ public class All_news extends AppCompatActivity {
 
             switch (id) {
                 case R.id.nav_home:
-                    fragment = new Fragment_Home();
-                    break;
+                    Intent intent = new Intent(All_news.this, Home.class);
+                    startActivity(intent);
                 case R.id.nav_tree:
                     fragment = new InformationFragment();
                     break;

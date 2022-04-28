@@ -46,11 +46,14 @@ import com.e.login.BaseApi.Api;
 import com.e.login.HelperClass.ViewPagerAdapter;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
+import com.e.login.HomeClass.Home;
 import com.e.login.Home_Fragment_Class;
 import com.e.login.ChatFeature;
 import com.e.login.MainActivity;
+import com.e.login.Profile;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
+import com.e.login.ShopClass.ShopScreen_Class;
 import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -94,12 +97,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
     SliderView sliderView;
     public static final String TAG = "bottom_sheet";
 
-    int[] images = {R.drawable.first_one,
-            R.drawable.banner,
-            R.drawable.bank_banner,
-            R.drawable.banner,
-            R.drawable.first_one,
-    };
+
     String id = null;
     String banner_type,banner_type_id,banner_cat_id,banner_url,banner_img,view_count;
     String logo = null;
@@ -173,7 +171,6 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
         Intent intent = getIntent();
         data = intent.getStringExtra("name");
-//     data1 = intent.getStringExtra("id");
         data2 = intent.getStringExtra("list");
         data3 = intent.getStringExtra("id");
 
@@ -341,6 +338,8 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
             visible_lnr.setVisibility(View.VISIBLE);
 
 
+        }else if(data2.equals("ATMCatalog")){
+
         }
 
 
@@ -381,8 +380,10 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
             switch (id) {
                 case R.id.nav_home:
-                    fragment = new Fragment_Home();
-                    break;
+//                    fragment = new Fragment_Home();
+//                    break;
+                    Intent in=new Intent(ShopsScreenFragment.this, Home.class);
+                    startActivity(in);
                 case R.id.nav_tree:
                     fragment = new InformationFragment();
                     break;
@@ -477,6 +478,15 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
                 recyclerView.setAdapter(adapter);
 
 
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ShopsScreenFragment.this) {
+                    @Override
+                    public boolean canScrollVertically() {
+                        return false;
+                    }
+                };
+                recyclerView.setLayoutManager(linearLayoutManager);
+
+
 
             }
 
@@ -523,8 +533,6 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
 
 
-//
-
                 try {
                     JSONArray res = response.getJSONArray("data");
 
@@ -537,14 +545,11 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
                         JSONObject jsonObject = res.getJSONObject(i);
 
 
-//                        Toast.makeText(ShopsScreenFragment.this, jsonObject.toString(), Toast.LENGTH_SHORT).show();
-//                        Log.i("jbfhusduycfhb",jsonObject.toString());
-
                         id = jsonObject.getString("id");
                         image = jsonObject.getString("image");
                         name = jsonObject.getString("name");
                         address = jsonObject.getString("address");
-                        loc = jsonObject.getString("location");
+//                        loc = jsonObject.getString("location");
 
 
 
@@ -565,12 +570,22 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
 
                         shop_screen_model.add(viewmodel);
+                        Log.i("wdhtouiwrytiwprugt",shop_screen_model.toString());
 
 
                         recyclerView.setLayoutManager(new LinearLayoutManager(ShopsScreenFragment.this));
                         adapter =  new ShopScreenAdapter(ShopsScreenFragment.this,shop_screen_model);
                         //adapter.setOnItemClickListener(ShopsScreenFragment.this);
                         recyclerView.setAdapter(adapter);
+
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ShopsScreenFragment.this) {
+                            @Override
+                            public boolean canScrollVertically() {
+                                return false;
+                            }
+                        };
+                        recyclerView.setLayoutManager(linearLayoutManager);
+
 
                     }
 

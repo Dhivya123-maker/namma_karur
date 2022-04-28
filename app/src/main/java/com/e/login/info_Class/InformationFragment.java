@@ -42,10 +42,7 @@ import java.util.Map;
 
 
 public class InformationFragment extends Fragment {
-//    private InfoPagerFragmentAdapter infoPagerFragmentAdapter;
-//    private ViewPager viewPager;
-//    private TabLayout tabLayout;
-//
+
 
 
     List<InfoModel> infoModelList;

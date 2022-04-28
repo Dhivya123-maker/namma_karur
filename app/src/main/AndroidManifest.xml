@@ -214,7 +214,7 @@
             android:name=".GovtClass.GovtActivity"
             android:exported="false" />
         <activity
-            android:name=".ViewActivity"
+            android:name=".JobsClass.ViewActivity"
             android:exported="false" />
         <activity
             android:name=".JobsClass.Add"

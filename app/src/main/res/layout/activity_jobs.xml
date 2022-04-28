@@ -164,8 +164,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:layout_marginTop="15dp"
-                            android:scaleType="fitXY"
-                            android:layout_marginEnd="10dp"/>
+                            android:layout_marginEnd="10dp"
+                            android:scaleType="fitXY" />
 
 
                 <TextView
@@ -179,17 +179,52 @@
                     android:textStyle="bold"/>
 
 
-
-
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/category_job_screen"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginEnd="10dp"
-                            android:scaleType="centerCrop"
-                            />
+                            android:orientation="horizontal">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/category_job_screen"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="10dp"
+                                />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="end"
+                            android:orientation="horizontal">
+                            <LinearLayout
+                                android:id="@+id/more_linear"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="end"
+                                android:layout_marginEnd="10dp"
+                                android:layout_marginTop="10dp"
+                                android:orientation="vertical">
+                                <ImageView
+
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:src="@drawable/hand"
+
+                                    />
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="end"
+                                    android:layout_marginEnd="20dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="11dp"
+                                    android:text="more"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"

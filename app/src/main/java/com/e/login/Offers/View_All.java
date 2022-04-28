@@ -1,6 +1,8 @@
 package com.e.login.Offers;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,10 +22,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.BaseApi.Api;
+import com.e.login.ChatFeature;
+import com.e.login.Help_Class.Helpline;
+import com.e.login.HomeClass.Home;
 import com.e.login.NewsClass.NewsOneModel;
 import com.e.login.NewsClass.View_Breaking;
+import com.e.login.QrCodeFragment;
 import com.e.login.R;
+import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -58,15 +67,13 @@ public class View_All extends AppCompatActivity {
         Api a = new Api();
         api = a.getBASE_URL();
 
-
+        BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_shops);
+        btnNav.setOnNavigationItemSelectedListener(navListener);
 
         Intent intent = getIntent();
         data = intent.getStringExtra("cat1");
         data1 =  intent.getStringExtra("id");
 
-
-//        Toast.makeText(View_All.this, data, Toast.LENGTH_SHORT).show();
-//        Toast.makeText(View_All.this, data1, Toast.LENGTH_SHORT).show();
 
         if(data.equals("top_offers")){
             String url = api+"top-offer-full-page";
@@ -93,8 +100,6 @@ public class View_All extends AppCompatActivity {
             public void onResponse(JSONObject response) {
 
 
-//            Log.i("123",response.toString());
-//                Toast.makeText(View_All.this, response.toString(), Toast.LENGTH_SHORT).show();
 
                 try {
 
@@ -110,8 +115,6 @@ public class View_All extends AppCompatActivity {
 
                     if(Success.equals("true")){
 
-//                        Log.i("456",jsonArray.toString());
-//                        Toast.makeText(View_All.this, jsonArray.toString(), Toast.LENGTH_SHORT).show();
 
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -161,9 +164,7 @@ public class View_All extends AppCompatActivity {
 
             }
 
-//
-//
-//        }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -192,4 +193,41 @@ public class View_All extends AppCompatActivity {
         requestQueue.add(jsonObjectRequest);
 
     }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+            int id = item.getItemId();
+            Fragment fragment = null;
+
+            switch (id) {
+                case R.id.nav_home:
+                    Intent in=new Intent(View_All.this, Home.class);
+                    startActivity(in);
+                case R.id.nav_tree:
+                    fragment = new InformationFragment();
+                    break;
+                case R.id.nav_qr:
+                    fragment = new QrCodeFragment();
+                    break;
+                case R.id.nav_profilee:
+
+                    fragment = new Helpline();
+                    break;
+                case R.id.nav_notifications:
+                    fragment = new ChatFeature();
+                    break;
+
+
+            }
+
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, fragment).commit();
+
+            return true;
+        }
+    };
+
 }

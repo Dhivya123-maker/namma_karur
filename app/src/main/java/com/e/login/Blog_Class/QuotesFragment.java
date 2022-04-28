@@ -57,8 +57,7 @@ public class QuotesFragment extends Fragment {
             public void onResponse(JSONObject response) {
 
 
-//                Log.i("0000000",response.toString());
-//                Toast.makeText(getActivity(), response.toString(), Toast.LENGTH_SHORT).show();
+
 
                 try {
 

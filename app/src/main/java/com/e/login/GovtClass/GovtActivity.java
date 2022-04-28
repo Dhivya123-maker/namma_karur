@@ -51,20 +51,11 @@ public class GovtActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_govt);
 
-//        filter = findViewById(R.id.govt_filter);
-//        filter.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                com.e.login.fragment_dialog.BottomSheetFragment_filter fragment = new BottomSheetFragment_filter();
-//                fragment.show(getSupportFragmentManager(), TAG);
-//            }
-//        });
 
         Intent i = getIntent();
         get_id = i.getStringExtra("id");
 
-//        Toast.makeText(GovtActivity.this, get_id.toString(), Toast.LENGTH_SHORT).show();
-//        Log.i("jbfhusduycfhb",get_id.toString());
+
 
         String url = "http://nk.inevitabletech.email/public/api/get-ngo-govt-subcategory-list?category_id="+get_id;
 

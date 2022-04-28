@@ -55,13 +55,7 @@ import java.util.Map;
 
 public class Blog_Fragment extends Fragment  {
 
-    SliderView sliderView;
-    int[] images = {R.drawable.first_one,
-            R.drawable.banner,
-            R.drawable.bank_banner,
-            R.drawable.banner,
-            R.drawable.first_one,
-    };
+
     List<BlogModel> blogModelList;
     BlogAdapter adapter;
 

@@ -85,7 +85,7 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
             holder.lnr.setVisibility(View.GONE);
             holder.atm_lnr.setVisibility(View.VISIBLE);
 
-//            holder.filter.setVisibility(View.GONE);
+
 
 
         }else {
@@ -99,7 +99,7 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
 
             holder.lnr.setVisibility(View.VISIBLE);
             holder.atm_lnr.setVisibility(View.GONE);
-//            holder.filter.setVisibility(View.VISIBLE);
+
 
             Glide.with(context)
                     .load(shopScreenModelList.get(position).getImage())
