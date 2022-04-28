@@ -1,11 +1,13 @@
 package com.e.login.JobsClass;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +33,7 @@ public class Jobs_One_Adapter extends RecyclerView.Adapter<Jobs_One_Adapter.View
     @NonNull
     @Override
     public Jobs_One_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_fifty_three,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_fifty_four,parent,false);
 
 
         return new Jobs_One_Adapter.ViewHolder(view);
@@ -54,6 +56,8 @@ public class Jobs_One_Adapter extends RecyclerView.Adapter<Jobs_One_Adapter.View
         Glide.with(context)
                 .load(jobsOneModelList.get(position).getImg())
                 .into(holder.img);
+
+
 
 //        holder.img.setImageResource(R.drawable.ambulance);
     }
@@ -78,26 +82,28 @@ public class Jobs_One_Adapter extends RecyclerView.Adapter<Jobs_One_Adapter.View
 
         ViewHolder(View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.jobs_main);
-            img1 = itemView.findViewById(R.id.job_image);
-            img2 = itemView.findViewById(R.id.job_image1);
+            img = itemView.findViewById(R.id.jobs_main1);
+            img1 = itemView.findViewById(R.id.job_img1);
+            img2 = itemView.findViewById(R.id.job_img2);
 
-            textView = itemView.findViewById(R.id.jobb_txt);
-            txt1 = itemView.findViewById(R.id.jobb_txt_one);
-            txt2 = itemView.findViewById(R.id.job_txt_three);
-            txt3 = itemView.findViewById(R.id.job_txt_four);
-            txt4 = itemView.findViewById(R.id.job_txt_five);
+            textView = itemView.findViewById(R.id.jobb_txt1);
+            txt1 = itemView.findViewById(R.id.jobb_txt2);
+            txt2 = itemView.findViewById(R.id.job_txt3);
+            txt3 = itemView.findViewById(R.id.job_txt4);
+            txt4 = itemView.findViewById(R.id.job_txt5);
 
-//
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//
-//                    Intent intent = new Intent(view.getContext(), ViewActivity.class);
-//                    view.getContext().startActivity(intent);
-//                }
-//            });
-////
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    String cat_id = jobsOneModelList.get(position).getId();
+
+
+                    Intent intent = new Intent(view.getContext(), ViewActivity.class);
+                    intent.putExtra("cat_id",cat_id);
+                    view.getContext().startActivity(intent);
+                }
+            });
         }
 
 

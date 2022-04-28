@@ -6,8 +6,17 @@ public class Jobs_One_Model {
     private String txt2;
     private String txt3;
     private String txt4;
+    String id;
 
-    public Jobs_One_Model(String txt, String txt1, String txt2, String txt3, String txt4, String img, String img1, String img2) {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Jobs_One_Model(String txt, String txt1, String txt2, String txt3, String txt4, String img, String img1, String img2, String id) {
         this.txt = txt;
         this.txt1 = txt1;
         this.txt2 = txt2;
@@ -16,6 +25,7 @@ public class Jobs_One_Model {
         this.img = img;
         this.img1 = img1;
         this.img2 = img2;
+        this.id = id;
     }
 
     private String img;
