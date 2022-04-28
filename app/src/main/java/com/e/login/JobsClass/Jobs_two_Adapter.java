@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -92,6 +93,7 @@ public class Jobs_two_Adapter extends RecyclerView.Adapter<Jobs_two_Adapter.View
                 public void onClick(View view) {
                     int position = getAdapterPosition();
                     String cat_id = jobs_two_modelList.get(position).getCat_id();
+
 
                     Intent intent = new Intent(view.getContext(), ViewActivity.class);
                     intent.putExtra("cat_id",cat_id);

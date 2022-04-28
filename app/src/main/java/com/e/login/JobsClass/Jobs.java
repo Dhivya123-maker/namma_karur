@@ -47,7 +47,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClickListener {
+public class Jobs extends AppCompatActivity  {
 
 
     Button add;
@@ -65,14 +65,13 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
     Slider_Top_Adapter slider_top_adapter;
     LinearLayout lnr;
 
-    RecyclerView recyclerView,all_recycle;
+    RecyclerView recyclerView,recyclerView1,all_recycle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jobs);
 
         closing_view = findViewById(R.id.closing_view);
-        all_view = findViewById(R.id.all_view);
 
         lnr = findViewById(R.id.more_linear);
 
@@ -105,16 +104,6 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
             }
         });
 
-        all_view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Jobs.this,Closing_All.class);
-                intent.putExtra("id",id);
-                intent.putExtra("cat1","all_jobs");
-                startActivity(intent);
-
-            }
-        });
 
 
         Intent intent = getIntent();
@@ -122,6 +111,7 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
         data1 = intent.getStringExtra("id");
 
          recyclerView =findViewById(R.id.category_job_screen);
+        recyclerView1 =findViewById(R.id.category_job2_screen);
 
       all_recycle =findViewById(R.id.category_job1_screen);
 
@@ -150,15 +140,13 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
 
 
 
-                    for (int i = 0; i < 3; i++) {
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject1 = jsonArray.getJSONObject((i));
 
                         id = jsonObject1.getString("id");
                         name = jsonObject1.getString("name");
                         image = jsonObject1.getString("image");
-
-
-                        Log.i("1243w7153871",jsonObject1.toString());
 
 
 
@@ -179,55 +167,13 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
                     adapter =  new Jobs_Adapter(Jobs.this,jobsModelList);
                     recyclerView.setAdapter(adapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(Jobs.this, LinearLayoutManager.HORIZONTAL, false));
-                    adapter.setOnItemClickListener(Jobs.this::onItemClick);
+//                    adapter.setOnItemClickListener(Jobs.this::onItemClick);
 
 
 
 
                     for (int i = 0; i < jsonArray1.length(); i++) {
-                        JSONObject jsonObject3 = jsonArray1.getJSONObject((i));
-
-                        id = jsonObject3.getString("id");
-                        j_name = jsonObject3.getString("job_name");
-                        c_name = jsonObject3.getString("company_name");
-                        address = jsonObject3.getString("address");
-                        vacancy = jsonObject3.getString("no_of_vacancy");
-                        end_date = jsonObject3.getString("apply_end_date");
-
-
-                        Jobs_two_Model viewmodel = new Jobs_two_Model();
-
-
-                        viewmodel.setTxt(j_name);
-                        viewmodel.setTxt1(c_name);
-                        viewmodel.setTxt2(address);
-                        viewmodel.setTxt3(vacancy);
-                        viewmodel.setTxt4(end_date);
-                        viewmodel.setId(id);
-
-
-
-                        jobsTwoModelList.add(viewmodel);
-                    }
-
-
-                    all_recycle.setLayoutManager(new LinearLayoutManager(Jobs.this));
-
-                    adapter2 =  new Jobs_two_Adapter(Jobs.this,jobsTwoModelList);
-                    all_recycle.setAdapter(adapter2);
-                    LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(Jobs.this) {
-                        @Override
-                        public boolean canScrollVertically() {
-                            return false;
-                        }
-                    };
-                    all_recycle.setLayoutManager(linearLayoutManager1);
-
-
-
-
-                    for (int i = 0; i < jsonArray2.length(); i++) {
-                        JSONObject jsonObject2 = jsonArray2.getJSONObject((i));
+                        JSONObject jsonObject2 = jsonArray1.getJSONObject((i));
 
                         id = jsonObject2.getString("id");
                         j_name = jsonObject2.getString("job_name");
@@ -235,7 +181,51 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
                         address = jsonObject2.getString("address");
                         vacancy = jsonObject2.getString("no_of_vacancy");
                         end_date = jsonObject2.getString("apply_end_date");
-                        category_id = jsonObject2.getString("category_id");
+
+
+                        Jobs_One_Model viewmodel = new Jobs_One_Model();
+
+
+                        viewmodel.setTxt(j_name);
+                        viewmodel.setTxt1(c_name);
+                        viewmodel.setTxt2(address);
+                        viewmodel.setTxt3(vacancy);
+                        viewmodel.setTxt4(end_date);
+                        viewmodel.setId(id);
+
+
+
+
+                        jobsOneModelList.add(viewmodel);
+
+                    }
+
+
+                    recyclerView1.setLayoutManager(new LinearLayoutManager(Jobs.this));
+
+                    adapter1=  new Jobs_One_Adapter(Jobs.this,jobsOneModelList);
+                    recyclerView1.setAdapter(adapter1);
+                    LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(Jobs.this) {
+                        @Override
+                        public boolean canScrollVertically() {
+                            return false;
+                        }
+                    };
+                    recyclerView1.setLayoutManager(linearLayoutManager1);
+
+
+
+
+                    for (int i = 0; i < jsonArray2.length(); i++) {
+                        JSONObject jsonObject3 = jsonArray2.getJSONObject((i));
+
+                        id = jsonObject3.getString("id");
+                        j_name = jsonObject3.getString("job_name");
+                        c_name = jsonObject3.getString("company_name");
+                        address = jsonObject3.getString("address");
+                        vacancy = jsonObject3.getString("no_of_vacancy");
+                        end_date = jsonObject3.getString("apply_end_date");
+                        category_id = jsonObject3.getString("category_id");
 
 
                         Jobs_two_Model viewmodel = new Jobs_two_Model();
@@ -247,7 +237,9 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
                         viewmodel.setTxt3(vacancy);
                         viewmodel.setTxt4(end_date);
                         viewmodel.setId(id);
-                        viewmodel.setCat_id(category_id);
+//                        viewmodel.setCat_id(category_id);
+                        viewmodel.setCat_id(id);
+
 
 
 
@@ -470,13 +462,5 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
     }
 
 
-    @Override
-    public void onItemClick(int position) {
 
-        Intent intent = new Intent(Jobs.this,Closing_All.class);
-        intent.putExtra("cat1","category");
-        intent.putExtra("id",id);
-        startActivity(intent);
-
-    }
 }

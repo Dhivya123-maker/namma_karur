@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -19,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.e.login.BaseApi.Api;
 import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
@@ -43,6 +45,13 @@ public class ViewActivity extends AppCompatActivity {
     List<View_Activity_Model> view_activity_modelList;
     View_activity_Adapter view_activity_adapter;
     String id,j_name,comp_name,address,gender,vacancy,exp,age,salary,start,end,abt;
+    String data1,data2;
+    String api;
+    List<Jobs_two_Model> jobsTwoModelList;
+    Jobs_two_Adapter adapter;
+    TextView break_txt;
+
+    String name,image,c_name,end_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +59,21 @@ public class ViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view);
 
         recyclerView = findViewById(R.id.job_view);
+        break_txt = findViewById(R.id.break_txt);
+
+        Api a = new Api();
+        api = a.getBASE_URL();
+
+        Intent intent = getIntent();
+        data = intent.getStringExtra("cat_id");
+
+
+
 
 
         full_page();
-        Intent intent = getIntent();
-        data = intent.getStringExtra("cat_id");
+
+
 
         BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_profile);
         btnNav.setOnNavigationItemSelectedListener(navListener);
@@ -97,7 +116,9 @@ public class ViewActivity extends AppCompatActivity {
 
 
     public  void full_page(){
-        String url = "http://nk.inevitabletech.email/public/api/view-job-details?job_id=1";
+        String url = "http://nk.inevitabletech.email/public/api/view-job-details?job_id="+data;
+        Log.i("wdlhfo2",url);
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @SuppressLint("CheckResult")
             @Override
@@ -152,10 +173,7 @@ public class ViewActivity extends AppCompatActivity {
 
 
 
-
                     view_activity_modelList.add(viewmodel);
-
-
 
 
 
@@ -204,4 +222,5 @@ public class ViewActivity extends AppCompatActivity {
 
 
     }
+
 }

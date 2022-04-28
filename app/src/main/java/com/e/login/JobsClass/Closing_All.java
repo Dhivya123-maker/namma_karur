@@ -44,8 +44,8 @@ public class Closing_All extends AppCompatActivity {
     List<Jobs_two_Model> jobsTwoModelList;
     Jobs_two_Adapter adapter;
     RecyclerView recyclerView;
-    String id,name,image,j_name,c_name,vacancy,address,end_date;
-    String data,data1;
+    String id,name,image,j_name,c_name,vacancy,address,end_date,category_id;
+    String data,data1,data2;
     TextView break_txt;
     String api;
 
@@ -63,20 +63,26 @@ public class Closing_All extends AppCompatActivity {
         Intent intent = getIntent();
         data = intent.getStringExtra("id");
         data1 = intent.getStringExtra("cat1");
+        data2 = intent.getStringExtra("cat_id");
+
+
+
+
 
         if(data1.equals("closing_jobs")){
             String url = api+"view-closing-full-page";
             all_close(url);
            break_txt.setText("Closing Jobs");
         }
-        else if(data1.equals("all_jobs")){
-            String url = api+"view-job-details?job_id="+data;
-            all_close(url);
-            break_txt.setText("All Jobs");
-
-        }
+//        else if(data1.equals("all_jobs")){
+//            String url = api+"view-job-details?job_id="+data;
+//            all_close(url);
+//            break_txt.setText("All Jobs");
+//
+//        }
         else if(data1.equals("category")){
-            String url = api+"category-Filter-Job?category_id=1";
+            String url = api+"category-Filter-Job?category_id="+data2;
+            Log.i("kjsagrfieuwrg",url);
             all_cls(url);
             break_txt.setText("Categories");
         }
@@ -97,42 +103,44 @@ public class Closing_All extends AppCompatActivity {
 
 
 
+                Log.i("nhdfldshog",response.toString());
 
                 try {
 
 
                     jobsTwoModelList = new ArrayList<>();
 
-                    JSONObject jsonObject = response.getJSONObject("data");
-                    id = jsonObject.getString("id");
-                    j_name = jsonObject.getString("job_name");
-                    c_name = jsonObject.getString("company_name");
-                    address = jsonObject.getString("address");
-                    vacancy = jsonObject.getString("no_of_vacancy");
-                    end_date = jsonObject.getString("apply_end_date");
-
-
-                    Log.i("1",id);
-                    Log.i("2",j_name);
-                    Log.i("3",c_name);
-                    Log.i("4",address);
-                    Log.i("5",vacancy);
-                    Log.i("6",end_date);
-
-                    Jobs_two_Model viewmodel = new Jobs_two_Model();
-
-
-                    viewmodel.setTxt(j_name);
-                    viewmodel.setTxt1(c_name);
-                    viewmodel.setTxt2(address);
-                    viewmodel.setTxt3(vacancy);
-                    viewmodel.setTxt4(end_date);
+                    JSONArray jsonArray = response.getJSONArray("data");
 
 
 
-                    jobsTwoModelList.add(viewmodel);
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject jsonObject2 = jsonArray.getJSONObject((i));
+
+                        id = jsonObject2.getString("id");
+                        j_name = jsonObject2.getString("job_name");
+                        c_name = jsonObject2.getString("company_name");
+                        address = jsonObject2.getString("address");
+                        vacancy = jsonObject2.getString("no_of_vacancy");
+                        end_date = jsonObject2.getString("apply_end_date");
+
+                        Jobs_two_Model viewmodel = new Jobs_two_Model();
 
 
+                        viewmodel.setTxt(j_name);
+                        viewmodel.setTxt1(c_name);
+                        viewmodel.setTxt2(address);
+                        viewmodel.setTxt3(vacancy);
+                        viewmodel.setTxt4(end_date);
+                        viewmodel.setCat_id(id);
+
+
+
+                        jobsTwoModelList.add(viewmodel);
+
+
+                    }
 
 
 
@@ -202,13 +210,14 @@ public class Closing_All extends AppCompatActivity {
             public void onResponse(JSONObject response) {
 
 
+                Log.i("jhwidhtowie",response.toString());
 
 
                 try {
 
-
                     jobsTwoModelList = new ArrayList<>();
                     JSONArray jsonArray = response.getJSONArray("data");
+
 
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject((i));
@@ -218,8 +227,7 @@ public class Closing_All extends AppCompatActivity {
                         address = jsonObject.getString("address");
                         vacancy = jsonObject.getString("no_of_vacancy");
                         end_date = jsonObject.getString("apply_end_date");
-
-
+                        category_id = jsonObject.getString("category_id");
 
 
 
@@ -231,10 +239,11 @@ public class Closing_All extends AppCompatActivity {
                         viewmodel.setTxt2(address);
                         viewmodel.setTxt3(vacancy);
                         viewmodel.setTxt4(end_date);
-
+//                        viewmodel.setCat_id(category_id);
 
 
                         jobsTwoModelList.add(viewmodel);
+                        Log.i("jonsmodelltis",jsonObject.toString());
 
                     }
 

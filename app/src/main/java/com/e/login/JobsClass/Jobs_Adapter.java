@@ -1,11 +1,13 @@
 package com.e.login.JobsClass;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -96,12 +98,24 @@ public class Jobs_Adapter extends RecyclerView.Adapter<Jobs_Adapter.ViewHolder> 
                 public void onClick(View view) {
 
 
-                    if (mListener != null) {
-                        int position = getAdapterPosition();
-                        if (position != RecyclerView.NO_POSITION) {
-                            mListener.onItemClick(position);
-                        }
-                    }
+//                    if (mListener != null) {
+//                        int position = getAdapterPosition();
+//                        if (position != RecyclerView.NO_POSITION) {
+//                            mListener.onItemClick(position);
+//                        }
+//                    }
+                    int position = getAdapterPosition();
+                    String cat_id = jobsModelList.get(position).getId();
+
+
+
+                    Intent intent = new Intent(view.getContext(),Closing_All.class);
+                    intent.putExtra("cat1","category");
+//                    intent.putExtra("id",cat_id);
+                    intent.putExtra("cat_id",cat_id);
+
+                    view.getContext().startActivity(intent);
+
                 }
             });
 
