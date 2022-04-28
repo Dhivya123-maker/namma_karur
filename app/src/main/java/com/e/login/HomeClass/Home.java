@@ -34,6 +34,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.e.login.BuildConfig;
 import com.e.login.ContactusActivity;
 import com.e.login.Feedback;
@@ -506,7 +507,9 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
                         Log.i("123",msg);
 
 
-                        profile.setImageURI(Uri.parse(image));
+                        if (image != "null"){
+                            Glide.with(getApplicationContext()).load(image).into(profile);
+                        }
                         namee.setText(name);
                         mail.setText(email);
 

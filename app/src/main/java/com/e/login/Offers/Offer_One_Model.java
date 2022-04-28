@@ -1,26 +1,28 @@
 package com.e.login.Offers;
 
 public class Offer_One_Model {
-    public Offer_One_Model(String img,String txt,String txt1,String cat) {
-        this.img = img;
-        this.txt = txt;
-        this.txt1 = txt1;
-        this.cat = cat;
-    }
+
+    private String txt;
+    private  String txt1;
+    String cat;
+    String id;
+    String end_date;
+    String img;
+
 
     public Offer_One_Model() {
 
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
+    public Offer_One_Model(String txt, String txt1, String cat, String id, String end_date, String img) {
+        this.txt = txt;
+        this.txt1 = txt1;
+        this.cat = cat;
+        this.id = id;
+        this.end_date = end_date;
         this.img = img;
     }
 
-    private String img;
 
     public String getTxt() {
         return txt;
@@ -38,21 +40,12 @@ public class Offer_One_Model {
         this.txt1 = txt1;
     }
 
-    private String txt;
-    private  String txt1;
-
     public String getCat() {
         return cat;
     }
 
     public void setCat(String cat) {
         this.cat = cat;
-    }
-
-    String cat;
-
-    public Offer_One_Model(String id) {
-        this.id = id;
     }
 
     public String getId() {
@@ -63,5 +56,19 @@ public class Offer_One_Model {
         this.id = id;
     }
 
-    String id;
+    public String getEnd_date() {
+        return end_date;
+    }
+
+    public void setEnd_date(String end_date) {
+        this.end_date = end_date;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
 }

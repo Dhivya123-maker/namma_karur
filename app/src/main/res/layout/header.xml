@@ -18,7 +18,7 @@
         android:orientation="horizontal">
 
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/head_img"
             android:layout_width="60dp"
             android:layout_height="60dp"
@@ -36,7 +36,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
-                android:text="UserName"
                 android:textColor="@color/white"
                 android:textSize="14dp"
                 android:textStyle="bold">
@@ -49,7 +48,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="2dp"
-                android:text="example@gmail.com"
                 android:textColor="@color/white"
                 android:textSize="12dp">
 

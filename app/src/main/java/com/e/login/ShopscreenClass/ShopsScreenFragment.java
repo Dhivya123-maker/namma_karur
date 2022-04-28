@@ -141,6 +141,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
     String locat;
 
+    TextView lat,log;
 
 
 
@@ -158,6 +159,8 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
         location = findViewById(R.id.location);
         atm_visible = findViewById(R.id.atm_visivle_lnr);
         visible_lnr = findViewById(R.id.visible_linear);
+        lat = findViewById(R.id.lat);
+        log = findViewById(R.id.log);
 
 
         recyclerView =findViewById(R.id.shop_screen_fragment);
@@ -347,7 +350,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                getLastLocation();
                 googleApiClient = getAPIClientInstance();
                 if (googleApiClient != null) {
                     googleApiClient.connect();
@@ -358,7 +361,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 //                mFusedLocationClient = LocationServices.getFusedLocationProviderClient(ShopsScreenFragment.this);
 
                 // method to get the location
-                getLastLocation();
+
             }
         });
 
@@ -872,6 +875,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
                 //Toast.makeText(this, "Please turn on" + " your location...", Toast.LENGTH_LONG).show();
 //                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
 //                startActivity(intent);
+//                requestPermissions();
             }
         } else {
             // if permissions aren't available,
@@ -905,7 +909,10 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
             latitudeTextView = (mLastLocation.getLatitude()+"");
             longitTextView = (mLastLocation.getLongitude()+"");
 
-            Log.i("fdsdfswf",mLastLocation.getLatitude()+""+"   "+longitTextView);
+//            log.setText(mLastLocation.getLatitude()+"");
+//            lat.setText(mLastLocation.getLongitude()+"");
+
+            Log.i("fdsdfswf",mLastLocation.getLatitude()+"");
         }
     };
 

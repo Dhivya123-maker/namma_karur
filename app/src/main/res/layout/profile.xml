@@ -78,11 +78,11 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <ImageView
+                            <de.hdodenhof.circleimageview.CircleImageView
                                 android:id="@+id/profile"
                                 android:layout_width="80dp"
                                 android:layout_height="80dp"
-                                android:src="@drawable/twitter"/>
+                                />
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -94,7 +94,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="15dp"
-                                    android:text="Patrick"
                                     android:textColor="#4c9a2a"
                                     android:textStyle="bold" />
                                 <TextView
@@ -102,7 +101,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="15dp"
-                                    android:text="September 20, 1996"
                                     android:textSize="12dp"
                                     android:textColor="@color/black"
                                     />
@@ -111,7 +109,6 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="15dp"
-                                    android:text="B+ positive"
                                     android:textSize="12dp"
                                     android:textColor="@color/black"
                                     />
@@ -165,7 +162,6 @@
                                     android:id="@+id/email_text"
                                     android:layout_width="200dp"
                                     android:layout_height="wrap_content"
-                                    android:text="patrick245@gmail.com"
                                     android:textColor="@color/black"
 
                                     android:layout_marginStart="15dp"/>
@@ -220,7 +216,6 @@
                                     android:id="@+id/phone_text"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="1234567890"
                                     android:textColor="@color/black"
                                     android:layout_marginStart="15dp"/>
 

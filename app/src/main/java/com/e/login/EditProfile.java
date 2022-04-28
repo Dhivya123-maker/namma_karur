@@ -3,14 +3,15 @@ package com.e.login;
 import static java.nio.file.Paths.get;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatSpinner;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -804,5 +805,10 @@ public class EditProfile extends AppCompatActivity {
 //            }
         }
 
+    }
+
+    public void onBackPressed() {
+        Intent i = new Intent(EditProfile.this,Profile.class);
+        startActivity(i);
     }
 }

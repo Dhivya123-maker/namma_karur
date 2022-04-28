@@ -230,6 +230,7 @@ public class OfferActivity extends AppCompatActivity{
 //                        viewmodel.setTxt(c_end);
                         viewmodel.setTxt1(" Hrs     Min     sec");
                         viewmodel.setId(c_id);
+                        viewmodel.setEnd_date(c_end);
 
                         offerOneModelList.add(viewmodel);
 

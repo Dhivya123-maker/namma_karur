@@ -39,6 +39,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.bumptech.glide.Glide;
 import com.e.login.BlankFragment.Blank_Comments_Adapter;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Fragment_Home;
@@ -67,7 +68,7 @@ public class Profile extends AppCompatActivity {
     String data, data1, data2, goo_id, dobb;
     TextView user_name, emailtxt, contacttxt;
     LinearLayout skill;
-    ImageView  email_edit, con_edit;
+    ImageView  email_edit, con_edit,profile;
     Spinner bl;
     Context mContext;
     int SELECT_PICTURE = 1;
@@ -156,6 +157,7 @@ public class Profile extends AppCompatActivity {
         education_recycler = findViewById(R.id.education_recyclerview);
         experience_recycler = findViewById(R.id.experience_recyclerview);
         skill_recycler = findViewById(R.id.skill_recyclerview);
+        profile = findViewById(R.id.profile);
 
 
         edit = findViewById(R.id.edit_btn);
@@ -370,6 +372,10 @@ public class Profile extends AppCompatActivity {
                         user_name.setText(namee);
                         email_verify.setText(email_verifyy);
                         contact_verify.setText(phone_verifyy);
+
+                        if (image != "null"){
+                            Glide.with(getApplicationContext()).load(image).into(profile);
+                        }
 
 
                     JSONArray education = profile_details.getJSONArray("education");
