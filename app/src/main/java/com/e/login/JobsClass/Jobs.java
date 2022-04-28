@@ -47,7 +47,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Jobs extends AppCompatActivity  {
+public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClickListener {
 
 
     Button add;
@@ -167,7 +167,7 @@ public class Jobs extends AppCompatActivity  {
                     adapter =  new Jobs_Adapter(Jobs.this,jobsModelList);
                     recyclerView.setAdapter(adapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(Jobs.this, LinearLayoutManager.HORIZONTAL, false));
-//                    adapter.setOnItemClickListener(Jobs.this::onItemClick);
+                    adapter.setOnItemClickListener(Jobs.this::onItemClick);
 
 
 
@@ -462,5 +462,15 @@ public class Jobs extends AppCompatActivity  {
     }
 
 
+    @Override
+    public void onItemClick(int position) {
 
+        Intent intent = new Intent(Jobs.this,Closing_All.class);
+        intent.putExtra("id",id);
+        intent.putExtra("cat1","categories");
+        intent.putExtra("cat_id",category_id);
+        Toast.makeText(Jobs.this, category_id, Toast.LENGTH_SHORT).show();
+        startActivity(intent);
+
+    }
 }

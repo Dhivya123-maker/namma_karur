@@ -80,12 +80,12 @@ public class Closing_All extends AppCompatActivity {
 //            break_txt.setText("All Jobs");
 //
 //        }
-        else if(data1.equals("category")){
-            String url = api+"category-Filter-Job?category_id="+data2;
-            Log.i("kjsagrfieuwrg",url);
-            all_cls(url);
-            break_txt.setText("Categories");
-        }
+//        else if(data1.equals("categories")){
+//            String url = api+"category-Filter-Job?category_id="+"1";
+//            Log.i("kjsagrfieuwrg",url);
+//            all_cls(url);
+//            break_txt.setText("Categories");
+//        }
 
         recyclerView =findViewById(R.id.closing_all);
 

@@ -3,6 +3,7 @@ package com.e.login.JobsClass;
 public class Jobs_Model {
     private  String img;
 
+
     public String getImg1() {
         return img1;
     }
