@@ -82,14 +82,11 @@ public class ChangePassword extends AppCompatActivity {
 
 
 
-
-
             pass();
+            er1.setVisibility(View.GONE);
+            er2.setVisibility(View.GONE);
 
 
-
-
-                //pass();
             }
         });
     }

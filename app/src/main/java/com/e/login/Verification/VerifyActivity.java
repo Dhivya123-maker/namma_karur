@@ -30,9 +30,11 @@ import com.e.login.R;
 import com.e.login.SignUpActivity;
 import com.e.login.utils.PreferenceUtils;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -46,6 +48,7 @@ VerifyActivity extends AppCompatActivity {
     ImageView back;
     TextView resend,mobile;
     private Context mContext;
+    TextView error1;
     String u_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,7 @@ VerifyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_verify);
 
         back = findViewById(R.id.back_verify);
+        error1 = findViewById(R.id.error1);
 
         back = findViewById(R.id.back_verify);
         back.setOnClickListener(new View.OnClickListener() {
@@ -103,6 +107,7 @@ VerifyActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 otp();
+                error1.setVisibility(View.GONE);
                // ResendOtp();
 
 //                Intent intent = new Intent(VerifyActivity.this,Email_OTP.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -161,7 +166,6 @@ VerifyActivity extends AppCompatActivity {
                             intent.putExtra("email",data3);
                             intent.putExtra("phone",data2);
                             intent.putExtra("user_name",data4);
-                            Toast.makeText(VerifyActivity.this, data3, Toast.LENGTH_SHORT).show();
 
                             PreferenceUtils.saveid(data1,VerifyActivity.this);
                             PreferenceUtils.saveToken(data,VerifyActivity.this);
@@ -194,6 +198,22 @@ VerifyActivity extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
 
+                    Charset charset = Charset.defaultCharset();
+                    String str = new String(error.networkResponse.data,charset);
+
+
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("data");
+                        error1.setText(data.getString("error"));
+                        error1.setVisibility(View.VISIBLE);
+
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
                 }
 

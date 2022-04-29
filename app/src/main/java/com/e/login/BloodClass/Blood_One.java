@@ -213,13 +213,7 @@ public class Blood_One extends AppCompatActivity {
 
                         JSONObject jsonObject = new JSONObject(str);
 
-//                        Toast.makeText(Blood_One.this, error.networkResponse.data.toString(), Toast.LENGTH_SHORT).show();
-                        Log.i("wdsd",jsonObject.toString());
-//                        JSONObject data = jsonObject.getJSONObject("data");
-//
-//                        JSONArray jsonArray1 = data.getJSONArray("name");
 
-//                            email.setError(jsonArray1.getString(0));
 
                     } catch (JSONException e) {
                         e.printStackTrace();
