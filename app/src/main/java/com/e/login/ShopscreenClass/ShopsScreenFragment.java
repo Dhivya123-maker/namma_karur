@@ -178,6 +178,8 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
         data3 = intent.getStringExtra("id");
 
 
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
 
 
 
@@ -262,8 +264,8 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
             atm_screen(url);
             ac.setText(data);
             gone.setVisibility(View.GONE);
-            atm_visible.setVisibility(View.VISIBLE);
-            visible_lnr.setVisibility(View.GONE);
+            atm_visible.setVisibility(View.GONE);
+            visible_lnr.setVisibility(View.VISIBLE);
 
 
         }
@@ -354,17 +356,110 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
         location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getLastLocation();
-                googleApiClient = getAPIClientInstance();
-                if (googleApiClient != null) {
-                    googleApiClient.connect();
-                    requestGPSSettings();
-                }
-                ActivityCompat.requestPermissions( ShopsScreenFragment.this,
-                        new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION);
-//                mFusedLocationClient = LocationServices.getFusedLocationProviderClient(ShopsScreenFragment.this);
-
                 // method to get the location
+
+                if (isLocationEnabled()) {
+
+                    getLastLocation();
+                }else {
+                    googleApiClient = getAPIClientInstance();
+                    if (googleApiClient != null) {
+                        googleApiClient.connect();
+                        requestGPSSettings();
+                    }
+                }
+
+                latitudeTextView = lat.getText().toString();
+                longitTextView = log.getText().toString();
+
+
+                if(data2.equals("ShopCatalog")){
+                    String url = api + "get-shop-catalog-list?category_id="+data3+"&radius=500&latitude="+latitudeTextView+"&longitude="+longitTextView;
+                    shop_screen(url);
+                    ac.setText(data);
+                    atm_visible.setVisibility(View.GONE);
+                    visible_lnr.setVisibility(View.VISIBLE);
+                    gone.setVisibility(View.GONE);
+                }else if(data2.equals("ServiceCatalog")) {
+                    String url = api + "get-service-catalog-list?service_category_id="+data3+"&radius=500&latitude="+latitudeTextView+"&longitude="+longitTextView;
+                    shop_screen(url);
+                    ac.setText(data);
+                    gone.setVisibility(View.GONE);
+                    atm_visible.setVisibility(View.GONE);
+                    visible_lnr.setVisibility(View.VISIBLE);
+
+                }else if(data2.equals("MarketCatalog")){
+                    String url = api + "get-market-category-list"+data3+"&radius=500&latitude="+latitudeTextView+"&longitude="+longitTextView;
+                    shop_screen(url);
+                    ac.setText(data);
+                    gone.setVisibility(View.GONE);
+                    atm_visible.setVisibility(View.GONE);
+                    visible_lnr.setVisibility(View.VISIBLE);
+
+                } else if(data2.equals("EducationCatalog")){
+                    String url = api + "get-education-catalog-list?education_category_id="+data3+"&radius=500&latitude="+latitudeTextView+"&longitude="+longitTextView;
+                    shop_screen(url);
+                    ac.setText(data);
+                    gone.setVisibility(View.GONE);
+                    atm_visible.setVisibility(View.GONE);
+                    visible_lnr.setVisibility(View.VISIBLE);
+
+                }else if(data2.equals("TransportCatalog")){
+                    String url = api + "get-transport-catalog-list?category_id="+data3+"&radius=500&latitude="+latitudeTextView+"&longitude="+longitTextView;
+                    shop_screen(url);
+                    ac.setText(data);
+                    gone.setVisibility(View.GONE);
+                    atm_visible.setVisibility(View.GONE);
+                    visible_lnr.setVisibility(View.VISIBLE);
+
+                }else if(data2.equals("HospitalCatalog")){
+                    String url = api + "get-hospital-catalog-list?hospital_category_id="+data3+"&radius=500&latitude="+latitudeTextView+"&longitude="+longitTextView;
+                    shop_screen(url);
+                    ac.setText(data);
+                    gone.setVisibility(View.GONE);
+                    atm_visible.setVisibility(View.GONE);
+                    visible_lnr.setVisibility(View.VISIBLE);
+
+                }else if(data2.equals("EventCatalog")){
+                    String url = api + "get-event-catalog-list?event_category_id="+data3+"&radius=500&latitude="+latitudeTextView+"&longitude="+longitTextView;
+                    shop_screen(url);
+                    ac.setText(data);
+
+                    initDatePicker();
+                    dateButton = findViewById(R.id.fromdatepicker);
+                    dateButton.setText("From Date");
+                    dateButton = findViewById(R.id.todatepicker);
+                    dateButton.setText("To Date");
+                    getTodaysDate();
+
+
+                }else if(data2.equals("HotelCatalog")){
+                    String url = api + "get-hotel-catalog-list?hotel_category_id="+data3+"&radius=500&latitude="+latitudeTextView+"&longitude="+longitTextView;
+                    shop_screen(url);
+                    ac.setText(data);
+                    gone.setVisibility(View.GONE);
+                    atm_visible.setVisibility(View.GONE);
+                    visible_lnr.setVisibility(View.VISIBLE);
+
+                }else if(data2.equals("BankCatalog")){
+                    String url = api + "get-bank-catalog-list?bank_category_id="+data3+"&radius=500&latitude="+latitudeTextView+"&longitude="+longitTextView;
+                    shop_screen(url);
+                    ac.setText(data);
+                    gone.setVisibility(View.GONE);
+                    atm_visible.setVisibility(View.GONE);
+                    visible_lnr.setVisibility(View.VISIBLE);
+
+                }else if(data2.equals("ATMCatalog")){
+                    String url = api + "get-atm-catalog-list?atm_category_id="+data3+"&radius=500&latitude="+latitudeTextView+"&longitude="+longitTextView;
+                    atm_screen(url);
+                    ac.setText(data);
+                    gone.setVisibility(View.GONE);
+                    atm_visible.setVisibility(View.GONE);
+                    visible_lnr.setVisibility(View.VISIBLE);
+
+
+                }
+
 
             }
         });
@@ -863,23 +958,20 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
                 // location from
                 // FusedLocationClient
                 // object
-//                mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<Location> task) {
-//                        Location location = task.getResult();
-//                        if (location == null) {
+                mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Location> task) {
+                        Location location = task.getResult();
+                        if (location == null) {
                             requestNewLocationData();
-//                        } else {
-////                            latitudeTextView.setText(location.getLatitude() + "");
-////                            longitTextView.setText(location.getLongitude() + "");
-//                        }
-//                    }
-//                });
+                        } else {
+                            lat.setText(location.getLatitude() + "");
+                            log.setText(location.getLongitude() + "");
+                        }
+                    }
+                });
             } else {
-                //Toast.makeText(this, "Please turn on" + " your location...", Toast.LENGTH_LONG).show();
-//                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-//                startActivity(intent);
-//                requestPermissions();
+
             }
         } else {
             // if permissions aren't available,
@@ -910,13 +1002,8 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
         @Override
         public void onLocationResult(LocationResult locationResult) {
             Location mLastLocation = locationResult.getLastLocation();
-            latitudeTextView = (mLastLocation.getLatitude()+"");
-            longitTextView = (mLastLocation.getLongitude()+"");
-
-//            log.setText(mLastLocation.getLatitude()+"");
-//            lat.setText(mLastLocation.getLongitude()+"");
-
-            Log.i("fdsdfswf",mLastLocation.getLatitude()+"");
+            lat.setText(mLastLocation.getLatitude() + "");
+            log.setText(mLastLocation.getLongitude() + "");
         }
     };
 
@@ -953,18 +1040,8 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
         if (requestCode == PERMISSION_ID) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getLastLocation();
-            }else if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_DENIED){
-//                Intent intent = new Intent(ShopsScreenFragment.this,home.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                startActivity(intent);
-
-
-
-                Toast.makeText(ShopsScreenFragment.this, "Please turn on your location", Toast.LENGTH_LONG).show();
             }
         }
-
-
     }
 
     @Override
@@ -974,11 +1051,6 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
             getLastLocation();
         }
     }
-
-
-
-
-
 
     private GoogleApiClient getAPIClientInstance() {
         GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -1000,10 +1072,12 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
                 status = result.getStatus();
                 // Toast.makeText(Emergency.this,status.getStatusCode() , Toast.LENGTH_SHORT).show();
                 Log.i("srgfergdhgd", String.valueOf(status.getStatusCode()));
-                locat = String.valueOf(status.getStatusCode());
+                getLastLocation();
+                loc = String.valueOf(status.getStatusCode());
                 switch (status.getStatusCode()) {
                     case LocationSettingsStatusCodes.SUCCESS:
 //                        Log.i("", "All location settings are satisfied.");
+                        requestNewLocationData();
                         //   Toast.makeText(getApplication(), "GPS is already enable", Toast.LENGTH_SHORT).show();
                         break;
 
@@ -1027,6 +1101,4 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
             }
         });
     }
-
-
 }
