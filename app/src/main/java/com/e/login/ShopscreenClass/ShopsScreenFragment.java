@@ -342,7 +342,11 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
 
         }else if(data2.equals("ATMCatalog")){
-
+            String url = api + "display-banner?banner_type=BankBanner&banner_category_id="+data3;
+            ban(url);
+            gone.setVisibility(View.GONE);
+            atm_visible.setVisibility(View.GONE);
+            visible_lnr.setVisibility(View.VISIBLE);
         }
 
 

@@ -38,7 +38,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class View_MoreJobs extends AppCompatActivity {
+public class View_MoreJobs extends AppCompatActivity implements View_Morejobs_Adapter.OnItemClickListener {
     List<View_MoreJob_Model> view_moreJob_models;
     View_Morejobs_Adapter adapter;
     RecyclerView recyclerView;
@@ -118,6 +118,8 @@ public class View_MoreJobs extends AppCompatActivity {
 
                     adapter =  new View_Morejobs_Adapter(View_MoreJobs.this,view_moreJob_models);
                     recyclerView.setAdapter(adapter);
+                    adapter.setOnItemClickListener(View_MoreJobs.this::onItemClick);
+
                     recyclerView.setLayoutManager(new LinearLayoutManager(View_MoreJobs.this, LinearLayoutManager.HORIZONTAL, false));
 
 
@@ -198,4 +200,13 @@ public class View_MoreJobs extends AppCompatActivity {
     };
 
 
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(View_MoreJobs.this,Closing_All.class);
+        intent.putExtra("id",id);
+        intent.putExtra("cat1","view_more");
+        startActivity(intent);
+
+
+    }
 }

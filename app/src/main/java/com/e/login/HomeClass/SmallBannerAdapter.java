@@ -1,54 +1,53 @@
 package com.e.login.HomeClass;
 
 
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.e.login.AmbulanceClass.AmbulanceModel;
 import com.e.login.R;
+import com.e.login.ShopscreenClass.Banner_model;
 
 import java.util.List;
 
-public class Slider_Top_Adapter extends RecyclerView.Adapter<Slider_Top_Adapter.ViewHolder> {
+public class SmallBannerAdapter extends RecyclerView.Adapter<SmallBannerAdapter.ViewHolder> {
 
 
 
-    List<BannerModel> bannerModelList;
+    List<SmallbannerModel> smallbannerModelList;
     private Context context;
 
 
-    public Slider_Top_Adapter(Context context, List<BannerModel> bannerModelList) {
+    public SmallBannerAdapter(Context context, List<SmallbannerModel> smallbannerModelList) {
         this.context = context;
-        this.bannerModelList= bannerModelList ;
+        this.smallbannerModelList = smallbannerModelList;
     }
 
     @NonNull
     @Override
-    public Slider_Top_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.slider_item,parent,false);
+    public SmallBannerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.small_banner,parent,false);
 
 
-        return new Slider_Top_Adapter.ViewHolder(view);
+        return new SmallBannerAdapter.ViewHolder(view);
 
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
         Glide.with(context)
-                .load(bannerModelList.get(position).getImg())
+                .load(smallbannerModelList.get(position).getImg())
                 .into(holder.img);
     }
+
 
 
 
@@ -57,7 +56,7 @@ public class Slider_Top_Adapter extends RecyclerView.Adapter<Slider_Top_Adapter.
     @Override
     public int getItemCount() {
 
-        return bannerModelList.size();
+        return smallbannerModelList.size();
 
     }
 
@@ -68,7 +67,9 @@ public class Slider_Top_Adapter extends RecyclerView.Adapter<Slider_Top_Adapter.
 
         ViewHolder(View itemView) {
             super(itemView);
-            img = itemView.findViewById(R.id.image_view);
+            img = itemView.findViewById(R.id.ban);
+
+
 
 
 

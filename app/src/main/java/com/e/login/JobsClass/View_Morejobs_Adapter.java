@@ -24,6 +24,20 @@ public class View_Morejobs_Adapter extends RecyclerView.Adapter<View_Morejobs_Ad
     List<View_MoreJob_Model> view_moreJob_models;
     private Context context;
 
+    public static Jobs_Adapter.OnItemClickListener mListener;
+
+
+
+
+    public interface OnItemClickListener{
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(Jobs_Adapter.OnItemClickListener listener){
+
+        mListener = listener;
+
+    }
 
     public View_Morejobs_Adapter(Context context, List<View_MoreJob_Model> view_moreJob_models) {
         this.context = context;
@@ -79,6 +93,18 @@ public class View_Morejobs_Adapter extends RecyclerView.Adapter<View_Morejobs_Ad
 
             textView = itemView.findViewById(R.id.view_more_india_txt);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    if (mListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            mListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
 
 
 

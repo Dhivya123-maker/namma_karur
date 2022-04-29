@@ -50,9 +50,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.nio.charset.Charset;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 
@@ -65,6 +69,7 @@ public class Blank_PostFragment extends Fragment {
     RelativeLayout web;
     List<Banner_model> banner_modelList;
     Banner_Adapter adapter1;
+    private long mRequestStartTime;
 
     String id;
     String follow_id;
@@ -84,15 +89,6 @@ public class Blank_PostFragment extends Fragment {
     String verified, description, location, website, email, phone, whatsapp, facebook, instagram, twitter, youtube, viewcount = null, name = null, img = null;
 
     JSONObject followArray;
-
-    SliderView sliderView;
-
-    int images[] = {R.drawable.banner,
-            R.drawable.banner,
-            R.drawable.banner,
-            R.drawable.banner};
-
-    String token, idd;
     LinearLayout ifsc;
 
     List<Blank_Comments_Model> blank_comments_modelList;
@@ -298,6 +294,19 @@ public class Blank_PostFragment extends Fragment {
             }
         });
 
+        Date date = new Date();
+
+        SimpleDateFormat formatTime = new SimpleDateFormat("hh.mm aa");
+
+
+        String time = formatTime.format(
+                date); // changing the format of 'date'
+
+        // display time as per format
+        System.out.println(
+                "Current Time in AM/PM Format is : " + time);
+
+
 
 
         titlee = root.findViewById(R.id.ac_title);
@@ -330,20 +339,6 @@ public class Blank_PostFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 makePhoneCall();
-
-//                String[] number = {"8056553064","9965919585"};
-//
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-//                builder.setTitle("Choose Contact");
-//                builder.setItems(number, new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//
-//
-//
-//                    }
-//                });
-//                builder.show();
 
             }
         });
@@ -529,6 +524,7 @@ public class Blank_PostFragment extends Fragment {
 
 
     public void social(String url) {
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
             @SuppressLint({"CheckResult", "SetTextI18n"})
             @Override
@@ -556,6 +552,18 @@ public class Blank_PostFragment extends Fragment {
                     email = jsonObject.getString("email");
                     phone = jsonObject.getString("phone");
                     view_count = jsonObject.getString("view_count");
+
+//
+//                    SimpleDateFormat sdf = new SimpleDateFormat("hh:mm aa");
+//                    Date firstDate = null;
+//
+//                    String time = "04:05:06";
+//                    firstDate = sdf.parse(time);
+//
+//                    String times = sdf.format(firstDate);
+//
+//
+//                    Log.i("fbjedhfeqipoRJFPoq",times);
 
                     titlee.setText(title);
                     addres.setText(address);
@@ -636,8 +644,6 @@ public class Blank_PostFragment extends Fragment {
                             viewmodel.setTxt(name);
                             viewmodel.setTxt1(comment);
                             viewmodel.setTxt2(com_rating);
-
-
 
                             blank_comments_modelList.add(viewmodel);
 

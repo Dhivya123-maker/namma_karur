@@ -10,13 +10,11 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -28,12 +26,10 @@ import com.android.volley.toolbox.Volley;
 import com.e.login.EnquiryFragment;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.BannerModel;
-import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.HomeClass.Home;
 import com.e.login.HomeClass.Slider_Top_Adapter;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
-import com.e.login.ShopscreenClass.ShopsScreenFragment;
 import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -236,7 +232,7 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
                         viewmodel.setTxt2(address);
                         viewmodel.setTxt3(vacancy);
                         viewmodel.setTxt4(end_date);
-                        viewmodel.setId(id);
+//                        viewmodel.setId(id);
 //                        viewmodel.setCat_id(category_id);
                         viewmodel.setCat_id(id);
 
@@ -469,7 +465,7 @@ public class Jobs extends AppCompatActivity  implements Jobs_Adapter.OnItemClick
         intent.putExtra("id",id);
         intent.putExtra("cat1","categories");
         intent.putExtra("cat_id",category_id);
-        Toast.makeText(Jobs.this, category_id, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(Jobs.this, category_id, Toast.LENGTH_SHORT).show();
         startActivity(intent);
 
     }

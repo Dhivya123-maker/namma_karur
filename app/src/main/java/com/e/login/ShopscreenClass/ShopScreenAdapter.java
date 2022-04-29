@@ -153,9 +153,6 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
             dis=  itemView.findViewById(R.id.distance);
 //            atm_rat = itemView.findViewById(R.id.atm_rate);
 
-
-
-////
             atm_img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -168,7 +165,7 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
 //                    mapIntent.setPackage("www.google.com");
                   view.getContext().startActivity(mapIntent);
 
-//
+
 
 
 
@@ -176,7 +173,7 @@ public class ShopScreenAdapter extends RecyclerView.Adapter<com.e.login.Shopscre
                 }
 
 
-//
+
             });
 
             itemView.setOnClickListener(new View.OnClickListener() {

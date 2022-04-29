@@ -3,17 +3,14 @@ package com.e.login.Offers;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -26,23 +23,15 @@ import com.e.login.BaseApi.Api;
 import com.e.login.ChatFeature;
 import com.e.login.Help_Class.Helpline;
 import com.e.login.HomeClass.Home;
-import com.e.login.HomeClass.Slider_Top_Adapter;
 import com.e.login.QrCodeFragment;
 import com.e.login.R;
-import com.e.login.ShoppostClass.ShopPostAdapter;
-import com.e.login.ShoppostClass.ShopPostModel;
 import com.e.login.info_Class.InformationFragment;
 import com.e.login.utils.PreferenceUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
-import com.smarteist.autoimageslider.SliderAnimations;
-import com.smarteist.autoimageslider.SliderView;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 

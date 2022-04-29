@@ -74,18 +74,19 @@ public class Closing_All extends AppCompatActivity {
             all_close(url);
            break_txt.setText("Closing Jobs");
         }
-//        else if(data1.equals("all_jobs")){
-//            String url = api+"view-job-details?job_id="+data;
-//            all_close(url);
-//            break_txt.setText("All Jobs");
-//
-//        }
-//        else if(data1.equals("categories")){
-//            String url = api+"category-Filter-Job?category_id="+"1";
-//            Log.i("kjsagrfieuwrg",url);
-//            all_cls(url);
-//            break_txt.setText("Categories");
-//        }
+
+        else if(data1.equals("categories")){
+            String url = api+"category-Filter-Job?category_id="+data2;
+            Log.i("kjsagrfieuwrg",url);
+            all_cls(url);
+            break_txt.setText("Categories");
+        }
+        else if(data1.equals("view_more")){
+            String url = api+"category-Filter-Job?category_id="+data;
+            all_close(url);
+            break_txt.setText("Categories");
+
+        }
 
         recyclerView =findViewById(R.id.closing_all);
 
@@ -148,14 +149,6 @@ public class Closing_All extends AppCompatActivity {
 
                     adapter =  new Jobs_two_Adapter(Closing_All.this,jobsTwoModelList);
                     recyclerView.setAdapter(adapter);
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Closing_All.this) {
-                        @Override
-                        public boolean canScrollVertically() {
-                            return false;
-                        }
-                    };
-                    recyclerView.setLayoutManager(linearLayoutManager);
-
 
 
 
@@ -239,11 +232,11 @@ public class Closing_All extends AppCompatActivity {
                         viewmodel.setTxt2(address);
                         viewmodel.setTxt3(vacancy);
                         viewmodel.setTxt4(end_date);
-//                        viewmodel.setCat_id(category_id);
+                        viewmodel.setCat_id(id);
 
 
                         jobsTwoModelList.add(viewmodel);
-                        Log.i("jonsmodelltis",jsonObject.toString());
+//                        Log.i("jonsmodelltis",jsonObject.toString());
 
                     }
 
@@ -255,13 +248,6 @@ public class Closing_All extends AppCompatActivity {
 
                     adapter =  new Jobs_two_Adapter(Closing_All.this,jobsTwoModelList);
                     recyclerView.setAdapter(adapter);
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(Closing_All.this) {
-                        @Override
-                        public boolean canScrollVertically() {
-                            return false;
-                        }
-                    };
-                    recyclerView.setLayoutManager(linearLayoutManager);
 
 
 

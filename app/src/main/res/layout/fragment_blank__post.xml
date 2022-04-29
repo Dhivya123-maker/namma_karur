@@ -67,6 +67,8 @@
                         android:backgroundTint="#4c9a2a"
                         android:baselineAligned="false"
                         android:padding="5dp"
+                        android:clipToPadding="false"
+                        android:elevation="2dp"
                         android:orientation="horizontal">
 
                         <LinearLayout
@@ -101,7 +103,7 @@
                                 android:text=""
                                 android:layout_marginTop="5dp"
                                 android:textColor="@color/white"
-                                android:textSize="11dp"
+                                android:textSize="12dp"
                                 android:textStyle="bold">
 
                             </TextView>
@@ -140,42 +142,41 @@
                                         android:layout_height="wrap_content"
                                         android:text=""
                                         android:textColor="@color/white"
-
                                         android:textSize="10dp">
 
                                     </TextView>
 
                                     <ImageView
-                                        android:layout_width="10dp"
-                                        android:layout_height="10dp"
+                                        android:layout_width="12dp"
+                                        android:layout_height="12dp"
                                         android:layout_gravity="center"
                                         android:layout_marginStart="5dp"
                                         android:src="@drawable/starr" />
 
                                     <ImageView
-                                        android:layout_width="10dp"
-                                        android:layout_height="10dp"
+                                        android:layout_width="12dp"
+                                        android:layout_height="12dp"
                                         android:layout_gravity="center"
                                         android:layout_marginStart="5dp"
                                         android:src="@drawable/starr" />
 
                                     <ImageView
-                                        android:layout_width="10dp"
-                                        android:layout_height="10dp"
+                                        android:layout_width="12dp"
+                                        android:layout_height="12dp"
                                         android:layout_gravity="center"
                                         android:layout_marginStart="5dp"
                                         android:src="@drawable/starr" />
 
                                     <ImageView
-                                        android:layout_width="10dp"
-                                        android:layout_height="10dp"
+                                        android:layout_width="12dp"
+                                        android:layout_height="12dp"
                                         android:layout_gravity="center"
                                         android:layout_marginStart="5dp"
                                         android:src="@drawable/starr" />
 
                                     <ImageView
-                                        android:layout_width="10dp"
-                                        android:layout_height="10dp"
+                                        android:layout_width="12dp"
+                                        android:layout_height="12dp"
                                         android:layout_gravity="center"
                                         android:layout_marginStart="5dp"
                                         android:src="@drawable/starr" />
@@ -251,6 +252,7 @@
                         android:layout_gravity="center"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="10dp"
+                        android:elevation="5dp"
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/round"
                         android:backgroundTint="#4c9a2a"
@@ -463,7 +465,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:weightSum="4"
                 android:orientation="horizontal">
@@ -478,15 +480,15 @@
 
 
                     <RelativeLayout
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:background="@drawable/rounded_corners"
                         android:backgroundTint="#eeeeee">
 
                         <ImageView
                             android:id="@+id/loc_imagee"
                             android:layout_width="13dp"
-                            android:layout_height="15dp"
+                            android:layout_height="17dp"
                             android:layout_centerInParent="true"
                             android:background="@drawable/job_three">
 
@@ -521,8 +523,8 @@
 
                     <RelativeLayout
                         android:id="@+id/we_imgg"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:background="@drawable/rounded_corners"
                         android:backgroundTint="#eeeeee">
 
@@ -562,8 +564,8 @@
 
 
                     <RelativeLayout
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:background="@drawable/rounded_corners"
                         android:backgroundTint="#eeeeee">
 
@@ -607,14 +609,14 @@
 
 
                     <RelativeLayout
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:background="@drawable/rounded_corners"
                         android:backgroundTint="#eeeeee">
 
                         <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
                             android:layout_centerInParent="true"
                             android:background="@drawable/sharee">
 
@@ -653,6 +655,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:weightSum="2"
+                android:layout_marginBottom="2dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -663,6 +666,7 @@
                     android:backgroundTint="#4c9a2a"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:elevation="2dp"
                     android:layout_marginEnd="10dp"
                     android:layout_gravity="center"
 
@@ -692,9 +696,9 @@
                     android:backgroundTint="#4c9a2a"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:elevation="2dp"
                     android:layout_marginStart="10dp"
                     android:layout_gravity="center"
-
                     >
 
                     <ImageView
@@ -767,8 +771,8 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:weightSum="5"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 

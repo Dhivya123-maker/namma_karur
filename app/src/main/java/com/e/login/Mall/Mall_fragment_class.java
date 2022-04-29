@@ -12,11 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.e.login.AmbulanceClass.AmbulanceAdapter;
-import com.e.login.AmbulanceClass.AmbulanceModel;
-import com.e.login.Bank.Bank_Comments_Adapter;
-import com.e.login.Bank.Bank_Comments_Model;
-import com.e.login.HomeClass.Slider_Top_Adapter;
 import com.e.login.R;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;

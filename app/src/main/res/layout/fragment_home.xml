@@ -109,7 +109,7 @@
                                     android:layout_width="18dp"
                                     android:layout_height="18dp"
                                     android:layout_gravity="center"
-                                    android:layout_marginEnd="20dp"
+                                    android:layout_marginEnd="25dp"
                                     android:src="@drawable/bell">
 
                                 </ImageView>
@@ -123,10 +123,10 @@
                             android:id="@+id/top_banner"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginStart="25dp"
+                            android:layout_marginTop="20dp"
                             android:scaleType="fitXY"
-                            android:layout_marginEnd="10dp">
+                            android:layout_marginEnd="25dp">
 
                         </androidx.recyclerview.widget.RecyclerView>
 
@@ -160,7 +160,9 @@
                                 android:background="@drawable/bg"
                                 android:backgroundTint="@color/white"
                                 android:hint="Search"
+                                android:elevation="2dp"
                                 android:paddingStart="20dp"
+                                android:layout_marginBottom="5dp"
                                 android:textSize="15dp">
 
                             </EditText>
@@ -170,6 +172,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="30dp"
                                 android:layout_marginEnd="35dp"
+                                android:elevation="2dp"
                                 android:gravity="end"
                                 android:orientation="horizontal">
 
@@ -196,9 +199,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/grey_lnr"
-                        android:layout_marginStart="10dp"
+                        android:layout_marginStart="25dp"
                         android:layout_marginTop="15dp"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="25dp"
                         android:scaleType="fitXY">
 
                     </androidx.recyclerview.widget.RecyclerView>
@@ -220,12 +223,11 @@
                         >
 
 
-
-
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/category"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:elevation="5dp" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/middle_two_banner"
@@ -233,7 +235,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/category"
                             android:layout_marginStart="10dp"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginTop="20dp"
                             android:layout_marginEnd="10dp"
                             android:scaleType="fitXY">
 
@@ -247,7 +249,7 @@
                             android:layout_marginTop="30dp"
                             android:background="@drawable/bg"
                             android:backgroundTint="@color/white"
-                            android:elevation="2dp"
+                            android:elevation="1dp"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -424,7 +426,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:layout_marginTop="15dp"
+                                android:layout_marginTop="20dp"
+                                android:layout_marginBottom="5dp"
                                 android:scaleType="fitXY"
                                 android:layout_marginEnd="10dp">
 

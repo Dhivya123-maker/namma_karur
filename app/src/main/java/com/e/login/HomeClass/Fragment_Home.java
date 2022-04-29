@@ -83,6 +83,9 @@ public class Fragment_Home extends Fragment {
 
     List<Banner_model> banner_modelList;
     Banner_Adapter adapter1;
+    List<SmallbannerModel> smallbannerModelList;
+    SmallBannerAdapter smallBannerAdapter;
+
     List<Top_rating_model> topRatingModelList;
    Top_rating_Adapter adapter6;
 
@@ -375,7 +378,7 @@ public class Fragment_Home extends Fragment {
 
                 try {
                     JSONArray res = response.getJSONArray("data");
-                    banner_modelList = new ArrayList<>();
+                    smallbannerModelList = new ArrayList<>();
 
                     for (int i=0;i<res.length();i++){
 
@@ -392,15 +395,15 @@ public class Fragment_Home extends Fragment {
 
 
 
-                        Banner_model viewmodel = new Banner_model();
+                        SmallbannerModel viewmodel = new SmallbannerModel();
 
-                        viewmodel.setImage(banner_img);
+                        viewmodel.setImg(banner_img);
 
-                        banner_modelList.add(viewmodel);
+                        smallbannerModelList.add(viewmodel);
 
 
-                        adapter1 =  new Banner_Adapter(getActivity(),banner_modelList);
-                        top.setAdapter(adapter1);
+                        smallBannerAdapter =  new SmallBannerAdapter(getActivity(),smallbannerModelList);
+                        top.setAdapter(smallBannerAdapter);
                         top.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
 
@@ -700,7 +703,7 @@ public class Fragment_Home extends Fragment {
 
                 try {
                     JSONArray res = response.getJSONArray("data");
-                    banner_modelList = new ArrayList<>();
+                    smallbannerModelList = new ArrayList<>();
 
                     for (int i=0;i<res.length();i++){
 
@@ -717,15 +720,15 @@ public class Fragment_Home extends Fragment {
 
 
 
-                        Banner_model viewmodel = new Banner_model();
+                        SmallbannerModel viewmodel = new SmallbannerModel();
 
-                        viewmodel.setImage(banner_img);
+                        viewmodel.setImg(banner_img);
 
-                        banner_modelList.add(viewmodel);
+                        smallbannerModelList.add(viewmodel);
 
 
-                        adapter1 =  new Banner_Adapter(getActivity(),banner_modelList);
-                        bottom.setAdapter(adapter1);
+                        smallBannerAdapter =  new SmallBannerAdapter(getActivity(),smallbannerModelList);
+                        bottom.setAdapter(smallBannerAdapter);
                         bottom.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
 

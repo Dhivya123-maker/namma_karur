@@ -9,13 +9,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -24,18 +21,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.e.login.BaseApi.Api;
-import com.e.login.BusTimeClass.Bus_TimeActivity;
 import com.e.login.HomeClass.BannerModel;
 import com.e.login.HomeClass.Slider_Top_Adapter;
-import com.e.login.Mall.Slider_mall_Adapter;
 import com.e.login.R;
-import com.e.login.ShopClass.ShopClassAdapter;
-import com.e.login.ShopClass.ShopScreen_Class;
-import com.e.login.ShopscreenClass.ShopsScreenFragment;
 import com.e.login.utils.PreferenceUtils;
-import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
-import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 
 import org.json.JSONArray;
