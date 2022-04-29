@@ -35,6 +35,7 @@ import com.e.login.BlankFragment.Blank_Adapter;
 import com.e.login.BlankFragment.Blank_Model;
 import com.e.login.BlankFragment.Blank_PostFragment;
 import com.e.login.ShopClass.ShopScreen_Class;
+import com.e.login.ShopscreenClass.ShopsScreenFragment;
 import com.e.login.Verification.VerifyActivity;
 import com.e.login.utils.PreferenceUtils;
 
@@ -137,7 +138,9 @@ public class ReviewsActivity extends AppCompatActivity {
                             Intent intent = new Intent(ReviewsActivity.this,Home_Fragment_Class.class);
                             intent.putExtra("list",data);
                             intent.putExtra("id",data2);
+                            finish();
 
+                            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent);
                         }else{
                             Toast.makeText(ReviewsActivity.this, msg, Toast.LENGTH_SHORT).show();
@@ -218,6 +221,8 @@ public class ReviewsActivity extends AppCompatActivity {
 
 
     }
+
+
 
 
 }

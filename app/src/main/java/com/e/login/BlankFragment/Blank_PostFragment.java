@@ -7,6 +7,8 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedDispatcher;
+import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -117,6 +119,8 @@ public class Blank_PostFragment extends Fragment {
         Api a = new Api();
         api = a.getBASE_URL();
 
+
+
         Intent intent = getActivity().getIntent();
         data = intent.getStringExtra("rate");
         data2 = intent.getStringExtra("list");
@@ -214,16 +218,6 @@ public class Blank_PostFragment extends Fragment {
 
 
 
-//
-//        if(followArray != null){
-//            follow_txt.setText("Following");
-//
-//
-//        }else {
-//            follow_txt.setText("Follow");
-//        }
-//
-//
 
 
         follow.setOnClickListener(new View.OnClickListener() {
@@ -294,17 +288,6 @@ public class Blank_PostFragment extends Fragment {
             }
         });
 
-        Date date = new Date();
-
-        SimpleDateFormat formatTime = new SimpleDateFormat("hh.mm aa");
-
-
-        String time = formatTime.format(
-                date); // changing the format of 'date'
-
-        // display time as per format
-        System.out.println(
-                "Current Time in AM/PM Format is : " + time);
 
 
 
@@ -532,8 +515,10 @@ public class Blank_PostFragment extends Fragment {
 
 
                 try {
-
+                    blank_comments_modelList = new ArrayList<>();
                     JSONObject jsonObject = response.getJSONObject("data");
+
+
 
 
                     id = jsonObject.getString("id");
@@ -576,96 +561,70 @@ public class Blank_PostFragment extends Fragment {
                     view_ct.setText(view_count);
 
 
+
+
+                    JSONArray res = jsonObject.getJSONArray("comments");
+                    for (int i = 0; i<3; i++) {
+
+                        JSONObject data = res.getJSONObject(i);
+
+                        comment = data.getString("comment");
+                        com_rating = data.getString("rating");
+                        JSONObject user = data.getJSONObject("user");
+                        name = user.getString("name");
+                        img = user.getString("image");
+
+
+                        Blank_Comments_Model viewmodel = new Blank_Comments_Model();
+
+                        viewmodel.setImg(img);
+                        viewmodel.setTxt(name);
+                        viewmodel.setTxt1(comment);
+                        viewmodel.setTxt2(com_rating);
+
+
+
+                        blank_comments_modelList.add(viewmodel);
+
+                    }
+
+
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    adapter = new Blank_Comments_Adapter(getContext(), blank_comments_modelList);
+                    recyclerView.setAdapter(adapter);
+
+
+
                     followArray = jsonObject.getJSONObject("follow");
                     catalog_id = followArray.getString("catalog_id");
                     catalog_type = followArray.getString("catalog_type");
                     follow_id = followArray.getString("id");
 
 
+
+
+
                     if(jsonObject.getJSONObject("follow")!=null){
                         follow_txt.setText("Following");
 
-                        JSONArray res = jsonObject.getJSONArray("comments");
-
-
-                        blank_comments_modelList = new ArrayList<>();
-                        for (int i = 0; i<3; i++) {
-
-                            JSONObject data = res.getJSONObject(i);
-
-                            comment = data.getString("comment");
-                            com_rating = data.getString("rating");
-                            JSONObject user = data.getJSONObject("user");
-                            name = user.getString("name");
-                            img = user.getString("image");
-
-
-                            Blank_Comments_Model viewmodel = new Blank_Comments_Model();
-
-                            viewmodel.setImg(img);
-                            viewmodel.setTxt(name);
-                            viewmodel.setTxt1(comment);
-                            viewmodel.setTxt2(com_rating);
-
-
-
-                            blank_comments_modelList.add(viewmodel);
-
-                        }
-
-
-
-
-                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                        adapter = new Blank_Comments_Adapter(getContext(), blank_comments_modelList);
-                        recyclerView.setAdapter(adapter);
 
 
                     }else if(jsonObject.getJSONObject("follow")==null){
                         follow_txt.setText("Follow");
-                        JSONArray res = jsonObject.getJSONArray("comments");
-
-
-                        blank_comments_modelList = new ArrayList<>();
-                        for (int i = 0; i<3; i++) {
-
-                            JSONObject data = res.getJSONObject(i);
-
-                            comment = data.getString("comment");
-                            com_rating = data.getString("rating");
-                            JSONObject user = data.getJSONObject("user");
-                            name = user.getString("name");
-                            img = user.getString("image");
-
-
-                            Blank_Comments_Model viewmodel = new Blank_Comments_Model();
-
-                            viewmodel.setImg(img);
-                            viewmodel.setTxt(name);
-                            viewmodel.setTxt1(comment);
-                            viewmodel.setTxt2(com_rating);
-
-                            blank_comments_modelList.add(viewmodel);
-
-                        }
-
-
-
-
-                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                        adapter = new Blank_Comments_Adapter(getContext(), blank_comments_modelList);
-                        recyclerView.setAdapter(adapter);
 
 
                     }
 
 
-
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+
+
+
+
+
+
 
 
             }
@@ -1065,7 +1024,6 @@ public class Blank_PostFragment extends Fragment {
         requestQueue.add(jsonObjectRequest);
 
     }
-
 
 
 

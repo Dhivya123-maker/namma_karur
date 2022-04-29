@@ -71,9 +71,7 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
     String Password, Name, Email, Phone;
     private long pressedTime;
     String msg = null;
-    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-    String MobilePattern = "[0-9]{10}";
-    String pass_pattern =" \"^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#&()–[{}]:;',?/*~$^+=<>]).{8,20}$\";";
+
 
     JSONObject data = null, user = null;
     String id = null;
@@ -143,8 +141,6 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
                 i.putExtra("user_name",Name);
                 i.putExtra("email",Email);
                 i.putExtra("phone",Phone);
-//                PreferenceUtils.saveEmail(Email, SignUpActivity.this);
-//                PreferenceUtils.savePhone(Phone,SignUpActivity.this);
                 startActivity(i);
 
             }

@@ -86,7 +86,11 @@ public class Quotes_Adapter extends RecyclerView.Adapter<Quotes_Adapter.ViewHold
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    String id = quotesModelList.get(position).getId();
+
                     Intent intent = new Intent(view.getContext(),Quotes_Catalog.class);
+                    intent.putExtra("id",id);
                     view.getContext().startActivity(intent);
                 }
             });

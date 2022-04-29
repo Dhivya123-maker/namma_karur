@@ -1,14 +1,17 @@
 package com.e.login;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.e.login.BlankFragment.Blank_PostFragment;
 import com.e.login.Facility_Class.Facility_Fragment;
@@ -19,6 +22,7 @@ import com.e.login.HomeClass.Fragment_Home;
 import com.e.login.MoreInfoClass.MoreInfo;
 import com.e.login.ProductsFragmentClass.Products_Fragment;
 import com.e.login.ShoppostClass.ShopPost;
+import com.e.login.ShopscreenClass.ShopsScreenFragment;
 import com.e.login.info_Class.InformationFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -176,6 +180,8 @@ public class Home_Fragment_Class extends AppCompatActivity {
 
 
     }
+
+
 //    private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 //
 //

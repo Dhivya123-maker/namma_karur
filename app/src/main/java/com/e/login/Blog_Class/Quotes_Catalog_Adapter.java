@@ -83,7 +83,6 @@ public class Quotes_Catalog_Adapter extends RecyclerView.Adapter<Quotes_Catalog_
                 .load(quotesCatalogModelList.get(position).getImg())
                 .into(holder.img);
 
-
     }
 
 
@@ -117,32 +116,40 @@ public class Quotes_Catalog_Adapter extends RecyclerView.Adapter<Quotes_Catalog_
 
 
 
-//                    BitmapDrawable draw = (BitmapDrawable) img.getDrawable();
-//                    Bitmap bitmap = draw.getBitmap();
-//
-//                    FileOutputStream outStream = null;
-//                    File sdCard = Environment.getExternalStorageDirectory();
-//                    File dir = new File(sdCard.getAbsolutePath() + "/SaveImages");
-//                    dir.mkdirs();
-//                    String fileName = String.format("%d.jpg", System.currentTimeMillis());
-//                    File outFile = new File(dir, fileName);
-//                    try {
-//                        outStream = new FileOutputStream(outFile);
-//                    } catch (FileNotFoundException e) {
-//                        e.printStackTrace();
-//                    }
-//                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
-//                    try {
-//                        outStream.flush();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                    try {
-//                        outStream.close();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//
+                    BitmapDrawable draw = (BitmapDrawable) img.getDrawable();
+                    Bitmap bitmap = draw.getBitmap();
+
+                    if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                        // Do the file write
+                    } else {
+                        // Request permission from the user
+                        ActivityCompat.requestPermissions((Activity)context,
+                                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+
+                    }
+                    FileOutputStream outStream = null;
+                    File sdCard = Environment.getExternalStorageDirectory();
+                    File dir = new File(sdCard.getAbsolutePath() + "/SaveImages");
+                    dir.mkdirs();
+                    String fileName = String.format("%d.jpg", System.currentTimeMillis());
+                    File outFile = new File(dir, fileName);
+                    try {
+                        outStream = new FileOutputStream(outFile);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outStream);
+                    try {
+                        outStream.flush();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        outStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
 //
               }
 

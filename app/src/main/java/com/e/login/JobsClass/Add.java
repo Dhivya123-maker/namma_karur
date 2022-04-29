@@ -139,53 +139,63 @@ public class Add extends AppCompatActivity {
             }
         });
 
+
+
         start.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NewApi")
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 calendar = Calendar.getInstance();
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-                int month = calendar.get(Calendar.MONTH);
-                int year = calendar.get(Calendar.YEAR);
 
-                dd = new DatePickerDialog(Add.this, new DatePickerDialog.OnDateSetListener() {
+                final DatePickerDialog.OnDateSetListener dateA = new DatePickerDialog.OnDateSetListener() {
+
                     @Override
-                    public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
+                    public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                          int dayOfMonth) {
+                        // TODO Auto-generated method stub
+                        calendar.set(Calendar.YEAR, year);
+                        calendar.set(Calendar.MONTH, monthOfYear);
+                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                        start.setText(mYear+"/"+ (mMonth+1) + "/" + mDay);
 
+                        start.setText(year+"-"+(monthOfYear+1)+"-"+dayOfMonth);
 
                     }
-                },day,month,year);
+                };
 
-                dd.show();
-
+                new DatePickerDialog(Add.this, dateA, calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
+
 
         end.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NewApi")
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 calendar = Calendar.getInstance();
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-                int month = calendar.get(Calendar.MONTH);
-                int year = calendar.get(Calendar.YEAR);
 
-                dd = new DatePickerDialog(Add.this, new DatePickerDialog.OnDateSetListener() {
+                final DatePickerDialog.OnDateSetListener dateA = new DatePickerDialog.OnDateSetListener() {
+
                     @Override
-                    public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
+                    public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                          int dayOfMonth) {
+                        // TODO Auto-generated method stub
+                        calendar.set(Calendar.YEAR, year);
+                        calendar.set(Calendar.MONTH, monthOfYear);
+                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                        end.setText(mYear+"-"+ (mMonth+1) + "-" + mDay);
 
+                        end.setText(year+"-"+(monthOfYear+1)+"-"+dayOfMonth);
 
                     }
-                },day,month,year);
+                };
 
-                dd.show();
-
+                new DatePickerDialog(Add.this, dateA, calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
+
+
 
         btn = findViewById(R.id.submit);
         btn.setOnClickListener(new View.OnClickListener() {

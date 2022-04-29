@@ -59,17 +59,18 @@ public class Quotes_Catalog extends AppCompatActivity {
         btnNav.setOnNavigationItemSelectedListener(navListener);
 
 
+        Intent intent = getIntent();
+        String idd = intent.getStringExtra("id");
+
 
         recyclerView = findViewById(R.id.quotes_catalog_recycle);
 
-        String JSON_URL = "http://nk.inevitabletech.email/public/api/get-quote-catalog-list?quote_category_id=1";
+        String JSON_URL = "http://nk.inevitabletech.email/public/api/get-quote-catalog-list?quote_category_id="+idd;
 
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, JSON_URL, null, new Response.Listener<JSONObject>() {
             @SuppressLint("CheckResult")
             @Override
             public void onResponse(JSONObject response) {
-
-
 
 
                 try {

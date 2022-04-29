@@ -145,11 +145,6 @@ VerifyActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(JSONObject response) {
 
-//                    Log.i("000000000000",response.toString());
-//
-//                    Toast.makeText(VerifyActivity.this, data, Toast.LENGTH_SHORT).show();
-//                    Toast.makeText(VerifyActivity.this, data1, Toast.LENGTH_SHORT).show();
-                   // Toast.makeText(VerifyActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
 
 
                     try{
