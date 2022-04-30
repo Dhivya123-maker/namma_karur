@@ -119,12 +119,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
     LinearLayout location;
 
-    LocationManager locationManager;
-    String latitude, longitude;
 
-    private static final int REQUEST_LOCATION = 1;
-
-    Context  context;
 
     FusedLocationProviderClient mFusedLocationClient;
 
@@ -139,7 +134,6 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
 
     Status status;
 
-    String locat;
 
     TextView lat,log;
 
@@ -522,6 +516,7 @@ public class ShopsScreenFragment extends AppCompatActivity implements ShopScreen
             public void onResponse(JSONObject response) {
 
 
+                Log.i("shopppppppp",response.toString());
 
 
                 try {

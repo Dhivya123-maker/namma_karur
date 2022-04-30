@@ -18,7 +18,7 @@
                         android:layout_marginStart="20dp"
                         android:background="@drawable/border_one"
                         android:backgroundTint="#4c9a2a"
-                        android:elevation="2dp"
+                        android:elevation="10dp"
                         android:orientation="horizontal">
 
 

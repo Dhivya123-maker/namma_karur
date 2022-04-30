@@ -78,27 +78,13 @@
                             android:background="@drawable/bg"
                             android:hint="Search"
                             android:paddingStart="20dp"
+                            android:drawableEnd="@drawable/black_search"
+                            android:paddingEnd="10dp"
+                            android:elevation="10dp"
+                            android:layout_marginBottom="2dp"
                             android:textSize="15dp">
 
                         </EditText>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="110dp"
-                            android:gravity="end"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
-                                android:src="@drawable/ic_baseline_search_24">
-
-                            </ImageView>
-
-
-                        </LinearLayout>
 
 
                         <LinearLayout
@@ -117,7 +103,9 @@
                                 android:layout_height="35dp"
                                 android:layout_gravity="center"
                                 android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="2dp"
                                 android:background="@drawable/bg_one"
+                                android:elevation="10dp"
                                 android:gravity="center">
 
                                 <ImageView
@@ -135,7 +123,9 @@
                                 android:layout_height="35dp"
                                 android:layout_gravity="center"
                                 android:layout_marginEnd="10dp"
+                                android:layout_marginBottom="2dp"
                                 android:background="@drawable/bg_one"
+                                android:elevation="10dp"
                                 android:gravity="center">
 
                                 <ImageView
@@ -166,35 +156,24 @@
                         android:layout_height="wrap_content">
 
                         <EditText
-
+                            android:id="@+id/edit1"
                             android:layout_width="match_parent"
                             android:layout_height="35dp"
                             android:layout_marginStart="20dp"
-                            android:layout_marginEnd="60dp"
+                            android:layout_marginEnd="100dp"
                             android:background="@drawable/bg"
                             android:hint="Search"
                             android:paddingStart="20dp"
+                            android:drawableEnd="@drawable/black_search"
+                            android:paddingEnd="10dp"
+                            android:elevation="10dp"
+                            android:layout_marginBottom="2dp"
                             android:textSize="15dp">
 
                         </EditText>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="70dp"
-                            android:gravity="end"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
-                                android:src="@drawable/ic_baseline_search_24">
-
-                            </ImageView>
 
 
-                        </LinearLayout>
 
 
                         <LinearLayout
@@ -211,6 +190,7 @@
                                 android:layout_height="35dp"
                                 android:layout_gravity="center"
                                 android:layout_marginEnd="20dp"
+                                android:elevation="10dp"
                                 android:background="@drawable/bg_one"
                                 android:gravity="center">
 

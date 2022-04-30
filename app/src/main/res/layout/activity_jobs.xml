@@ -74,28 +74,15 @@
                             android:layout_marginEnd="70dp"
                             android:background="@drawable/bg"
                             android:hint="Search"
+                            android:elevation="10dp"
+                            android:drawableEnd="@drawable/black_search"
+                            android:paddingEnd="10dp"
                             android:paddingStart="20dp"
                             android:textSize="15dp">
 
                         </EditText>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="19dp"
-                            android:layout_marginEnd="80dp"
-                            android:gravity="end"
-                            android:orientation="horizontal">
 
-                            <ImageView
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
-                                android:src="@drawable/ic_baseline_search_24">
-
-                            </ImageView>
-
-
-                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -110,6 +97,7 @@
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
                                 android:layout_gravity="center"
+                                android:elevation="10dp"
                                 android:background="@drawable/bg_one"
                                 android:gravity="center">
 
