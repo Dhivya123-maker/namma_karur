@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -28,7 +29,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.e.login.R;
+import com.google.android.gms.common.data.DataHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShopClassAdapter extends RecyclerView.Adapter<ShopClassAdapter.ViewHolder> {
@@ -42,6 +45,7 @@ public class ShopClassAdapter extends RecyclerView.Adapter<ShopClassAdapter.View
     Dialog dialog;
 
     public static OnItemClickListener mListener;
+
 
 
     public interface OnItemClickListener{
@@ -62,6 +66,7 @@ public class ShopClassAdapter extends RecyclerView.Adapter<ShopClassAdapter.View
 
 
     }
+
 
 
 
@@ -216,7 +221,8 @@ public class ShopClassAdapter extends RecyclerView.Adapter<ShopClassAdapter.View
     }
 
 
-    // stores and recycles views as they are scrolled off screen
+
+// stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView,aimg,mimg,bimg,nimg,eye;
         TextView textView, textView1,aname,ades,mname,mview_count,bname,bdes,nname;
@@ -397,5 +403,38 @@ public class ShopClassAdapter extends RecyclerView.Adapter<ShopClassAdapter.View
 
         dialog.show();
     }
+
+
+
+//
+//    public Filter getFilter() {
+//        return Searched_Filter;
+//    }
+//    private Filter Searched_Filter = new Filter() {
+//        @Override
+//        protected FilterResults performFiltering(CharSequence constraint) {
+//            List<ShopModel> filteredList = new ArrayList<>();
+//            if (constraint == null || constraint.length() == 0) {
+//                filteredList.addAll(FullList);
+//            } else {
+//                String filterPattern = constraint.toString().toLowerCase().trim();
+//                for (ShopModel item : FullList) {
+//                    if (item.getText().toLowerCase().contains(filterPattern)) {
+//                        filteredList.add(item);
+//                    }
+//                }
+//            }
+//            FilterResults results = new FilterResults();
+//            results.values = filteredList;
+//            return results;
+//        }
+//        @Override
+//        protected void publishResults(CharSequence constraint, FilterResults results) {
+//            shopModelList.clear();
+//            shopModelList.addAll((ArrayList) results.values);
+//            notifyDataSetChanged();
+//        }
+//    };
+
 
 }

@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -40,6 +42,7 @@ import com.e.login.Search_screen_class;
 import com.e.login.ShopscreenClass.ShopsScreenFragment;
 import com.e.login.SmallBusClass.SmallBusActivity;
 import com.e.login.utils.PreferenceUtils;
+import com.google.android.gms.common.data.DataHolder;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
@@ -56,7 +59,8 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
     EditText search;
     LinearLayout linearLayout;
-    List<ShopModel> shop_model;
+    List<ShopModel> shop_model = new ArrayList<>();
+    List<ShopModel> filterlist = new ArrayList<>();
     ShopClassAdapter adapter;
     String id = null;
     String name = null;
@@ -173,17 +177,11 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
         BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_shops11);
         btnNav.setOnNavigationItemSelectedListener(navListener);
 
+        linearLayout = findViewById(R.id.ac_shop);
+
         search = findViewById(R.id.searching1);
 
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ShopScreen_Class.this, Search_screen_class.class);
-                startActivity(intent);
-            }
-        });
 
-        linearLayout = findViewById(R.id.ac_shop);
 
 
 
@@ -287,12 +285,60 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
                 }
 
 
+                search.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+                    }
+
+                    @Override
+                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable s) {
+
+                        filterlist.clear();
+
+                        if(s.toString().isEmpty()){
+
+                            recyclerView.setAdapter(new ShopClassAdapter(ShopScreen_Class.this,shop_model));
+
+
+                            adapter.notifyDataSetChanged();
+
+                        }else{
+                            Filter(s.toString());
+                        }
+
+
+
+                    }
+
+                    private void Filter(String text) {
+                        for(ShopModel m:shop_model){
+                            if(m.getText().equals(text)){
+                                filterlist.add(m);
+
+                            }
+                        }
+
+                        recyclerView.setLayoutManager(new LinearLayoutManager(ShopScreen_Class.this));
+                        adapter =  new ShopClassAdapter(ShopScreen_Class.this,filterlist);
+                        adapter.setOnItemClickListener(ShopScreen_Class.this);
+                        recyclerView.setAdapter(adapter);
+
+
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+
                 recyclerView.setLayoutManager(new LinearLayoutManager(ShopScreen_Class.this));
                 adapter =  new ShopClassAdapter(ShopScreen_Class.this,shop_model);
                 adapter.setOnItemClickListener(ShopScreen_Class.this);
                 recyclerView.setAdapter(adapter);
-
-
 
             }
 
@@ -890,8 +936,6 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
 
     }
-
-
 
 }
 

@@ -38,13 +38,13 @@
 
     </TextView>
 
-    <ImageView
-        android:id="@+id/login_img"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@+id/welcome"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/login" />
+        <ImageView
+            android:id="@+id/login_img"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/welcome"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/login" />
 
 <!--    <LinearLayout-->
 <!--        android:id="@+id/log_lnr"-->
@@ -72,6 +72,33 @@
 <!--        </ImageView>-->
 
 <!--    </LinearLayout>-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/name1"
+            android:text="name"
+            android:textSize="12dp"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/email1"
+            android:textSize="12dp"
+            android:text="email"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/userId"
+            android:textSize="12dp"
+            android:text="id"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
 
         <EditText
             android:id="@+id/name"
@@ -324,17 +351,24 @@
                 <!--            </LinearLayout>-->
 
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="80dp">
+
+
+                <LinearLayout
                     android:id="@+id/reg_google"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="40dp"
-                    android:layout_marginBottom="80dp"
                     android:background="@drawable/rounded_corners"
                     android:backgroundTint="#f5f5f5"
                     android:elevation="5dp"
                     android:gravity="center"
+                    android:layout_marginBottom="2dp"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -355,6 +389,19 @@
 
                 </LinearLayout>
 
+                <TextView
+                    android:id="@+id/err"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#E53935"
+                    android:layout_below="@+id/signup_pass"
+                    android:layout_margin="10dp"
+                    android:textAlignment="textEnd"
+                    android:paddingEnd="40dp"
+
+
+                    />
+                </LinearLayout>
 
             </LinearLayout>
 

@@ -22,11 +22,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.e.login.LoginActivity;
 import com.e.login.R;
 import com.e.login.SignUpActivity;
 import com.e.login.utils.PreferenceUtils;
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
@@ -34,6 +37,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.internal.OnConnectionFailedListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,6 +63,7 @@ public class Signup_google extends AppCompatActivity implements OnConnectionFail
     String phonee = null;
     String email,name,goo_id;
     TextView err;
+    String d_id = null;
 
 
     @Override
@@ -95,12 +100,27 @@ public class Signup_google extends AppCompatActivity implements OnConnectionFail
             @Override
             public void onClick(View view) {
 
+                err.setVisibility(View.GONE);
              register();
+                GoogleSignInOptions gso = new GoogleSignInOptions.
+                        Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
+                        build();
 
+                GoogleSignInClient googleSignInClient= GoogleSignIn.getClient(Signup_google.this,gso);
+                googleSignInClient.signOut();
             }
 
 
         });
+
+        FirebaseMessaging messaging =  FirebaseMessaging.getInstance();
+        messaging.getToken().addOnSuccessListener(s -> {
+            Log.d("Device ID:",s);
+
+            d_id = s;
+
+        });
+
         back = findViewById(R.id.back_google);
 
 
@@ -145,11 +165,6 @@ public class Signup_google extends AppCompatActivity implements OnConnectionFail
             Mobile = mobile.getText().toString();
 
 
-//            Toast.makeText(Signup_google.this, Name, Toast.LENGTH_SHORT).show();
-//            Toast.makeText(Signup_google.this, Email, Toast.LENGTH_SHORT).show();
-//            Toast.makeText(Signup_google.this, Id, Toast.LENGTH_SHORT).show();
-//            Toast.makeText(Signup_google.this, Mobile, Toast.LENGTH_SHORT).show();
-
 
             }
 
@@ -182,6 +197,7 @@ public class Signup_google extends AppCompatActivity implements OnConnectionFail
             jsonBody.put("google_id", Id);
             jsonBody.put("name", Name);
             jsonBody.put("phone", Mobile);
+            jsonBody.put("device_id", d_id);
 
 
 
@@ -190,8 +206,7 @@ public class Signup_google extends AppCompatActivity implements OnConnectionFail
                 @SuppressLint("CheckResult")
                 @Override
                 public void onResponse(JSONObject response) {
-//                    Log.i("0000000000000", response.toString());
-//                    Toast.makeText(Signup_google.this, response.toString(), Toast.LENGTH_SHORT).show();
+
 
                     try {
 
@@ -216,12 +231,11 @@ public class Signup_google extends AppCompatActivity implements OnConnectionFail
                             Toast.makeText(Signup_google.this, msg, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(Signup_google.this, Mobile_verification.class);
                             intent.putExtra("email",email);
-//                            intent.putExtra("google_id", goo_id);
                             intent.putExtra("token", token);
                             intent.putExtra( "name", name);
                             intent.putExtra("phone", phonee);
-//                            intent.putExtra("token1",token);
                             intent.putExtra("id",id);
+
 
 
                             intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -248,18 +262,59 @@ public class Signup_google extends AppCompatActivity implements OnConnectionFail
                     String str = new String(error.networkResponse.data, charset);
 
                     try {
+
+
                         JSONObject jsonObject = new JSONObject(str);
                         JSONObject jsonObject1 = jsonObject.getJSONObject("data");
                         JSONArray jsonArray = jsonObject1.getJSONArray("phone");
                         err.setText(jsonArray.getString(0));
                         err.setVisibility(View.VISIBLE);
 
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+
+
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                        JSONArray jsonArray = jsonObject1.getJSONArray("email");
+                        err.setText(jsonArray.getString(0));
+                        err.setVisibility(View.VISIBLE);
+
+                        GoogleSignInOptions gso = new GoogleSignInOptions.
+                                Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
+                                build();
+
+                        GoogleSignInClient googleSignInClient= GoogleSignIn.getClient(Signup_google.this,gso);
+                        googleSignInClient.signOut();
+
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
+                    try {
 
+
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                        JSONArray jsonArray = jsonObject1.getJSONArray("google_id");
+                        err.setText(jsonArray.getString(0));
+                        err.setVisibility(View.VISIBLE);
+
+                        GoogleSignInOptions gso = new GoogleSignInOptions.
+                                Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
+                                build();
+
+                        GoogleSignInClient googleSignInClient= GoogleSignIn.getClient(Signup_google.this,gso);
+                        googleSignInClient.signOut();
+
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
 
                 }

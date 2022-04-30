@@ -123,7 +123,7 @@ public class Fragment_Home extends Fragment {
         Api a = new Api();
         api = a.getBASE_URL();
 
-        Log.i("qufdryuwgdr",PreferenceUtils.getToken(getActivity()));
+
         Intent intent = getActivity().getIntent();
         data = intent.getStringExtra("token");
         Intent i1 = getActivity().getIntent();

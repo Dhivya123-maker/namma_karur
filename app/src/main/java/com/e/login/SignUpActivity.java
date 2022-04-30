@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -35,6 +36,7 @@ import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.e.login.Verification.Mobile_verification;
 import com.e.login.Verification.Signup_google;
 import com.e.login.Verification.VerificationActivity;
 import com.e.login.Verification.VerifyActivity;
@@ -61,6 +63,8 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity implements OnConnectionFailedListener, GoogleApiClient.OnConnectionFailedListener  {
     private static final int RC_SIGN_IN = 1;
@@ -69,18 +73,21 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
     ImageView show_pass_btn_reg,signupback;
     EditText password, name, email, phone;
     String Password, Name, Email, Phone;
-    private long pressedTime;
     String msg = null;
-
+    GoogleSignInAccount account;
+    String Id,Mobile;
+    TextView userName, userEmail, userId;
 
     JSONObject data = null, user = null;
     String id = null;
     String token = null;
     String phonee = null;
-    String goo_token = null;
     String goo_id = null;
 
     String d_id = null;
+    TextView err;
+    String Nme ;
+    String email1,name1;
 
 
 
@@ -105,11 +112,31 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
         email = findViewById(R.id.email);
         phone = findViewById(R.id.Phone_number);
         password = findViewById(R.id.signup_pass);
+        err = findViewById(R.id.err);
 
         Error1 = findViewById(R.id.error1);
         Error2 = findViewById(R.id.error2);
         Error3 = findViewById(R.id.error3);
         Error4 = findViewById(R.id.error4);
+
+        userName = (TextView) findViewById(R.id.name1);
+        userEmail = (TextView) findViewById(R.id.email1);
+        userId = (TextView) findViewById(R.id.userId);
+
+
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+
+
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
 
         FirebaseMessaging messaging =  FirebaseMessaging.getInstance();
@@ -156,7 +183,9 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
 
                 switch (view.getId()) {
                     case R.id.reg_google:
+                        err.setVisibility(View.GONE);
                         signIn();
+//                        register1();
                         break;
 
                 }
@@ -170,70 +199,17 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
         signupbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-////
+
                 Error1.setVisibility(View.GONE);
                 Error2.setVisibility(View.GONE);
                 Error3.setVisibility(View.GONE);
                 Error4.setVisibility(View.GONE);
                 register();
 
-//                Intent intent = new Intent(SignUpActivity.this, VerifyActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//                startActivity(intent);
-
-//                Name = name.getText().toString();
-//                Email = email.getText().toString();
-//                Password = password.getText().toString();
-//                Phone = phone.getText().toString();
-//
-//
-//                if (Name.isEmpty()) {
-//                    name.setError("Please enter the username");
-//                    name.requestFocus();
-//                }
-//                else if (Email.isEmpty()) {
-//                    email.setError("Please enter mail id");
-//                    email.requestFocus();
-//                }
-//                else if (Phone.isEmpty() ) {
-//                    phone.setError("Please enter the mobile number");
-//                    phone.requestFocus();
-//
-//
-//                } else if (Password.isEmpty()) {
-//                    password.setError("Please enter the password");
-//                    password.requestFocus();
-//                    show_pass_btn_reg.setVisibility(View.INVISIBLE);
-//
-//                } else if(email.getText().toString().trim().matches(emailPattern) &&
-//                        (phone.getText().toString().trim().matches(MobilePattern))){
-//                    register();
-//
-//                }
-//                else {
-//
-//                    Toast.makeText(SignUpActivity.this, "Invalid email id or phone number", Toast.LENGTH_SHORT).show();
-//
-//                }
-//
-//
-//
-//
             }
         });
 
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-
-        googleApiClient=new GoogleApiClient.Builder(this)
-                .enableAutoManage(this, this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
-                .build();
-
-//
-//        // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         signupback.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -275,6 +251,7 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
 
 
 
+
             Intent intent = new Intent(SignUpActivity.this,Signup_google.class);
 
             startActivity(intent);
@@ -283,27 +260,11 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
         } catch (ApiException e) {
 
 
-//            Log.w("Google Sign In Error", "signInResult:failed code=" + e.getStatusCode());
-//            Toast.makeText(SignUpActivity.this, "Failed", Toast.LENGTH_LONG).show();
+            Log.w("Google Sign In Error", "signInResult:failed code=" + e.getStatusCode());
+            Toast.makeText(SignUpActivity.this, "Failed", Toast.LENGTH_LONG).show();
         }
 
 
-      //  GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(SignUpActivity.this);
-//        if (acct != null) {
-//            String personName = acct.getDisplayName();
-//            String personGivenName = acct.getGivenName();
-//            String personFamilyName = acct.getFamilyName();
-//            String personEmail = acct.getEmail();
-//            String personId = acct.getId();
-//            Uri personPhoto = acct.getPhotoUrl();
-//        }
-
-//
-//
-
-
-//        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
 
@@ -505,11 +466,223 @@ public class SignUpActivity extends AppCompatActivity implements OnConnectionFai
         }}
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(googleApiClient);
+        if (opr.isDone()) {
+            GoogleSignInResult result = opr.get();
+            handleSignInResult(result);
+        } else {
+            opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
+                @Override
+                public void onResult(@NonNull GoogleSignInResult googleSignInResult) {
+                    handleSignInResult(googleSignInResult);
+                }
+            });
+        }
+    }
+
+    private void handleSignInResult(GoogleSignInResult result) {
+        if (result.isSuccess()) {
+            account = result.getSignInAccount();
+
+            userName.setText(account.getDisplayName());
+            userEmail.setText(account.getEmail());
+            userId.setText(account.getId());
+
+            Nme = account.getDisplayName();
+            Email = account.getEmail();
+            Id = account.getId();
+
+
+
+
+        }
+
+
+    }
+
+
+
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
 
 
 
+    public  void register1(){
+
+
+
+        Nme = account.getDisplayName();
+        Email = account.getEmail();
+        Id = account.getId();
+
+
+
+        String url = "http://nk.inevitabletech.email/public/api/register-with-google";
+
+        JSONObject jsonBody = new JSONObject();
+
+        try {
+            jsonBody.put("email",Email);
+            jsonBody.put("google_id", Id);
+            jsonBody.put("name", Name);
+//            jsonBody.put("phone", Mobile);
+            jsonBody.put("device_id", d_id);
+
+
+
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, jsonBody, new Response.Listener<JSONObject>() {
+                @SuppressLint("CheckResult")
+                @Override
+                public void onResponse(JSONObject response) {
+
+
+                    try {
+
+                        String Success = response.getString("success");
+                        String msg = response.getString("message");
+
+
+                        data = response.getJSONObject("data");
+                        token = data.getString("token");
+
+
+                        user = data.getJSONObject("user");
+                        id = user.getString("id");
+                        email1 = user.getString("email");
+                        name1 = user.getString("name");
+                        goo_id = user.getString("google_id");
+                        phonee = user.getString("phone");
+
+
+                        if (Success == "true") {
+
+                            Toast.makeText(SignUpActivity.this, msg, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(SignUpActivity.this, Mobile_verification.class);
+                            intent.putExtra("email",email1);
+                            intent.putExtra("token", token);
+                            intent.putExtra( "name", name1);
+//                            intent.putExtra("phone", phonee);
+                            intent.putExtra("id",id);
+
+
+
+                            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                            startActivity(intent);
+
+
+                        } else {
+
+
+                        }
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+
+                    }
+
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Charset charset = Charset.defaultCharset();
+                    String str = new String(error.networkResponse.data, charset);
+
+                    try {
+
+
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                        JSONArray jsonArray = jsonObject1.getJSONArray("phone");
+                        err.setText(jsonArray.getString(0));
+                        err.setVisibility(View.VISIBLE);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+
+
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                        JSONArray jsonArray = jsonObject1.getJSONArray("email");
+                        err.setText(jsonArray.getString(0));
+                        err.setVisibility(View.VISIBLE);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+
+
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                        JSONArray jsonArray = jsonObject1.getJSONArray("google_id");
+                        err.setText(jsonArray.getString(0));
+                        err.setVisibility(View.VISIBLE);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+
+
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                        JSONArray jsonArray = jsonObject1.getJSONArray("google_id");
+                        err.setText(jsonArray.getString(0));
+                        err.setVisibility(View.VISIBLE);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<String, String>();
+
+
+                    return params;
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<String, String>();
+
+                    headers.put("Accept", "application/json");
+                    headers.put("Authorization", "Bearer " + PreferenceUtils.getToken(SignUpActivity.this));
+                    return headers;
+                }
+
+
+            };
+            jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    10000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+            RequestQueue requestQueue = Volley.newRequestQueue(SignUpActivity.this);
+            requestQueue.add(jsonObjectRequest);
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+    }
 
     }

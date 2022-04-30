@@ -133,6 +133,17 @@ public class Blood_One extends AppCompatActivity {
 
 
                 blood();
+                err1.setVisibility(View.GONE);
+                err2.setVisibility(View.GONE);
+                err3.setVisibility(View.GONE);
+                err4.setVisibility(View.GONE);
+                err5.setVisibility(View.GONE);
+                err6.setVisibility(View.GONE);
+                err7.setVisibility(View.GONE);
+                err8.setVisibility(View.GONE);
+                err9.setVisibility(View.GONE);
+
+
 
             }
         });

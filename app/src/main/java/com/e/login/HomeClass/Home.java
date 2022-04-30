@@ -39,6 +39,9 @@ import com.e.login.BuildConfig;
 import com.e.login.ContactusActivity;
 import com.e.login.Feedback;
 import com.e.login.ChatFeature;
+import com.e.login.LoginActivity;
+import com.e.login.MainActivity;
+import com.e.login.Verification.Signup_google;
 import com.e.login.info_Class.InformationFragment;
 import com.e.login.Profile;
 import com.e.login.Help_Class.Helpline;
@@ -46,7 +49,9 @@ import com.e.login.QrCodeFragment;
 import com.e.login.R;
 import com.e.login.utils.PreferenceUtils;
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -59,6 +64,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.nio.charset.Charset;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -410,17 +416,19 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
                     if(Success.equals("true")){
 //                        Log.i("123",msg);
 //                        Toast.makeText(Home.this, msg, Toast.LENGTH_SHORT).show();
-                        finishAffinity();
+                        Intent intent = new Intent(Home.this, MainActivity.class);
+                        startActivity(intent);
                         PreferenceUtils.saveid(null,Home.this);
                         PreferenceUtils.saveToken(null,Home.this);
 
+                        GoogleSignInOptions gso = new GoogleSignInOptions.
+                                Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
+                                build();
 
-                        String id = null;
+                        GoogleSignInClient googleSignInClient= GoogleSignIn.getClient(Home.this,gso);
+                        googleSignInClient.signOut();
 
-                        SharedPreferences settings = getSharedPreferences("YOUR_PREF_NAM", 0);
-                        SharedPreferences.Editor editor = settings.edit();
-                        editor.putString("id", id);
-                        editor.commit();
+
 
 
 
@@ -440,13 +448,23 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
 
             }
 
-//
-//
-//        }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
 
+
+
+                try {
+                    Charset charset = Charset.defaultCharset();
+                    String str = new String(error.networkResponse.data, charset);
+
+                    JSONObject jsonObject = new JSONObject(str);
+
+                    Log.i("gwekfgrioquklgf",jsonObject.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }){
             @Override
@@ -461,6 +479,7 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String, String>();
+                params.put("Accept","application/json");
                 params.put("Authorization","Bearer "+ PreferenceUtils.getToken(Home.this));
 
 
