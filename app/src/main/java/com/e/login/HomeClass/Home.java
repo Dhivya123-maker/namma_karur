@@ -186,6 +186,7 @@ public class Home extends AppCompatActivity implements OnConnectionFailedListene
             @Override
             public void onClick(View v) {
 
+
                 drawerLayout.openDrawer(GravityCompat.START);
             }
         });
