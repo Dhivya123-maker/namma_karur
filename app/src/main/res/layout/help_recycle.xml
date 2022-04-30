@@ -8,6 +8,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
         android:background="@drawable/rounded_borders"
         android:backgroundTint="#f5f5f5"
         android:elevation="2dp"
