@@ -44,6 +44,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
+<!--                    <EditText-->
+<!--                        android:id="@+id/searching1"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:layout_marginStart="20dp"-->
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_marginEnd="20dp"-->
+<!--                        android:background="@drawable/bg"-->
+<!--                        android:hint="Search"-->
+<!--                        android:elevation="3dp"-->
+<!--                        android:singleLine="true"-->
+<!--                        android:paddingStart="20dp"-->
+<!--                        android:textSize="15dp">-->
+
+<!--                    </EditText>-->
                     <EditText
                         android:id="@+id/searching1"
                         android:layout_width="match_parent"
@@ -52,31 +67,19 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
                         android:background="@drawable/bg"
+                        android:backgroundTint="@color/white"
                         android:hint="Search"
-                        android:elevation="2dp"
-                        android:singleLine="true"
+                        android:elevation="10dp"
                         android:paddingStart="20dp"
+                        android:singleLine="true"
+                        android:paddingEnd="10dp"
+                        android:drawableEnd="@drawable/black_search"
+                        android:layout_marginBottom="5dp"
                         android:textSize="15dp">
 
                     </EditText>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="35dp"
-                        android:gravity="end"
-                        android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="18dp"
-                            android:src="@drawable/ic_baseline_search_24">
-
-                        </ImageView>
-
-
-                    </LinearLayout>
                 </RelativeLayout>
 
 

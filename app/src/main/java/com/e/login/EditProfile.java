@@ -43,6 +43,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.e.login.BloodClass.Blood_One;
 import com.e.login.HomeClass.Home;
+import com.e.login.JobsClass.Add;
 import com.e.login.utils.PreferenceUtils;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -219,33 +220,30 @@ public class EditProfile extends AppCompatActivity {
 
         calende = findViewById(R.id.dob);
 
+
         calende.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("NewApi")
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 calendar = Calendar.getInstance();
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-                int month = calendar.get(Calendar.MONTH);
-                int year = calendar.get(Calendar.YEAR);
 
+                final DatePickerDialog.OnDateSetListener dateA = new DatePickerDialog.OnDateSetListener() {
 
-                dd = new DatePickerDialog(EditProfile.this, new DatePickerDialog.OnDateSetListener() {
-                    @SuppressLint("ResourceAsColor")
                     @Override
-                    public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
+                    public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                          int dayOfMonth) {
+                        // TODO Auto-generated method stub
+                        calendar.set(Calendar.YEAR, year);
+                        calendar.set(Calendar.MONTH, monthOfYear);
+                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
 
-//                        Toast.makeText(Pending_Class.this,mDay+"-"+ (mMonth+1) + "-" + +mYear , Toast.LENGTH_SHORT).show();
-
-                        date = mDay + "-" + (mMonth + 1) + "-" + mYear;
-                        calende.setText(date);
-
+                        calende.setText(year+"-"+(monthOfYear+1)+"-"+dayOfMonth);
 
                     }
-                }, day, month, year);
+                };
 
-                dd.show();
-
+                new DatePickerDialog(EditProfile.this, dateA, calendar.get(Calendar.YEAR),
+                        calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
 

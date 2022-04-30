@@ -52,7 +52,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 
 public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdapter.OnItemClickListener {
@@ -181,6 +183,81 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
 
         search = findViewById(R.id.searching1);
 
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+
+                String query = s.toString();
+                
+
+                final List<ShopModel> filteredList = new ArrayList<>();
+
+                if (shop_model.size()!=0) {
+                    for (int i = 0; i < shop_model.size(); i++) {
+                        final String text = shop_model.get(i).getText();
+                        System.out.println("data" + text.toLowerCase().toUpperCase());
+                        if (text.contains(query)) {
+                            filteredList.add(shop_model.get(i));
+                        }
+
+                        adapter = new ShopClassAdapter(ShopScreen_Class.this, filteredList);
+                        recyclerView.setAdapter(adapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(ShopScreen_Class.this, LinearLayoutManager.VERTICAL, false));
+                        adapter.notifyDataSetChanged();
+
+                    }
+
+
+                }else{
+                    adapter = new ShopClassAdapter(ShopScreen_Class.this, shop_model);
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(ShopScreen_Class.this, LinearLayoutManager.VERTICAL, false));
+                    adapter.notifyDataSetChanged();
+                }
+
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+
+                final String query = s.toString();
+
+
+                final List<ShopModel> filteredList = new ArrayList<>();
+                if (shop_model.size()!=0) {
+                    for (int i = 0; i < shop_model.size(); i++) {
+                        final String text = shop_model.get(i).getText();
+                        System.out.println("data" + text);
+                        if (text.contains(query)) {
+                            filteredList.add(shop_model.get(i));
+                        }
+
+                        adapter = new ShopClassAdapter(ShopScreen_Class.this, filteredList);
+                        recyclerView.setAdapter(adapter);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(ShopScreen_Class.this, LinearLayoutManager.VERTICAL, false));
+                        adapter.notifyDataSetChanged();
+
+                    }
+                }else{
+                    adapter = new ShopClassAdapter(ShopScreen_Class.this, shop_model);
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(ShopScreen_Class.this, LinearLayoutManager.VERTICAL, false));
+                    adapter.notifyDataSetChanged();
+                }
+
+
+            }
+        });
 
 
 
@@ -285,55 +362,8 @@ public class ShopScreen_Class extends AppCompatActivity implements ShopClassAdap
                 }
 
 
-                search.addTextChangedListener(new TextWatcher() {
-                    @Override
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
 
 
-                    }
-
-                    @Override
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable s) {
-
-                        filterlist.clear();
-
-                        if(s.toString().isEmpty()){
-
-                            recyclerView.setAdapter(new ShopClassAdapter(ShopScreen_Class.this,shop_model));
-
-
-                            adapter.notifyDataSetChanged();
-
-                        }else{
-                            Filter(s.toString());
-                        }
-
-
-
-                    }
-
-                    private void Filter(String text) {
-                        for(ShopModel m:shop_model){
-                            if(m.getText().equals(text)){
-                                filterlist.add(m);
-
-                            }
-                        }
-
-                        recyclerView.setLayoutManager(new LinearLayoutManager(ShopScreen_Class.this));
-                        adapter =  new ShopClassAdapter(ShopScreen_Class.this,filterlist);
-                        adapter.setOnItemClickListener(ShopScreen_Class.this);
-                        recyclerView.setAdapter(adapter);
-
-
-                        adapter.notifyDataSetChanged();
-                    }
-                });
 
                 recyclerView.setLayoutManager(new LinearLayoutManager(ShopScreen_Class.this));
                 adapter =  new ShopClassAdapter(ShopScreen_Class.this,shop_model);

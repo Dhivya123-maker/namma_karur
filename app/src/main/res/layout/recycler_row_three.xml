@@ -46,6 +46,8 @@
                         android:background="@drawable/rounded_borders"
                         android:backgroundTint="#4c9a2a"
                         android:gravity="center"
+                        android:elevation="5dp"
+                        android:layout_marginBottom="2dp"
                         android:orientation="vertical">
 
                         <ImageView
