@@ -72,10 +72,8 @@ public class Profile extends AppCompatActivity {
     Spinner bl;
     Context mContext;
     int SELECT_PICTURE = 1;
-    Popup_Adapter adapter;
-    EducationAdapter educationAdapter;
-    List<Education_Model> education_model;
-    ArrayAdapter<String> arrayAdapter;
+
+    TextView blood;
 
     RecyclerView education_recycler,experience_recycler,skill_recycler;
 
@@ -90,7 +88,6 @@ public class Profile extends AppCompatActivity {
 
     String id, email, phone, namee, email_verifyy, phone_verifyy, image;
 
-    String Email_get, Phone_get;
 
     private ListView userDataListView = null;
     // Below edittext and button are all exist in the popup dialog view.
@@ -105,6 +102,7 @@ public class Profile extends AppCompatActivity {
     private Button saveUserDataButton = null;
     // Click this button to cancel edit user data.
     private Button cancelUserDataButton = null;
+    TextView dob;
 
 
 
@@ -140,6 +138,8 @@ public class Profile extends AppCompatActivity {
 
 
         btn = findViewById(R.id.change_btn);
+        blood = findViewById(R.id.blood);
+        dob = findViewById(R.id.dob);
 
 
 
@@ -363,8 +363,8 @@ public class Profile extends AppCompatActivity {
                     image = jsonObject.getString("image");
                     JSONObject profile_details = jsonObject.getJSONObject("profile_details");
 
-                    String dob = profile_details.getString("dob");
-                    String blood = profile_details.getString("blood_group");
+                    String Dob = profile_details.getString("dob");
+                    String Blood = profile_details.getString("blood_group");
 
 
                         emailtxt.setText(email);
@@ -372,6 +372,10 @@ public class Profile extends AppCompatActivity {
                         user_name.setText(namee);
                         email_verify.setText(email_verifyy);
                         contact_verify.setText(phone_verifyy);
+                        blood.setText(Blood);
+                        dob.setText(Dob);
+
+
 
                         if (image != "null"){
                             Glide.with(getApplicationContext()).load(image).into(profile);

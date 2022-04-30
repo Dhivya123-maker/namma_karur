@@ -67,6 +67,7 @@ public class Blood_Fragment extends AppCompatActivity {
 
         request();
 
+
         BottomNavigationView btnNav = findViewById(R.id.bottomNavigationView_blood);
         btnNav.setOnNavigationItemSelectedListener(navListener);
 

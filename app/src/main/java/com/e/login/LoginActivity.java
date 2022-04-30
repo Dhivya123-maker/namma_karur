@@ -81,7 +81,9 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
     String eemail,name,goo_id,goo_token,user_id;
 
     TextView Error1,Error2;
-    String d_id;
+    String d_id = null;
+    String Name1,Email1,Id1;
+    TextView err;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,6 +111,23 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
 
         Error1 = findViewById(R.id.error1);
         Error2 = findViewById(R.id.error2);
+        err = findViewById(R.id.err);
+
+
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+
 
 
         FirebaseMessaging messaging =  FirebaseMessaging.getInstance();
@@ -131,7 +150,7 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
 
                 }
 
-               login_google();
+
 
 
             }
@@ -160,20 +179,6 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
         phone = i1.getStringExtra("phone");
 
 
-
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-
-        googleApiClient=new GoogleApiClient.Builder(this)
-                .enableAutoManage(this, this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
-                .build();
-
-//
-//        // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-//
 
 
         forget.setOnClickListener(new View.OnClickListener() {
@@ -220,7 +225,7 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
     }
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, RC_SIGN_IN);
+        startActivityForResult(signInIntent, 1);
 
     }
 
@@ -239,15 +244,14 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
+
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-//            updateUI(account);
-
-            Toast.makeText(LoginActivity.this, "Signin successfully", Toast.LENGTH_SHORT).show();
 
 
 
-            // Signed in successfully, show authenticated UI.
-            startActivity(new Intent(LoginActivity.this, Home.class));
+            login_google();
+            err.setVisibility(View.GONE);
+
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -407,52 +411,35 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
 
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        OptionalPendingResult<GoogleSignInResult> opr = Auth.GoogleSignInApi.silentSignIn(googleApiClient);
-        if (opr.isDone()) {
-            GoogleSignInResult result = opr.get();
-            handleSignInResult(result);
-        } else {
-            opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
-                @Override
-                public void onResult(@NonNull GoogleSignInResult googleSignInResult) {
-                    handleSignInResult(googleSignInResult);
-                }
-            });
-        }
-    }
-    private void handleSignInResult(GoogleSignInResult result) {
-        if (result.isSuccess()) {
-            account = result.getSignInAccount();
-
-            userName.setText(account.getDisplayName());
-            userEmail.setText(account.getEmail());
-            userId.setText(account.getId());
-
-            Name = account.getDisplayName();
-            Email = account.getEmail();
-            Id = account.getId();
 
 
 
-        }
-
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
 
     public void login_google(){
 
+        GoogleSignInAccount account =  GoogleSignIn.getLastSignedInAccount(this);
 
+
+
+
+        Email1 = account.getEmail();
+        Id1 = account.getId();
+//        Email1 = account.getEmail();
+//        Id1 = account.getId();
 
         String url = "http://nk.inevitabletech.email/public/api/login-with-google";
 
         JSONObject jsonBody = new JSONObject();
 
         try {
-            jsonBody.put("email",Email);
-            jsonBody.put("google_id", Id);
+            jsonBody.put("email",Email1);
+            jsonBody.put("google_id", Id1);
+            jsonBody.put("device_id",d_id);
+
+            Log.i("wdkjfbjlfhbj",jsonBody.toString());
 
 
 
@@ -462,6 +449,7 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
                 public void onResponse(JSONObject response) {
 
 
+                    Log.i("heiuqhfeuoh",response.toString());
                     try {
 
                         String Success = response.getString("success");
@@ -491,8 +479,7 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
 
                             PreferenceUtils.saveid(id,LoginActivity.this);
                             PreferenceUtils.saveToken(token,LoginActivity.this);
-//                            PreferenceUtils.saveid1(goo_id,LoginActivity.this);
-//                           PreferenceUtils.saveToken1(token,LoginActivity.this);
+
 
 
 
@@ -521,7 +508,51 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
                 public void onErrorResponse(VolleyError error) {
                     Charset charset = Charset.defaultCharset();
                     String str = new String(error.networkResponse.data, charset);
-                    Log.i("wkjlgroiwt", str);
+
+                    try {
+
+
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                      String data = jsonObject1.getString("error");
+                        err.setText(data);
+                        err.setVisibility(View.VISIBLE);
+                        GoogleSignInOptions gso = new GoogleSignInOptions.
+                                Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).
+                                build();
+
+                        GoogleSignInClient googleSignInClient= GoogleSignIn.getClient(LoginActivity.this,gso);
+                        googleSignInClient.signOut();
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+//
+                    try {
+
+
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                        JSONArray jsonArray = jsonObject1.getJSONArray("email");
+                        err.setText(jsonArray.getString(0));
+                        err.setVisibility(View.VISIBLE);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+
+
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject jsonObject1 = jsonObject.getJSONObject("data");
+                        JSONArray jsonArray = jsonObject1.getJSONArray("google_id");
+                        err.setText(jsonArray.getString(0));
+                        err.setVisibility(View.VISIBLE);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
 
 
                 }
@@ -590,10 +621,6 @@ public class LoginActivity extends AppCompatActivity implements OnConnectionFail
         }
     }
 
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
 
 }
 

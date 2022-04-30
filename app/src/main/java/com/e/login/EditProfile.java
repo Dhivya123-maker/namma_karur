@@ -198,6 +198,7 @@ public class EditProfile extends AppCompatActivity {
         edu_buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 edu_addView();
             }
         });
@@ -451,6 +452,9 @@ public class EditProfile extends AppCompatActivity {
         EditText years = (EditText) educationView.findViewById(R.id.years);
         TextView count_text = (TextView) educationView.findViewById(R.id.number);
         ImageView imageClose = (ImageView) educationView.findViewById(R.id.image_remove);
+        institute.setSingleLine(true);
+        degree.setSingleLine(true);
+        years.setSingleLine(true);
 
 
         count_text.setText(String.valueOf(edu_count));
@@ -477,7 +481,9 @@ public class EditProfile extends AppCompatActivity {
         EditText experience = (EditText) experienceView.findViewById(R.id.experience);
         TextView count_text = (TextView) experienceView.findViewById(R.id.number);
         ImageView imageClose = (ImageView) experienceView.findViewById(R.id.image_remove);
-
+        position.setSingleLine(true);
+        company.setSingleLine(true);
+        experience.setSingleLine(true);
 
         count_text.setText(String.valueOf(exp_count));
 
@@ -501,7 +507,7 @@ public class EditProfile extends AppCompatActivity {
         EditText skill = (EditText) skillView.findViewById(R.id.skill);
         TextView count_text = (TextView) skillView.findViewById(R.id.number);
         ImageView imageClose = (ImageView) skillView.findViewById(R.id.image_remove);
-
+        skill.setSingleLine(true);
 
         count_text.setText(String.valueOf(skill_count));
 
