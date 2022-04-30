@@ -53,7 +53,7 @@ public class ReviewsActivity extends AppCompatActivity {
     ImageView rating;
     RatingBar rt;
     EditText comment;
-    String Comment,Rating,data,data2;
+    String Comment,Rating,data,data2,name;
     Button send;
     float rat;
     String Rt;
@@ -68,6 +68,7 @@ public class ReviewsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         data = intent.getStringExtra("cat");
         data2 = intent.getStringExtra("id");
+        name = intent.getStringExtra("name");
 
 
 
@@ -138,7 +139,7 @@ public class ReviewsActivity extends AppCompatActivity {
                             Intent intent = new Intent(ReviewsActivity.this,Home_Fragment_Class.class);
                             intent.putExtra("list",data);
                             intent.putExtra("id",data2);
-                            finish();
+                            intent.putExtra("name",name);
 
                             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                             startActivity(intent);

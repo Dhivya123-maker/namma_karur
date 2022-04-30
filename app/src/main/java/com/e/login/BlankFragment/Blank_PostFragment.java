@@ -102,6 +102,7 @@ public class Blank_PostFragment extends Fragment {
     Button view_more;
     RecyclerView banner;
 
+    String  sname;
 
     com.kyleduo.switchbutton.SwitchButton switchButton;
 
@@ -125,6 +126,7 @@ public class Blank_PostFragment extends Fragment {
         data = intent.getStringExtra("rate");
         data2 = intent.getStringExtra("list");
         data3 = intent.getStringExtra("id");
+        sname = intent.getStringExtra("name");
         verify = root.findViewById(R.id.verifyy_txt);
         follow = root.findViewById(R.id.follow_linear);
         follow_txt = root.findViewById(R.id.follow_txt);
@@ -224,14 +226,16 @@ public class Blank_PostFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if (followArray == null) {
+                String fow = follow_txt.getText().toString();
+
+                if (fow.equals("Follow")) {
                     follow();
                 }
 
-                else if(followArray != null){
+                else if(fow.equals("Following")){
 
                     un_follow();
-
+                    Log.i("2222222222222",follow_id);
                 }
 
             }
@@ -464,6 +468,7 @@ public class Blank_PostFragment extends Fragment {
                 Intent intentList = new Intent(getContext(), ReviewsActivity.class);
                 intentList.putExtra("cat", data2);
                 intentList.putExtra("id", data3);
+                intentList.putExtra("name",sname);
                 intentList.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intentList);
 
@@ -555,15 +560,25 @@ public class Blank_PostFragment extends Fragment {
                     open_tm.setText(open_time);
                     close_tm.setText(close_time);
                     rate.setText(rating);
-                    verify.setText(verified);
+                    if (verified.equals("Yes")){
+                        verify.setText("Verified");
+                    }else {
+                        verify.setText("Unverified");
+                    }
+
                     desc.setText(description);
 //                    phone_num.setText(phone);
                     view_ct.setText(view_count);
 
 
+                    try {
 
 
-                    JSONArray res = jsonObject.getJSONArray("comments");
+
+                    String com = jsonObject.getString("comments");
+
+                    JSONArray res = new JSONArray(com);
+
                     for (int i = 0; i<3; i++) {
 
                         JSONObject data = res.getJSONObject(i);
@@ -587,33 +602,46 @@ public class Blank_PostFragment extends Fragment {
                         blank_comments_modelList.add(viewmodel);
 
                     }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    try{
 
 
-                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                    adapter = new Blank_Comments_Adapter(getContext(), blank_comments_modelList);
-                    recyclerView.setAdapter(adapter);
+
+                    String fol = jsonObject.getString("follow");
+
+                    followArray = new JSONObject(fol);
 
 
 
-                    followArray = jsonObject.getJSONObject("follow");
+
                     catalog_id = followArray.getString("catalog_id");
                     catalog_type = followArray.getString("catalog_type");
                     follow_id = followArray.getString("id");
 
 
+                    Log.i("111111111",follow_id);
 
 
 
-                    if(jsonObject.getJSONObject("follow")!=null){
+
+
+                    if(fol != "null"){
                         follow_txt.setText("Following");
 
 
 
-                    }else if(jsonObject.getJSONObject("follow")==null){
+                    }else if(fol.equals("null")){
                         follow_txt.setText("Follow");
 
 
                     }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
 
 
                 } catch (JSONException e) {
@@ -621,7 +649,9 @@ public class Blank_PostFragment extends Fragment {
                 }
 
 
-
+                recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                adapter = new Blank_Comments_Adapter(getContext(), blank_comments_modelList);
+                recyclerView.setAdapter(adapter);
 
 
 
@@ -650,7 +680,7 @@ public class Blank_PostFragment extends Fragment {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-
+                params.put("Accept", "application/json");
                 params.put("Authorization", "Bearer  " + PreferenceUtils.getToken(getActivity()));
                 return params;
             }
