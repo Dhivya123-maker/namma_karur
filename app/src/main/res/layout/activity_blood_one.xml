@@ -206,7 +206,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="#E53935"
-                            android:layout_below="@+id/user"
                             android:layout_margin="10dp"
                             android:textAlignment="textEnd"
                             android:paddingEnd="40dp"

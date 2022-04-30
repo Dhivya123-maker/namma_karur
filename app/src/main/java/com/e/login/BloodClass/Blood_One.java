@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -54,6 +55,7 @@ public class Blood_One extends AppCompatActivity {
     Spinner blood;
     String data, data1;
     String Patient, Blood, Problem, Need, Units, Hospital, Address, Num, Alternate_num;
+    TextView err1,err2,err3,err4,err5,err6,err7,err8,err9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +82,16 @@ public class Blood_One extends AppCompatActivity {
         address = findViewById(R.id.edit7);
         num = findViewById(R.id.edit8);
         alternate_num = findViewById(R.id.edit9);
+
+        err1 = findViewById(R.id.error1);
+        err2 = findViewById(R.id.error2);
+        err3 = findViewById(R.id.error3);
+        err4 = findViewById(R.id.error4);
+        err5 = findViewById(R.id.error5);
+        err6 = findViewById(R.id.error6);
+        err7 = findViewById(R.id.error7);
+        err8 = findViewById(R.id.error8);
+        err9 = findViewById(R.id.error9);
 
         submit = findViewById(R.id.sub_btn);
 
@@ -205,14 +217,118 @@ public class Blood_One extends AppCompatActivity {
                 @Override
                 public void onErrorResponse(VolleyError error) {
 
-                    try {
+
                         Charset charset = Charset.defaultCharset();
                         String str = new String(error.networkResponse.data,charset);
 
 
-
+                    try {
                         JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("errors");
+                        JSONArray jsonArray = data.getJSONArray("patient_name");
+                        err1.setText(jsonArray.getString(0));
+                        err1.setVisibility(View.VISIBLE);
 
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("errors");
+                        JSONArray jsonArray = data.getJSONArray("blood_group");
+                        err2.setText(jsonArray.getString(0));
+                        err2.setVisibility(View.VISIBLE);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("errors");
+                        JSONArray jsonArray = data.getJSONArray("problem");
+                        err3.setText(jsonArray.getString(0));
+                        err3.setVisibility(View.VISIBLE);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("errors");
+                        JSONArray jsonArray = data.getJSONArray("needed_within");
+                        err4.setText(jsonArray.getString(0));
+                        err4.setVisibility(View.VISIBLE);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("errors");
+                        JSONArray jsonArray = data.getJSONArray("no_of_units");
+                        err5.setText(jsonArray.getString(0));
+                        err5.setVisibility(View.VISIBLE);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("errors");
+                        JSONArray jsonArray = data.getJSONArray("hospital");
+                        err6.setText(jsonArray.getString(0));
+                        err6.setVisibility(View.VISIBLE);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("errors");
+                        JSONArray jsonArray = data.getJSONArray("address");
+                        err7.setText(jsonArray.getString(0));
+                        err7.setVisibility(View.VISIBLE);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("errors");
+                        JSONArray jsonArray = data.getJSONArray("primary_contact");
+                        err8.setText(jsonArray.getString(0));
+                        err8.setVisibility(View.VISIBLE);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                        JSONObject data = jsonObject.getJSONObject("errors");
+                        JSONArray jsonArray = data.getJSONArray("secondary_contact");
+                        err9.setText(jsonArray.getString(0));
+                        err9.setVisibility(View.VISIBLE);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    try {
+                        JSONObject jsonObject = new JSONObject(str);
+                      String data = jsonObject.getString("data");
+                      err9.setVisibility(View.VISIBLE);
+                      err9.setText(data);
 
 
                     } catch (JSONException e) {
@@ -227,6 +343,7 @@ public class Blood_One extends AppCompatActivity {
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String,String> params = new HashMap<String, String>();
+                    params.put("Accept","application/json");
 
                     params.put("Authorization", "Bearer " + PreferenceUtils.getToken(Blood_One.this));
                     return params;

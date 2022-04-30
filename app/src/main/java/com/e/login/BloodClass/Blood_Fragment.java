@@ -126,7 +126,7 @@ public class Blood_Fragment extends AppCompatActivity {
                         Blood_Model viewmodel = new Blood_Model();
 
 
-                        viewmodel.setImg(img);
+//                        viewmodel.setImg(img);
                         viewmodel.setName(name);
                         viewmodel.setPosted(mail);
                         viewmodel.setP_name(p_name);
